@@ -1,0 +1,7 @@
+data/
+.claude
+src/
+.env
+.DS_Store
+
+node_modules/
