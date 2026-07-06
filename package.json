@@ -28,7 +28,9 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0",
+    "@tailwindcss/typography": "^0.5.20",
     "dotenv": "^16.4.0",
+    "marked": "^18.0.5",
     "openai": "^6.45.0"
   },
   "pnpm": {

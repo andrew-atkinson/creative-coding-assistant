@@ -1,14 +1,18 @@
 <script lang="ts">
-  import SourceChip from './SourceChip.svelte';
+  import { marked } from 'marked';
   import { REFUSAL } from '$lib/refusal';
 
   const SOURCE_SENTINEL = '\n\n[[SOURCES]]';
   const CITATION_RE = /\[(\d{1,3}):(\d{2})\s+([a-z0-9-]+)\]/g;
   const UNKNOWN_RE = /\[\[UNKNOWN\]\][^\n]*\n?/g;
 
+  // Preserve newlines as breaks — matches chat expectations more than a strict
+  // markdown reader. Everything else is standard: bold, italic, code, lists,
+  // links, headings.
+  marked.setOptions({ gfm: true, breaks: true });
+
   type Source = { video_id: string; t: number };
   type LessonRef = { slug: string; title: string; video_url: string; video_id: string };
-  type Segment = { type: 'text'; text: string } | { type: 'chip'; t: number; video_id: string };
   type Message = {
     role: 'user' | 'assistant';
     content: string;
@@ -41,33 +45,39 @@
     return text.replace(UNKNOWN_RE, '').trimEnd();
   }
 
-  function segmentize(text: string): Segment[] {
-    const segs: Segment[] = [];
-    let last = 0;
-    for (const m of text.matchAll(CITATION_RE)) {
-      const idx = m.index ?? 0;
-      if (idx > last) segs.push({ type: 'text', text: text.slice(last, idx) });
-      const mm = parseInt(m[1], 10);
-      const ss = parseInt(m[2], 10);
-      segs.push({ type: 'chip', t: mm * 60 + ss, video_id: m[3] });
-      last = idx + m[0].length;
-    }
-    if (last < text.length) segs.push({ type: 'text', text: text.slice(last) });
-    return segs;
-  }
-
   function chipLabel(t: number): string {
     const mm = Math.floor(t / 60);
     const ss = (t % 60).toString().padStart(2, '0');
     return `${mm}:${ss}`;
   }
 
-  function urlForVideoId(msg: Message, video_id: string): string | null {
-    return msg.lessons?.find((l) => l.video_id === video_id)?.video_url ?? null;
+  function escapeAttr(s: string): string {
+    return s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
   }
 
-  function titleForVideoId(msg: Message, video_id: string): string | undefined {
-    return msg.lessons?.find((l) => l.video_id === video_id)?.title;
+  // Render assistant markdown → HTML with citations rewritten as chip buttons.
+  // The chip element is emitted as inline HTML *before* markdown parsing;
+  // marked passes inline HTML through untouched (unlike an underscored
+  // placeholder token, which would collide with markdown's __bold__ rule).
+  // Click handling is via event delegation on the parent container.
+  function renderMarkdown(raw: string): string {
+    const withChips = raw.replace(CITATION_RE, (_full, mm, ss, video_id) => {
+      const t = parseInt(mm, 10) * 60 + parseInt(ss, 10);
+      return (
+        `<button type="button" class="chip inline-flex items-center rounded-full bg-neutral-700 hover:bg-neutral-600 px-2 py-0.5 text-xs text-neutral-100 border border-neutral-600 tabular-nums align-middle" ` +
+        `data-t="${t}" data-vid="${escapeAttr(video_id)}">${chipLabel(t)}</button>`
+      );
+    });
+    return marked.parse(withChips, { async: false }) as string;
+  }
+
+  function handleContentClick(msg: Message, e: MouseEvent) {
+    const target = (e.target as HTMLElement | null)?.closest?.('button.chip');
+    if (!(target instanceof HTMLButtonElement)) return;
+    const t = parseInt(target.dataset.t ?? '0', 10);
+    const vid = target.dataset.vid ?? '';
+    const url = msg.lessons?.find((l) => l.video_id === vid)?.video_url;
+    if (url) onJump(url, t);
   }
 
   async function send() {
@@ -134,11 +144,6 @@
       send();
     }
   }
-
-  function handleChipClick(msg: Message, video_id: string, t: number) {
-    const url = urlForVideoId(msg, video_id);
-    if (url) onJump(url, t);
-  }
 </script>
 
 <div class="flex flex-col h-full bg-neutral-900">
@@ -151,8 +156,8 @@
     {#each messages as m, mi (mi)}
       <div class="flex {m.role === 'user' ? 'justify-end' : 'justify-start'}">
         <div
-          class="max-w-[85%] rounded-lg px-3 py-2 text-sm whitespace-pre-wrap {m.role === 'user'
-            ? 'bg-neutral-100 text-neutral-900'
+          class="max-w-[85%] rounded-lg px-3 py-2 text-sm {m.role === 'user'
+            ? 'bg-neutral-100 text-neutral-900 whitespace-pre-wrap'
             : m.unknown || m.isRefusal
               ? 'bg-amber-950/40 text-amber-200 border border-amber-900'
               : 'bg-neutral-800 text-neutral-100'}"
@@ -165,17 +170,20 @@
               <span class="animate-pulse [animation-delay:450ms]">.</span>
             </span>
           {:else if m.role === 'assistant'}
-            {#each segmentize(cleanForDisplay(m.content)) as seg}
-              {#if seg.type === 'text'}{seg.text}{:else}
-                <span class="inline-block align-middle mx-0.5">
-                  <SourceChip
-                    label={chipLabel(seg.t)}
-                    title={titleForVideoId(m, seg.video_id)}
-                    onClick={() => handleChipClick(m, seg.video_id, seg.t)}
-                  />
-                </span>
-              {/if}
-            {/each}
+            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+            <div
+              class="prose prose-sm prose-invert max-w-none prose-p:my-2 prose-pre:my-2 prose-headings:my-2 prose-ul:my-2 prose-ol:my-2 prose-li:my-0.5 prose-code:before:content-none prose-code:after:content-none prose-code:bg-neutral-700/60 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-pre:bg-neutral-950 prose-pre:text-neutral-100 prose-pre:text-xs prose-a:text-sky-300 hover:prose-a:text-sky-200"
+              onclick={(e) => handleContentClick(m, e)}
+              onkeydown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  const t = e.target as HTMLElement;
+                  if (t.closest('button.chip')) handleContentClick(m, e as unknown as MouseEvent);
+                }
+              }}
+              role="presentation"
+            >
+              {@html renderMarkdown(cleanForDisplay(m.content))}
+            </div>
           {:else}
             {m.content}
           {/if}
