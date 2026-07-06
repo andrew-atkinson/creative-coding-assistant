@@ -1,0 +1,17 @@
+{
+  "owner": {
+    "email": "blind.sam@gmail.com",
+    "display_name": "Andrew Atkinson"
+  },
+  "course": {
+    "slug": "creative-coding-101",
+    "title": "Creative Coding 101",
+    "theme_color": "#ff3e00",
+    "status": "published",
+    "llm_provider": "gemini",
+    "llm_model_id": "gemini-2.5-flash",
+    "temperature": 0.2,
+    "system_prompt": null
+  },
+  "videos": []
+}
