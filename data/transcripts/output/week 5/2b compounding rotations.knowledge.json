@@ -1,0 +1,97 @@
+{
+  "topic": "Understanding compounding transformations through iterative loops to create complex geometric patterns.",
+  "concepts": [
+    {
+      "name": "compounding rotation",
+      "timecode": "02:33",
+      "explanation": "Instead of setting an absolute angle, you add a small amount to the current rotation within a loop. This means each subsequent shape inherits the cumulative rotation of all previous shapes in that frame.",
+      "why_it_matters": "It allows you to create complex, organic-looking patterns and 'illusory' motion where objects appear to rotate at different speeds."
+    },
+    {
+      "name": "stateful transformations",
+      "timecode": "02:44",
+      "explanation": "The instructor explains that transformations are cumulative within a single draw cycle; the coordinate system remembers the rotation from the previous loop iteration.",
+      "why_it_matters": "Understanding that transformations are additive is key to controlling how complex patterns emerge from simple code."
+    },
+    {
+      "name": "visual scaffolding",
+      "timecode": "01:29",
+      "explanation": "Using the loop index `i` to scale shapes (e.g., `rect(..., i * 10)`) so that the mathematical changes in rotation are visually distinguishable.",
+      "why_it_matters": "If all shapes look identical, you can't see if your math is actually working."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:04",
+      "language": "javascript",
+      "code": "for (let i = 0; i < 5; i++) {\n  rect(0, 0, i * 10, i * 10);\n}",
+      "demonstrates": "Drawing multiple rectangles that increase in size based on the loop index.",
+      "common_issue": "If you don't change the size or position based on `i`, all shapes will be drawn exactly on top of each other, making it look like nothing happened."
+    },
+    {
+      "timecode": "02:16",
+      "language": "javascript",
+      "code": "for (let i = 0; i < 5; i++) {\n  rotate(angle);\n  rect(0, 0, i * 10, i * 10);\n  angle += 0.2;\n}",
+      "demonstrates": "Compounding rotation where each rectangle is rotated slightly more than the one before it.",
+      "common_issue": "If `rotate()` is called outside the loop, all shapes will rotate by the same amount and look identical."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "02:05",
+      "symptom": "Everything on the screen is rotating together.",
+      "cause": "The `rotate()` function is being applied to the global coordinate system without any way to reset it.",
+      "fix": "Use `push()` and `pop()` (to be covered in the next video) to isolate transformations.",
+      "related_concept": "Global vs Local Transformations"
+    },
+    {
+      "timecode": "01:48",
+      "symptom": "The shapes are all overlapping and look like a messy blob.",
+      "cause": "Using `fill()` instead of `noFill()` when drawing multiple overlapping shapes.",
+      "fix": "Use `noFill()` to see the outlines of all shapes in the loop.",
+      "related_concept": "Drawing State"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "00:14",
+      "type": "warning",
+      "description": "The instructor points out the limitation of global rotation: you can't easily make different objects rotate at different speeds if they all share the same global rotation."
+    },
+    {
+      "timecode": "02:33",
+      "type": "demonstration",
+      "description": "Moving the `rotate()` function inside the loop to show how rotation becomes cumulative/compounded."
+    },
+    {
+      "timecode": "04:13",
+      "type": "transition",
+      "description": "The instructor identifies the 'failure' of this method (everything still rotates) to introduce the need for `push()` and `pop()`."
+    }
+  ],
+  "prerequisites": [
+    "Basic for loop syntax",
+    "Understanding of the 2D coordinate system",
+    "Basic use of the rotate() function"
+  ],
+  "leads_to": [
+    "push() and pop() for local transformations",
+    "Stack management in graphics"
+  ],
+  "student_questions": [
+    "Why are all my shapes rotating together?",
+    "How do I make a pattern of things that rotate at different speeds?",
+    "What is compounding rotation?",
+    "Why does my code only show one shape even though I'm using a loop?",
+    "How do I make shapes get bigger as they rotate?",
+    "My shapes are all overlapping and I can't see the individual ones, how do I fix that?",
+    "How do I make a shape rotate slightly more than the one before it in a loop?",
+    "Why is my rotation increasing every time the loop runs?"
+  ],
+  "video_id": "2b-compounding-rotations",
+  "video_title": "2b compounding rotations",
+  "video_file": "2b compounding rotations.mp4",
+  "video_url": null,
+  "week": "week 5",
+  "module": "Module 2 – Chaos and Control"
+}

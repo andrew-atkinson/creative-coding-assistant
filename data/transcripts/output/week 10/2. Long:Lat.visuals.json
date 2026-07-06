@@ -1,0 +1,87 @@
+{
+  "video": "2. Long:Lat.mp4",
+  "vision_model": "unsloth-gemma-4-26b-a4b-it-qat-oq4",
+  "frame_interval": 30,
+  "descriptions": [
+    {
+      "timestamp": 0.0,
+      "description": "The screen shows a digital canvas with a black background and a light gray grid.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: At the top center, the text \"Long/Lat\" is displayed in green. On the canvas, there is a large green circle on the left and a green rectangle on the right. A small green arrow points from the circle toward the rectangle.\n3. **UI state**: The interface appears to be a graphics or drawing application, featuring various tool icons on the left (selection, line, shape, eraser, undo) and control buttons at the bottom (shape tools, brush settings, a red \"Stop\" button, and zoom controls)."
+    },
+    {
+      "timestamp": 30.0,
+      "description": "The image shows a dark background with a green grid pattern.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: At the top center, there is green text that reads \"Long/Lat\". Below this, a large green circle is positioned on the left side of the screen. An arrow points from the circle to a large green rectangle located on the right side of the screen.\n3. **UI state**: The interface appears to be a graphics or canvas-based application, but no specific software name, file names, or error messages are visible."
+    },
+    {
+      "timestamp": 60.0,
+      "description": "The screen shows a digital whiteboard application with a black background and a white grid.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: At the top center, the text \"Long/Lat\" is written in green. Below this, there is a large green circle on the left and a green rectangle on the right, with a green arrow pointing from the circle toward the rectangle.\n3. **UI state**: A vertical toolbar with various drawing tools (pen, eraser, shapes, etc.) is visible on the left side. At the bottom center, there is a \"Stop\" button and some small icons, while a zoom control (+/-) is located in the bottom right corner."
+    },
+    {
+      "timestamp": 90.0,
+      "description": "The screen shows a digital whiteboard application with a dark grid background.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: Hand-drawn green text at the top reads \"Long/Lat\". On the left, there is a large green circle with the word \"world\" written in green below it. On the right, there is a large green rectangle with the word \"map\" written in green below it. A green arrow points from the circle toward the rectangle.\n3. **UI state**: The interface includes a vertical toolbar on the left with various drawing and selection tools, and a small control bar at the bottom right containing zoom controls and a red \"Stop\" button."
+    },
+    {
+      "timestamp": 120.0,
+      "description": "The image shows a digital canvas with a black background and a green grid pattern.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: On the left, there is a green outline of a globe containing simplified outlines of continents. To its right, there is an empty green rectangle with an arrow pointing from the globe toward it. The text \"Long/Lat\" is written at the top, and the words \"world\" and \"map\" are written below their respective shapes.\n3. **UI state**: The interface appears to be a drawing or whiteboard application used for instructional purposes."
+    },
+    {
+      "timestamp": 150.0,
+      "description": "The screen shows a digital whiteboard application with a black background and a faint gray grid.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: Hand-drawn green outlines of a globe on the left and a rectangle on the right are displayed. The text \"Long/Lat\" is written at the top, and the words \"world\" and \"map\" are written at the bottom. A green arrow points from the globe toward the rectangle.\n3. **UI state**: The interface includes a vertical toolbar on the left with various drawing tools and a small control bar at the bottom center containing icons for shapes, text, and a red \"Stop\" button. A zoom control (+/-) is visible in the bottom right corner."
+    },
+    {
+      "timestamp": 180.0,
+      "description": "The image shows a digital whiteboard application with hand-drawn elements on a black background with a grid.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: On the left, there is a green hand-drawn circle representing a globe with simplified outlines of continents and an orange curved line across it. Below the globe, the word \"world\" is written in green. On the right, there is a large green rectangle with an arrow pointing toward it from the globe; below this rectangle, the word \"map\" is written in green. At the top center, the text \"Long/Lat\" is written in green.\n3. **UI state**: The interface includes a vertical toolbar on the left with icons for selection, drawing, and erasing, and a bottom control bar with tools like \"Stop\" and zoom controls."
+    },
+    {
+      "timestamp": 210.0,
+      "description": "The image shows a digital whiteboard application with hand-drawn sketches on a black grid background.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: There is a green hand-drawn outline of a globe on the left and a large green rectangle on the right. The text \"Long/Lat\" is written in green at the top center, with an orange underline. The word \"world\" is written in green at the bottom left, and \"map\" is written in green at the bottom right. An orange line curves across the globe, and a small green arrow points from the globe toward the rectangle.\n3. **UI state**: The interface includes a vertical toolbar on the left with icons for selection, drawing, and erasing, and a bottom control bar with zoom controls and a red \"Stop\" button."
+    },
+    {
+      "timestamp": 240.0,
+      "description": "The image shows a digital whiteboard application with hand-drawn sketches on a black grid background.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: On the left, there is a green hand-drawn sketch of a globe with orange lines representing latitude/longitude. Text annotations include \"90\" at the top, \"+40 40 N\", and \"world\". On the right, there is a green rectangular outline with an arrow pointing toward it from the globe; text annotations include \"Long/Lat\" and \"map\".\n3. **UI state**: The interface includes a vertical toolbar on the left with icons for selection, drawing, and erasing, and a bottom control bar with tools like \"Stop\" and zoom controls."
+    },
+    {
+      "timestamp": 270.0,
+      "description": "The image shows a digital whiteboard application with hand-drawn annotations over a dark grid background.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: A green circle representing a globe is drawn on the left, featuring orange lines and text annotations such as \"90\", \"+40 40N\", \"0\", \"-90\", and \"world\". To the right, there is a green rectangular outline with the text \"map\" written below it. The top of the screen contains the handwritten text \"Long/Lat +/- 90\".\n3. **UI state**: A floating color picker palette is visible on the left side, showing various \"Brand colors\" and a selection of circles. A toolbar with drawing tools is located at the bottom center, and zoom controls are in the bottom right corner."
+    },
+    {
+      "timestamp": 300.0,
+      "description": "The screen shows a digital whiteboard application with hand-drawn diagrams and text on a black grid background.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: On the left, there is a hand-drawn sketch of a globe with orange latitude and longitude lines. Text around the globe includes \"90\" at the top, \"-90\" at the bottom, and \"+40 40N\" near the top right. The word \"world\" is written in green at the bottom left, and \"map\" is written in green on the right. To the right of the globe, there is a large empty green rectangle outlined against the grid.\n3. **UI state**: A vertical toolbar with drawing tools (pencil, eraser, shapes, color picker) is visible on the far left. A small control bar with \"Stop\" and zoom controls is at the bottom center/right."
+    },
+    {
+      "timestamp": 330.0,
+      "description": "The image shows a digital whiteboard application with hand-drawn diagrams and text on a black grid background.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: On the left, there is a hand-drawn sketch of a globe with orange latitude and longitude lines. Text annotations include \"90\" at the top, \"-90\" at the bottom, \"+40 40N\", and \"Long/Lat +/- 90\". Below the globe, the word \"world\" is written in green. On the right, there is a large empty green rectangle with an arrow pointing toward it from the globe. Below the rectangle, the word \"map\" is written in green.\n3. **UI state**: The interface includes a vertical toolbar on the left with various drawing tools (pen, eraser, shapes, color picker) and a bottom toolbar with controls for zoom and playback."
+    },
+    {
+      "timestamp": 360.0,
+      "description": "The image shows a digital whiteboard application with hand-drawn diagrams and text on a black grid background.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: A hand-drawn green sphere representing a globe is shown on the left, with orange and white lines indicating latitude and longitude. Text annotations include \"-180, +180 Long/Lat\", \"+/- 90\", \"90\", \"-70\", \"+40 / 40 N\", \"0\", and \"-90\". To the right, there is a large green rectangular outline with the word \"map\" written in green below it.\n3. **UI state**: The interface includes a floating toolbar on the left with drawing tools (pen, eraser, shapes) and a bottom control bar with icons for settings and a red \"Stop\" button."
+    },
+    {
+      "timestamp": 390.0,
+      "description": "The image shows a digital whiteboard with hand-drawn diagrams and text related to geographic coordinates.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: On the left, there is a hand-drawn sketch of a globe with latitude and longitude lines in green and orange. Text annotations include \"-180, +180 Long/Lat\", \"+/- 90\", \"90\", \"-90\", and \"40 N\". On the right, there is a green rectangular box containing three horizontal orange lines. The word \"map\" is written in green at the bottom right, and \"world\" is written in green at the bottom left.\n3. **UI state**: The interface shows a digital drawing tool with various icons on the left sidebar (selection, shapes, pen, eraser, etc.) and a control bar at the bottom with \"Stop\" and zoom controls."
+    },
+    {
+      "timestamp": 420.0,
+      "description": "The image shows a digital whiteboard with hand-drawn diagrams and text, likely from an instructional video about geographic coordinate systems.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: A green-outlined sphere representing Earth is drawn on a black grid background, featuring orange and yellow lines for latitude and longitude. Text annotations include \"-180, +180 Long/Lat\", \"+/- 90\", \"90\", \"-70\", \"+40 N\", and \"-90\". To the right, a green rectangular box contains three horizontal orange lines intersected by two vertical orange lines. The words \"world\" and \"map\" are written in green at the bottom.\n3. **UI state**: A floating toolbar with drawing tools (pen, eraser, shapes) is visible on the left side. At the bottom center, there are various control icons and a red \"Stop\" button."
+    },
+    {
+      "timestamp": 450.0,
+      "description": "The image shows a digital whiteboard application with hand-drawn diagrams and text on a black grid background.\n\n1. **Code**: No programming code is visible in the image.\n2. **Visual output**: On the left, there is a hand-drawn sketch of a globe with green outlines and orange latitude/longitude lines. Text annotations include \"-180, +180 Long/Lat\", \"+/- 90\", \"90\", \"-70\", \"+40\", \"40N\", and \"-90\". On the right, there is a green rectangular box containing an orange grid of vertical and horizontal lines. Below these elements, the words \"world\" (in green) and \"map\" (in green) are written.\n3. **UI state**: The application features a vertical toolbar on the left with various drawing tools (pen, eraser, shapes, etc.) and a bottom control bar with icons for settings and a red \"Stop\" button. A white cursor arrow is visible in the center-right area."
+    },
+    {
+      "timestamp": 480.0,
+      "description": "The image shows a digital whiteboard with hand-drawn diagrams and mathematical notations related to geographic coordinates.\n\n1. **Code**: No programming code is visible in the image.\n2. **Visual output**: On the left, there is a hand-drawn sketch of a globe with various latitude and longitude markings (e.g., \"90\", \"-90\", \"+40 40N\", \"-70\"). On the right, there is a green rectangular grid representing a map with axes labeled with coordinate values like \"-180\", \"+180\", \"-90\", and \"0\". Text labels include \"Long/Lat +/- 90\" at the top, \"world\" on the bottom left, and \"map\" on the bottom right.\n3. **UI state**: The interface shows a digital drawing application with a toolbar on the left containing icons for shapes, pens, and colors. A bottom control bar includes buttons for drawing tools and a red \"Stop\" button."
+    },
+    {
+      "timestamp": 510.0,
+      "description": "The image shows a digital whiteboard application, likely used for teaching programming or geometry concepts.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: On a dark grid background, there are two green rectangular outlines representing coordinate systems or frames. The left rectangle contains a yellow grid with labels: \"+180\" and \"0\" at the top, \"-90\" on the right side, and \"-180\" on the left. The right rectangle has \"0\" at the top-left, \"w\" at the top-right, and \"h\" at the bottom. A green arrow points from the left rectangle to the right one. Handwritten text in various colors (orange, yellow, green) is scattered around the shapes.\n3. **UI state**: A floating toolbar with drawing tools (pen, eraser, shape selection) is visible on the left side. A bottom toolbar contains icons for settings and a red \"Stop\" button, alongside zoom controls in the bottom-right corner."
+    },
+    {
+      "timestamp": 540.0,
+      "description": "The image shows a digital whiteboard with hand-drawn diagrams illustrating the relationship between a sphere (the Earth) and a flat map.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: On the left, there is a hand-drawn green sphere representing Earth with orange latitude and longitude lines. Various coordinates are labeled around it, including \"90\" at the top, \"-90\" at the bottom, \"+40 40N\", and \"-70\". On the right, there is a green rectangular grid representing a map with labels \"-180\" and \"+180\" at the top. The words \"world\" are written below the sphere and \"map\" is written below the grid.\n3. **UI state**: The interface belongs to a digital whiteboard application, indicated by the drawing tool palette on the left (containing icons for pens, shapes, and erasers) and a control bar at the bottom with \"Stop\" and zoom controls."
+    },
+    {
+      "timestamp": 570.0,
+      "description": "The image shows a digital whiteboard application, likely used for instructional purposes.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: On a black grid background, there are green outlines of two rectangles. The rectangle on the left is smaller and contains three horizontal orange lines. Yellow annotations are present, including \"+180\", \"-90\", \"0\", and \"h\". A green arrow points to the left side of the larger rectangle, and a yellow curved arrow points downwards. A small white cursor is visible in the center of the larger rectangle.\n3. **UI state**: The interface includes a toolbar on the left with various drawing and selection tools, and a control bar at the bottom containing icons for shapes, text, and a red \"Stop\" button."
+    }
+  ]
+}

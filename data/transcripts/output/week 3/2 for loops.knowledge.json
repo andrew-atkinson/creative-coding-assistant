@@ -1,0 +1,111 @@
+{
+  "topic": "Introduction to using for loops in Processing to automate repetitive drawing tasks and increase code expressiveness.",
+  "concepts": [
+    {
+      "name": "for loop",
+      "timecode": "00:32",
+      "explanation": "A structure that uses a keyword 'for' followed by three specific elements in parentheses to automate repetitive code.",
+      "why_it_matters": "It replaces manual, redundant lines of code with a concise structure that is much easier to edit and more expressive."
+    },
+    {
+      "name": "initialization",
+      "timecode": "00:38",
+      "explanation": "The first part of the loop where you declare and set the starting value for your counter variable (e.g., 'int x = 20;').",
+      "why_it_matters": "It tells the computer where to start counting."
+    },
+    {
+      "name": "condition",
+      "timecode": "00:48",
+      "explanation": "A boolean expression (true/false) that the computer checks before every iteration to see if it should keep running.",
+      "why_it_matters": "It determines when the loop should stop so it doesn't run forever."
+    },
+    {
+      "name": "incrementer",
+      "timecode": "00:56",
+      "explanation": "The part that updates the variable after each loop cycle (e.g., 'x = x + 30;'), moving it closer to the stopping condition.",
+      "why_it_matters": "Without updating the variable, the loop might never reach the condition required to stop."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:01",
+      "language": "processing",
+      "code": "for (int x = 0; x < 10; x++) {\n  // code runs here\n}",
+      "demonstrates": "A basic loop that starts at 0 and runs while x is less than 10.",
+      "common_issue": "Forgetting the semicolons between the three components."
+    },
+    {
+      "timecode": "02:19",
+      "language": "processing",
+      "code": "for (int x = 20; x <= 350; x += 30) {\n  circle(x, 70, 30);\n}",
+      "demonstrates": "Drawing a horizontal line of circles by using the loop variable 'x' for the x-coordinate.",
+      "common_issue": "Using '<' instead of '<=' if you specifically want to include the final value (350)."
+    },
+    {
+      "timecode": "04:17",
+      "language": "processing",
+      "code": "fill(x, 0, 0);",
+      "demonstrates": "Using the loop variable 'x' inside a function like fill() to create dynamic color changes (e.g., fading from green to orange).",
+      "common_issue": "Using a static number instead of the variable 'x', which prevents the visual effect from changing."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "02:53",
+      "symptom": "Syntax error/Code won't run",
+      "cause": "Putting a semicolon at the end of the incrementer line inside the parentheses.",
+      "fix": "Remove the semicolon after the third component (the incrementer) inside the for loop parentheses.",
+      "related_concept": "for loop syntax"
+    },
+    {
+      "timecode": "04:45",
+      "symptom": "Shapes disappearing or behaving weirdly in animation",
+      "cause": "The loop is running inside the draw() function and modifying global variables without resetting them.",
+      "fix": "Ensure variables are reset or handled correctly if they are being used for both drawing and animation.",
+      "related_concept": "animation loop"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "00:15",
+      "type": "transition",
+      "description": "Transitioning from manual 'hand-coding' of shapes to using loops for automation."
+    },
+    {
+      "timecode": "01:01",
+      "type": "demonstration",
+      "description": "Step-by-step 'think-aloud' trace of how the variable x changes from 0 to 10."
+    },
+    {
+      "timecode": "04:17",
+      "type": "insight",
+      "description": "Showing how the loop variable can be used for more than just position—it can control color to create gradients."
+    }
+  ],
+  "prerequisites": [
+    "Basic understanding of variables",
+    "Knowledge of drawing primitives (e.g., circle())",
+    "Understanding of boolean expressions (true/false)"
+  ],
+  "leads_to": [
+    "Nested loops",
+    "Using map() for data manipulation"
+  ],
+  "student_questions": [
+    "How do I make a bunch of circles in a row without typing circle() ten times?",
+    "Why is my code not working? I added a semicolon at the end of my loop line.",
+    "How do I make things change color as they repeat?",
+    "What are the three parts of a for loop?",
+    "How do I make my shapes go vertically instead of horizontally?",
+    "Why does the loop stop at 9 if I want it to reach 10?",
+    "How do I make a pattern of shapes using code?",
+    "What is the difference between hand-coding and using a loop?",
+    "Can I use the loop variable for things other than position?",
+    "How do I make a line of shapes?"
+  ],
+  "video_id": "2-for-loops",
+  "video_title": "2 for loops",
+  "video_file": "2 for loops.mp4",
+  "video_url": null,
+  "week": "week 3"
+}

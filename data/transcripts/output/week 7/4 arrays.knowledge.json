@@ -1,0 +1,139 @@
+{
+  "topic": "Manipulating arrays in JavaScript using push, pop, and indexing within a p5.js environment.",
+  "concepts": [
+    {
+      "name": "zero-based indexing",
+      "timecode": "00:00",
+      "explanation": "The instructor explains that arrays are 'zero indexed', meaning you start counting from 0 rather than 1.",
+      "why_it_matters": "If you try to access the first item using index 1, you will actually get the second item or an error."
+    },
+    {
+      "name": "arr.push()",
+      "timecode": "01:50",
+      "explanation": "The instructor uses this to 'poke' or add new elements onto the end of an existing array.",
+      "why_it_matters": "It allows you to grow a list dynamically during runtime, like adding items to a shopping list."
+    },
+    {
+      "name": "arr.pop()",
+      "timecode": "02:25",
+      "explanation": "The instructor describes this as removing elements 'off of the end' of the array.",
+      "why_it_matters": "It is useful for removing the most recent item added to a collection."
+    },
+    {
+      "name": "return values of pop()",
+      "timecode": "03:25",
+      "explanation": "The instructor demonstrates that pop() doesn't just remove the item, it 'returns' it to whoever called it (like a console.log).",
+      "why_it_matters": "This allows you to use the value being removed for other calculations or logging immediately."
+    },
+    {
+      "name": "NaN (Not a Number)",
+      "timecode": "06:15",
+      "explanation": "When you try to perform math (like incrementing) on something that doesn't exist or isn't a number, JavaScript returns 'NaN'.",
+      "why_it_matters": "It's a signal that you are performing an invalid mathematical operation on the wrong data type."
+    },
+    {
+      "name": "conditional existence check",
+      "timecode": "07:35",
+      "explanation": "Using an 'if' statement to check if an array index actually exists before trying to change its value.",
+      "why_it_matters": "It prevents the 'NaN' error by ensuring you only perform math on valid, existing elements."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "00:00",
+      "language": "javascript",
+      "code": "let arr = [\"zeroth\", 100, \"banana\", \"yoghurt\"];",
+      "demonstrates": "Initializing an array with multiple data types (strings and numbers).",
+      "common_issue": null
+    },
+    {
+      "timecode": "01:54",
+      "language": "javascript",
+      "code": "arr.push(\"time\");",
+      "demonstrates": "Adding a new string to the end of an array.",
+      "common_issue": null
+    },
+    {
+      "timecode": "02:31",
+      "language": "javascript",
+      "code": "function mousePressed() {\n  arr.pop();\n}",
+      "demonstrates": "Removing the last element of an array whenever the mouse is clicked.",
+      "common_issue": "If you click too many times, you might try to pop from an empty array."
+    },
+    {
+      "timecode": "03:30",
+      "language": "javascript",
+      "code": "console.log(arr.pop());",
+      "demonstrates": "Removing an element and immediately logging the value that was removed.",
+      "common_issue": null
+    },
+    {
+      "timecode": "06:07",
+      "language": "javascript",
+      "code": "arr[1]++;",
+      "demonstrates": "Incrementing the value of a specific element in an array.",
+      "common_issue": "If index 1 doesn't exist or isn't a number, you get NaN."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "06:15",
+      "symptom": "The console shows 'NaN'",
+      "cause": "Attempting to perform arithmetic on an element that doesn't exist or is not a number.",
+      "fix": "Use an 'if' statement to check if the element exists before incrementing it.",
+      "related_concept": "Data Types & Type Coercion"
+    },
+    {
+      "timecode": "07:54",
+      "symptom": "The program doesn't crash but the math is wrong/NaN",
+      "cause": "Trying to access an index that has been removed by pop().",
+      "fix": "Check the array length or use an 'if (arr[index])' check.",
+      "related_concept": "Zero-based Indexing"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "00:00",
+      "type": "demonstration",
+      "description": "Visualizing an array as a 'shopping list' to make the abstract concept concrete."
+    },
+    {
+      "timecode": "03:25",
+      "type": "insight",
+      "description": "Explaining that pop() returns the value it removes, which is a crucial concept for understanding functions."
+    },
+    {
+      "timecode": "07:15",
+      "type": "warning",
+      "description": "The instructor demonstrates the 'NaN' error to show what happens when math is applied to non-numbers."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript syntax",
+    "Variable declaration (let)",
+    "p5.js setup and draw functions",
+    "Basic arithmetic operators"
+  ],
+  "leads_to": [
+    "Arrays of Objects",
+    "Sorting arrays",
+    "Object-Oriented Programming (OOP)"
+  ],
+  "student_questions": [
+    "How do I add something to the end of my list?",
+    "Why is my math result 'NaN'?",
+    "How do I remove the last item in an array?",
+    "Why does my list start at 0 instead of 1?",
+    "How can I make the array change when I click the mouse?",
+    "What does pop() actually do?",
+    "How do I see what is inside my array in the console?",
+    "Why am I getting errors when I try to change a number in an array?",
+    "How do I loop through my list to draw things on the screen?"
+  ],
+  "video_id": "4-arrays",
+  "video_title": "4 arrays",
+  "video_file": "4 arrays.mp4",
+  "video_url": null,
+  "week": "week 7",
+  "module": "Module 3 - Generation and Life"
+}

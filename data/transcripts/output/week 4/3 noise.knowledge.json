@@ -1,0 +1,123 @@
+{
+  "topic": "Understanding and implementing Perlin noise to create organic, continuous motion in p5.js.",
+  "concepts": [
+    {
+      "name": "random() vs noise()",
+      "timecode": "00:07",
+      "explanation": "The instructor explains that randomness generates numbers with no relationship to the previous one, resulting in a jagged, erratic graph. Noise, however, generates values that have a mathematical relationship to their neighbors, creating a smooth, undulating curve.",
+      "why_it_matters": "To choose between jerky, chaotic movement (random) and smooth, organic movement (noise)."
+    },
+    {
+      "name": "noise(xOff)",
+      "timecode": "01:42",
+      "explanation": "The noise function requires an 'offset' or input parameter to determine where you are along the continuous noise line.",
+      "why_it_matters": "Without an input, the function doesn't know which part of the 'curve' to sample."
+    },
+    {
+      "name": "offset incrementing",
+      "timecode": "05:23",
+      "explanation": "By adding a small value to the offset variable (e.g., `xOff += 0.001`), you move incrementally along the noise curve, creating smooth motion.",
+      "why_it_matters": "The size of the increment controls how 'jumpy' or smooth the movement appears."
+    },
+    {
+      "name": "2D motion from 1D noise",
+      "timecode": "09:28",
+      "explanation": "You can create 2D movement by using the same noise function but offsetting the input for the Y-axis (e.g., `noise(xOff + 1)`). This samples a different part of the same noise line.",
+      "why_it_matters": "Allows for complex, organic paths (like a random walker) using only one noise function."
+    },
+    {
+      "name": "noiseSeed()",
+      "timecode": "13:03",
+      "explanation": "A function that makes the noise pattern reproducible. Even though it's unpredictable, using a seed ensures you get the same 'random' path every time you run the code.",
+      "why_it_matters": "Crucial for creating repeatable generative art where you want the same 'chaos' every time."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "04:26",
+      "language": "javascript",
+      "code": "let xOff = 0;\nfunction setup() {\n  createCanvas(400, 400);\n}\nfunction draw() {\n  background(220);\n  console.log(noise(xOff));\n  xOff += 0.001;\n}",
+      "demonstrates": "How to log noise values to the console and increment an offset to see changing values.",
+      "common_issue": "If you forget `xOff += 0.001`, the noise will always return the same value because the input never changes."
+    },
+    {
+      "timecode": "07:00",
+      "language": "javascript",
+      "code": "circle(noise(xOff) * width, 200, 20);",
+      "demonstrates": "Mapping a noise value (which is between 0 and 1) to the width of the canvas to move a circle horizontally.",
+      "common_issue": "Forgetting to multiply by width/height, resulting in a circle that only moves within a tiny 0-1 pixel range."
+    },
+    {
+      "timecode": "12:00",
+      "language": "javascript",
+      "code": "circle(noise(xOff) * width, noise(xOff + 1) * height, 20);",
+      "demonstrates": "Creating 2D motion by sampling two different points on the same noise line.",
+      "common_issue": "Using `noise(xOff)` for both X and Y, which results in a diagonal line rather than organic movement."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "05:15",
+      "symptom": "The circle isn't moving; it stays in one spot.",
+      "cause": "The offset variable is being incremented, but it isn't actually being passed into the `noise()` function inside the drawing command.",
+      "fix": "Ensure you use `circle(noise(xOff) * width, ...)` instead of just `circle(xOff * width, ...)`.",
+      "related_concept": "noise() function arguments"
+    },
+    {
+      "timecode": "11:03",
+      "symptom": "The console shows 'NaN'.",
+      "cause": "The `noise()` function was called without any arguments.",
+      "fix": "Always provide a numerical argument to the `noise()` function.",
+      "related_concept": "Function parameters"
+    },
+    {
+      "timecode": "07:12",
+      "symptom": "The movement is too jumpy/erratic.",
+      "cause": "The increment value added to the offset is too large.",
+      "fix": "Decrease the increment (e.g., change `0.01` to `0.005`).",
+      "related_concept": "Offset incrementing"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:04",
+      "type": "insight",
+      "description": "The instructor defines noise by its relationship to the previous number, distinguishing it from pure randomness."
+    },
+    {
+      "timecode": "06:25",
+      "type": "warning",
+      "description": "The instructor demonstrates a common mistake: incrementing the variable but forgetting to use that variable inside the noise function."
+    },
+    {
+      "timecode": "09:35",
+      "type": "demonstration",
+      "description": "Showing how adding a constant (like +1) to the noise input allows you to sample different parts of the same continuous line."
+    }
+  ],
+  "prerequisites": [
+    "Basic p5.js structure (setup/draw)",
+    "Variable declaration and incrementing",
+    "Basic understanding of the coordinate system (X/Y)"
+  ],
+  "leads_to": [
+    "2D and 3D noise maps",
+    "Procedural terrain generation",
+    "Complex particle systems"
+  ],
+  "student_questions": [
+    "What is the difference between random and noise?",
+    "Why is my circle not moving even though I'm adding to xOff?",
+    "How do I make movement look smooth instead of jumpy?",
+    "Why am I getting NaN in my console?",
+    "How can I use one noise function to move something in both X and Y directions?",
+    "How do I make my 'random' pattern stay the same every time I refresh?",
+    "Why are all my shapes moving in a straight diagonal line?",
+    "How do I make the movement more organic?"
+  ],
+  "video_id": "3-noise",
+  "video_title": "3 noise",
+  "video_file": "3 noise.mp4",
+  "video_url": null,
+  "week": "week 4"
+}

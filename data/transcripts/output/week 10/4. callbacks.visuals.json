@@ -1,0 +1,39 @@
+{
+  "video": "4. callbacks.mp4",
+  "vision_model": "unsloth-gemma-4-26b-a4b-it-qat-oq4",
+  "frame_interval": 30,
+  "descriptions": [
+    {
+      "timestamp": 0.0,
+      "description": "This screen shows the p5.js Web Editor interface with a code editor on the left and a preview pane on the right.\n\n**Code (JavaScript):**\n```javascript\nlet cities;\n\nfunction preload() {\n  cities = loadJSON('assets/cities.json');\n}\n\nfunction setup() {\n  createCanvas(400, 400);\n  console.log(cities);\n}\n\nfunction draw() {\n  background(220);\n}\n```\n\n**Visual output:** The preview pane shows a solid light gray square (the canvas) against a white background.\n\n**UI state:** The editor is open to the file `sketch.js`. A sidebar on the left shows a file structure containing `index.html`, `sketch.js`, and `style.css`. The top of the browser shows several open tabs, including \"p5.js Web Editor | maps e...\" and \"1000 Largest US Cities B...\"."
+    },
+    {
+      "timestamp": 30.0,
+      "description": "The image shows the p5.js Web Editor interface with a JavaScript file named `sketch.js` open in the editor pane.\n\n**Code (JavaScript):**\n```javascript\nlet cities;\n\nfunction preload() {\n  cities = loadJSON('assets/cities.json');\n}\n\nfunction setup() {\n  createCanvas(400, 400);\n  console.log(cities);\n}\n\nfunction draw() {\n  background(220);\n}\n```\n\n**Visual output:** The preview pane on the right is currently blank (a light gray square), and the console at the bottom displays a series of objects: `(0: Object, 1: Object, 2: Object, 3: Object, 4: Obje ct...)`.\n\n**UI state:** The application is the p5.js Web Editor running in a Google Chrome browser window. Visible files in the sidebar include `assets`, `index.html`, `sketch.js`, and `style.css`."
+    },
+    {
+      "timestamp": 60.0,
+      "description": "The image shows the p5.js Web Editor interface with a code editor on the left and a preview pane on the right.\n\n**Code (JavaScript):**\n```javascript\nlet cities;\n\nfunction preload() {\n  loadJSON('assets/cities.json', onLoad);\n}\n\nfunction setup() {\n  createCanvas(400, 400);\n  console.log(cities);\n}\n\nfunction draw() {\n  background(220);\n}\n\nfunction onLoad (res) {\n  // code is cut off here\n}\n```\n\n**Visual output:** The preview pane on the right shows a solid light gray rectangle, which corresponds to the `background(220)` command in the code.\n\n**UI state:** The application is the p5.js Web Editor running in a Google Chrome browser. The active file is `sketch.js`, and the sidebar shows an `assets` folder containing `cities.json`. The console at the bottom is collapsed."
+    },
+    {
+      "timestamp": 90.0,
+      "description": "The image shows the p5.js Web Editor interface in a web browser (Chrome).\n\n**Code:**\nThe editor contains a JavaScript file named `sketch.js` with the following code:\n\n```javascript\nlet cities;\n\nfunction preload() {\n  loadJSON('assets/cities.json', onLoad);\n}\n\nfunction setup() {\n  createCanvas(400, 400);\n  console.log(cities);\n}\n\nfunction draw() {\n  background(220);\n}\n\nfunction onLoad(res) {\n  cities = res;\n  console.log(\"on\")\n}\n```\n\n**Visual output:**\nThe preview pane on the right is currently blank (white), showing no rendered graphics or shapes.\n\n**UI state:**\nThe application is the p5.js Web Editor, with a file sidebar showing `index.html`, `sketch.js` (the active file), and `style.css`. The browser has multiple tabs open, including \"loadJSON\" and \"GeoNames.\" A console area is visible at the bottom of the editor, currently empty."
+    },
+    {
+      "timestamp": 120.0,
+      "description": "The image shows a web browser window containing an online code editor (p5.js Web Editor) with a split-screen view of code and a console output.\n\n**Code (JavaScript/p5.js):**\n```javascript\n3 function preload() {\n4   loadJSON('assets/cities.json', onLoad);\n5 }\n6 \n7 function setup() {\n8   createCanvas(400, 400);\n9   console.log(cities);\n10 }\n11 \n12 function draw() {\n13   background(220);\n14 }\n15 \n16 function onLoad(res) {\n17   cities = res\n18   console.log(\"onLoad success!:\", cities[0])\n19 }\n```\n\n**Visual output:**\nThe preview area is blank/white. The console at the bottom displays \"onLoad success!:\" followed by an object representing a city with properties like `city: \"New York\"`, `growth_from_2000_to_2013: \"4.8%\"`, `latitude: 40.7127837`, `longitude: -74.0059413`, and `population: \"8405837...\"`. Below that, a collapsed array of objects is visible.\n\n**UI state:**\nThe application is the p5.js Web Editor. The active file in the sidebar is `sketch.js`. Other files visible in the sidebar include `assets/cities.json`, `index.html`, and `style.css`. The browser has multiple tabs open, including \"p5.js Web Editor\" and \"GeoNames\"."
+    },
+    {
+      "timestamp": 150.0,
+      "description": "The image shows a web browser displaying the p5.js Web Editor with a code editor on the left and a preview pane on the right. The console at the bottom shows an output from a successful data load: `onLoad success!: {city: \"New York\", growth_from_2000_to_2013: \"4.8%\", latitude: 40.7127837, longitude: -74.0059413, population: \"8405837\",...}`.\n\n**Code (JavaScript):**\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n  console.log(cities);\n}\n\nfunction draw() {\n  background(220);\n}\n\nfunction onLoad(res) {\n  cities = res;\n  console.log(\"onLoad success!\", cities[0])\n}\n\nfunction onError(res) {\n  console.log(\"onError\", res)\n}\n```\n\n**Visual output:** The preview pane is a solid light gray square, and the console displays text logs in white on a dark background.\n\n**UI state:** The application is the p5.js Web Editor, with a file named `sketch.js` open. The browser tabs show various sites including \"Chrome\", \"p5.js Web Editor\", and \"GeoNames\"."
+    },
+    {
+      "timestamp": 180.0,
+      "description": "The image shows a code editor (Visual Studio Code) running a p5.js sketch with an error message in the integrated console.\n\n**Code (JavaScript):**\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n  console.log(cities);\n}\n\nfunction draw() {\n  background(220);\n}\n\nfunction onLoad(res) {\n  cities = res;\n  console.log(\"onLoad success!\", cities[0])\n}\n\nfunction onError(res) {\n  console.log(\"onError\", res);\n}\n```\n\n**Visual output:**\nThere is no canvas or visual preview visible; the main editor area shows the code, and the bottom panel displays a console error.\n\n**UI state:**\nThe application is Visual Studio Code. The active file is `sketch.js`. A red error message in the console states: `Error: [object ReadableStream]`, followed by a p5.js error message explaining that there was a problem loading the JSON file and suggesting to check if the file path `assets/cities.json` is correct or if a local server is being used."
+    },
+    {
+      "timestamp": 210.0,
+      "description": "The image shows a web browser (Chrome) displaying the p5.js Web Editor with a JavaScript file named `sketch.js` open in the editor pane. The UI includes a sidebar with files (`assets`, `cities.json`, `index.html`, `sketch.js`, and `style.css`) and a console at the bottom which is currently empty.\n\n**Code (JavaScript):**\n```javascript\nlet cities\n\nfunction preload() {\n  loadJSON('assets/cities.json', onLoad, onError);\n}\n\nfunction setup() {\n  createCanvas(400, 400);\n  console.log(cities)\n}\n\nfunction draw() {\n  background(220);\n}\n\n// callback function\nfunction onLoad (res) {\n  cities = res\n  console.log(\"onLoad success!\", cities[0])\n}\n\nfunction onError (res) {\n  console.log(\"onError:\", res)\n}\n```\n\nThe visual output area (the canvas/preview pane on the right) is blank, displaying only a \"Loading...\" message."
+    }
+  ]
+}

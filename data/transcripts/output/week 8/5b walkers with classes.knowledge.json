@@ -1,0 +1,146 @@
+{
+  "topic": "Transitioning from procedural random walkers to Object-Oriented Programming (OOP) using classes and container classes to manage populations and color palettes.",
+  "concepts": [
+    {
+      "name": "Walker Class (The Individual)",
+      "timecode": "06:38",
+      "explanation": "A blueprint that defines what every individual walker knows (position, previous position, color) and does (update movement, display itself).",
+      "why_it_matters": "It allows you to move from drawing one single line to creating hundreds of independent agents that all follow the same rules."
+    },
+    {
+      "name": "Walkers Class (The Container)",
+      "timecode": "01:38",
+      "explanation": "A manager class that holds an array of Walker objects and controls their collective properties, like a shared color palette.",
+      "why_it_matters": "It allows you to treat a group of objects as a single entity, making it easy to manage large populations and ensure visual cohesion."
+    },
+    {
+      "name": "Constructor",
+      "timecode": "06:38",
+      "explanation": "A special function within a class that runs once when you create a new instance (using 'new') to set up the object's initial state.",
+      "why_it_matters": "It is essential for giving each new object its own unique starting position and properties."
+    },
+    {
+      "name": "Methods (update and display)",
+      "timecode": "07:04",
+      "explanation": "Functions that belong to a class. 'update' calculates the next position, and 'display' handles the actual drawing on the canvas.",
+      "why_it_matters": "This encapsulates behavior within the object, so you only have to call 'walker.update()' instead of writing all the math every time."
+    },
+    {
+      "name": "Color Palettes via OOP",
+      "timecode": "13:38",
+      "explanation": "Instead of every walker picking a random color, the container class (Walkers) picks a base color and passes it to each individual walker.",
+      "why_it_matters": "This creates 'color families' where objects look related rather than just being a chaotic mess of random colors."
+    },
+    {
+      "name": "Property Linking (Thickness to Step Size)",
+      "timecode": "23:15",
+      "explanation": "Tying one visual property to a movement property—for example, making thicker lines move more slowly by calculating step size based on thickness.",
+      "why_it_matters": "It creates more organic, complex visual systems where appearance and behavior are interconnected."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "03:56",
+      "language": "javascript",
+      "code": "let x, y, px, py;\nfunction setup() {\n  createCanvas(400, 400);\n  x = random(width);\n  y = random(height);\n  px = x;\n  py = y;\n}\nfunction draw() {\n  line(x, y, px, py);\n  px = x;\n  py = y;\n  x += random(-1, 1);\n  y += random(-1, 1);\n}",
+      "demonstrates": "A basic procedural random walker using global variables.",
+      "common_issue": "Forgetting to set px and py initially, which causes a line to draw from (0,0) to the first random point."
+    },
+    {
+      "timecode": "08:23",
+      "language": "javascript",
+      "code": "class Walker {\n  constructor() {\n    this.x = random(width);\n    this.y = random(height);\n    this.px = this.x;\n    this.py = this.y;\n  }\n  update() {\n    this.px = this.x;\n    this.py = this.y;\n    this.x += random(-4, 4);\n    this.y += random(-4, 4);\n  }\n  display() {\n    line(this.x, this.y, this.px, this.py);\n  }\n}",
+      "demonstrates": "Encapsulating the walker logic into a class.",
+      "common_issue": "Forgetting to use 'this.' when referencing properties inside the class methods."
+    },
+    {
+      "timecode": "10:38",
+      "language": "javascript",
+      "code": "for (let walker of arr) {\n  walker.update();\n  walker.display();\n}",
+      "demonstrates": "Iterating through an array of objects to update and draw them all.",
+      "common_issue": "Trying to iterate over the class itself instead of the array stored inside the class."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "04:37",
+      "symptom": "The line doesn't draw correctly or jumps from the corner.",
+      "cause": "Not initializing 'px' and 'py' to the starting 'x' and 'y'.",
+      "fix": "Set `px = x` and `py = y` in the setup or constructor.",
+      "related_concept": "State management"
+    },
+    {
+      "timecode": "10:14",
+      "symptom": "TypeError: X is not defined.",
+      "cause": "Trying to access a class property without using the 'this.' keyword (e.g., `x` instead of `this.x`).",
+      "fix": "Always use `this.` when referring to properties defined in the constructor.",
+      "related_concept": "Scope/this keyword"
+    },
+    {
+      "timecode": "18:30",
+      "symptom": "TypeError: Cannot read properties of undefined (reading 'create').",
+      "cause": "Trying to call a method on an object that hasn't been instantiated yet (calling `walkers.create()` before `walkers = new Walkers()`).",
+      "fix": "Ensure the object is instantiated with `new` before calling its methods.",
+      "related_concept": "Instantiation"
+    },
+    {
+      "timecode": "19:08",
+      "symptom": "TypeError: Walkers is not iterable.",
+      "cause": "Trying to use a `for...of` loop on the class instance itself rather than the array property inside it.",
+      "fix": "Iterate over `walkers.arr` instead of just `walkers`.",
+      "related_concept": "Composition/Arrays"
+    },
+    {
+      "timecode": "31:20",
+      "symptom": "Cannot read properties of undefined (reading 'red').",
+      "cause": "Trying to use `setRed()` on a value that isn't actually a p5 color object, or trying to use it as if it returns the color (it modifies in place).",
+      "fix": "Use `red(this.stroke)` to get the value and then use `setRed()` correctly.",
+      "related_concept": "p5.Color methods"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:26",
+      "type": "demonstration",
+      "description": "Instructor uses code folding to show how complex logic can be simplified visually, helping manage cognitive load."
+    },
+    {
+      "timecode": "18:30",
+      "type": "warning",
+      "description": "The instructor encounters a real error in the console and uses it to demonstrate how to debug 'undefined' errors."
+    },
+    {
+      "timecode": "23:15",
+      "type": "insight",
+      "description": "The instructor explains how to link visual properties (thickness) to behavioral properties (step size) to create more organic movement."
+    }
+  ],
+  "prerequisites": [
+    "Basic p5.js syntax (setup, draw)",
+    "Variables and basic math",
+    "Arrays and loops",
+    "Basic coordinate systems (x, y)"
+  ],
+  "leads_to": [
+    "Perlin Noise for organic movement",
+    "Advanced generative systems with complex agent interactions"
+  ],
+  "student_questions": [
+    "How do I make many lines move at once without writing code for each one?",
+    "Why is my code saying 'x is not defined' even though I created x in the constructor?",
+    "How do I make a group of objects all have similar colors?",
+    "What is the difference between a Walker and Walkers?",
+    "How do I make my shapes move faster or slower based on how big they are?",
+    "Why is my canvas blank even though I have code for a line?",
+    "How do I change the color of an object while it's moving?",
+    "What does 'this.' actually do in a class?",
+    "How do I use an array to keep track of many different objects?",
+    "Why am I getting a 'Cannot read properties of undefined' error?"
+  ],
+  "video_id": "5b-walkers-with-classes",
+  "video_title": "5b walkers with classes",
+  "video_file": "5b walkers with classes.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 8/5b walkers with classes.mp4",
+  "week": "week 8",
+  "module": "Module 3 - Generation and Life"
+}

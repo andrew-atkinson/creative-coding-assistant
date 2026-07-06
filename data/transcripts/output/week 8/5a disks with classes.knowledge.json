@@ -1,0 +1,144 @@
+{
+  "topic": "Transitioning from procedural to Object-Oriented Programming (OOP) in p5.js, including advanced styling with the HTML5 Canvas API and clipping masks.",
+  "concepts": [
+    {
+      "name": "Classes and Instances",
+      "timecode": "04:52",
+      "explanation": "A class is a 'template' or blueprint that defines properties and behaviors, while an instance is the actual object created from that template using the 'new' keyword.",
+      "why_it_matters": "It allows you to manage hundreds of unique objects (like disks) without writing separate code for every single one."
+    },
+    {
+      "name": "Constructor",
+      "timecode": "05:35",
+      "explanation": "A special function within a class that runs once when an object is created to set its initial 'state' (like position, speed, and size) using the 'this' keyword.",
+      "why_it_matters": "It ensures every new object has its own unique data (e.g., different random speeds) while following the same blueprint."
+    },
+    {
+      "name": "Drawing Context",
+      "timecode": "21:05",
+      "explanation": "The underlying Web API (CanvasRenderingContext2D) that p5.js wraps. You access it via `drawingContext` to use advanced features like radial gradients that aren't in standard p5.js functions.",
+      "why_it_matters": "It unlocks professional-grade visual effects like complex gradients and shadows."
+    },
+    {
+      "name": "Radial Gradients",
+      "timecode": "23:38",
+      "explanation": "A color transition that radiates from a center point, created using `createRadialGradient` with six parameters (start x/y, start radius, end x/y, and end radius) and `addColorStop` for color stops.",
+      "why_it_matters": "It allows for much more sophisticated and organic-looking color transitions than simple linear fills."
+    },
+    {
+      "name": "Clipping and Masking",
+      "timecode": "43:51",
+      "explanation": "Using `beginClip()` and `endClip()` to define a boundary. Anything drawn between these two commands is restricted to the shape of that boundary, acting as a mask.",
+      "why_it_matters": "It allows you to contain complex animations or patterns within specific geometric shapes."
+    },
+    {
+      "name": "Push and Pop (Isolation)",
+      "timecode": "08:18",
+      "explanation": "Using `push()` and `pop()` to isolate transformations like `translate` or `rotate`, ensuring that changes made to the coordinate system only affect the current object.",
+      "why_it_matters": "Without this, a transformation applied to one object would 'leak' and affect every subsequent object drawn."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:30",
+      "language": "javascript",
+      "code": "let x = 0, y = 0;\nlet xSpeed = 1, ySpeed = 1;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n  circle(x, y, 20);\n  x += xSpeed;\n  y += ySpeed;\n  if (x > width || x < 0) { xSpeed = -xSpeed; }\n  if (y > height || y < 0) { ySpeed = -ySpeed; }\n}",
+      "demonstrates": "Basic procedural movement and collision detection (bouncing) for a single circle.",
+      "common_issue": "Forgetting to reset the position or reverse the speed when hitting a boundary."
+    },
+    {
+      "timecode": "07:44",
+      "language": "javascript",
+      "code": "class Disk {\n  constructor(x, y) {\n    this.x = x;\n    this.y = y;\n    this.d = random(10, 40);\n    this.xSpeed = random(-2, 2);\n    this.ySpeed = random(-2, 2);\n  }\n\n  display() {\n    push();\n    translate(this.x, this.y);\n    circle(0, 0, this.d);\n    pop();\n  }\n}",
+      "demonstrates": "Refactoring procedural movement into a Class structure with encapsulated state and display logic.",
+      "common_issue": "Forgetting to use `this.` when referencing class properties inside methods."
+    },
+    {
+      "timecode": "23:58",
+      "language": "javascript",
+      "code": "// Inside a class method\nthis.fill = drawingContext.createRadialGradient(-5, -5, 0, this.d/2);\nthis.fill.addColorStop(0, '#1782FF');\nthis.fill.addColorStop(1, '#FF00AA');",
+      "demonstrates": "Using the drawingContext to create a radial gradient and applying it via color stops.",
+      "common_issue": "Trying to use `fill()` directly on the gradient object instead of using `drawingContext.fillStyle`."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "09:38",
+      "symptom": "The object doesn't move or the code errors out because 'x' is undefined.",
+      "cause": "Forgetting to use the `this.` keyword when referencing class properties inside a method.",
+      "fix": "Change `x += xSpeed` to `this.x += this.xSpeed`.",
+      "related_concept": "Class properties/State"
+    },
+    {
+      "timecode": "16:00",
+      "symptom": "Objects fall off the bottom of the screen and never come back.",
+      "cause": "Checking `this.y > height` where `height` is a property of the object rather than the canvas.",
+      "fix": "Ensure you are checking against the global `height` variable, not a non-existent property on the object.",
+      "related_concept": "Scope/Global vs Local variables"
+    },
+    {
+      "timecode": "32:30",
+      "symptom": "Error: [object Arguments] is not a valid color representation.",
+      "cause": "Attempting to use `fill()` (a p5 function) on a gradient object instead of using the underlying `drawingContext.fillStyle` property.",
+      "fix": "Use `drawingContext.fillStyle = this.fill;` to apply the gradient.",
+      "related_concept": "Drawing Context vs p5.js functions"
+    },
+    {
+      "timecode": "41:00",
+      "symptom": "Shadows are not appearing or are behaving strangely.",
+      "cause": "Trying to attach shadow properties (like `shadowBlur`) directly to the gradient object instead of the drawing context.",
+      "fix": "Apply shadow properties directly to `drawingContext` (e.g., `drawingContext.shadowBlur = 10;`).",
+      "related_concept": "Drawing Context properties"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "04:52",
+      "type": "demonstration",
+      "description": "The instructor begins the transition from simple procedural code to a Class structure, showing how variables become 'state'."
+    },
+    {
+      "timecode": "21:05",
+      "type": "insight",
+      "description": "The instructor explains that p5.js is essentially a 'wrapper' around the more powerful HTML5 Canvas API (drawingContext)."
+    },
+    {
+      "timecode": "38:40",
+      "type": "warning",
+      "description": "The instructor demonstrates that shadows are properties, not methods, and warns about the performance cost of using them."
+    },
+    {
+      "timecode": "43:51",
+      "type": "demonstration",
+      "description": "Introduction of clipping masks to contain visual elements within specific shapes."
+    }
+  ],
+  "prerequisites": [
+    "Basic p5.js functions (circle, rect, fill)",
+    "Variables and basic conditional logic",
+    "Basic understanding of the draw loop"
+  ],
+  "leads_to": [
+    "Advanced animation with lerp()",
+    "Complex geometry and organic shapes",
+    "Performance optimization for many objects"
+  ],
+  "student_questions": [
+    "Why are all my circles in one spot?",
+    "How do I make hundreds of shapes without writing a hundred lines of code?",
+    "What is the difference between a class and an object?",
+    "How do I make a gradient that isn't just a simple color change?",
+    "Why is my code slow when I add shadows?",
+    "How do I make a shape act like a mask so things only show up inside it?",
+    "What is 'this' in JavaScript and why do I need it for my class?",
+    "How do I use CSS styles in p5.js?",
+    "Why is my gradient not showing up even though I defined the colors?",
+    "How do I make an object rotate around its own center?"
+  ],
+  "video_id": "5a-disks-with-classes",
+  "video_title": "5a disks with classes",
+  "video_file": "5a disks with classes.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 8/5a disks with classes.mp4",
+  "week": "week 8",
+  "module": "Module 3 - Generation and Life"
+}

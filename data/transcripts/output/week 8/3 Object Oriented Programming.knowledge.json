@@ -1,0 +1,93 @@
+{
+  "topic": "An overview of programming paradigms, specifically comparing Imperative, Event-Driven, and Object-Oriented Programming to provide a mental framework for using classes.",
+  "concepts": [
+    {
+      "name": "Imperative Programming",
+      "timecode": "00:32",
+      "explanation": "Writing code as a specific, linear sequence of instructions that the computer follows from top to bottom (e.g., setting a variable, then drawing an ellipse).",
+      "why_it_matters": "It is the foundational way of writing code, but it becomes difficult to manage as programs grow in complexity."
+    },
+    {
+      "name": "Event-Driven Programming",
+      "timecode": "01:13",
+      "explanation": "A style where the standard top-to-bottom control flow is interrupted by external actions, like a mouse click, which changes the direction of the program.",
+      "why_it_matters": "It allows programs to be reactive and interactive rather than just running a fixed script."
+    },
+    {
+      "name": "Object-Oriented Programming (OOP)",
+      "timecode": "01:36",
+      "explanation": "A paradigm centered around 'Classes' which act as blueprints or models for objects.",
+      "why_it_matters": "It allows programmers to move away from managing individual lines of code and instead build scalable, reusable components."
+    },
+    {
+      "name": "Classes (as Blueprints)",
+      "timecode": "01:47",
+      "explanation": "A template that defines what an object is (its properties) and what it can do (its methods).",
+      "why_it_matters": "Classes allow you to create complex systems by defining a single model and then creating many objects from it."
+    },
+    {
+      "name": "Properties and Methods",
+      "timecode": "01:56",
+      "explanation": "Properties are the characteristics of an object (like a vehicle's color or brand), and methods are the actions it can perform (like accelerating or braking).",
+      "why_it_matters": "Understanding this distinction is essential for defining how objects behave in a digital environment."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "00:38",
+      "language": "javascript",
+      "code": "// Imperative style example\nbackground(255);\ndrawEllipse();\ndrawEllipse();",
+      "demonstrates": "The top-to-bottom linear execution of imperative programming.",
+      "common_issue": null
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": null,
+      "symptom": "The code is getting too long and hard to manage",
+      "cause": "Relying solely on imperative programming for complex systems.",
+      "fix": "Transition to Object-Oriented Programming using classes to create modular components.",
+      "related_concept": "Object-Oriented Programming"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:36",
+      "type": "transition",
+      "description": "The instructor pivots from reviewing previous methods (functions/objects) to introducing the core concept of the module: Classes and OOP."
+    },
+    {
+      "timecode": "02:19",
+      "type": "insight",
+      "description": "The instructor explains that OOP 'releases us from small things,' meaning it allows the programmer to focus on high-level architecture rather than individual lines of code."
+    }
+  ],
+  "prerequisites": [
+    "Basic variable declaration",
+    "Functions",
+    "Objects",
+    "Arrays of objects"
+  ],
+  "leads_to": [
+    "Implementing Classes (syntax)",
+    "Managing Multiple Objects",
+    "Nodes with classes",
+    "Disks/Walkers with classes"
+  ],
+  "student_questions": [
+    "What is the difference between imperative and object-oriented programming?",
+    "Why do I need to use classes instead of just writing functions?",
+    "What is a 'paradigm' in coding?",
+    "How do I make my code more organized and scalable?",
+    "What are properties and methods in a class?",
+    "Is JavaScript only one type of programming style?",
+    "How do I stop writing code line-by-line and start building components?",
+    "What does it mean when my code is 'interrupted' by a mouse click?"
+  ],
+  "video_id": "3-object-oriented-programming",
+  "video_title": "3 Object Oriented Programming",
+  "video_file": "3 Object Oriented Programming.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 8/3 Object Oriented Programming.mp4",
+  "week": "week 8",
+  "module": "Module 3 - Generation and Life"
+}

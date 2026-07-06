@@ -1,0 +1,94 @@
+{
+  "topic": "The inefficiency of manual code duplication for creating repetitive patterns and the motivation for using loops.",
+  "concepts": [
+    {
+      "name": "manual code duplication",
+      "timecode": "01:37",
+      "explanation": "Copying and pasting the same line of code multiple times while manually changing one parameter (like the X coordinate) to create a sequence.",
+      "why_it_matters": "It demonstrates why writing code by hand for every single element is inefficient, error-prone, and difficult to maintain."
+    },
+    {
+      "name": "algorithmic repetition",
+      "timecode": "00:21",
+      "explanation": "Using the computer to do the 'labor' of figuring out how to repeat shapes or create grids instead of doing it manually.",
+      "why_it_matters": "This is the core purpose of programming: automating repetitive tasks to create complex patterns easily."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:02",
+      "language": "processing",
+      "code": "fill(255, 0, 0);\nellipse(20, 20, 20, 20);",
+      "demonstrates": "A single circle with a specific color (red), position, and radius.",
+      "common_issue": "Hardcoding values makes it difficult to change the entire pattern later."
+    },
+    {
+      "timecode": "01:37",
+      "language": "processing",
+      "code": "ellipse(20, 20, 20, 20);\nellipse(40, 20, 20, 20);\nellipse(60, 20, 20, 20);",
+      "demonstrates": "Creating a line of circles by manually incrementing the X coordinate.",
+      "common_issue": "If you want to change the radius or Y position, you have to manually edit every single line."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "02:51",
+      "symptom": "I want to move the whole line of shapes down, but I have to edit 18 lines of code.",
+      "cause": "Hardcoded Y-coordinates in every individual function call.",
+      "fix": "Use a loop (to be introduced later) so you only change the value in one place.",
+      "related_concept": "manual code duplication"
+    },
+    {
+      "timecode": "03:19",
+      "symptom": "The circles no longer fit together or overlap incorrectly after changing the size.",
+      "cause": "Changing the radius without recalculating all the X-coordinate increments manually.",
+      "fix": "Use variables and loops to automate the spacing based on the radius.",
+      "related_concept": "manual code duplication"
+    },
+    {
+      "timecode": "04:12",
+      "symptom": "The shapes are spaced incorrectly or there is a gap/overlap.",
+      "cause": "Human error (math mistakes) while manually calculating increments.",
+      "fix": "Let the computer calculate the spacing using a loop.",
+      "related_concept": "manual code duplication"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "02:31",
+      "type": "insight",
+      "description": "The instructor highlights that 18 lines of code were used just to draw one line of dots, emphasizing the lack of flexibility."
+    },
+    {
+      "timecode": "04:56",
+      "type": "transition",
+      "description": "The instructor transitions from the 'bad' way (manual) to the solution: for loops."
+    }
+  ],
+  "prerequisites": [
+    "basic processing syntax",
+    "ellipse() function",
+    "coordinate system (X and Y)",
+    "fill() function"
+  ],
+  "leads_to": [
+    "for loops",
+    "nested loops",
+    "automated pattern generation"
+  ],
+  "student_questions": [
+    "Why is my code so long just to draw a few circles?",
+    "How do I move a whole row of shapes at once without changing every line?",
+    "I changed the size of my circles and now they are overlapping or have gaps, how do I fix it?",
+    "Is there a faster way to draw a grid of things?",
+    "Why is it bad to just copy and paste my code over and over?",
+    "How do I make the computer repeat a shape for me?",
+    "My math is getting confusing trying to space things out, what's a better way?",
+    "How do I make a line of shapes without typing every single coordinate?"
+  ],
+  "video_id": "1-hand-coding-repeats",
+  "video_title": "1 hand coding repeats",
+  "video_file": "1 hand coding repeats.mp4",
+  "video_url": null,
+  "week": "week 3"
+}

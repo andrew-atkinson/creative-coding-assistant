@@ -1,0 +1,151 @@
+{
+  "topic": "Introduction to custom functions, abstraction, and using parameters to create reusable code modules.",
+  "concepts": [
+    {
+      "name": "function definition",
+      "timecode": "03:16",
+      "explanation": "Creating a named block of code (like `function cookie() { ... }`) that contains a sequence of drawing commands.",
+      "why_it_matters": "It allows you to group complex, repetitive instructions into a single, manageable name."
+    },
+    {
+      "name": "function call",
+      "timecode": "03:38",
+      "explanation": "Executing the code inside a function by simply typing its name (e.g., `cookie();`) within another function like `draw()`.",
+      "why_it_matters": "It's the way you actually tell the computer to perform the task you defined earlier."
+    },
+    {
+      "name": "parameters",
+      "timecode": "04:53",
+      "explanation": "Variables declared in the function definition (like `x` and `y`) that act as placeholders for values.",
+      "why_it_matters": "They allow a single function to behave differently depending on the information you pass into it, making code reusable."
+    },
+    {
+      "name": "arguments",
+      "timecode": "04:30",
+      "explanation": "The actual values (like `mouseX` or `100`) that you pass into a function call to fill the parameter placeholders.",
+      "why_it_matters": "Arguments provide the specific data needed for a function to do its job in a specific context."
+    },
+    {
+      "name": "push() and pop()",
+      "timecode": "02:24",
+      "explanation": "Functions used to isolate drawing transformations (like `translate`) so they only affect the code inside that specific block.",
+      "why_it_matters": "Without them, a `translate()` inside a function would move everything drawn after it in the global scope."
+    },
+    {
+      "name": "abstraction",
+      "timecode": "04:05",
+      "explanation": "Hiding the messy, detailed implementation of a shape (like drawing two arcs for a cookie) behind a simple name.",
+      "why_it_matters": "It makes code much more legible and easier to manage as complexity increases."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:30",
+      "language": "javascript",
+      "code": "fill(0);\narc(mouseX, mouseY, 50, 50, 0, 180);\nfill(255);\narc(mouseX, mouseY, 50, 58, 180, 0);",
+      "demonstrates": "Drawing a 'cookie' using repetitive, hard-coded coordinates and colors.",
+      "common_issue": "If you want to move the cookie, you have to change every single line of code."
+    },
+    {
+      "timecode": "03:16",
+      "language": "javascript",
+      "code": "function cookie() {\n  push();\n  translate(mouseX, mouseY);\n  noStroke();\n  fill(0);\n  arc(0, 0, 50, 50, 0, 180);\n  fill(255);\n  arc(0, 0, 50, 50, 180, 0);\n  pop();\n}",
+      "demonstrates": "Defining a custom function to encapsulate the cookie drawing logic.",
+      "common_issue": null
+    },
+    {
+      "timecode": "06:00",
+      "language": "javascript",
+      "code": "function cookie(x, y) {\n  push();\n  translate(x, y);\n  noStroke();\n  fill(0);\n  arc(0, 0, 50, 50, 0, 180);\n  fill(255);\n  arc(0, 0, 50, 50, 180, 0);\n  pop();\n}",
+      "demonstrates": "Adding parameters (x, y) to a function so it can be drawn anywhere.",
+      "common_issue": "Forgetting to pass arguments in the function call, leading to 'undefined' errors."
+    },
+    {
+      "timecode": "07:00",
+      "language": "javascript",
+      "code": "cookie(mouseX, mouseY);\ncookie(100, 200);\ncookie(200, 350);",
+      "demonstrates": "Calling a parameterized function multiple times with different arguments.",
+      "common_issue": null
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "05:30",
+      "symptom": "Console error: 'translate was expecting a number... received an empty variable instead'",
+      "cause": "Calling a function that expects parameters (like `x` and `y`) without providing any arguments.",
+      "fix": "Pass values or variables into the function call, e.g., `cookie(mouseX, mouseY);`.",
+      "related_concept": "parameters and arguments"
+    },
+    {
+      "timecode": "02:14",
+      "symptom": "The code is too long and repetitive (spaghetti code).",
+      "cause": "Writing out every single drawing command every time you want to draw the same object.",
+      "fix": "Group the commands into a custom function.",
+      "related_concept": "abstraction"
+    },
+    {
+      "timecode": "02:30",
+      "symptom": "Transformations (like `translate`) affect everything drawn after the function.",
+      "cause": "Not isolating transformations within the function using `push()` and `pop()`.",
+      "fix": "Wrap the drawing logic inside `push();` and `pop();`.",
+      "related_concept": "push() and pop()"
+    },
+    {
+      "timecode": "06:43",
+      "symptom": "The function doesn't run or the code breaks.",
+      "cause": "Typing the function name incorrectly (e.g., `cook();` instead of `cookie();`).",
+      "fix": "Ensure the function call matches the definition exactly.",
+      "related_concept": "function call"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:46",
+      "type": "transition",
+      "description": "The instructor moves from drawing a single object with hard-coded values to realizing the need for abstraction."
+    },
+    {
+      "timecode": "04:53",
+      "type": "insight",
+      "description": "The instructor uses the analogy 'parameters are like variables for functions' to bridge existing knowledge with new concepts."
+    },
+    {
+      "timecode": "05:30",
+      "type": "warning",
+      "description": "Demonstrating a common error when parameters are defined but not provided during the function call."
+    },
+    {
+      "timecode": "06:46",
+      "type": "demonstration",
+      "description": "Showing how much cleaner the `draw()` loop becomes once functions are used correctly."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript syntax",
+    "p5.js drawing primitives (arc, fill, translate)",
+    "Understanding of setup() and draw()"
+  ],
+  "leads_to": [
+    "Nested functions (functions calling other functions)",
+    "Using loops to draw many instances of a function",
+    "Using noise or randomness as arguments for functions"
+  ],
+  "student_questions": [
+    "How do I make a reusable shape?",
+    "Why is my code so long and repetitive?",
+    "What's the difference between a function definition and calling it?",
+    "Why am I getting an error about 'expecting a number' in my function?",
+    "How do I draw the same thing in different places without rewriting all the code?",
+    "What are parameters and how do they work?",
+    "Why does my translate() move everything on the screen instead of just one shape?",
+    "How do I use variables inside a function?",
+    "Why is my function not doing anything when I call it?",
+    "How can I make my code easier to read?"
+  ],
+  "video_id": "2-function-parameters-and-arguments",
+  "video_title": "2 function parameters and arguments",
+  "video_file": "2 function parameters and arguments.mp4",
+  "video_url": null,
+  "week": "week 6",
+  "module": "Module 3 - Generation and Life"
+}

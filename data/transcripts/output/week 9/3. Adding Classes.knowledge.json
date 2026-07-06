@@ -1,0 +1,122 @@
+{
+  "topic": "Integrating Object-Oriented Programming (OOP) with audio analysis to create complex, persistent particle systems from frequency data.",
+  "concepts": [
+    {
+      "name": "Octave Band Analysis",
+      "timecode": "05:43",
+      "explanation": "Using the FFT to group frequency data into logarithmic segments (octaves) rather than linear bins, which is more musically intuitive.",
+      "why_it_matters": "It allows the visualization to respond to musical notes and instrumentation (like bass vs. violins) rather than just raw frequency spikes."
+    },
+    {
+      "name": "Object-Oriented Animation (Node Class)",
+      "timecode": "02:36",
+      "explanation": "Creating a custom `Node` class to manage individual visual elements that have their own position, velocity, and color.",
+      "why_it_mattered": "Standard shapes in a draw loop are transient; classes allow for 'persistent' objects that live, move, and die independently."
+    },
+    {
+      "name": "Two-Dimensional Arrays (Nested Arrays)",
+      "timecode": "09:10",
+      "explanation": "An array that contains other arrays (e.g., `nodes[i]` where each index holds a sub-array of Node objects).",
+      "why_it_matters": "Necessary to map specific audio octave bands to their own unique sets of visual objects."
+    },
+    {
+      "name": "Data-Driven Lifecycle (push/shift)",
+      "timecode": "18:30",
+      "explanation": "Using `push()` to add a new object when audio amplitude hits a high threshold, and `shift()` to remove the oldest object when amplitude drops.",
+      "why_it_matters": "This creates a 'burst' or 'spray' effect where particles are born from sound peaks and fade away as the music quietens."
+    },
+    {
+      "name": "Coordinate Mapping",
+      "timecode": "16:30",
+      "explanation": "Using the ratio of an index to the total length `(i / octaveAverages.length)` to map audio data to vertical screen positions.",
+      "why_it_matters": "Ensures visual elements are emitted from the correct spatial location corresponding to their frequency band."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "03:30",
+      "language": "javascript",
+      "code": "class Node {\n  constructor(c, x, y, amp) {\n    this.x = x;\n    this.y = y;\n    this.xSpeed = random(-1.5, 1.5) * amp/100;\n    this.ySpeed = random(-1.5, 1.5) * amp/100;\n    this.color = c;\n  }\n\n  move() {\n    if (this.x < 0 || this.x > width) {\n      this.xSpeed *= -1;\n    }\n    if (this.y < 0 || this.y > height) {\n      this.ySpeed *= -1;\n    }\n    this.x += this.xSpeed;\n    this.y += this.ySpeed;\n  }\n}",
+      "demonstrates": "A class structure for a particle that takes color, position, and amplitude to determine its movement speed.",
+      "common_issue": "Forgetting to pass the color object or failing to multiply speed by amplitude, resulting in static particles."
+    },
+    {
+      "timecode": "19:00",
+      "language": "javascript",
+      "code": "// Add nodes when loud\nif (octaveAverages[i] > 150 && nodes[i].length < 40) {\n  nodes[i].push(new Node(color(...), x, y, amp));\n}\n// Remove oldest nodes when quiet\nif (octaveAverages[i] <= 150) {\n  nodes[i].shift();\n}",
+      "demonstrates": "Managing the lifecycle of objects within a nested array based on audio thresholds.",
+      "common_issue": "Trying to `push` onto an undefined index instead of initializing the sub-array first."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "14:08",
+      "symptom": "Error: Cannot read property 'push' of undefined (or similar)",
+      "cause": "Trying to push an object into a sub-array that hasn't been initialized yet.",
+      "fix": "Check if the index is undefined and initialize it as an empty array: `if (nodes[i] === undefined) { nodes[i] = []; }`",
+      "related_concept": "Two-dimensional arrays"
+    },
+    {
+      "timecode": "23:04",
+      "symptom": "Nothing shows up on the canvas even though code looks okay.",
+      "cause": "Pushing a color value into an array instead of pushing a new instance of the class.",
+      "fix": "Change `nodes[i].push(color(...))` to `nodes[i].push(new Node(color(...)))`",
+      "related_concept": "Object-Oriented Programming"
+    },
+    {
+      "timecode": "21:00",
+      "symptom": "The particles don't move or draw correctly.",
+      "cause": "Using a single loop when you actually need a nested loop to access elements inside the sub-arrays.",
+      "fix": "Use `for (let arr of nodes) { for (let el of arr) { ... } }`",
+      "related_concept": "Nested loops / 2D arrays"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "05:43",
+      "type": "insight",
+      "description": "The instructor explains why octave bands are better than raw bins for musical visualization."
+    },
+    {
+      "timecode": "09:15",
+      "type": "demonstration",
+      "description": "Visualizing the structure of a 2D array using brackets to explain how data is nested."
+    },
+    {
+      "timecode": "18:47",
+      "type": "warning",
+      "description": "The instructor uses the metaphor of 'moving the array to the right' to explain how `shift()` works."
+    },
+    {
+      "timecode": "23:07",
+      "type": "warning",
+      "description": "The instructor warns about the 'flood' effect—if you don't have a threshold, you'll create too many objects and crash the browser."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript (loops, arrays)",
+    "p5.js basics (setup/draw, shapes)",
+    "Basic understanding of FFT/Audio analysis"
+  ],
+  "leads_to": [
+    "Advanced generative art systems",
+    "Complex particle physics in creative coding"
+  ],
+  "student_questions": [
+    "Why are my circles all in one spot?",
+    "How do I make shapes appear only when the music is loud?",
+    "My code says 'Node is not defined', how do I fix it?",
+    "How do I make objects stay on screen for a while before disappearing?",
+    "What is the difference between an array and a 2D array?",
+    "How do I link specific colors to specific musical notes?",
+    "Why is my browser slowing down when I add more shapes?",
+    "How do I make particles move faster when the sound is louder?",
+    "What does shift() do to my array?",
+    "How do I use a class to make an animation?"
+  ],
+  "video_id": "3-adding-classes",
+  "video_title": "3. Adding Classes",
+  "video_file": "3. Adding Classes.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 9/3. Adding Classes.mp4",
+  "week": "week 9"
+}

@@ -1,0 +1,103 @@
+{
+  "topic": "Introduction to the conceptual foundations of functions, focusing on reusability, abstraction, and modularity through a comparison between p5.js and the native Canvas API.",
+  "concepts": [
+    {
+      "name": "reusability",
+      "timecode": "00:21",
+      "explanation": "The idea that a piece of code can be used more than once in different locations or with different settings.",
+      "why_it_matters": "It prevents you from having to write the same complex logic over and over again."
+    },
+    {
+      "name": "abstraction",
+      "timecode": "00:29",
+      "explanation": "Separating code from its immediate context or hiding complex implementation details behind a simpler interface.",
+      "why_it_matters": "It allows programmers to focus on what they want to achieve (like drawing a shape) rather than the tedious technical steps required by the computer."
+    },
+    {
+      "name": "modularity",
+      "timecode": "00:42",
+      "explanation": "The ability to bundle a whole bunch of complex actions into a single, manageable function call.",
+      "why_it_matters": "It makes programs easier to organize and read by breaking them down into smaller, functional units."
+    },
+    {
+      "name": "function call",
+      "timecode": "05:04",
+      "explanation": "The act of actually running or using an existing function to perform a task.",
+      "why_it_matters": "This is how we actually trigger the behaviors we want in our code."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:03",
+      "language": "javascript",
+      "code": "ellipse(100, 100, 50, 200);",
+      "demonstrates": "A simple p5.js function call to draw an ellipse with x, y, width, and height.",
+      "common_issue": "Forgetting a parameter or using the wrong number of arguments."
+    },
+    {
+      "timecode": "03:30",
+      "language": "javascript",
+      "code": "const canvas = document.getElementById(\"canvas\");\nconst ctx = canvas.getContext(\"2d\");\nctx.beginPath();\nctx.arc(100, 100, 58, 75, Math.PI * 4, 0, 2 * Math.PI);\nctx.stroke();",
+      "demonstrates": "The verbose, low-level native Canvas API required to draw a shape without the p5.js abstraction.",
+      "common_issue": "Forgetting to call beginPath() or stroke(), which results in nothing being drawn."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "01:42",
+      "symptom": "The code only draws a shape in one specific location and size, making it hard to change.",
+      "cause": "Lack of reusability (hard-coding values instead of using functions).",
+      "fix": "Use functions to allow the same logic to be applied with different parameters.",
+      "related_concept": "reusability"
+    },
+    {
+      "timecode": "03:54",
+      "symptom": "Shapes not appearing on the screen even though coordinates are correct.",
+      "cause": "In native Canvas API, forgetting to call the 'stroke()' or 'fill()' command after defining a path.",
+      "fix": "Always call stroke() or fill() to actually render the path you've defined.",
+      "related_concept": "abstraction"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:51",
+      "type": "warning",
+      "description": "The instructor warns that if a function is too limited (only one size/location), it loses its value for reusability."
+    },
+    {
+      "timecode": "02:53",
+      "type": "demonstration",
+      "description": "Comparing the simple p5.js ellipse call to the complex native Canvas API to illustrate abstraction."
+    },
+    {
+      "timecode": "05:21",
+      "type": "transition",
+      "description": "The instructor distinguishes between 'calling' a function (using it) and 'defining' a function (creating your own), setting the stage for the next lesson."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript syntax",
+    "Familiarity with p5.js built-in functions (like setup and draw)"
+  ],
+  "leads_to": [
+    "Function definition",
+    "Creating custom reusable code",
+    "Advanced algorithmic design"
+  ],
+  "student_questions": [
+    "What is the difference between calling a function and defining one?",
+    "Why do I have to use so many lines of code just to draw a circle in vanilla JS?",
+    "What does 'abstraction' mean in coding?",
+    "How do functions make my code more reusable?",
+    "Why is p5.js easier to use than the native Canvas API?",
+    "What does it mean when someone says my code isn't modular?",
+    "I can draw an ellipse, but how do I make it do something more complex without rewriting everything?",
+    "What is a function call?"
+  ],
+  "video_id": "1-what-are-functions",
+  "video_title": "1 what are functions",
+  "video_file": "1 what are functions.mp4",
+  "video_url": null,
+  "week": "week 6",
+  "module": "Module 3 - Generation and Life"
+}

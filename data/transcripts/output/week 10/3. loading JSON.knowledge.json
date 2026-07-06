@@ -1,0 +1,131 @@
+{
+  "topic": "Loading and parsing JSON data in p5.js using asynchronous functions and callbacks.",
+  "concepts": [
+    {
+      "name": "JSON (JavaScript Object Notation)",
+      "timecode": "00:39",
+      "explanation": "A data format consisting of an array containing objects, where each object uses key-value pairs (like 'city': 'New York') separated by colons and commas.",
+      "why_it_matters": "It is the standard way to structure data so that a program can easily read specific properties like latitude or population."
+    },
+    {
+      "name": "loadJSON()",
+      "timecode": "06:13",
+      "explanation": "A p5.js function used to fetch a JSON file from a path and turn it into a usable JavaScript object.",
+      "why_it_matters": "It allows your sketch to use external datasets rather than hard-coding every single value manually."
+    },
+    {
+      "name": "preload()",
+      "timecode": "05:41",
+      "explanation": "A special p5.js function that runs before setup() and draw(), ensuring all external assets (like data files) are fully loaded before the sketch starts.",
+      "why_it_matters": "If you try to use data in setup() before it has finished loading, your code will crash because the variable is still empty."
+    },
+    {
+      "name": "Asynchronous Programming & Callbacks",
+      "timecode": "07:31",
+      "explanation": "The idea that the computer doesn't know exactly when a file will finish downloading. A 'callback' is a function you provide that tells the computer: 'Once you finally get this data, run this specific piece of code.'",
+      "why_it_matters": "Without callbacks, a program might try to draw something using data that hasn't arrived yet because the network was slow."
+    },
+    {
+      "name": "Data Parsing/Preprocessing",
+      "timecode": "09:15",
+      "explanation": "Using a callback function to loop through complex, nested data (like an array of 'features') to find specific values or simplify the structure before using it in a sketch.",
+      "why_it_matters": "Raw data is often messy or deeply nested; you need to 'clean' it or extract what you need so your drawing code stays simple."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "06:23",
+      "language": "javascript",
+      "code": "let cities;\n\nfunction preload() {\n  cities = loadJSON('assets/cities.json');\n}\n\nfunction setup() {\n  createCanvas(400, 400);\n}",
+      "demonstrates": "The basic way to load a local JSON file from an assets folder into a global variable.",
+      "common_issue": "Forgetting to use preload(), which results in 'cities' being undefined when setup() runs."
+    },
+    {
+      "timecode": "09:18",
+      "language": "javascript",
+      "code": "function preload() {\n  loadJSON('url_to_data', handleData);\n}\n\nfunction handleData(data) {\n  // logic to process data\n}",
+      "demonstrates": "Using a success callback (handleData) to process data immediately after it loads.",
+      "common_issue": "Passing a function that doesn't accept the 'data' parameter."
+    },
+    {
+      "timecode": "10:00",
+      "language": "javascript",
+      "code": "function handleData(data) {\n  let maxMag = 0;\n  for (let quake of data.features) {\n    if (quake.properties.mag > maxMag) {\n      bigQuake = quake.properties;\n    }\n  }\n}",
+      "demonstrates": "Iterating through a nested GeoJSON structure to find the maximum value in a specific property.",
+      "common_issue": "Incorrectly accessing nested properties (e.g., forgetting that the value is inside '.properties')."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "07:04",
+      "symptom": "Data won't load or gives a 'CORS' error",
+      "cause": "Trying to load data directly from another website instead of uploading it locally.",
+      "fix": "Upload the JSON file to your project's assets folder or use a local server.",
+      "related_concept": "Cross-Origin Resource Sharing (CORS)"
+    },
+    {
+      "timecode": "10:30",
+      "symptom": "The canvas appears but nothing is drawn/nothing shows up",
+      "cause": "The data might have loaded, but you haven't written the code to actually *use* the data in draw() or setup().",
+      "fix": "Use console.log(variableName) to check if the data actually exists in memory.",
+      "related_concept": "Debugging/console.log"
+    },
+    {
+      "timecode": "03:14",
+      "symptom": "Data contains weird characters or extra text (like footnotes)",
+      "cause": "The data was scraped from a website and includes non-data elements.",
+      "fix": "Manually clean the data or use string manipulation in your code to strip unwanted characters.",
+      "related_concept": "Data Cleaning"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "00:39",
+      "type": "demonstration",
+      "description": "Visual inspection of a raw JSON file to understand the structure (keys, values, arrays) before coding."
+    },
+    {
+      "timecode": "05:49",
+      "type": "insight",
+      "description": "Explaining why preload() is essential for data: it guarantees the data exists before setup/draw run."
+    },
+    {
+      "timecode": "08:41",
+      "type": "warning",
+      "description": "Explaining the necessity of success and error callbacks to prevent the computer from waiting forever on a bad connection."
+    },
+    {
+      "timecode": "10:43",
+      "type": "demonstration",
+      "description": "Using console.log() to verify that the loaded JSON is actually present in the browser's memory."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript syntax (objects and arrays)",
+    "p5.js lifecycle (setup and draw functions)",
+    "Basic understanding of file paths/folders"
+  ],
+  "leads_to": [
+    "Data Visualization",
+    "Mapping data to visual variables (size, color, position)",
+    "Working with APIs and real-time data streams"
+  ],
+  "student_questions": [
+    "How do I load a JSON file into my p5.js sketch?",
+    "Why is my data undefined even though I loaded it?",
+    "What's the difference between setup and preload?",
+    "How do I see what's inside my JSON file while coding?",
+    "Why can't I just load data from a website URL directly?",
+    "How do I use the values inside a JSON file to draw shapes?",
+    "What is a callback function in simple terms?",
+    "My code runs but nothing happens on the screen, how do I check if my data is there?",
+    "How do I loop through a list of cities from a JSON file?",
+    "What is CORS and why does it break my data loading?"
+  ],
+  "video_id": "3-loading-json",
+  "video_title": "3. loading JSON",
+  "video_file": "3. loading JSON.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 10/3. loading JSON.mp4",
+  "week": "week 10",
+  "module": "Module 4 – Poetry of The World, Oceans of Data"
+}

@@ -1,0 +1,105 @@
+{
+  "topic": "Using the map() function to translate values from one range to another, specifically for controlling color gradients in repetitive patterns.",
+  "concepts": [
+    {
+      "name": "clamping/overflowing values",
+      "timecode": "00:14",
+      "explanation": "When a value passed to a color function (like RGB) exceeds the maximum allowed limit (255), the system just treats it as the maximum value, resulting in no visual change.",
+      "why_it_matters": "Students need to know why their colors might stop changing or look 'stuck' even when their loop is still increasing numbers."
+    },
+    {
+      "name": "map() function",
+      "timecode": "01:48",
+      "explanation": "A function that takes a value from one range (the input range) and scales it to fit into a new range (the output range). It's like 'explaining in one line' how you want to transform a number.",
+      "why_it_matters": "It allows for precise control over visual parameters (like color or size) based on other variables (like position) without complex manual math."
+    },
+    {
+      "name": "map() parameters",
+      "timecode": "03:00",
+      "explanation": "The function takes five arguments: the value to change, the start of the original range, the end of the original range, the start of the new range, and the end of the new range.",
+      "why_it_matters": "Getting these arguments in the wrong order or using the wrong ranges will result in incorrect visual outputs."
+    },
+    {
+      "name": "inverse mapping",
+      "timecode": "05:52",
+      "explanation": "You can set the output range to go from a high number to a low number (e.g., 255 to 0) to create an inverted effect.",
+      "why_it_matters": "This allows for easy creation of gradients that fade in or out rather than just increasing."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:11",
+      "language": "javascript",
+      "code": "// Manual calculation (cumbersome)\nlet redValue = x / 400 * 255;",
+      "demonstrates": "How one might manually calculate a ratio to scale a value, which is prone to error and harder to read.",
+      "common_issue": "It's much more difficult to manage than the map() function when ranges aren't starting at zero."
+    },
+    {
+      "timecode": "03:29",
+      "language": "javascript",
+      "code": "// Using map()\nlet fillX = map(x, 0, 400, 0, 255);\nlet fillY = map(y, 0, 400, 0, 255);\nfill(fillX, fillY, 0);",
+      "demonstrates": "The correct way to use map() to translate pixel coordinates (0-400) into RGB color values (0-255).",
+      "common_issue": "Forgetting to use the new mapped variable (fillX) inside the fill() function instead of the original coordinate (x)."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "00:14",
+      "symptom": "Colors stop changing or look 'stuck' at full brightness/saturation.",
+      "cause": "The values being passed to the color function are exceeding 255.",
+      "fix": "Use map() to constrain the values within the 0-255 range.",
+      "related_concept": "clamping/overflowing values"
+    },
+    {
+      "timecode": "05:14",
+      "symptom": "The code runs but the visual output doesn't change even though map() is used.",
+      "cause": "The student defined a new variable with the mapped value but then accidentally used the original coordinate variable in the fill() function.",
+      "fix": "Ensure you pass the result of the map() function (the new variable) into your drawing functions.",
+      "related_concept": "variable assignment"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:43",
+      "type": "demonstration",
+      "description": "The instructor shows the 'problem' (clipping colors) before providing the solution, creating a need for the map() function."
+    },
+    {
+      "timecode": "05:14",
+      "type": "warning",
+      "description": "The instructor makes a mistake by not using the mapped variable, demonstrating that even with correct logic, small implementation errors can break the visual result."
+    },
+    {
+      "timecode": "05:44",
+      "type": "insight",
+      "description": "The instructor explains that map() is a way to 'explain in one line' what you are trying to do, emphasizing code readability and intent."
+    }
+  ],
+  "prerequisites": [
+    "for loops",
+    "RGB color model",
+    "variable assignment",
+    "basic coordinate systems (x, y)"
+  ],
+  "leads_to": [
+    "procedural generation",
+    "data visualization",
+    "complex generative art systems"
+  ],
+  "student_questions": [
+    "Why are my colors all the same after a certain point?",
+    "How do I make a color gradient that follows my loop?",
+    "My colors aren't changing even though I added a map function, why?",
+    "How do I use the map() function in p5.js?",
+    "Can I make a gradient go backwards using map()?",
+    "How do I turn a coordinate into a color value?",
+    "Why is my fill() function not showing the changes I made with map()?",
+    "What are the arguments for the map function?",
+    "How do I stop my color values from going above 255?"
+  ],
+  "video_id": "5-maps",
+  "video_title": "5 maps",
+  "video_file": "5 maps.mp4",
+  "video_url": null,
+  "week": "week 3"
+}

@@ -1,0 +1,139 @@
+{
+  "topic": "Transitioning from procedural programming to Object-Oriented Programming (OOP) using classes, constructors, and encapsulation in JavaScript/p5.js.",
+  "concepts": [
+    {
+      "name": "Class",
+      "timecode": "02:06",
+      "explanation": "A blueprint or template for creating objects. It isn't the object itself, but a way of abstractly describing what an object is and how it behaves.",
+      "why_it_matters": "It allows you to move away from 'piecemeal' code where data and functions are scattered, providing a structured system for complex simulations."
+    },
+    {
+      "name": "Instance",
+      "timecode": "02:24",
+      "explanation": "The actual objects created from a class blueprint. If the class is a house blueprint, the instance is the physical house you live in.",
+      "why_it_matters": "You interact with instances (the actual copies) rather than the class template itself."
+    },
+    {
+      "name": "Constructor",
+      "timecode": "03:47",
+      "explanation": "A special function inside a class that runs once when an object is created. It takes in parameters (like x, y, and scale) to set the initial state of that specific object.",
+      "why_it_matters": "It is the mechanism used to assign unique properties to each new instance."
+    },
+    {
+      "name": "the 'this' keyword",
+      "timecode": "04:28",
+      "explanation": "A keyword used to refer to the specific object being worked on. It's like pointing at a physical object in English (e.g., 'this cup').",
+      "why_it_matters": "It allows the code to distinguish between the general class template and the specific properties of a single instance (e.g., `this.x` vs just `x`)."
+    },
+    {
+      "name": "Encapsulation",
+      "timecode": "06:43",
+      "explanation": "The practice of bundling data (properties like position) and behaviors (methods like display or move) together inside a single class.",
+      "why_it_matters": "It makes code much cleaner and more organized, as the object 'knows' how to manage itself."
+    },
+    {
+      "name": "for...of loop",
+      "timecode": "11:04",
+      "explanation": "A cleaner way to iterate through an array of objects compared to a standard for loop.",
+      "why_it_matters": "It simplifies the syntax when you want to perform an action on every item in a collection."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "04:30",
+      "language": "javascript",
+      "code": "class UFO {\n  constructor(x, y, s) {\n    this.x = x;\n    this.y = y;\n    this.s = s;\n  }\n}",
+      "demonstrates": "Defining a class with a constructor that assigns incoming parameters to the object's properties using 'this'.",
+      "common_issue": "Forgetting to use 'this.' when assigning properties in the constructor."
+    },
+    {
+      "timecode": "09:55",
+      "language": "javascript",
+      "code": "ufoArr.push(new UFO(x, y, s));",
+      "demonstrates": "Using the 'new' keyword to create a new instance of the UFO class with specific arguments.",
+      "common_issue": "Forgetting the 'new' keyword, which would attempt to call the class as a function rather than creating an instance."
+    },
+    {
+      "timecode": "11:30",
+      "language": "javascript",
+      "code": "for (let ufo of ufoArr) {\n  ufo.display();\n  ufo.move();\n}",
+      "demonstrates": "Using a for...of loop to call methods directly on each object in an array.",
+      "common_issue": "Using the wrong variable name inside the loop (e.g., trying to use an index 'el' when using a for...of loop)."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "05:30",
+      "symptom": "The code crashes or behaves unexpectedly because a property is undefined.",
+      "cause": "A typo in a property name (e.g., writing `this.year` instead of `this.y`).",
+      "fix": "Ensure the property name used in the constructor matches the one used in the class methods.",
+      "related_concept": "the 'this' keyword"
+    },
+    {
+      "timecode": "12:00",
+      "symptom": "Error: 'translate() was expecting Number for the second parameter, received bound instead'.",
+      "cause": "Passing an object or a non-numeric value into a function that expects coordinates.",
+      "fix": "Check the constructor and ensure you are accessing properties correctly (e.g., `this.y` instead of just `this`).",
+      "related_concept": "the 'this' keyword"
+    },
+    {
+      "timecode": "08:10",
+      "symptom": "The object's properties are not being updated correctly.",
+      "cause": "Trying to access a variable name directly (e.g., `x = x + s`) instead of the object's property (`this.x = this.x + this.s`).",
+      "fix": "Always use `this.` when referring to properties within a class method.",
+      "related_concept": "Encapsulation"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:49",
+      "type": "transition",
+      "description": "The instructor identifies the 'piecemeal' nature of procedural code and introduces OOP as the solution for organization."
+    },
+    {
+      "timecode": "02:06",
+      "type": "insight",
+      "description": "The house blueprint analogy: explaining that a class is an abstract template, not the object itself."
+    },
+    {
+      "timecode": "04:38",
+      "type": "demonstration",
+      "description": "Explaining 'this' by comparing it to pointing at a physical object in real life."
+    },
+    {
+      "timecode": "12:00",
+      "type": "warning",
+      "description": "A live debugging moment where a typo causes a runtime error, demonstrating how to read and react to console errors."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript syntax",
+    "p5.js library basics",
+    "Arrays and for loops",
+    "Objects (key-value pairs)",
+    "Coordinate systems (x, y)"
+  ],
+  "leads_to": [
+    "Inheritance",
+    "Complexity Management in large simulations",
+    "Advanced Object-Oriented Programming"
+  ],
+  "student_questions": [
+    "What is the difference between a class and an object?",
+    "Why do I need to use 'this' inside my class?",
+    "How do I make many copies of the same thing without writing new code for each one?",
+    "My code says 'received bound instead' in translate, what did I do wrong?",
+    "How do I move an object that is inside a class?",
+    "What does the 'new' keyword actually do?",
+    "Why is my code so messy with all these separate functions for one object?",
+    "How do I use a loop to call a function that is inside a class?",
+    "What is the constructor function for?",
+    "How do I group my data and my functions together?"
+  ],
+  "video_id": "1-classes",
+  "video_title": "1 classes",
+  "video_file": "1 classes.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 8/1 classes.mp4",
+  "week": "week 8",
+  "module": "Module 3 - Generation and Life"
+}

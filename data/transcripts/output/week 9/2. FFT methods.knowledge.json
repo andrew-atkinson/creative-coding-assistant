@@ -1,0 +1,130 @@
+{
+  "topic": "Using the Fast Fourier Transform (FFT) in p5.js to analyze audio frequencies and waveforms for generative art visualizations.",
+  "concepts": [
+    {
+      "name": "Fast Fourier Transform (FFT)",
+      "timecode": "01:35",
+      "explanation": "A method to decompose sound into discrete frequency 'bins' (pitches) ranging from low to high frequencies.",
+      "why_it_matters": "It allows you to map specific musical pitches or frequency ranges to visual properties like size, color, or position."
+    },
+    {
+      "name": "Frequency Domain vs. Time Domain",
+      "timecode": "02:03",
+      "explanation": "The frequency domain looks at the different pitches (low to high), while the time domain (`fft.waveform()`) looks at amplitude changes over a brief moment in time.",
+      "why_it_matters": "Understanding this distinction is crucial for deciding whether you want to visualize the 'pitch' of a sound or its 'rhythm/oscillation'."
+    },
+    {
+      "name": "Spectrogram",
+      "timecode": "00:00",
+      "explanation": "A visual representation of sound where frequency is mapped to one axis (usually Y) and time to another (X), with amplitude determining color/intensity.",
+      "why_it_matters": "It provides a way to see the history of sound frequencies over time."
+    },
+    {
+      "name": "Octave Bands and Logarithmic Averages",
+      "timecode": "18:15",
+      "explanation": "Instead of looking at every single tiny frequency bin, you can group them into musically relevant 'octave bands' and use `logAverages()` to get smoother, more organic amplitude data.",
+      "why_it_matters": "Using raw bins can be too jittery; octave bands provide a more musically intuitive way to drive animations."
+    },
+    {
+      "name": "Spectral Centroid",
+      "timecode": "17:25",
+      "explanation": "A metric that indicates the 'center of mass' of a spectrum, which perceptually correlates to how 'bright' or 'timbral' a sound feels.",
+      "why_it_matters": "It can be used to drive aesthetic changes, like moving an object up and down based on the brightness of a sound."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:35",
+      "language": "javascript",
+      "code": "bins = fft.analyze();\nfor (let y = 0; y < bins.length; y++) {\n  fill(bins[y]);\n  rect(x, y, 1, 1);\n}",
+      "demonstrates": "Creating a basic spectrogram by drawing rectangles based on frequency bin amplitude.",
+      "common_issue": "If 'x' isn't reset, the drawing will move off-screen; if background() is called every frame without transparency, you won't see the history (the spectrogram)."
+    },
+    {
+      "timecode": "12:00",
+      "language": "javascript",
+      "code": "waveform = fft.waveform();\n// ... later in draw...\nline(x, -waveform[0]*height, x, waveform[0]*height);",
+      "demonstrates": "Using the time-domain waveform to draw a vertical line that oscillates with the sound.",
+      "common_issue": "The waveform values range from -1 to 1, so you must multiply by height to make them visible on the canvas."
+    },
+    {
+      "timecode": "23:04",
+      "language": "javascript",
+      "code": "octaveBands = fft.getOctaveBands(1);\n// then use logAverages to smooth it\noctaveAverages = fft.logAverages(octaveBands);",
+      "demonstrates": "Grouping frequencies into octave bands and smoothing the data for more organic movement.",
+      "common_issue": "Forgetting that `logAverages` requires the output of `getOctaveBands` as an input."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "09:36",
+      "symptom": "The visual elements are being 'overwritten' or 'blown out' by the background/spectrogram.",
+      "cause": "Drawing order: drawing a solid background or large shapes after the detailed elements.",
+      "fix": "Use `push()` and `pop()` to isolate transformations, use low alpha (transparency) for the background, or change the drawing order.",
+      "related_concept": "Drawing Order / Alpha Transparency"
+    },
+    {
+      "timecode": "15:39",
+      "symptom": "The waveform line is only appearing on one side of the center.",
+      "cause": "Waveform values are signed (-1 to 1), so they need to be centered (e.g., using `height/2`).",
+      "fix": "Use `translate(0, height/2)` or math like `-waveform[i]*height` to center the oscillation.",
+      "related_concept": "Time Domain / Amplitude Range"
+    },
+    {
+      "timecode": "26:30",
+      "symptom": "The loop for octave averages isn't working or the colors are wrong.",
+      "cause": "Using `for...in` (which iterates over keys/indices) instead of `for...of` (which iterates over values), or incorrect math for mapping the index to a color range.",
+      "fix": "Use `for (let i in array)` and then access the value via `array[i]`, or use `for (let val of array)`.",
+      "related_concept": "Loops / Array Iteration"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:35",
+      "type": "demonstration",
+      "description": "The instructor shows how `fft.analyze()` provides the raw data needed for a spectrogram."
+    },
+    {
+      "timecode": "08:14",
+      "type": "insight",
+      "description": "Using `console.log()` to 'peek' into the data and find which bin corresponds to a specific pitch/note."
+    },
+    {
+      "timecode": "17:40",
+      "type": "insight",
+      "description": "Connecting the mathematical 'spectral centroid' to the human perception of 'brightness'."
+    },
+    {
+      "timecode": "23:04",
+      "type": "transition",
+      "description": "Moving from raw, jittery frequency bins to smoothed octave bands for more aesthetic control."
+    }
+  ],
+  "prerequisites": [
+    "Basic p5.js (setup, draw, rect, circle)",
+    "JavaScript loops (for loops)",
+    "Basic understanding of sound (pitch/frequency and volume/amplitude)"
+  ],
+  "leads_to": [
+    "Advanced generative art using audio",
+    "Interactive installations driven by sound",
+    "Complex data mapping (mapping frequency to color/shape)"
+  ],
+  "student_questions": [
+    "How do I make a visualizer that reacts to bass?",
+    "Why are my shapes all overlapping and turning into one big blob?",
+    "How do I get the 'brightness' of a sound to move an object?",
+    "What is the difference between analyze() and waveform() in p5.sound?",
+    "How do I make my drawing look more organic and less jittery?",
+    "Why is the waveform line only showing up in a tiny part of the screen?",
+    "How do I map sound to color using an array index?",
+    "What are octave bands and why should I use them instead of just bins?",
+    "How do I make a spectrogram that scrolls across the screen?",
+    "My circles are all on top of each other, how do I fix it?"
+  ],
+  "video_id": "2-fft-methods",
+  "video_title": "2. FFT methods",
+  "video_file": "2. FFT methods.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 9/2. FFT methods.mp4",
+  "week": "week 9"
+}

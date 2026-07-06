@@ -1,0 +1,121 @@
+{
+  "topic": "Understanding mouse-driven interactivity in p5.js, specifically the distinction between continuous state polling and discrete event-driven functions.",
+  "concepts": [
+    {
+      "name": "State Polling (mouseIsPressed)",
+      "timecode": "01:13",
+      "explanation": "Checking a boolean variable inside the draw loop to see if the mouse button is currently being held down. It's a continuous check that happens every frame.",
+      "why_it_matters": "Essential for actions that need to happen continuously while a button is held, like drawing a line as you move the mouse."
+    },
+    {
+      "name": "Event-Driven Functions (mouseClicked, mousePressed, etc.)",
+      "timecode": "03:25",
+      "explanation": "Functions that are called by the system only once when a specific action occurs (like clicking or releasing). They live outside the draw loop.",
+      "why_it_matters": "Used for actions that should only trigger once per interaction, like spawning an object or changing a setting, to avoid the code running every single frame."
+    },
+    {
+      "name": "The Mouse Click Lifecycle",
+      "timecode": "02:37",
+      "explanation": "A 'click' is a sequence of events: the mouse must be over an element, the button must be pressed down, and then released while still over that same element.",
+      "why_it_matters": "Helps students understand why certain functions (like mouseClicked) might not trigger if the user moves the mouse too much during a click."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:13",
+      "language": "javascript",
+      "code": "if (mouseIsPressed) {\n  line(0, 0, mouseX, mouseY);\n}",
+      "demonstrates": "Continuous drawing: as long as the mouse is held, a line is drawn from the origin to the current mouse position every frame.",
+      "common_issue": "The line will appear as a continuous stroke because it's being updated every single frame in the draw loop."
+    },
+    {
+      "timecode": "03:01",
+      "language": "javascript",
+      "code": "function mouseClicked() {\n  line(0, mouseY, mouseX, mouseY);\n}",
+      "demonstrates": "Discrete event: a line is drawn only once at the exact moment the mouse button is released after being pressed.",
+      "common_issue": "If you try to use this for continuous drawing, nothing will happen because it only triggers once per click."
+    },
+    {
+      "timecode": "05:08",
+      "language": "javascript",
+      "code": "function mouseReleased() {\n  line(0, height, mouseX, mouseY);\n}",
+      "demonstrates": "Triggering an action specifically when the user lets go of the mouse button.",
+      "common_issue": null
+    },
+    {
+      "timecode": "07:32",
+      "language": "javascript",
+      "code": "function mouseDoubleClicked() {\n  circle(width/2, height/2, width/2);\n}",
+      "demonstrates": "Drawing a shape in the center of the screen only when the user double-clicks.",
+      "common_issue": null
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "03:16",
+      "symptom": "Unexpected token error / Code doesn't run",
+      "cause": "Typing the function name incorrectly (e.g., 'mouseClicked' with a lowercase 'd' instead of the required syntax, or misspelling keywords).",
+      "fix": "Ensure function names match p5.js requirements exactly (e.g., `mouseClicked`).",
+      "related_concept": "Event-driven functions"
+    },
+    {
+      "timecode": "01:45",
+      "symptom": "The drawing is too 'heavy' or continuous when I only wanted one thing to happen",
+      "cause": "Using `if (mouseIsPressed)` inside the `draw()` loop instead of using an event function.",
+      "fix": "Move the logic into a discrete event function like `mouseClicked()` outside of the draw loop.",
+      "related_concept": "State Polling vs. Event-Driven"
+    },
+    {
+      "timecode": "02:15",
+      "symptom": "The event doesn't trigger even though I clicked",
+      "cause": "The mouse was pressed on one element but released outside of it (the 'boundary' was broken).",
+      "fix": "Understand that `mouseClicked` requires the press and release to happen within the same boundary.",
+      "related_concept": "The Mouse Click Lifecycle"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:45",
+      "type": "warning",
+      "description": "The instructor highlights the 'problem' of continuous execution in the draw loop, creating productive struggle by showing how `mouseIsPressed` behaves differently than an event."
+    },
+    {
+      "timecode": "03:45",
+      "type": "insight",
+      "description": "The instructor explains the 'direction' of logic: `draw()` is continuous/polling, while events happen in a different temporal dimension (only when triggered)."
+    },
+    {
+      "timecode": "06:22",
+      "type": "demonstration",
+      "description": "The instructor makes a typo and shows the error message, modeling how to recognize and fix syntax errors in real-time."
+    }
+  ],
+  "prerequisites": [
+    "Basic p5.js setup (setup and draw functions)",
+    "Understanding of coordinate systems (mouseX, mouseY)",
+    "Basic JavaScript syntax and function declarations"
+  ],
+  "leads_to": [
+    "Keyboard events",
+    "Complex UI/UX design in creative coding",
+    "Game logic and collision detection"
+  ],
+  "student_questions": [
+    "Why is my line drawing a huge mess instead of just one single line?",
+    "How do I make something happen only once when I click?",
+    "What is the difference between mouseIsPressed and mouseClicked?",
+    "Why isn't my click working even though I clicked the button?",
+    "How do I detect a double click?",
+    "Why does my code only run when I click on the canvas first?",
+    "How do I draw something specifically when I let go of the mouse?",
+    "What's the difference between a state and an event?",
+    "My code says 'unexpected token', what did I do wrong?",
+    "How can I make my art react to the mouse?"
+  ],
+  "video_id": "3-mouse-events",
+  "video_title": "3 mouse events",
+  "video_file": "3 mouse events.mp4",
+  "video_url": null,
+  "week": "week 5",
+  "module": "Module 2 – Chaos and Control"
+}

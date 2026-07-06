@@ -1,0 +1,67 @@
+{
+  "video": "1. Signals and FFTs.mp4",
+  "vision_model": "unsloth-gemma-4-26b-a4b-it-qat-oq4",
+  "frame_interval": 30,
+  "descriptions": [
+    {
+      "timestamp": 0.0,
+      "description": "The screen shows a black canvas with the text \"Sound to Image\" centered in green. On the left side, there is a vertical toolbar containing various drawing and selection icons (e.g., pencil, eraser, shapes) in white on a light gray background. At the bottom center, there is a small control bar with icons and a red \"Stop\" button. In the bottom right corner, there are zoom controls (+ and -)."
+    },
+    {
+      "timestamp": 30.0,
+      "description": "The screen displays a black background with the text \"Sound to Image\" in green at the top center. Below the text, a single continuous yellow wavy line (a sine wave) is drawn horizontally across the center of the frame. No code editor or user interface elements are visible in this view."
+    },
+    {
+      "timestamp": 60.0,
+      "description": "The screen shows a digital whiteboard application with a black background.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: A yellow sine wave is drawn across the center of the screen, oscillating above and below a dashed horizontal line. The text \"Sound to Image\" is written in green at the top, and the label \"$A_m$\" with an arrow pointing upward is written in yellow at the top left.\n3. **UI state**: A floating toolbar on the left contains various drawing tools (pen, eraser, shapes, etc.), and a control bar at the bottom includes buttons for settings, zoom, and a red \"Stop\" button."
+    },
+    {
+      "timestamp": 90.0,
+      "description": "The image shows a black background with hand-drawn yellow and red annotations.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: There are two sine waves drawn on a coordinate plane: one in red and one in yellow. The vertical axis is labeled \"Amp\" (Amplitude) and the horizontal axis is labeled \"freq\" (frequency). At the top, the text \"Sound to Image\" is written in green.\n3. **UI state**: No application interface, file names, or error messages are visible."
+    },
+    {
+      "timestamp": 120.0,
+      "description": "The image shows a hand-drawn diagram on a black background, likely used for instructional purposes to explain signal processing concepts.\n\n1.  **Code**: No code editor is visible in the image.\n2.  **Visual output**: The diagram features several hand-drawn elements: a yellow sine wave, a red sine wave with different properties, and two axes. The vertical axis is labeled \"Amp\" (amplitude) in yellow, and the horizontal axis is labeled \"freq\" (frequency) in yellow. A dashed yellow line represents the zero-crossing point. Text at the top reads \"Sound to Image\" in green, and a red arrow points from the text \"1+0\" toward the peak of the red sine wave.\n3.  **UI state**: No application or tool interface is visible; the image appears to be a frame from a video presentation."
+    },
+    {
+      "timestamp": 150.0,
+      "description": "The screen displays a black background with the green text \"Sound to Image\" at the top center. Below the text, there is a continuous, jagged yellow line that fluctuates in height across the screen, resembling a waveform or sound wave. No code editor or user interface elements are visible."
+    },
+    {
+      "timestamp": 180.0,
+      "description": "The screen displays a black background with the green text \"Sound to Image\" at the top center. Below the text, there is a continuous, jagged yellow line that fluctuates in height across the screen, resembling a waveform or sound frequency visualization. No code editor or user interface elements are visible."
+    },
+    {
+      "timestamp": 210.0,
+      "description": "The screen shows a web browser displaying an article titled \"Fast Fourier Transform\" on the `nti-audio.com` website.\n\n1.  **Code**: No code editor is visible in the screenshot.\n2.  **Visual output**: The page contains a diagram illustrating a signal in both the time and frequency domains. It shows a red waveform plotted against \"time\" on one axis, and a blue bar chart representing frequency components plotted against \"frequency\" on another. Below the diagram is text starting with \"Step by step.\"\n3.  **UI state**: The browser shows multiple open tabs, including \"Signals - Miro,\" \"fft - Google Search,\" and \"p5.js Web Editor.\" A vertical red tab on the right edge of the screen reads \"Can we help you?\"."
+    },
+    {
+      "timestamp": 240.0,
+      "description": "This screen shows a webpage containing educational text and an illustration about the Fast Fourier Transform (FFT).\n\n1.  **Code**: No code editor is visible in the image.\n2.  **Visual output**: The page features a 3D diagram illustrating a signal in the time and frequency domains. It shows a red waveform oscillating over \"time\" on one axis, which is then transformed into blue vertical bars representing frequency components along a \"frequency\" axis.\n3.  **UI state**: The website has a navigation bar at the top with tabs for \"Applications,\" \"Products,\" \"Support,\" \"News,\" \"Contact,\" and \"Company.\" A red vertical tab labeled \"Can we help you?\" is visible on the right edge of the screen."
+    },
+    {
+      "timestamp": 270.0,
+      "description": "The image shows a webpage containing educational text and an illustration about the Fast Fourier Transform (FFT).\n\n1. **Code**: No code editor is visible in this image.\n2. **Visual output**: A 3D diagram illustrates a signal in the time and frequency domains, showing a red waveform oscillating over time and its corresponding blue spectral components mapped against frequency.\n3. **UI state**: The webpage features a navigation bar with links for \"Applications,\" \"Products,\" \"Support,\" \"News,\" \"Contact,\" and \"Company,\" along with a \"Buy Now\" button. A vertical red tab labeled \"Can we help you?\" is visible on the right edge of the screen."
+    },
+    {
+      "timestamp": 300.0,
+      "description": "The provided image is a screenshot of an informational webpage or article about the Fast Fourier Transform (FFT), not an instructional coding video.\n\n**Visual output:**\nThe screen displays a header with navigation links (Home icon, Applications, Products, Support, News, Contact, Company) and a \"Buy Now\" button. The main content area contains text explaining the Fast Fourier Transform (FFT) and a 3D diagram illustrating a signal in both the time and frequency domains. The diagram shows a red waveform plotted against \"time\" on one axis, transitioning into blue vertical bars representing frequency components. A red tab labeled \"Can we help you?\" is visible on the right edge of the screen."
+    },
+    {
+      "timestamp": 330.0,
+      "description": "The image shows a Google search results page for the term \"fft\".\n\n1. **Code**: No code editor is visible in this screenshot.\n2. **Visual output**: The search results include an \"AI Overview\" section providing a text explanation of Fast Fourier Transform (FFT). To the right, there is a video thumbnail showing a 3D plot of a waveform with red and blue sine waves plotted against \"time\" and \"frequency\" axes. Below the AI overview, there are several image search results showing various mathematical plots and graphs related to FFT.\n3. **UI state**: The interface is a standard Google Search web browser window with the search query \"fft\" in the search bar. The AI Overview is active, and a video player sidebar is partially visible on the right side of the screen."
+    },
+    {
+      "timestamp": 360.0,
+      "description": "The image shows a Google Search results page displaying an \"AI Overview\" for the term \"fft\".\n\n1. **Code**: No code editor is visible in this image.\n2. **Visual output**: The AI Overview includes a 3D plot showing two oscillating wave patterns (one red, one blue) plotted against \"time\" and \"frequency\" axes. Below the text description, there is a row of four thumbnail images related to Fast Fourier Transform (FFT), including signal graphs and mathematical plots.\n3. **UI state**: The interface is a standard Google Search web browser window with the search query \"fft\" in the search bar. The AI Overview section is expanded, providing a detailed explanation of Fast Fourier Transform, its applications (Signal processing, Communications, Scientific research, Image processing, Machine learning), and its relationship to DFT."
+    },
+    {
+      "timestamp": 390.0,
+      "description": "The provided image shows a Google search results page for the query \"jpeg compression.\" There is no code editor, programming language, or instructional coding video visible in the screenshot.\n\nThe screen displays a grid of image search results related to JPEG compression, including diagrams of DCT coefficients, quantization tables, and examples of image degradation. A sidebar on the right shows a larger version of one search result titled \"Image Engineering,\" which contains diagrams illustrating DCT coefficients and picture data."
+    },
+    {
+      "timestamp": 420.0,
+      "description": "The screen shows a Miro board with the text \"Sound to Image\" in green at the top center. Below this, a large yellow jagged line graph is drawn across a black background. The Miro interface is visible, including the sidebar with various tools on the left and top-right controls like \"Present\" and \"Share.\" A small notification at the bottom center states, \"The presentation has ended.\""
+    }
+  ]
+}

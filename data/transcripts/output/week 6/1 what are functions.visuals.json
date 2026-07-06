@@ -1,0 +1,55 @@
+{
+  "video": "1 what are functions.mp4",
+  "vision_model": "gemma-3-27b-it-qat",
+  "frame_interval": 30,
+  "descriptions": [
+    {
+      "timestamp": 0.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows a web browser displaying a Miro board titled \"Functions\". The board has three bullet points listed: \"reusability\", \"abstraction\", and \"modularity\".  There is also a tab open for \"p5.js Web Editor\" and another for \"CanvasRenderingContext2D\". The canvas itself is black with no visible elements.  The URL in the address bar indicates a Miro board ID: `app.miro.com/board/uXJvLSBygz0=/`."
+    },
+    {
+      "timestamp": 30.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows a Miro board titled \"Functions\" with three bullet points listed: \"reusability\", \"abstraction\", and \"modularity\". A sidebar on the left contains icons for adding text, shapes, notes, apps, and other Miro board elements.  A dark-themed p5.js Web Editor is open in a tab, but the code within it is not visible due to its small size. The browser address bar indicates a URL related to Miro and an app ID, suggesting it's likely part of an interactive coding exercise.  The bottom toolbar shows p5.js controls (play, step, stop)."
+    },
+    {
+      "timestamp": 60.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js web editor, specifically `editor.p5js.org`. The active file is named \"sketch.js\".  The UI includes tabs for File, Edit, Sketch, and Help, along with language selection (English). \n\nThe code editor displays the following p5.js code:\n\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n}\n```\n\nTo the right of the code editor is a preview area showing a solid gray canvas. The console at the bottom is empty, indicating no output or errors are currently displayed.  The top bar shows buttons for Auto-refresh and Marbled wish."
+    },
+    {
+      "timestamp": 90.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows an instructional coding environment, specifically p5.js editor (editor.p5js.org). A code editor is open with a file named \"sketch.js\". The right side of the screen displays a preview canvas showing two concentric circles, one larger and lighter gray, nested inside a smaller darker gray circle on a black background. \n\nHere's the code from \"sketch.js\":\n\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n  ellipse(100, 100, 50, 200);\n  ellipse(50, 50, D);\n}\n```\n\nThe UI includes tabs for \"File\", \"Edit\", \"Sketch\" and \"Help\".  There's also a console at the bottom. The top bar shows links to p5.js resources and MSU NetID, Google, etc."
+    },
+    {
+      "timestamp": 120.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js web editor, likely within a browser tab titled \"functions - Miro\". The active file is named `sketch.js`.  The code editor displays JavaScript code for a p5.js sketch, which draws two ellipses on a black background. The canvas preview area shows a black rectangle with two white ellipses: one larger ellipse centered and another smaller ellipse in the lower left corner. The UI includes tabs for \"Editor\", \"Sketch\", and \"Help\" along with buttons for auto-refreshing and a marbled wish list.\n\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n  ellipse(100, 100, 50, 200);\n  ellipse(50, 300, 100, 18);\n}\n```"
+    },
+    {
+      "timestamp": 150.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, likely within a Chrome browser tab. The active file is named `sketch.js`. A code editor occupies the left side of the screen, and a preview canvas is on the right. The canvas displays two concentric circles: a larger gray circle centered in the canvas and a smaller, darker gray circle offset to the left.\n\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n  ellipse(100, 100, 50, 200);\n  ellipse(50, 300, 100, 18);\n}\n```\n\nThe UI includes tabs for \"File\", \"Edit\", \"Sketch\", and \"Help,\" along with language selection (\"English\").  A console is visible at the bottom, currently empty. The top bar also shows buttons for auto-refresh and \"Marbled wish\"."
+    },
+    {
+      "timestamp": 180.0,
+      "description": "The screen displays a web development instructional video interface, specifically focused on the p5.js library within Mozilla's Web APIs documentation. The main area shows a code editor with the `CanvasRenderingContext2D.ellipse()` method documentation and example code. A canvas preview displays an elliptical arc with a red stroke, originating from the center of the canvas and extending clockwise. \n\nHere's the code shown:\n\n```js\nellipse(x, y, radiusX, radiusY, rotation, startAngle, endAngle, counterclockwise)\n\n// The ellipse() method creates an elliptical arc centered at (x, y) with the radii radiusX and\n// radiusY. The path starts at startAngle and ends at endAngle, and travels in the direction given by\n// counterclockwise (defaulting to clockwise).\n\nParameters\nx\tThe x-axis (horizontal) coordinate of the ellipse's center.\ny\tCanvas\n```\n\nThe UI includes tabs for \"References\", \"Web APIs\", and a search bar.  A sidebar lists functions like `fillRect()`, `fillText()`, and `getContextAttributes()`.  A \"BugHerd\" widget is visible in the lower right corner, indicating a feedback tool."
+    },
+    {
+      "timestamp": 210.0,
+      "description": "The screen shows a web development instructional video, likely focused on the CanvasRenderingContext2D API in JavaScript. The main area displays a code editor with HTML and JavaScript code related to drawing an ellipse on a canvas. A small, rectangular canvas is visible on the right side of the screen displaying an incomplete ellipse (a curved line segment). The UI indicates use of MDN Web Docs, with tabs for \"References\", \"Examples\", and \"Specifications\".\n\n```html\n<canvas id=\"canvas\" width=\"200\" height=\"200\"></canvas>\n```\n\n```javascript\nconst canvas = document.getElementById(\"canvas\");\nconst ctx = canvas.getContext(\"2d\");\n\n// Draw the ellipse\nctx.beginPath();\nctx.arc(100, 100, 58, 75, Math.PI * 4, 0, 2 * Math.PI);\nctx.stroke();\n\n// Draw the ellipse's line of reflection\nctx.beginPath();\nctx.strokeStyle = [5, 51];\nctx.moveTo(0, 200);\nctx.lineTo(200, 0);\nctx.stroke();\n```\n\nA \"BugHerd\" widget is present in the bottom right corner, and a sidebar on the left lists various Canvas API methods like `fillRect()`, `fillText()`, and `getImageData()`. The page is titled \"CanvasRenderingContext2D: ellipse\"."
+    },
+    {
+      "timestamp": 240.0,
+      "description": "The screen displays a web development instructional video interface, specifically focusing on the `CanvasRenderingContext2D` API within JavaScript. The main area shows documentation for the `fillEllipse()` method, along with related methods like `fillText()`, `getContextAttributes()`, and others. \n\nA code editor on the left panel contains JavaScript code:\n\n```javascript\nconst canvas = document.getElementById(\"canvas\");\nconst ctx = canvas.getContext(\"2d\");\n\n// Draw the ellipse\nctx.beginPath();\nctx.ellipse(100, 50, 75, Math.PI / 4, 0, 2 * Math.PI, 0);\nctx.stroke();\n```\n\nA canvas element with an ID of \"canvas\" is visible, displaying a partially drawn ellipse. The right sidebar provides syntax information, examples, specifications, and browser compatibility details for the `fillEllipse()` method. A \"BugHerd\" widget is also present, indicating a tool for feedback collection."
+    },
+    {
+      "timestamp": 270.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows a Miro board being used as part of an instructional coding video, likely related to p5.js based on the toolbar at the bottom. The main content of the board is a list titled \"Functions\" with three bullet points: \"reusability\", \"abstraction\", and \"modularity\".  There are green arrow icons next to each bullet point. \n\nA p5.js Web Editor is open in a browser tab, but the code within it is not visible as the editor window appears minimized. The bottom toolbar of p5.js shows standard controls like run, stop, and settings.  The browser tab title indicates the URL `miro.com/app/board/uXJVLSLBygz0=`."
+    },
+    {
+      "timestamp": 300.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js web editor, likely within a browser tab titled \"functions - Miro\". The active file is named `sketch.js`.  The editor displays code for a p5.js sketch, and a preview area shows two concentric circles on a dark gray background (color code #220).  A rectangle is also visible at the bottom of the canvas. The UI includes tabs for \"File\", \"Edit\", \"Sketch\", and \"Help\" along with language selection (\"English\").\n\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n  ellipse(100, 100, 50, 200);\n  ellipse(50, 300, 100, 10);\n}\n```\n\nThe console at the bottom is currently clear. The top bar shows links to various resources including \"p5.js\", \"editor.p5.js.org\", and MSU NetID, among others."
+    },
+    {
+      "timestamp": 330.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js editor, likely within a web browser environment (based on the tabs). The active file is named `sketch.js`. A canvas preview displays two concentric ellipses: a larger, lighter ellipse centered in the frame and a smaller, darker ellipse inside it. \n\nThe code editor contains the following p5.js code:\n\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n  ellipse(100, 100, 50, 200);\n  ellipse(50, 300, 100, 10); // function call means to run a\n  function, use a function.\n}\n```\n\nThe UI includes tabs for \"File\", \"Edit\", \"Sketch\", and \"Help,\" along with language selection (\"English\").  There's also a console area at the bottom, currently clear. The editor appears to be in \"Auto-refresh\" mode and has a \"Marbled wish\" theme."
+    }
+  ]
+}

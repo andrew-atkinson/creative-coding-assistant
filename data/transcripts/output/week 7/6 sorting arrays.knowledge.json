@@ -1,0 +1,100 @@
+{
+  "topic": "Using the JavaScript .sort() method with a comparator function to organize arrays of objects for visual depth and perspective in generative art.",
+  "concepts": [
+    {
+      "name": "visual incoherence (depth issue)",
+      "timecode": "00:18",
+      "explanation": "The instructor points out that when objects are drawn in a random order, smaller objects might appear on top of larger ones, which breaks the visual logic of perspective (where smaller things should be in the background).",
+      "why_it_matters": "To create a sense of depth and realistic occlusion in digital art, objects must be drawn from back to front."
+    },
+    {
+      "name": "array.sort() with a callback",
+      "timecode": "01:48",
+      "explanation": "A method that takes a function to determine the order of elements. The instructor describes it as 'weird syntax' and suggests learning it by rote rather than deep theory.",
+      "why_it_matters": "It allows you to organize complex data structures (like arrays of objects) based on specific properties rather than just simple numbers."
+    },
+    {
+      "name": "comparator function",
+      "timecode": "02:08",
+      "explanation": "A function used inside .sort() that compares two elements (a and b) to decide which comes first. The instructor explains it as a comparison between the current element and the next one.",
+      "why_it_matters": "It is the engine that tells the sort method how to rank your objects (e.g., by size, age, or position)."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "03:00",
+      "language": "javascript",
+      "code": "ufoArr.sort((a, b) => a.s - b.s);",
+      "demonstrates": "Sorting an array of objects based on their 's' (scale) property in ascending order.",
+      "common_issue": "If you want larger objects to be drawn first (to appear in the back), you would reverse the subtraction: `b.s - a.s`."
+    },
+    {
+      "timecode": "02:00",
+      "language": "javascript",
+      "code": "let obj = { x: x, y: y, s: s };\nufoArr.push(obj);",
+      "demonstrates": "Creating an object literal and adding it to an array.",
+      "common_issue": null
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "00:18",
+      "symptom": "smaller UFOs are in front of the larger ones / visual logic is incoherent",
+      "cause": "The array is being iterated in a random order, so the drawing sequence doesn't respect depth.",
+      "fix": "Sort the array by size (scale) before drawing so that smaller objects are drawn first and larger ones are overdrawn on top.",
+      "related_concept": "array.sort()"
+    },
+    {
+      "timecode": "01:48",
+      "symptom": "The sort function isn't working or is throwing an error",
+      "cause": "Using incorrect syntax in the callback function.",
+      "fix": "Use the arrow function syntax `(a, b) => a.property - b.property`.",
+      "related_concept": "comparator function"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "00:18",
+      "type": "warning",
+      "description": "The instructor identifies a visual error (lack of perspective) to provide motivation for the technical solution."
+    },
+    {
+      "timecode": "01:48",
+      "type": "transition",
+      "description": "Moving from identifying the problem to introducing the complex syntax needed to solve it."
+    },
+    {
+      "timecode": "03:23",
+      "type": "insight",
+      "description": "The instructor admits to looking up the syntax every time, normalizing the process of using documentation for complex tasks."
+    }
+  ],
+  "prerequisites": [
+    "Object literals",
+    "Arrays and .push()",
+    "For loops",
+    "Basic p5.js drawing functions"
+  ],
+  "leads_to": [
+    "Object-Oriented Programming (Classes)",
+    "Advanced sorting algorithms",
+    "Spatial partitioning"
+  ],
+  "student_questions": [
+    "Why are my small circles appearing on top of my big ones?",
+    "How do I make objects in an array draw from back to front?",
+    "My shapes look messy and don't have any depth, how do I fix it?",
+    "How do I sort an array of objects by a specific property like size?",
+    "What does `(a, b) => a.s - b.s` actually do?",
+    "How can I use an array to organize my shapes by scale?",
+    "Why is the order of my objects in the console affecting how they look on screen?",
+    "I have an array of objects, how do I sort them by a property inside the object?",
+    "How do I fix the visual layering of my generative art?"
+  ],
+  "video_id": "6-sorting-arrays",
+  "video_title": "6 sorting arrays",
+  "video_file": "6 sorting arrays.mp4",
+  "video_url": null,
+  "week": "week 7",
+  "module": "Module 3 - Generation and Life"
+}

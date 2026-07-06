@@ -1,0 +1,95 @@
+{
+  "video": "1 random.mp4",
+  "vision_model": "gemma-3-27b-it-qat",
+  "frame_interval": 30,
+  "descriptions": [
+    {
+      "timestamp": 0.0,
+      "description": "The screen displays a presentation slide titled \"Randomness and Noise\" in green text. A red horizontal line is drawn across the lower two-thirds of the screen, starting from the left edge and extending to the right. The x-axis is labeled \"Time\" with tick marks at 0 and 1, while the y-axis is labeled \"Amplitude\" ranging from -1 to 1.  There's a small, unreadable label above the red line that appears to indicate \"Noise\". The application or tool is not identifiable.\n\n```\nRandomness and Noise\n```"
+    },
+    {
+      "timestamp": 30.0,
+      "description": "The screen displays a presentation slide titled \"Randomness and Noise\" in green text. A red horizontal line is drawn across the lower portion of the screen, starting from the left edge and extending almost to the right. The x-axis is labeled \"Time\" with tick marks, while the y-axis is labeled \"Amplitude\".  There's a small vertical line at the far left of the x-axis, labeled \"0\". No code editor or other UI elements are visible. The application appears to be a presentation software like PowerPoint or Google Slides."
+    },
+    {
+      "timestamp": 60.0,
+      "description": "Here's a description of what's visible in the instructional coding video screenshot:\n\nThe screen displays a dark background with the title \"Randomness and Noise\" in large green text. A canvas area shows a simple graphical scene with red lines forming an approximate \"0\" and \"1\", along with several green circles of varying sizes.  A small, animated figure is also present near the \"1\". \n\nThe left sidebar contains icons representing tools: a selection tool, rectangle/line drawing, text input, and others (unclear labels).  A bottom toolbar includes buttons for zoom, grid visibility, stop, and potentially other functions.\n\n```\nA\nA\nA\nA\n```\n\nThe application appears to be a graphical coding environment, possibly p5.js or similar, judging by the tool icons and canvas-based output. The code editor is not fully visible; only a few \"A\" characters are shown, suggesting it's likely minimal or hidden."
+    },
+    {
+      "timestamp": 90.0,
+      "description": "The screen displays a coding instructional video focusing on \"Randomness and Noise\". A green line graph is prominently featured, fluctuating between approximately 0 and 1 on the y-axis. The x-axis is not labeled with specific values, but shows a series of points connected by lines.  A red line is drawn at y=0 and another at y=0.5, possibly indicating boundaries or thresholds.\n\nNo code editor is visible in the image. The application appears to be a graphical environment used for visualizing data or simulations, likely related to programming concepts like random number generation."
+    },
+    {
+      "timestamp": 120.0,
+      "description": "Here's a description of what's visible in the instructional coding video screenshot:\n\nThe screen shows a dark background with the title \"Randomness and Noise\" in large, light green text. A graph is displayed with a jagged line fluctuating between approximately 0 and 1 on the y-axis, plotted against x-values labeled \"0.742861359\".  Green circles mark points along the line. \n\nA code editor is visible on the left side, containing the following Python code:\n\n```python\nA\nA\nA\nA\n```\n\nThe UI appears to be a coding environment, likely p5.js or similar given the \"A\" buttons and stop button at the bottom right.  There are also icons for drawing, shapes, color selection, and saving. The application name is not visible."
+    },
+    {
+      "timestamp": 150.0,
+      "description": "The screen displays a presentation slide titled \"Randomness and Noise\". Below the title, handwritten in green, is the abbreviation \"PRNG\" with a small number '1' above it and a red vertical line extending downwards.  A horizontal red line is also present at the bottom of the screen, marked with a '0'. There's no visible code editor or other application UI elements. The background is black, and the overall impression suggests a lecture or tutorial on pseudo-random number generation.\n\n```\n# No code visible\n```"
+    },
+    {
+      "timestamp": 180.0,
+      "description": "The screen displays a presentation slide titled \"Randomness and Noise\". Below the title, handwritten in green, is “PRNG” with a small red line extending downwards from it. A horizontal red line is drawn at the bottom of the screen, starting near the left edge and extending towards the right. There is a small dot on this line to the left of center, with another red line extending vertically upwards from it. No code editor or other UI elements are visible; the presentation appears to be focused on conceptual explanation. The background is black."
+    },
+    {
+      "timestamp": 210.0,
+      "description": "The screen displays a dark background with green text and handwritten elements, likely from an instructional coding video. The title \"Randomness and Noise\" is prominently featured at the top. Below that, in larger green handwriting, is \"CSPRNG\" with a line underneath it and the number '1' above. A red horizontal line extends across the lower portion of the screen, starting from a vertical red line at x=0 and continuing to the right. There is no visible code editor or other UI elements beyond this simple graphic."
+    },
+    {
+      "timestamp": 240.0,
+      "description": "The screen displays a presentation slide titled \"Randomness and Noise\" in green text with an underline. A simple red line is drawn horizontally across the lower portion of the screen, starting from a vertical axis labeled \"0\". A small upward-pointing spike or arrow is drawn in green above the line, with a \"1\" next to it. The background color of the slide is black. No code editor or other UI elements are visible."
+    },
+    {
+      "timestamp": 270.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, specifically at `editor.p5js.org/andrew-atkinson/sketches/vLlkbrbLt`. The active tab is named \"Sketch.js\". A canvas area displays a solid dark red background (color code #220022). \n\nThe code editor contains the following JavaScript code:\n\n```javascript\n1 let rando;\n2 \n3 function setup() {\n4   createCanvas(400, 460);\n5 }\n6 \n7 function draw() {\n8   background(220);\n9   console.log\n10 \n11 }\n```\n\nThe UI indicates \"Auto-refresh\" is enabled, and the sketch is titled \"week 4 random\" by andrew-atkinson.  A console area is visible at the bottom, currently empty. The editor also shows a \"Relaunch to update\" button and an option to save the sketch."
+    },
+    {
+      "timestamp": 300.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, specifically at `editor.p5js.org/andrew-atkinson/sketches/wl/LkkrBLt`. The editor is open to a file named `sketch.js`. A dark gray canvas occupies the majority of the right side, displaying a solid black background (color value 220). The console at the bottom shows the output `0.8753976372907915`.\n\n```javascript\nlet rando;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n  rando = random();\n  console.log(rando);\n}\n\nnoLoop();\n```\n\nThe UI indicates \"Auto-refresh\" is enabled, and the sketch is part of “week 4 random” by andrew-atkinson. The top bar shows tabs for \"File\", \"Edit\", \"Sketch\", \"Help\" and \"English\"."
+    },
+    {
+      "timestamp": 330.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, specifically `editor.p5js.org/andrew-atkinson/sketches/lwYLkIrkBLt`. The active file is `sketch.js`.  The UI indicates \"Auto-refresh\" is enabled and the sketch is running, generating 4 random numbers weekly.\n\nThe code in `sketch.js` is:\n\n```javascript\n1 let randomX;\n2 \n3 function setup() {\n4   createCanvas(400, 400);\n5 }\n6 \n7 function draw() {\n8   background(220);\n9   rando = random();\n10 \n11   console.log(rando);\n12 }\n```\n\nThe console output displays a series of random floating-point numbers (e.g., 0.5462624301949763, 0.813371296778253). The canvas area is a solid light gray background (color value 220), and no other shapes or text are visible. The editor is open for editing, with a \"Relaunch to update\" button available."
+    },
+    {
+      "timestamp": 360.0,
+      "description": "The screen shows a p5.js Web Editor, specifically at [https://editor.p5js.org/andrew-atkinson/sketches/lvILKIrbtLt](https://editor.p5js.org/andrew-atkinson/sketches/lvILKIrbtLt). The file name is `sketch.js`.  The canvas displays a black background with several small, white circles scattered randomly across it. The console output shows a series of random numbers generated between 0 and 1.\n\n```javascript\ncreateCanvas(400, 400);\n\nfunction draw() {\n  background(220);\n  randox = random();\n  randoy = random();\n\n  console.log(rando);\n  circle(randox, randoy, 20);\n}\n```\n\nThe UI indicates \"Auto-refresh\" is enabled and the sketch is running in English. The top right corner shows a gear icon for settings, and the user's name is \"Hello, andrew-atkinson\". The sketch appears to be generating random circles on each frame."
+    },
+    {
+      "timestamp": 390.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, specifically at `editor.p5js.org/andrew-atkinson/sketches/wVLlkbrLt`. The active file is `sketch.js`, and the editor appears to be in \"Auto-refresh\" mode with a weekly random sketch. A canvas displays several small white circles scattered across a black background. \n\nThe code in `sketch.js` is as follows:\n\n```javascript\nlet randomX, randomY;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  randomX = random(width);\n  randomY = random(height);\n\n  circle(randomX, randomY, 20);\n}\n```\n\nThe UI includes a \"File\", \"Edit\", \"Sketch\" and \"Help\" menu, along with an English language selection. A small circular indicator suggests the code is currently running or recently ran. The console area at the bottom is empty, and a \"Clear\" button is visible."
+    },
+    {
+      "timestamp": 420.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, specifically open to a sketch named `sketch.js` within a folder structure of `/andrew-atkinson/sketches/week4/random`. The editor is in English and has auto-refresh enabled. A canvas preview displays a black background with numerous small white circles scattered across it, appearing somewhat randomly distributed. \n\nHere's the code visible in the editor:\n\n```javascript\nlet randox, randoY;\n\nfunction setup() {\n  createCanvas(400, 400);\n  background(220);\n}\n\nfunction draw() {\n  randox = random(width); // random 0 - width\n  randoY = random(height);\n  circle(randox, randoY, 20);\n}\n```\n\nThe UI includes buttons for play/pause, step, and a console area. A message at the top indicates \"Hello, andrew-atkinson!\" and there's a button to relaunch the editor for updates."
+    },
+    {
+      "timestamp": 450.0,
+      "description": "Here's a description of what is visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, specifically `editor.p5js.org`. The currently open file is named `sketch.js` and located at `p5.js/editor.p5js.org/andrew-atkinson/sketches/lv/LlkbrLt1`. The editor displays JavaScript code. A canvas preview area shows a black background with numerous small, white circles scattered across it. The UI indicates \"Auto-refresh\" is enabled and the sketch has been saved recently.\n\n```javascript\n1 let randox , randoy;\n2 \n3 function setup() {\n4  createCanvas(400, 400);\n5  background(220);\n6 }\n7 \n8 function draw() {\n9  randox = random(200, width); // random 200 – width\n10 randoy = random(100, height);\n11 \n12  circle(randox, randoy, 20);\n13 }\n```"
+    },
+    {
+      "timestamp": 480.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, specifically `editor.p5js.org`. The active file is named `sketch.js`, and the tab bar indicates it's part of a project called \"week 4 ran\" by andrew-atkinson. The code editor displays JavaScript code, as shown below. A canvas preview area shows a background of color (220) with numerous small, dark red circles scattered across it. The console at the bottom is clear (no messages).\n\n```javascript\nlet randomX, randomY;\n\nfunction setup() {\n  createCanvas(400, 480);\n}\n\nfunction draw() {\n  randomX = random(50, 100, 200, 7); // random 200 - width (400)\n  randomY = random(100, height);\n  circle(randomX, randomY, 20);\n}\n```\n\nThe top bar of the editor shows controls for auto-refresh, a week indicator (\"week 4 ran\"), and the author's name.  A \"Relaunch to update\" button is visible, suggesting recent code changes may not be reflected in the preview."
+    },
+    {
+      "timestamp": 510.0,
+      "description": "Here's a description of what is visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, open to a file named `sketch.js` within a project directory `/w/LkkrbtLt`. The editor is in \"Edit\" mode. A canvas preview displays a grid of circles arranged in rows and columns, with each circle being white on a dark background (color 220). The code editor contains JavaScript code that creates a canvas of size 400x400 and draws circles at random x,y coordinates within that canvas.\n\n```javascript\nlet randox, randoY;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  randox = random([50, 100, 200, 300]); // random\n  randoY = random(400);\n  circle(randox, randoY, 20);\n}\n```\n\nThe UI shows buttons for \"Play\", \"Auto-refresh\" (enabled), and a settings gear. A console area is visible at the bottom, currently empty. The top bar indicates \"week 4 random\" by andrew-atkinson."
+    },
+    {
+      "timestamp": 540.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, likely used for creating visual sketches with JavaScript. The filename is `sketch.js`, and the tab title indicates it's part of \"week 4 ran X random\" by andrew-atkinson. The code editor displays the following JavaScript code:\n\n```javascript\nlet randoX, randoY;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  randoX = random([50, 100, 200, 300]); // random\n  randoY = random([100, 200, 300]);\n  circle(randoX, randoY, 20);\n}\n```\n\nThe canvas preview area displays nine white circles scattered on a dark background. The circles are of equal size and appear randomly positioned within the canvas bounds.  The editor UI includes buttons for run, stop, auto-refresh, and a clear button below the console. The top right corner shows \"Hello, andrew-atkinson!\" and a settings icon."
+    },
+    {
+      "timestamp": 570.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, specifically at `editor.p5js.org/andrew-atkinson/sketches/wVLlkrbLt`. The active file is `sketch.js`.  The UI indicates auto-refresh is enabled, and the sketch is titled \"week 4 random\" by andrew-atkinson. A canvas displays several white circles on a dark background, seemingly randomly positioned.\n\n```javascript\nlet randoxX, randoyY;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220, 220, 220);\n  randoxX = random([50, 100, 200, 300]); // random\n  randoyY = random([100, 200, 300]);\n  circle(randoxX, randoyY, 20);\n}\n```\n\nThe console is visible at the bottom of the screen and appears to be empty.  There are buttons for \"Play\", \"Stop\" and a settings gear icon."
+    },
+    {
+      "timestamp": 600.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows p5.js Web Editor, specifically at `editor.p5js.org/andrew-atkinson/sketches/w1L/kIrKblt`. The active tab is \"sketch.js\".  The code editor displays p5.js code for drawing circles with random positions and sizes on a canvas. The console output shows several lines of logged `randomX` and `randoY` values, indicating the random number generation is working. The canvas preview displays a black background with several white circles scattered across it.\n\n```javascript\n1 let randomX, randoY;\n2 \n3 function setup() {\n4   createCanvas(400, 400);\n5 }\n6 \n7 function draw() {\n8   background(220, 20);\n9   randomX = random(width);\n10  randoY = random();\n11 \n12  console.log(randomX, randoY)\n13 \n14  circle(randomX, randoY, 20);\n```\n\nThe UI includes buttons for \"Auto-refresh\", \"Help\", and language selection (English).  A settings gear icon is visible, as well as a \"Relaunch to update\" button. The file has been saved 2 minutes ago."
+    },
+    {
+      "timestamp": 630.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows p5.js Web Editor, specifically a sketch named \"sketch.js\" within the repository `andrew-atkinson/sketches`. The editor is open with a file named \"week 4 ran\".  The canvas displays numerous small, light-colored circles scattered across a dark background. The console output shows coordinates (x and y values) being logged repeatedly, corresponding to the positions of these circles.\n\n```javascript\nlet randox, randoY;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220, 220, 220);\n  randox = random(0, width);\n  randoY = random(0, height);\n  console.log(randox, randoY);\n  circle(randox, randoY, 20);\n}\n```\n\nThe UI indicates \"Auto-refresh\" is enabled.  There's a button labeled \"Clear\" below the console output area, and the editor has tabs for \"File\", \"Edit\", \"Sketch\", \"Help\" and \"English\"."
+    }
+  ]
+}

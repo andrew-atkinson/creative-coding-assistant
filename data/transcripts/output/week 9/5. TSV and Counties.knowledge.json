@@ -1,0 +1,91 @@
+{
+  "topic": "Comparing JSON and CSV/TSV data formats for mapping geographic coordinates to a visual canvas.",
+  "concepts": [
+    {
+      "name": "JSON (JavaScript Object Notation)",
+      "timecode": "00:27",
+      "explanation": "Described as a 'big old object' where each item (like a city) contains multiple properties or keys and values.",
+      "why_it_matters": "It allows for hierarchical, complex data structures where each entry can hold many different types of information."
+    },
+    {
+      "name": "CSV/TSV (Comma/Tab Separated Values)",
+      "timecode": "00:47",
+      "explanation": "Tabular data that is structured like a Google Sheets or Excel spreadsheet, consisting of rows and columns.",
+      "why_it_matters": "It is a standard format for large-scale datasets (like census data) that are organized in a simple grid."
+    },
+    {
+      "name": "Data Normalization (Bounding Box)",
+      "timecode": "00:35",
+      "explanation": "Iterating through a dataset to find the minimum and maximum values (latitude/longitude) to establish the boundaries of the data.",
+      "why_it_matters": "You need to know the extremes of your data to map geographic coordinates correctly onto a pixel-based canvas."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "00:35",
+      "language": "javascript",
+      "code": "for (let city of cities) {\n  if (city.latitude < minLat) {\n    minLat = city.latitude;\n  }\n  if (city.latitude > maxLat) {\n    maxLat = city.latitude;\n  }\n  // ... same for longitude\n}",
+      "demonstrates": "Finding the min/max latitude and longitude from a JSON array of objects to define data boundaries.",
+      "common_issue": "If min/max values are initialized incorrectly (e.g., setting minLat to 0 instead of a high number), the bounding box will be wrong."
+    },
+    {
+      "timecode": "00:35",
+      "language": "javascript",
+      "code": "loadJSON(\"assets/cities.json\", onLoad, onError);",
+      "demonstrates": "Asynchronously loading an external JSON file in p5.js.",
+      "common_issue": "The data might be undefined if you try to access it before the file finishes loading (which is why we use preload)."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "00:35",
+      "symptom": "The map doesn't show up or the dots are all in one spot",
+      "cause": "Incorrectly calculating the min/max bounds of the data.",
+      "fix": "Ensure you initialize `minLat` to a very high number and `maxLat` to a very low number (and vice versa for longitude) before looping through the data.",
+      "related_concept": "Data Normalization"
+    },
+    {
+      "timecode": "00:35",
+      "symptom": "Cannot access properties like 'city.latitude'",
+      "cause": "The data structure is not what you think it is (e.g., trying to treat a CSV as a JSON object).",
+      "fix": "Use `console.log()` to inspect the data structure and ensure you are accessing the correct keys.",
+      "related_concept": "JSON vs CSV"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "00:00",
+      "type": "demonstration",
+      "description": "Shows the visual result (an impressionistic map of dots) before explaining the code, establishing the goal."
+    },
+    {
+      "timecode": "01:00",
+      "type": "transition",
+      "description": "Uses a Miro whiteboard to visually contrast JSON vs CSV/TSV, moving from code to high-level concepts."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript syntax",
+    "Understanding of objects and arrays",
+    "p5.js preload() function"
+  ],
+  "leads_to": [
+    "Mapping data to canvas coordinates",
+    "Working with large tabular datasets (TSV/CSV)",
+    "Generative art using geographic data"
+  ],
+  "student_questions": [
+    "Why are my dots all clumped together in one corner?",
+    "What is the difference between JSON and a CSV file?",
+    "How do I load an external data file into my sketch?",
+    "How do I find the boundaries of my data so it fits on the screen?",
+    "My code says 'undefined' when I try to print my data, why?",
+    "How do I make a map out of dots using real coordinates?",
+    "What is 'tabular data'?"
+  ],
+  "video_id": "5-tsv-and-counties",
+  "video_title": "5. TSV and Counties",
+  "video_file": "5. TSV and Counties.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 9/5. TSV and Counties.mp4",
+  "week": "week 9"
+}

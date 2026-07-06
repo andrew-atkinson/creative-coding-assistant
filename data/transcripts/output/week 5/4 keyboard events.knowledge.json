@@ -1,0 +1,117 @@
+{
+  "topic": "Implementing keyboard interactivity using event-driven programming to trigger visual changes in a creative coding environment.",
+  "concepts": [
+    {
+      "name": "keyboard events",
+      "timecode": "00:11",
+      "explanation": "Unlike mouse events where the computer constantly checks for position, keyboard events only trigger when the browser actually registers a specific keypress.",
+      "why_it_matters": "It allows for more efficient, event-driven programming where code only runs when the user actually does something."
+    },
+    {
+      "name": "keyTyped() function",
+      "timecode": "00:23",
+      "explanation": "The most natural function for responding to key presses, behaving like a human would expect: you press a key, and the event registers.",
+      "why_it_matters": "It is the simplest way to capture character input from a user."
+    },
+    {
+      "name": "key variable",
+      "timecode": "00:54",
+      "explanation": "A variable that holds the specific character of the key that was just pressed.",
+      "why_it_matters": "You need this to distinguish between different keys (e.g., 'R' vs 'G') so you can trigger different actions."
+    },
+    {
+      "name": "modifier keys",
+      "timecode": "02:35",
+      "explanation": "Keys like Shift, Ctrl, or Arrow keys that don't produce a printable character and therefore do not trigger 'keyTyped'.",
+      "why_it_matters": "Students need to know why certain keys aren't triggering their code even if they are pressing them."
+    },
+    {
+      "name": "if / else if / else chain",
+      "timecode": "03:14",
+      "explanation": "Stacking conditional statements so that the computer checks them in order and uses the 'else' block as a fallback if no specific conditions are met.",
+      "why_it_matters": "It prevents a 'default' state from overriding your specific logic and allows you to create a reset/fallback behavior."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:01",
+      "language": "javascript",
+      "code": "function keyTyped() {\n  if (key === 'R') {\n    fill(240, 20, 50);\n  } else if (key === 'G') {\n    fill(0, 240, 130);\n  } else {\n    fill(0);\n  }\n}",
+      "demonstrates": "Using keyTyped and an if/else if/else chain to change the fill color based on specific keys, with a black fallback.",
+      "common_issue": "Using separate 'if' statements instead of an 'else if' chain, which causes the final 'else' to always run and override everything."
+    },
+    {
+      "timecode": "02:19",
+      "language": "javascript",
+      "code": "console.log(key);",
+      "demonstrates": "Printing the pressed key to the browser console for debugging.",
+      "common_issue": null
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "01:45",
+      "symptom": "The code isn't running or behaving correctly.",
+      "cause": "Placing logic inside the wrong function (e.g., putting draw-related logic in setup incorrectly).",
+      "fix": "Ensure the event function (like keyTyped) is used for events and draw() is used for continuous drawing.",
+      "related_concept": "p5.js lifecycle"
+    },
+    {
+      "timecode": "03:24",
+      "symptom": "The color always stays at the default value and never changes to my chosen colors.",
+      "cause": "Using multiple separate 'if' statements instead of an 'if / else if' chain, causing the final 'else' to execute every single frame.",
+      "fix": "Use an `if...else if...else` structure to ensure only one block of code runs per event.",
+      "related_concept": "control flow"
+    },
+    {
+      "timecode": "02:35",
+      "symptom": "Nothing happens when I press the Shift or Arrow keys.",
+      "cause": "Modifier keys do not trigger 'keyTyped' events because they don't produce characters.",
+      "fix": "Use different event listeners if you need to detect modifier keys.",
+      "related_concept": "modifier keys"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "00:11",
+      "type": "insight",
+      "description": "Explaining the difference between continuous checking (polling) and event-driven programming."
+    },
+    {
+      "timecode": "03:14",
+      "type": "warning",
+      "description": "Warning against using separate 'if' statements for conditional logic when a fallback is needed."
+    },
+    {
+      "timecode": "03:54",
+      "type": "demonstration",
+      "description": "The instructor shows how a mistake in logic (separate if statements) causes the color to always reset to black, demonstrating why 'else if' is necessary."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript syntax (if/else)",
+    "p5.js setup and draw functions",
+    "Basic understanding of RGB color values"
+  ],
+  "leads_to": [
+    "Complex user interface (UI) design",
+    "Game development controls",
+    "State-based interactive art"
+  ],
+  "student_questions": [
+    "How do I make something happen when I press a key?",
+    "Why isn't my code working when I press the Shift key?",
+    "How do I check which specific key was pressed?",
+    "Why is my color always resetting to black even when I press a letter?",
+    "What's the difference between mouse events and keyboard events?",
+    "How can I see what key my computer thinks I'm pressing?",
+    "Why do I need to use 'else if' instead of just multiple 'if' statements?",
+    "How do I make a default color if no keys are pressed?"
+  ],
+  "video_id": "4-keyboard-events",
+  "video_title": "4 keyboard events",
+  "video_file": "4 keyboard events.mp4",
+  "video_url": null,
+  "week": "week 5",
+  "module": "Module 2 – Chaos and Control"
+}

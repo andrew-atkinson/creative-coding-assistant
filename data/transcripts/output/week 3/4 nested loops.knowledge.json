@@ -1,0 +1,97 @@
+{
+  "topic": "Implementing nested loops to create two-dimensional patterns and grids.",
+  "concepts": [
+    {
+      "name": "nested loops",
+      "timecode": "02:30",
+      "explanation": "Placing one loop inside the code block of another loop to perform repetitive tasks in two dimensions (like a grid) rather than just a single line.",
+      "why_it_matters": "It allows you to create complex patterns and grids without manually duplicating code for every row or column."
+    },
+    {
+      "name": "outer loop vs. inner loop",
+      "timecode": "05:56",
+      "explanation": "The 'outer loop' is the first loop encountered; the 'inner loop' is the one inside its braces. The inner loop must complete all its iterations for every single iteration of the outer loop.",
+      "why_it_matters": "Understanding this order is crucial for predicting how a pattern will be drawn (e.g., why it might draw vertically instead of horizontally)."
+    },
+    {
+      "name": "loop execution order",
+      "timecode": "05:21",
+      "explanation": "The code enters the outer loop, then immediately enters the inner loop. It stays in that inner loop until it's finished, and only then does it move to the next step of the outer loop.",
+      "why_it_matters": "If you don't understand this, you won't know why your shapes are appearing in a specific order or direction."
+    },
+    {
+      "name": "code indentation",
+      "timecode": "04:04",
+      "explanation": "Using spaces to shift code to the right to visually show which lines belong inside a specific loop block.",
+      "why_it_matters": "It makes complex, nested code readable and helps you see the structure of your logic."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "04:04",
+      "language": "javascript",
+      "code": "for (let x = 0; x < 400; x += 40) {\n  for (let y = 0; y < 400; y += 40) {\n    fill(x, y, 0);\n    rect(x, y, 38, 38);\n  }\n}",
+      "demonstrates": "A nested loop creating a grid of rectangles where the color changes based on x and y coordinates.",
+      "common_issue": "Forgetting to use the 'y' variable in the drawing function, which would result in a single line of shapes instead of a grid."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "02:18",
+      "symptom": "Code is getting 'horribly messy' and hard to manage.",
+      "cause": "Manually copying and pasting code blocks to create a second dimension (e.g., duplicating an x-loop to make it vertical).",
+      "fix": "Use a nested loop instead of duplicating code.",
+      "related_concept": "nested loops"
+    },
+    {
+      "timecode": "04:13",
+      "symptom": "The shapes only appear in a single line (e.g., just horizontally).",
+      "cause": "The inner loop is missing or the variables from the outer loop aren't being used in the drawing function.",
+      "fix": "Add a second `for` loop inside the first one and use its variable (e.g., `y`) in your drawing function.",
+      "related_concept": "nested loops"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "02:18",
+      "type": "warning",
+      "description": "The instructor warns against the 'messy' approach of copying and pasting code to achieve a 2D effect."
+    },
+    {
+      "timecode": "04:04",
+      "type": "demonstration",
+      "description": "Using 'Tidy Code' to show how indentation visually clarifies the relationship between nested loops."
+    },
+    {
+      "timecode": "10:41",
+      "type": "insight",
+      "description": "Explaining why the pattern draws vertically: because the inner loop (y) completes its full cycle before the outer loop (x) moves to the next step."
+    }
+  ],
+  "prerequisites": [
+    "basic for loop syntax",
+    "variable assignment",
+    "p5.js drawing functions (rect, fill)"
+  ],
+  "leads_to": [
+    "maps",
+    "procedural art generation"
+  ],
+  "student_questions": [
+    "How do I make a grid of shapes?",
+    "Why is my code just drawing one line instead of a whole pattern?",
+    "What's the difference between an outer loop and an inner loop?",
+    "How do I draw things in two dimensions using loops?",
+    "Why does my pattern go down instead of across?",
+    "I'm tired of copying and pasting code to make it repeat, what should I do?",
+    "How do I use two loops at once?",
+    "Why are my shapes all in one row?",
+    "How do I make a pattern that changes color based on where it is on the screen?",
+    "What does 'nesting' mean in coding?"
+  ],
+  "video_id": "4-nested-loops",
+  "video_title": "4 nested loops",
+  "video_file": "4 nested loops.mp4",
+  "video_url": null,
+  "week": "week 3"
+}

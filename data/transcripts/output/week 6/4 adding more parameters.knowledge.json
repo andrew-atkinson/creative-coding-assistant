@@ -1,0 +1,120 @@
+{
+  "topic": "Mastering parameter passing in nested functions and using cyclical mathematical functions for smooth animation.",
+  "concepts": [
+    {
+      "name": "parameter passing (nesting)",
+      "timecode": "01:03",
+      "explanation": "The instructor demonstrates how to pass data from a high-level function (like `draw`) through an intermediate function (`whirligig`) down to the actual drawing function (`cookie`). He emphasizes that variables are just names/placeholders and must be explicitly passed through every layer of the hierarchy.",
+      "why_it_matters": "Without passing parameters through every level, 'leaf' functions won't have access to the data defined in higher-level scopes, causing errors or preventing customization."
+    },
+    {
+      "name": "argument vs. variable",
+      "timecode": "01:23",
+      "explanation": "The instructor explains that the names used in a function definition (arguments) don't have to match the names of the variables being passed in; they are just placeholders that receive the value.",
+      "why_it_matters": "Understanding this prevents confusion when a student sees different variable names in a function call versus the function definition."
+    },
+    {
+      "name": "noise() for organic movement",
+      "timecode": "04:30",
+      "explanation": "Using `noise(offset)` to drive position, where the offset is incremented over time. This creates a 'wriggly' or organic movement compared to linear motion.",
+      "why_it_matters": "It allows for more natural, non-linear movement in generative art."
+    },
+    {
+      "name": "cyclical functions (sine/cosine)",
+      "timecode": "08:12",
+      "explanation": "Using `sin()` and `cos()` to create oscillation. This is introduced as a solution to the 'blip' or jump that occurs when using modulo (`%`) for looping values.",
+      "why_it_matters": "Trigonometric functions provide smooth, continuous transitions that avoid the jarring jumps seen in linear or modulo-based loops."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:30",
+      "language": "javascript",
+      "code": "function whirligig(x, y, angle, c1, c2) {\n  push();\n  translate(x, y);\n  rotate(angle);\n  cookie(0, 0, c1, c2); // Passing parameters down to the next function\n  for (let i = 0; i < 35; i++) {\n    scale(0.9);\n    rotate(45);\n    cookie(0, 0, c1, c2);\n  }\n  pop();\n}",
+      "demonstrates": "How to pass multiple parameters through a function and use them in a loop.",
+      "common_issue": "Forgetting to include the new parameters (c1, c2) in the nested `cookie()` call."
+    },
+    {
+      "timecode": "05:30",
+      "language": "javascript",
+      "code": "let offset = 0;\n// ... in draw()\nwhirligig(noise(offset) * width, noise(offset + 10) * height, ...);\noffset += 0.01;",
+      "demonstrates": "Using Perlin noise to drive position with a smooth, continuous offset.",
+      "common_issue": "Forgetting to define the `offset` variable outside of the draw loop, leading to a ReferenceError."
+    },
+    {
+      "timecode": "08:00",
+      "language": "javascript",
+      "code": "color1 = frameCount % 255;\ncolor2 = 255 - (frameCount % 255);",
+      "demonstrates": "Using modulo to create a value that loops back from 255 to 0.",
+      "common_issue": "The 'blip' effect where the value suddenly jumps from 254 to 0, causing a visual glitch."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "01:57",
+      "symptom": "Error message: 'Object ArgumentsList is not a valid color'",
+      "cause": "The variable name was used in `fill()`, but that variable wasn't actually passed into the function as an argument.",
+      "fix": "Add the variable to the function's parameter list and ensure it is passed through every nested function call.",
+      "related_concept": "parameter passing"
+    },
+    {
+      "timecode": "04:56",
+      "symptom": "'ReferenceError: offset is not defined'",
+      "cause": "Attempting to use a variable in the `draw()` loop that hasn't been declared globally.",
+      "fix": "Declare the variable using `let` outside of the `setup()` and `draw()` functions.",
+      "related_concept": "variable scope"
+    },
+    {
+      "timecode": "08:01",
+      "symptom": "A visual 'blip' or jump when a value resets.",
+      "cause": "Using the modulo operator (`%`) causes values to jump from a high number back to zero instantly.",
+      "fix": "Use sine (`sin()`) or cosine (`cos()`) functions to create smooth, oscillating transitions.",
+      "related_concept": "cyclical functions"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:57",
+      "type": "warning",
+      "description": "The instructor encounters a runtime error and uses it to demonstrate how data flow works (or fails) through function arguments."
+    },
+    {
+      "timecode": "04:30",
+      "type": "demonstration",
+      "description": "Transitioning from simple mouse-following movement to organic, noise-driven movement."
+    },
+    {
+      "timecode": "08:12",
+      "type": "insight",
+      "description": "The instructor identifies the 'blip' problem and introduces trigonometry as a way to achieve smooth, continuous animation."
+    }
+  ],
+  "prerequisites": [
+    "Basic p5.js setup and draw loop",
+    "Understanding of variables",
+    "Coordinate geometry (translate, rotate)",
+    "Basic function definitions"
+  ],
+  "leads_to": [
+    "Recursive functions",
+    "Advanced Perlin noise implementation",
+    "Complex mathematical modeling in generative art"
+  ],
+  "student_questions": [
+    "Why is my color not changing even though I added it to the function?",
+    "How do I pass a variable from draw() into a function that is inside another function?",
+    "Why does my animation jump or 'blip' when the loop resets?",
+    "How do I make things move in a smooth, organic way instead of just straight lines?",
+    "What is the difference between an argument and a variable?",
+    "How do I use noise to move my shapes around the screen?",
+    "My code says 'offset is not defined', what did I do wrong?",
+    "How can I make my colors oscillate smoothly between two values?",
+    "Why do I have to add the same parameters over and over in my nested functions?"
+  ],
+  "video_id": "4-adding-more-parameters",
+  "video_title": "4 adding more parameters",
+  "video_file": "4 adding more parameters.mp4",
+  "video_url": null,
+  "week": "week 6",
+  "module": "Module 3 - Generation and Life"
+}

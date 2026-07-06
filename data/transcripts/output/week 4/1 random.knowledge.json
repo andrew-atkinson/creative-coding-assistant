@@ -1,0 +1,145 @@
+{
+  "topic": "Introduction to randomness in generative art, covering the distinction between true and pseudo-randomness and how to implement the random() function in p5.js.",
+  "concepts": [
+    {
+      "name": "Randomness vs. Noise",
+      "timecode": "00:22",
+      "explanation": "Randomness is described as unpredictable numbers with no relationship to the number before them, whereas noise is chance that exists within an underlying pattern.",
+      "why_it_matters": "Understanding this distinction is crucial for choosing the right tool for creating organic vs. chaotic visual effects."
+    },
+    {
+      "name": "Pseudo-Random Number Generators (PRNG)",
+      "timecode": "02:10",
+      "explanation": "Computers don't have actual dice; they use algorithms that rely on external 'entropy' (like mouse movement or system time) to produce sequences of numbers that appear unpredictable.",
+      "why_it_matters": "It explains why computer-generated randomness isn't 'true' randomness and how it actually works under the hood."
+    },
+    {
+      "name": "Cryptographically Secure PRNG (CSPRNG)",
+      "timecode": "03:03",
+      "explanation": "A specialized category of pseudo-randomness that is so unpredictable it forms the foundation of internet security and encryption.",
+      "why_it_matters": "Provides context on the real-world importance of randomness beyond just art."
+    },
+    {
+      "name": "random() with no arguments",
+      "timecode": "00:39",
+      "explanation": "Calling the function with nothing inside the parentheses returns a floating-point number between 0 and 1.",
+      "why_it_matters": "It's the most basic form of generating a random decimal."
+    },
+    {
+      "name": "random(min, max)",
+      "timecode": "07:02",
+      "explanation": "Providing two arguments allows you to constrain the random number within a specific range (e.g., between 100 and width).",
+      "why_it_matters": "Essential for making sure random shapes stay within the canvas or specific boundaries."
+    },
+    {
+      "name": "random([array])",
+      "timecode": "07:33",
+      "explanation": "Passing an array (numbers inside square brackets) forces the function to pick specifically from that discrete list of values.",
+      "why_it_matters": "Allows for 'structured' randomness where you want to choose from a specific set of colors or positions rather than any number."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "04:36",
+      "language": "javascript",
+      "code": "let rando;\n\nfunction setup() {\n  createCanvas(400, 460);\n}\n\nfunction draw() {\n  background(220);\n  rando = random();\n  console.log(rando);\n}",
+      "demonstrates": "Generating a single random number between 0 and 1 and logging it to the console.",
+      "common_issue": "If noLoop() is not used, it will log a new number every single frame."
+    },
+    {
+      "timecode": "05:33",
+      "language": "javascript",
+      "code": "circle(randoX, randoY, 20);",
+      "demonstrates": "Using random variables to position a circle.",
+      "common_issue": "Forgetting to pass the variable into the function (e.g., just writing `circle(randoX, randoY)` without assigning them first) results in nothing appearing."
+    },
+    {
+      "timecode": "06:19",
+      "language": "javascript",
+      "code": "randomX = random(width);\nrandomY = random(height);",
+      "demonstrates": "Using the canvas dimensions to ensure random values cover the whole screen.",
+      "common_issue": "If you only use `random()`, your circles will all be tiny and stuck in the top-left corner (0 to 1 range)."
+    },
+    {
+      "timecode": "07:30",
+      "language": "javascript",
+      "code": "randomX = random(200, width);\nrandomY = random(100, height);",
+      "demonstrates": "Constraining randomness to a specific sub-section of the canvas.",
+      "common_issue": "The order of arguments matters; it must be (min, max)."
+    },
+    {
+      "timecode": "08:30",
+      "language": "javascript",
+      "code": "randomX = random([50, 100, 200, 300]);",
+      "demonstrates": "Picking a value from a specific list of numbers using square brackets.",
+      "common_issue": "Forgetting the square brackets inside the parentheses."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "05:47",
+      "symptom": "Nothing shows up on the canvas / nothing whatsoever appears.",
+      "cause": "Forgetting to pass the variables into the shape function (e.g., `circle(20)` instead of `circle(x, y, 20)`).",
+      "fix": "Ensure the variables you assigned the random values to are passed as arguments in the drawing function.",
+      "related_concept": "function arguments"
+    },
+    {
+      "timecode": "06:09",
+      "symptom": "The shapes are all clustered in a tiny 1x1 pixel area at the top left.",
+      "cause": "Using `random()` without arguments, which only returns values between 0 and 1.",
+      "fix": "Use `random(width)` or `random(min, max)` to scale the numbers up.",
+      "related_concept": "random() arguments"
+    },
+    {
+      "timecode": "08:54",
+      "symptom": "It's hard to see anything happening / the screen is just a solid color.",
+      "cause": "Drawing the background every frame without any transparency, covering up previous shapes.",
+      "fix": "Use a low alpha value in the background function (e.g., `background(220, 20)`) to create trails.",
+      "related_concept": "background() alpha"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "02:17",
+      "type": "insight",
+      "description": "The instructor explains that computers aren't actually random, introducing the concept of pseudo-randomness."
+    },
+    {
+      "timecode": "05:47",
+      "type": "warning",
+      "description": "The instructor demonstrates a common error where shapes don't appear because variables weren't passed into the function."
+    },
+    {
+      "timecode": "09:34",
+      "type": "transition",
+      "description": "Summary of the three ways to use `random()`: no arguments, two arguments (range), and one argument (array/list)."
+    }
+  ],
+  "prerequisites": [
+    "Basic p5.js setup (setup and draw functions)",
+    "Understanding of variables",
+    "Basic coordinate system (x, y)"
+  ],
+  "leads_to": [
+    "Noise (Perlin/Simplex)",
+    "Animated randomness",
+    "2D Noise with time"
+  ],
+  "student_questions": [
+    "Why are all my circles stuck in the top left corner?",
+    "How do I make a shape appear at a random position on the screen?",
+    "What is the difference between randomness and noise?",
+    "Why isn't anything showing up even though my code looks right?",
+    "How do I pick a random number from a specific list of numbers?",
+    "Can computers actually be truly random?",
+    "How do I make a shape appear in a specific area, like only on the right side?",
+    "How do I make random shapes leave a trail behind them?",
+    "What does random(width) actually do?",
+    "How do I use the random function to pick from a list of specific values?"
+  ],
+  "video_id": "1-random",
+  "video_title": "1 random",
+  "video_file": "1 random.mp4",
+  "video_url": null,
+  "week": "week 4"
+}

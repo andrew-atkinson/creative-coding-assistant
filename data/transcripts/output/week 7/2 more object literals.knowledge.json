@@ -1,0 +1,118 @@
+{
+  "topic": "Transitioning from individual variables to object literals and functional abstraction for managing multiple entities.",
+  "concepts": [
+    {
+      "name": "object literals",
+      "timecode": "00:06",
+      "explanation": "Grouping related properties (like x and y coordinates) into a single entity using curly braces `{}`. The instructor describes them as having 'key-value pairs' where the key is the name and the value is assigned using a colon.",
+      "why_it_matters": "It prevents code bloat and makes it easier to manage many similar items without creating dozens of separate variables."
+    },
+    {
+      "name": "dot notation",
+      "timecode": "03:02",
+      "explanation": "Using a period to access the internal properties of an object, like `ufo1.x` or `object.s`.",
+      "why_it_matters": "It allows you to reach inside an object to read or change its specific data."
+    },
+    {
+      "name": "functional abstraction (passing objects as parameters)",
+      "timecode": "06:03",
+      "explanation": "Instead of passing individual numbers like `ufo(x, y)`, you pass the entire object as a single argument: `moveUfo(ufo)`. The function then uses the object's internal properties to do its work.",
+      "why_it_matters": "It makes functions much more scalable and reusable. You can write one function that controls 100 different objects without changing the function code."
+    },
+    {
+      "name": "encapsulation of properties",
+      "timecode": "04:18",
+      "explanation": "Adding custom properties like `s` (speed) directly into the object literal so each entity can have its own unique behavior.",
+      "why_it_matters": "It allows every object to move at a different speed while still using the same logic."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "00:34",
+      "language": "javascript",
+      "code": "let ufo1 = { x: 0, y: 100 };",
+      "demonstrates": "Creating an object literal with two properties (x and y) using key-value pairs.",
+      "common_issue": "Using an equal sign instead of a colon inside the braces."
+    },
+    {
+      "timecode": "05:30",
+      "language": "javascript",
+      "code": "if (ufo1.x > width) {\n  ufo1.x = -50;\n}",
+      "demonstrates": "Using an object property to implement screen wrap-around logic.",
+      "common_issue": null
+    },
+    {
+      "timecode": "08:06",
+      "language": "javascript",
+      "code": "function moveUfo(obj) {\n  obj.x = obj.x + obj.s;\n  if (obj.x > width) {\n    obj.x = -50;\n  }\n}",
+      "demonstrates": "A reusable function that takes an object as a parameter and updates its position based on its internal speed property.",
+      "common_issue": "Trying to pass individual values (x, y) instead of the whole object."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "01:02",
+      "symptom": "The code is getting longer and more 'messy' as you add more objects.",
+      "cause": "Using separate variables (x1, y1, x2, y2...) for every single property of every object.",
+      "fix": "Refactor the individual variables into object literals.",
+      "related_concept": "object literals"
+    },
+    {
+      "timecode": "05:16",
+      "symptom": "Objects fly off the screen and never come back.",
+      "cause": "Missing logic to reset the object's position when it exceeds the canvas width.",
+      "fix": "Add an `if` statement to check if `obj.x > width` and reset it.",
+      "related_concept": "encapsulation of properties"
+    },
+    {
+      "timecode": "06:34",
+      "symptom": "The function doesn't know which object to move.",
+      "cause": "Passing specific values (x, y) instead of the whole object to a function designed for objects.",
+      "fix": "Pass the entire object as the parameter: `moveUfo(ufo1)`.",
+      "related_concept": "functional abstraction"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:02",
+      "type": "warning",
+      "description": "The instructor notes that the current approach is 'getting more code rather than less,' creating a motivation to learn objects."
+    },
+    {
+      "timecode": "03:23",
+      "type": "insight",
+      "description": "Tidy code is good code; organizing data into objects makes the script easier to read and maintain."
+    },
+    {
+      "timecode": "06:03",
+      "type": "demonstration",
+      "description": "The pivotal shift from passing coordinates to passing the whole object, demonstrating true scalability."
+    }
+  ],
+  "prerequisites": [
+    "basic javascript variables",
+    "p5.js draw loop",
+    "basic function syntax"
+  ],
+  "leads_to": [
+    "Arrays of objects",
+    "Classes and Constructors (OOP)"
+  ],
+  "student_questions": [
+    "Why is my code getting so long and messy?",
+    "How do I group x and y together so they are easier to manage?",
+    "How can I make 100 objects move at different speeds without writing 100 functions?",
+    "What is the difference between a variable and an object property?",
+    "How do I use one function to move many different things?",
+    "Why am I getting errors when I try to pass my object into a function?",
+    "How do I make an object wrap around the screen?",
+    "What is a key-value pair?",
+    "How do I access a variable that is inside an object?"
+  ],
+  "video_id": "2-more-object-literals",
+  "video_title": "2 more object literals",
+  "video_file": "2 more object literals.mp4",
+  "video_url": null,
+  "week": "week 7",
+  "module": "Module 3 - Generation and Life"
+}

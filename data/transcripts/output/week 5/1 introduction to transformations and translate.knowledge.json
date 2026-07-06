@@ -1,0 +1,85 @@
+{
+  "topic": "Introduction to 2D geometric transformations, specifically focusing on how the translate() function manipulates the coordinate system rather than just moving objects.",
+  "concepts": [
+    {
+      "name": "transformations",
+      "timecode": "00:06",
+      "explanation": "Ways of stretching, rotating, and moving shapes around using specific commands.",
+      "why_it_matters": "They are the fundamental tools for creating complex movement and distortion in digital art."
+    },
+    {
+      "name": "translate()",
+      "timecode": "01:02",
+      "explanation": "A function that moves the coordinate system (the origin) to a new location, rather than just moving an object.",
+      "why_it_matters": "It is the basis for all other transformations because rotations and scales always occur relative to the origin (0,0)."
+    },
+    {
+      "name": "coordinate system manipulation",
+      "timecode": "02:44",
+      "explanation": "The idea that you aren't moving the shapes themselves, but rather shifting the entire grid/axes they are drawn on.",
+      "why_it_matters": "Understanding this is crucial for performing rotations around an object's center rather than the corner of the screen."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "04:17",
+      "language": "processing",
+      "code": "translate(mouseX, mouseY);\nrect(0, 0, 50, 50);",
+      "demonstrates": "Moving the origin to the mouse position and drawing a rectangle at that new (0,0) so it follows the mouse.",
+      "common_issue": "If you draw a rectangle at (mouseX, mouseY) AFTER translating to (mouseX, mouseY), the shape will appear offset by its own width/height."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "03:05",
+      "symptom": "Why do I need translate if I can just change the x and y coordinates of my shape?",
+      "cause": "The student is only thinking about translation (moving) and hasn't considered rotation yet.",
+      "fix": "Use translate() to move the origin; this is necessary because all rotations happen around (0,0).",
+      "related_concept": "translate()"
+    },
+    {
+      "timecode": "01:26",
+      "symptom": "My shape is rotating around the corner of the screen instead of its own center.",
+      "cause": "All transformations (rotate, scale) are calculated relative to the origin (0,0).",
+      "fix": "Use translate() to move the origin to the center of the object before applying rotation.",
+      "related_concept": "coordinate system manipulation"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:02",
+      "type": "insight",
+      "description": "The instructor reframes translation from 'moving things' to 'moving the coordinate system,' which is a critical mental model shift."
+    },
+    {
+      "timecode": "03:41",
+      "type": "warning",
+      "description": "The instructor avoids diving into complex code immediately to prevent cognitive overload, focusing first on the spatial logic."
+    }
+  ],
+  "prerequisites": [
+    "Basic understanding of 2D Cartesian coordinate systems (x and y axes)",
+    "Knowledge of basic drawing primitives like circles and rectangles"
+  ],
+  "leads_to": [
+    "rotations",
+    "scaling",
+    "shearing",
+    "push and pop (state management)"
+  ],
+  "student_questions": [
+    "How do I move a shape?",
+    "Why are my shapes moving when I change the origin?",
+    "What is translate in coding?",
+    "I can just use x and y to move things, so why do I need translate?",
+    "Why does my shape rotate around the corner of the screen instead of itself?",
+    "How do I make a shape follow my mouse?",
+    "What are transformations?"
+  ],
+  "video_id": "1-introduction-to-transformations-and-translate",
+  "video_title": "1 introduction to transformations and translate",
+  "video_file": "1 introduction to transformations and translate.mp4",
+  "video_url": null,
+  "week": "week 5",
+  "module": "Module 2 – Chaos and Control"
+}

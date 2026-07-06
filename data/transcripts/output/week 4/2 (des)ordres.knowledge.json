@@ -1,0 +1,106 @@
+{
+  "topic": "Using nested loops and randomness to create generative art patterns, specifically recreating the aesthetic of Vera Molnar's work through controlled chaos.",
+  "concepts": [
+    {
+      "name": "rectMode(CENTER)",
+      "timecode": "01:41",
+      "explanation": "Instead of drawing rectangles from the top-left corner, this setting makes the (x, y) coordinates represent the center of the shape.",
+      "why_it_matters": "It makes drawing concentric shapes (shapes inside each other) much easier because you don't have to recalculate the top-left corner for every smaller size."
+    },
+    {
+      "name": "while loop",
+      "timecode": "04:07",
+      "explanation": "A loop that continues to run as long as a specific condition is met (e.g., 'as long as the current size is greater than zero'), rather than running for a fixed number of times.",
+      "why_it_matters": "It allows you to repeat an action until a value reaches a certain threshold, which is perfect for diminishing geometric scales."
+    },
+    {
+      "name": "stochastic control (randomness in loops)",
+      "timecode": "05:32",
+      "explanation": "Using an `if` statement with `random()` inside a loop to decide whether or not to execute the drawing command.",
+      "why_it_matters": "It introduces 'visual tension' by breaking the perfect order of a grid, creating texture and organic-feeling patterns."
+    },
+    {
+      "name": "nested loops",
+      "timecode": "06:24",
+      "explanation": "Placing one loop inside another (e.g., a `while` loop inside a `for` loop) to create complex structures like grids of concentric shapes.",
+      "why_it_matters": "This is how you move from drawing a single pattern to filling an entire canvas with repetitive, complex structures."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "05:30",
+      "language": "javascript",
+      "code": "while (currSize > 0) {\n  if (random() < 0.7) {\n    rect(50, 50, currSize);\n  }\n  currSize -= 5;\n}",
+      "demonstrates": "Drawing a series of concentric rectangles where each rectangle has a 70% chance of being drawn before the size decreases.",
+      "common_issue": "If you put `currSize -= 5` inside the `if` statement, the loop might never end because the size only decreases when a rectangle is actually drawn."
+    },
+    {
+      "timecode": "11:00",
+      "language": "javascript",
+      "code": "for (let x = 0; x < width; x += size) {\n  for (let y = 0; y < height; y += size) {\n    currSize = size;\n    while (currSize > 0) {\n      if (random() < 0.7) {\n        rect(x + 50, y + 50, currSize);\n      }\n      currSize -= 5;\n    }\n  }\n}",
+      "demonstrates": "A full grid of randomized concentric squares.",
+      "common_issue": "Forgetting to reset `currSize` inside the outer loops, which causes the pattern to only draw once and then stop."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "09:09",
+      "symptom": "The code only draws one set of shapes and then nothing else happens.",
+      "cause": "The variable used for the loop condition (like `currSize`) was not reset to its starting value at the beginning of each new iteration of the outer loop.",
+      "fix": "Re-assign the starting value to the variable (e.g., `currSize = size`) inside the first loop.",
+      "related_concept": "variable scope and state persistence"
+    },
+    {
+      "timecode": "06:01",
+      "symptom": "The rectangle is drawn at the wrong location or doesn't appear as expected.",
+      "cause": "The logic for where the shape is drawn (the `if` statement) was applied to the wrong part of the code.",
+      "fix": "Ensure the `if (random() < threshold)` wraps only the drawing command, not the variable decrement.",
+      "related_concept": "control flow"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "04:18",
+      "type": "warning",
+      "description": "The instructor warns to turn off auto-refresh when working with loops to prevent the browser from constantly restarting while you are debugging."
+    },
+    {
+      "timecode": "09:09",
+      "type": "insight",
+      "description": "A moment of 'productive struggle' where the instructor realizes why the loop isn't repeating and demonstrates how to debug variable state."
+    },
+    {
+      "timecode": "11:37",
+      "type": "insight",
+      "description": "Connecting the technical implementation of randomness back to the artistic concept of 'order vs disorder'."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript syntax",
+    "p5.js setup and draw functions",
+    "Basic for loops",
+    "Basic geometric primitives (rect)"
+  ],
+  "leads_to": [
+    "Perlin Noise",
+    "Advanced Generative Art",
+    "Complex algorithmic patterns"
+  ],
+  "student_questions": [
+    "Why are my shapes only appearing once even though I have a loop?",
+    "How do I make a grid of shapes instead of just one shape?",
+    "My loop won't stop or it only draws once, what am I doing wrong?",
+    "How do I make a pattern look 'random' but still stay in a grid?",
+    "What is the difference between a for loop and a while loop?",
+    "How do I draw shapes inside other shapes automatically?",
+    "Why is my rectangle drawing from the corner instead of the middle?",
+    "How do I control how many random shapes actually show up?",
+    "I'm trying to make a grid but everything is overlapping in one spot, how do I fix it?",
+    "How do I use randomness to create texture in my art?"
+  ],
+  "video_id": "2-des-ordres",
+  "video_title": "2 (des)ordres",
+  "video_file": "2 (des)ordres.mp4",
+  "video_url": null,
+  "week": "week 4"
+}

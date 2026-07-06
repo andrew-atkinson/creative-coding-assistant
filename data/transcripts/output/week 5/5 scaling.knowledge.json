@@ -1,0 +1,133 @@
+{
+  "topic": "Using the scale function to resize shapes and coordinate systems, including uniform scaling, non-uniform stretching, dynamic interactivity with mouse movement, and using negative values to mirror or invert elements.",
+  "concepts": [
+    {
+      "name": "scale() function",
+      "timecode": "00:39",
+      "explanation": "Stretching the canvas/coordinate system. It's not just making an object bigger; it's transforming the entire grid, which affects everything drawn after it (like stroke weight).",
+      "why_it_matters": "To understand that transformations affect the entire coordinate system, not just the individual shape."
+    },
+    {
+      "name": "Uniform vs. Non-uniform Scaling",
+      "timecode": "02:07",
+      "explanation": "Providing one argument scales both X and Y equally (uniform). Providing two arguments allows you to stretch only one axis by setting the other to 1 (non-uniform).",
+      "why_it_matters": "Allows for specific stretching (like making something wider without making it taller)."
+    },
+    {
+      "name": "Dynamic Scaling",
+      "timecode": "02:35",
+      "explanation": "Using variables like `mouseX` inside the scale function to make the size change based on user input.",
+      "why_it_matters": "Enables interactivity where the visual size responds to the user's mouse position."
+    },
+    {
+      "name": "Coordinate Inversion (Mirroring)",
+      "timecode": "05:15",
+      "explanation": "Using a negative number in the scale function (like `scale(1, -1)`) to flip or mirror the coordinate system.",
+      "why_it_matters": "Essential for creating mirrored effects or flipping text/shapes upside down."
+    },
+    {
+      "name": "Isolating Transformations with push() and pop()",
+      "timecode": "03:43",
+      "explanation": "Using `push()` and `pop()` to 'wrap' a transformation so it only affects the code inside that block, preventing the scale from 'leaking' to other shapes.",
+      "why_it_matters": "Prevents a single transformation from accidentally affecting every subsequent object on the canvas."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:40",
+      "language": "processing",
+      "code": "scale(2);",
+      "demonstrates": "Uniform scaling: makes the object twice as large in both X and Y directions.",
+      "common_issue": "The stroke weight will also appear twice as thick."
+    },
+    {
+      "timecode": "02:16",
+      "language": "processing",
+      "code": "scale(2, 1);",
+      "demonstrates": "Non-uniform scaling: stretches the object horizontally by 2x while keeping height the same.",
+      "common_issue": "If you forget to set the second parameter to 1, it will scale both dimensions."
+    },
+    {
+      "timecode": "02:35",
+      "language": "processing",
+      "code": "scale(mouseX / 200);",
+      "demonstrates": "Dynamic scaling: the scale factor changes based on where the mouse is.",
+      "common_issue": "If `mouseX` is 0, the scale becomes 0 and the object disappears."
+    },
+    {
+      "timecode": "05:15",
+      "language": "processing",
+      "code": "scale(1, -1);",
+      "demonstrates": "Inversion/Mirroring: flips the coordinate system vertically.",
+      "common_issue": null
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "01:50",
+      "symptom": "My lines/strokes look way too thick when I scale up.",
+      "cause": "Scaling transforms the entire coordinate system, including stroke weight.",
+      "fix": "Understand that scale affects everything; you may need to compensate with a smaller stroke weight or use push/pop to isolate it.",
+      "related_concept": "scale() function"
+    },
+    {
+      "timecode": "03:43",
+      "symptom": "I scaled one shape, but now all my other shapes are also huge/stretched.",
+      "cause": "The transformation was not isolated and 'leaked' to the rest of the code.",
+      "fix": "Wrap the transformation in `push();` and `pop();` blocks.",
+      "related_concept": "push() and pop()"
+    },
+    {
+      "timecode": "05:15",
+      "symptom": "My text is upside down or mirrored.",
+      "cause": "A negative value was used in the scale function (e.g., `scale(1, -1)`).",
+      "fix": "Use positive values for standard orientation or use `push/pop` to ensure the flip only applies to the intended object.",
+      "related_concept": "Coordinate Inversion"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:50",
+      "type": "warning",
+      "description": "Instructor points out that scaling affects stroke weight, a common point of confusion for beginners."
+    },
+    {
+      "timecode": "05:15",
+      "type": "demonstration",
+      "description": "Demonstrating how negative scaling creates a mirror effect."
+    },
+    {
+      "timecode": "07:16",
+      "type": "demonstration",
+      "description": "Combining scale, rotation, and angle mode to show how transformations can be compounded."
+    }
+  ],
+  "prerequisites": [
+    "Basic 2D coordinate system (X and Y axes)",
+    "Understanding of the origin (0,0)",
+    "Knowledge of translate() and rotate()"
+  ],
+  "leads_to": [
+    "Complex transformation compositions",
+    "Advanced interactive animations",
+    "Matrix transformations"
+  ],
+  "student_questions": [
+    "How do I make a shape bigger?",
+    "Why are my lines so thick when I scale things up?",
+    "How do I stretch a shape only horizontally?",
+    "Why is my text upside down?",
+    "How can I make a shape grow when I move my mouse?",
+    "Why did all my shapes change size after I scaled one of them?",
+    "How do I mirror an object?",
+    "What does scale(1, -1) do?",
+    "How do I make something change size based on the mouse position?",
+    "Can I scale just one side of a shape?"
+  ],
+  "video_id": "5-scaling",
+  "video_title": "5 scaling",
+  "video_file": "5 scaling.mp4",
+  "video_url": null,
+  "week": "week 5",
+  "module": "Module 2 – Chaos and Control"
+}

@@ -1,0 +1,98 @@
+{
+  "topic": "Implementing rotational transformations in a 2D coordinate system and understanding the relationship between translation and rotation.",
+  "concepts": [
+    {
+      "name": "rotate() function",
+      "timecode": "01:41",
+      "explanation": "A function used to turn the coordinate system by a certain angle. The instructor emphasizes that you aren't rotating the object itself, but rather the entire coordinate system (the axes) upon which the object is drawn.",
+      "why_it_matters": "Understanding that rotation affects the axes, not just the shape, is crucial for controlling where an object spins from."
+    },
+    {
+      "name": "angleMode(DEGREES)",
+      "timecode": "00:43",
+      "explanation": "A setting that changes how angles are calculated. By default, computers use radians, but this function allows you to use degrees (0-360), which is more intuitive for humans.",
+      "why_it_matters": "It prevents confusion when trying to calculate rotations using familiar numbers like 90 or 180 degrees."
+    },
+    {
+      "name": "rectMode(CENTER)",
+      "timecode": "01:05",
+      "explanation": "A setting that changes the origin of a rectangle from its top-left corner to its geometric center.",
+      "why_it_matters": "When rotating, using the center as the origin makes it much easier to spin an object around its own axis rather than swinging it around a corner."
+    },
+    {
+      "name": "The Translation-Rotation Pattern",
+      "timecode": "02:11",
+      "explanation": "To make an object spin around its own center, you must first `translate()` the origin to that object's position and then call `rotate()`.",
+      "why_it_matters": "Without this sequence, objects will rotate around the (0,0) corner of the canvas, causing them to 'swing' wildly across the screen."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:55",
+      "language": "javascript",
+      "code": "rotate(mouseX);",
+      "demonstrates": "Rotating the coordinate system based on the horizontal position of the mouse.",
+      "common_issue": "The object will swing around the canvas origin (0,0) instead of spinning in place."
+    },
+    {
+      "timecode": "02:34",
+      "language": "javascript",
+      "code": "translate(width/2, height/2);\nrotate(angle);\nrect(0, 0, 50, 50);",
+      "demonstrates": "The correct way to rotate an object around its own center: move the origin to the target location, rotate, then draw at (0,0).",
+      "common_issue": "If you draw the rectangle at (50, 50) after translating to the center, it will rotate around the canvas center but appear offset from its own axis."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "02:11",
+      "symptom": "My shape is swinging wildly across the screen instead of spinning in place.",
+      "cause": "The rotation is happening around the canvas origin (0,0) because `translate()` wasn't used to move the axis to the object first.",
+      "fix": "Use `translate(x, y)` to move the origin to the object's position before calling `rotate()`.",
+      "related_concept": "translation"
+    },
+    {
+      "timecode": "02:45",
+      "symptom": "The object is rotating around the center of the screen, but it's not spinning on its own axis.",
+      "cause": "The rectangle is being drawn at an offset (like 50, 50) relative to the new translated origin.",
+      "fix": "Draw the shape at (0, 0) after translating to its position so that its center aligns with the new origin.",
+      "related_concept": "rectMode(CENTER)"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "02:11",
+      "type": "warning",
+      "description": "The instructor highlights the 'problem' of rotating around (0,0), which serves as a crucial teaching moment to explain why translation is necessary for controlled rotation."
+    },
+    {
+      "timecode": "04:09",
+      "type": "insight",
+      "description": "The instructor clarifies the fundamental concept that we are rotating the coordinate system, not the object itself."
+    }
+  ],
+  "prerequisites": [
+    "Basic 2D drawing functions (rect, fill)",
+    "Understanding of the X and Y coordinate system",
+    "Knowledge of the translate() function"
+  ],
+  "leads_to": [
+    "Compounding transformations",
+    "Scaling",
+    "Shearing"
+  ],
+  "student_questions": [
+    "Why is my square flying all over the screen when I rotate it?",
+    "How do I make a shape spin in place?",
+    "What is the difference between radians and degrees?",
+    "Why do I have to use translate before rotate?",
+    "My shape is rotating, but it's not spinning around its center. How do I fix that?",
+    "How can I make a shape rotate based on my mouse movement?",
+    "What does rectMode(CENTER) actually do?"
+  ],
+  "video_id": "2a-rotations",
+  "video_title": "2a rotations",
+  "video_file": "2a rotations.mp4",
+  "video_url": null,
+  "week": "week 5",
+  "module": "Module 2 – Chaos and Control"
+}

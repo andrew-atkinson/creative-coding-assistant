@@ -1,0 +1,118 @@
+{
+  "topic": "Using functions to build complex patterns through composition, abstraction, and loops.",
+  "concepts": [
+    {
+      "name": "functional composition",
+      "timecode": "01:28",
+      "explanation": "The instructor demonstrates how to make one function call another (e.g., `whirligig` calling `cookie`) to build complex visual systems from simple shapes.",
+      "why_it_matters": "It allows for rapid increases in visual complexity without writing massive amounts of repetitive code."
+    },
+    {
+      "name": "abstraction",
+      "timecode": "06:15",
+      "explanation": "Taking a repetitive block of code (like scaling, rotating, and drawing) and wrapping it in a single function name to hide the complexity.",
+      "why_it_matters": "It reduces cognitive load by replacing manual, repetitive tasks with reusable logic."
+    },
+    {
+      "name": "hoisting",
+      "timecode": "05:01",
+      "explanation": "The concept that JavaScript preemptively checks and gathers all functions, allowing you to reference a function in your code even if it is defined further down the page.",
+      "why_it_matters": "It gives you flexibility in how you organize your code structure."
+    },
+    {
+      "name": "function parameters and arguments",
+      "timecode": "05:33",
+      "explanation": "Using variables inside a function definition (parameters) that take on specific values when the function is called (arguments), like passing `mouseX` into a parameter named `x`.",
+      "why_it_matters": "It makes functions flexible and reusable rather than being stuck with hard-coded values."
+    },
+    {
+      "name": "cumulative transformations",
+      "timecode": "03:13",
+      "explanation": "The idea that calling `scale()` or `rotate()` multiple times in a row builds upon the previous transformation.",
+      "why_it_matters": "Understanding this is essential for creating spirals and complex geometric patterns."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "03:30",
+      "language": "javascript",
+      "code": "function draw() {\n  background(50, 100, 150);\n  push();\n  translate(mouseX, mouseY);\n  rotate(frameCount);\n  cookie(0, 0);\n  scale(0.9);\n  rotate(45);\n  cookie(0, 0);\n  scale(0.9);\n  rotate(45);\n  cookie(0, 0);\n  pop();\n}",
+      "demonstrates": "How to manually create a spiral effect by repeating transformations and function calls.",
+      "common_issue": "Forgetting to use `push()` and `pop()` will cause transformations to leak into the next frame or other shapes."
+    },
+    {
+      "timecode": "07:16",
+      "language": "javascript",
+      "code": "function whirligig(x, y) {\n  push();\n  translate(x, y);\n  rotate(frameCount);\n  cookie(0, 0);\n  for (let i = 0; i < 25; i++) {\n    scale(0.9);\n    cookie(0, 0);\n    rotate(45);\n  }\n  pop();\n}",
+      "demonstrates": "Refactoring repetitive manual code into a `for` loop inside a function to create a complex spiral.",
+      "common_issue": "Incorrectly placing the `scale` or `rotate` inside/outside the loop can break the pattern."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "02:30",
+      "symptom": "The shape is not rotating around its own center.",
+      "cause": "Applying `translate(mouseX, mouseY)` inside the function while also having it in `draw()`, or not resetting the origin to (0,0) before rotating.",
+      "fix": "Draw the shape at `(0, 0)` inside the function and handle the position/rotation in a parent function using `push()` and `pop()`.",
+      "related_concept": "coordinate systems / transformations"
+    },
+    {
+      "timecode": "08:19",
+      "symptom": "Error: rotate() was expecting Number... received an empty variable instead.",
+      "cause": "Passing a parameter to a function that hasn't been defined or passed in the function call (e.g., calling `whirligig(x, y)` when it expects `whirligig(x, y, angle)`).",
+      "fix": "Ensure the number of arguments passed in the call matches the number of parameters defined in the function.",
+      "related_concept": "parameters and arguments"
+    },
+    {
+      "timecode": "09:32",
+      "symptom": "The function can only ever draw one specific color.",
+      "cause": "Hard-coding `fill()` values inside the function instead of using a parameter.",
+      "fix": "Add a color parameter to the function definition and pass it as an argument.",
+      "related_concept": "function design philosophy"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:28",
+      "type": "demonstration",
+      "description": "The instructor shows the first instance of a function calling another to create a 'whirligig' effect."
+    },
+    {
+      "timecode": "05:01",
+      "type": "insight",
+      "description": "Explanation of hoisting, explaining why function order in the file doesn't always matter."
+    },
+    {
+      "timecode": "09:03",
+      "type": "warning",
+      "description": "A discussion on function design: having too many parameters makes it complex, while too few makes it restrictive."
+    }
+  ],
+  "prerequisites": [
+    "basic p5.js drawing primitives",
+    "understanding of translate, rotate, and scale",
+    "basic function syntax (declaration and calling)"
+  ],
+  "leads_to": [
+    "passing complex data types (colors)",
+    "advanced algorithmic art",
+    "cyclical functions (sine/cosine)"
+  ],
+  "student_questions": [
+    "How do I make one shape repeat in a pattern?",
+    "Why is my rotation happening from the corner of the screen instead of the center of the shape?",
+    "How do I make a function that draws something more complex than just one circle?",
+    "What is hoisting and why can I call my function before it's written in the code?",
+    "Why am I getting an error saying a variable is undefined when I pass it to a function?",
+    "How do I make my shape move with the mouse using a function?",
+    "Why are all my shapes overlapping in one spot?",
+    "How do I use a loop inside a function to make a spiral?",
+    "What's the best way to decide how many parameters my function needs?"
+  ],
+  "video_id": "3-functions-calling-functions",
+  "video_title": "3 functions calling functions",
+  "video_file": "3 functions calling functions.mp4",
+  "video_url": null,
+  "week": "week 6",
+  "module": "Module 3 - Generation and Life"
+}

@@ -1,0 +1,67 @@
+{
+  "video": "1. Data.mp4",
+  "vision_model": "unsloth-gemma-4-26b-a4b-it-qat-oq4",
+  "frame_interval": 30,
+  "descriptions": [
+    {
+      "timestamp": 0.0,
+      "description": "The image shows a dark background with a faint green grid pattern. The following text is displayed in a teal/green monospace font:\n\n```text\nData\n\nCSV/TSV - Comma/Tab Separated Values\n\nJSON - JavaScript Object Notation\n```"
+    },
+    {
+      "timestamp": 30.0,
+      "description": "The image shows a dark background with a faint green grid pattern. The following text is displayed in a teal-colored, monospaced font:\n\n```text\nData\n\nCSV/TSV - Comma/Tab Separated Values\n\nJSON - JavaScript Object Notation\n```"
+    },
+    {
+      "timestamp": 60.0,
+      "description": "The image shows a dark background with a green grid pattern, containing the following text:\n\n```text\nData\n\nCSV/TSV - Comma/Tab Separated Values\n\nJSON - JavaScript Object Notation\n```\n\nThe text is centered on the screen and appears to be a title slide or informational overlay rather than an active code editor. A mouse cursor is visible near the bottom right of the text."
+    },
+    {
+      "timestamp": 90.0,
+      "description": "The screen displays a dark background with a faint grid pattern, containing the following text in a green monospace font:\n\n```text\nData\n\nCSV/TSV - Comma/Tab Separated Values\n\nJSON - JavaScript Object Notation\n```\n\nThe text is centered on the screen. On the left edge, there is a vertical floating toolbar with several icons (an arrow, a document icon, an eye icon, and a return arrow). At the bottom center, there is a small control bar with icons for drawing tools and a red \"Stop\" button. In the bottom right corner, there are zoom controls (\"-\" and \"+\")."
+    },
+    {
+      "timestamp": 120.0,
+      "description": "The image shows a data table displayed on a dark, gridded background.\n\n**Visual output:**\nThe table contains four columns with orange headers: \"ID\", \"Name\", \"Lat\", \"Long\", and \"Pop.\". The rows contain the following data:\n*   **Row 1:** `1`, `London`, `-50`, `0`, `8m`\n*   **Row 2:** `2`, `New York`, `-70`, `-40`, `8m`\n*   **Row 3:** `3`, `Amsterdam`, `-50`, `5`, `2m`\n\n**UI state:**\nThe interface appears to be a web-based coding environment or data visualization tool, indicated by the dark theme and grid pattern. A small \"New Label\" text is visible in the top left corner of the table area."
+    },
+    {
+      "timestamp": 150.0,
+      "description": "The image shows a data table displayed on a dark, gridded background.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: A table with four columns and three rows of data is displayed. The headers are \"ID\", \"Name\", \"Lat\", \"Long\", and \"Pop.\" in orange text. The data rows are:\n   - 1 | London | -50 | 0 | 8m\n   - 2 | New York | -70 | -40 | 8m\n   - 3 | Amsterdam | -50 | 5 | 2m\n3. **UI state**: The interface appears to be a data visualization or mapping tool, indicated by the dark grid background and the presence of geographic coordinates. A small \"New Table\" label is visible in the top left corner."
+    },
+    {
+      "timestamp": 180.0,
+      "description": "The image shows a digital canvas with a table and various UI elements from what appears to be a design or prototyping tool.\n\n**Visual output:**\nA table with four columns labeled \"ID\", \"Name\", \"Lat\", \"Long\", and \"Pop.\" is displayed against a dark grid background. The rows contain the following data:\n*   1 | London | -50 | 0 | 8m\n*   2 | New York | -70 | -40 | 8m\n*   3 | Amsterdam | -50 | 5 | 2m\n\n**UI state:**\nThe interface includes a floating toolbar with text formatting options (font \"IBM Plex...\", alignment, etc.) and a sidebar on the left containing icons for selection, text, and layers. At the bottom center, there is a small control bar with icons and a red \"Stop\" button. A blue bounding box surrounds the number \"1\" at the bottom of the screen."
+    },
+    {
+      "timestamp": 210.0,
+      "description": "The image shows a web-based design or prototyping tool, likely Figma, with a grid background.\n\n**Visual output:**\nA table is displayed at the top containing four columns: \"ID\", \"Name\", \"Lat\", \"Long\", and \"Pop.\". The rows contain the following data:\n*   1 | London | -50 | 0 | 8m\n*   2 | New York | -70 | -40 | 8m\n*   3 | Amsterdam | [unreadable] | [unreadable] | 2m\n\nBelow the table, a text box contains green monospace text that appears to be data related to the table:\n`1 London -50 0 8000000`\n`2 New York -70 -40`\n`8000000`\n\n**UI state:**\nThe interface includes a vertical toolbar on the left with icons for selection, text, and various drawing tools. A horizontal properties/formatting bar is visible above the green text box, showing font settings (IBM Plex Mono), alignment options, and color/layer controls. A small \"Stop\" button is visible at the bottom center."
+    },
+    {
+      "timestamp": 240.0,
+      "description": "The image shows a web-based design or prototyping tool with a grid background.\n\n1. **Code**: No code editor is visible in the image.\n2. **Visual output**: A table with four columns (ID, Name, Lat, Long, Pop.) is displayed. The rows contain the following data:\n   - Row 1: `1`, `London`, `-50`, `0`, `8m`\n   - Row 2: `2`, `New York`, `-70`, `-40`, `8m`\n   - Row 3: Partially visible, showing `Amsterdam`.\n   Below the table, a text box contains the raw data for the first two rows in green and blue text:\n   `1 London -50 0 8000000`\n   `2 New York -70 -40 8000000`\n3. **UI state**: The interface includes a floating toolbar with text editing options (font, size, bold, alignment) and a sidebar on the left containing various tool icons. A \"Stop\" button is visible at the bottom center."
+    },
+    {
+      "timestamp": 270.0,
+      "description": "The image shows a dark-themed digital whiteboard or canvas with a grid pattern.\n\n**Visual output:**\nThe following text is centered on the screen in a teal-colored monospace font:\nData\n\nCSV/TSV – Comma/Tab Separated Values\n\nJSON – JavaScript Object Notation\n\n**UI state:**\nA vertical toolbar with various icons (selection, brush, text, eraser, etc.) is visible on the left edge. A bottom toolbar contains icons for tools and a red \"Stop\" button, along with zoom controls (+/-) in the bottom right corner."
+    },
+    {
+      "timestamp": 300.0,
+      "description": "The image shows a code editor interface, likely within an online development environment or design tool.\n\n1. **Code**: The visible code is in JSON format:\n```json\n{\n\"ID\": 0,\n\"Name\": \"London\",\n\"Long\": 0,\n\"Lat\": -50\n},\n{\n\"ID\": 1,\n\"Name\": \"New York\",\n\"Long\": -70,\n\"Lat\": -40\n}\n```\n\n2. **Visual output**: The code is displayed on a dark, gridded background with syntax highlighting (blue for keys, orange/yellow for strings, and red for negative numbers).\n\n3. **UI state**: A toolbar at the top contains text formatting options (font family \"IBM Plex...\", font size 144, bold, alignment) and various icons. A vertical toolbar on the left contains selection and drawing tools, while a bottom toolbar includes zoom controls and a red \"Stop\" button."
+    },
+    {
+      "timestamp": 330.0,
+      "description": "The image shows a web-based code editor displaying JSON data on a dark grid background.\n\n**Code**:\n```json\n[\n  {\n    \"ID\": 0,\n    \"Name\": \"London\",\n    \"Long\": 0,\n    \"Lat\": -50\n  },\n  {\n    \"ID\": 1,\n    \"Name\": \"New York\",\n    \"Long\": -70,\n    \"Lat\": -40\n  }\n]\n```\n\n**Visual output**: The code is syntax-highlighted with blue for keys, orange for string values, and red for numeric values. The background is a dark gray grid pattern within a white-bordered container.\n\n**UI state**: A toolbar at the top contains text formatting options (font, size, bold, alignment) and icons for link, color, and visibility. A vertical sidebar on the left contains various tool icons, and a small red \"Stop\" button is visible at the bottom center."
+    },
+    {
+      "timestamp": 360.0,
+      "description": "The image shows a code editor displaying an array of JSON objects.\n\n**Code**:\n```json\n[\n  {\n    \"ID\": 0,\n    \"Name\": \"London\",\n    \"Long\": 0,\n    \"Lat\": -50\n  },\n  {\n    \"ID\": 1,\n    \"Name\": \"New York\",\n    \"Long\": -70,\n    \"Lat\": -40\n  }\n]\n```\n\n**Visual output**: The code is displayed on a dark background with syntax highlighting: brackets are cyan, keys are orange, string values are white, and numeric values are light blue.\n\n**UI state**: A vertical toolbar with icons (arrow, document, eye, etc.) is visible on the left edge. A zoom control with \"-\" and \"+\" buttons is located in the bottom right corner."
+    },
+    {
+      "timestamp": 390.0,
+      "description": "The image shows a code editor containing a JSON array of objects.\n\n**Code**:\n```json\n[\n  {\n    \"ID\": 0,\n    \"Name\": \"London\",\n    \"Long\": 0,\n    \"Lat\": -50\n  },\n  {\n    \"ID\": 1,\n    \"Name\": \"New York\",\n    \"Long\": -70,\n    \"Lat\": -40\n  }\n]\n```\n\n**Visual output**: The code is displayed on a dark grid background with syntax highlighting (blue for keys, orange/red for values). The cursor is positioned at the end of the value `-50` in the first object.\n\n**UI state**: A toolbar at the top shows text formatting options (font \"IBM Plex\", size 14, bold, alignment, etc.) and icons for various tools. The editor is framed by light blue selection handles on the corners."
+    },
+    {
+      "timestamp": 420.0,
+      "description": "The screen shows a dark-themed interface, likely an online coding environment or presentation tool.\n\n1. **Code**: No actual code is present, only descriptive text:\n```text\nData\n\nCSV/TSV – Comma/Tab Separated Values\n\nJSON – JavaScript Object Notation\n```\n\n2. **Visual output**: The text is displayed in a bright green font against a black background with a subtle grid pattern. A white mouse cursor is positioned over the letter 'a' in the word \"Data\".\n\n3. **UI state**: A vertical toolbar with various icons is visible on the left edge, and a bottom control bar contains several small icons and a red \"Stop\" button."
+    }
+  ]
+}

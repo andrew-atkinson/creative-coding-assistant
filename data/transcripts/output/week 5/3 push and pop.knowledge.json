@@ -1,0 +1,112 @@
+{
+  "topic": "Managing graphics state and isolating transformations using push() and pop() to prevent unintended side effects in a sketch.",
+  "concepts": [
+    {
+      "name": "push() and pop()",
+      "timecode": "00:00",
+      "explanation": "They act as boundaries that isolate transformations and styles. Whatever happens between a push() at the start and a pop() at the end stays contained within that block and won't 'leak' into the rest of your code.",
+      "why_it_matters": "Without them, transformations like rotation or translation applied to one object will 'pollute' every subsequent object drawn in the sketch."
+    },
+    {
+      "name": "State Isolation",
+      "timecode": "00:16",
+      "explanation": "The idea of creating a local scope for your drawing settings so that changes to position, rotation, or color don't affect the global coordinate system.",
+      "why_it_matters": "It allows you to draw complex, nested patterns without having to manually reset every single property (like stroke or fill) back to its original state."
+    },
+    {
+      "name": "Order of Operations (Translate before Rotate)",
+      "timecode": "02:33",
+      "explanation": "To rotate an object around its own center rather than the corner of the screen (0,0), you must translate to that object's center first, then apply the rotation.",
+      "why_it_matters": "If you rotate before translating, the object will orbit around the origin (0,0) instead of spinning in place."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:39",
+      "language": "javascript",
+      "code": "push();\n  rotate(angle);\n  rect(50, 50, 120, 50);\npop();",
+      "demonstrates": "How to isolate a rotation so it only affects the rectangle inside the push/pop block.",
+      "common_issue": "If pop() is missing, all subsequent shapes will also rotate."
+    },
+    {
+      "timecode": "02:53",
+      "language": "javascript",
+      "code": "push();\n  translate(x, y);\n  rotate(angle);\n  rect(-width/2, -height/2, width, height);\npop();",
+      "demonstrates": "The correct sequence to rotate an object around its own center (Translate $\\rightarrow$ Rotate).",
+      "common_issue": "Rotating before translating causes the object to swing around the screen origin (0,0)."
+    },
+    {
+      "timecode": "03:33",
+      "language": "javascript",
+      "code": "push();\n  noStroke();\n  rect(x, y, w, h);\npop();",
+      "demonstrates": "Isolating visual styles (like removing a stroke) so it doesn't affect the rest of the sketch.",
+      "common_issue": "Using noStroke() without push/pop will make every single shape drawn afterward have no outline."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "01:24",
+      "symptom": "My shapes are rotating or moving when they shouldn't be.",
+      "cause": "Transformations (like rotate or translate) are 'leaking' into the rest of the sketch because they aren't isolated.",
+      "fix": "Wrap the transformations and the drawing command in a push() and pop() block.",
+      "related_concept": "push() and pop()"
+    },
+    {
+      "timecode": "02:33",
+      "symptom": "My shape is spinning around the corner of the screen instead of its own center.",
+      "cause": "The rotation is being applied before the translation to the object's center.",
+      "fix": "Use translate() to move the origin to the shape's center first, then call rotate().",
+      "related_concept": "Order of Operations"
+    },
+    {
+      "timecode": "03:47",
+      "symptom": "I turned off the stroke for one shape, and now all my other shapes have no outlines too.",
+      "cause": "The style change (noStroke) was applied globally and wasn't reset.",
+      "fix": "Wrap the styling command in push() and pop().",
+      "related_concept": "State Isolation"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "00:33",
+      "type": "warning",
+      "description": "The instructor shows a 'failure' where a rectangle is unintentionally caught in a rotation loop, creating the need for push/pop."
+    },
+    {
+      "timecode": "01:50",
+      "type": "demonstration",
+      "description": "The 'After' moment: showing how the rectangle becomes stable and independent after adding push/pop."
+    },
+    {
+      "timecode": "02:33",
+      "type": "insight",
+      "description": "Explaining the necessity of Translate $\\rightarrow$ Rotate to control the axis of rotation."
+    }
+  ],
+  "prerequisites": [
+    "Basic drawing functions (rect, fill, stroke)",
+    "Understanding of the 2D coordinate system",
+    "Basic use of translate() and rotate()"
+  ],
+  "leads_to": [
+    "Order of Operations",
+    "Complex hierarchical transformations",
+    "Nested coordinate systems"
+  ],
+  "student_questions": [
+    "Why is my shape moving when I only wanted to rotate it?",
+    "How do I stop one transformation from affecting everything else?",
+    "Why are all my shapes losing their outlines?",
+    "How do I make a shape rotate around its own center instead of the corner?",
+    "What is the difference between push and pop?",
+    "My shapes are all flying off the screen, how do I fix it?",
+    "How do I isolate a color change so it only applies to one circle?",
+    "Why does the order of translate and rotate matter?"
+  ],
+  "video_id": "3-push-and-pop",
+  "video_title": "3 push and pop",
+  "video_file": "3 push and pop.mp4",
+  "video_url": null,
+  "week": "week 5",
+  "module": "Module 2 – Chaos and Control"
+}

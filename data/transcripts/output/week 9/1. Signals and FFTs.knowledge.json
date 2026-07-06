@@ -1,0 +1,101 @@
+{
+  "topic": "Foundational principles of signal processing, specifically how sound waves (sine waves) are composed and how the Fast Fourier Transform (FFT) is used to decompose complex signals into frequency components.",
+  "concepts": [
+    {
+      "name": "sine wave",
+      "timecode": "00:18",
+      "explanation": "The most basic structure of sound, represented as a wave that oscillates above and below a zero point.",
+      "why_it_matters": "It is the fundamental building block of all sound signals."
+    },
+    {
+      "name": "amplitude",
+      "timecode": "00:51",
+      "explanation": "The height of the wave, which describes volume or power.",
+      "why_it_matters": "Understanding amplitude is necessary to understand how loud or quiet a signal is."
+    },
+    {
+      "name": "frequency",
+      "timecode": "01:02",
+      "explanation": "The rate of oscillation over time, which determines the pitch of a sound.",
+      "why_it_matters": "It allows us to distinguish between high-pitched and low-pitched sounds."
+    },
+    {
+      "name": "Fast Fourier Transform (FFT)",
+      "timecode": "03:59",
+      "explanation": "A mathematical analysis that 'disentangles' or takes apart a complex, messy sound wave into its constituent simpler sine waves (frequencies).",
+      "why_it_matters": "It is the essential tool for turning raw audio into data that can be used to create visuals like spectrograms."
+    },
+    {
+      "name": "spectral bins",
+      "timecode": "04:11",
+      "explanation": "The specific number of frequency categories or 'bins' that a signal is broken down into.",
+      "why_it_matters": "The number of bins determines the resolution and detail of your frequency analysis."
+    },
+    {
+      "name": "spectrogram",
+      "timecode": "02:57",
+      "explanation": "A visual representation that shows the spectral content (all the different frequencies) of a sound wave.",
+      "why_it_matters": "It is the bridge that allows us to see sound as data for generative art."
+    }
+  ],
+  "code_examples": [],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "02:34",
+      "symptom": "The sound looks like a 'messy' jagged line instead of a smooth wave.",
+      "cause": "The signal is composed of many different sine waves combined together rather than a single pure tone.",
+      "fix": "Use an FFT to decompose the complex wave into its individual frequency components.",
+      "related_concept": "Fast Fourier Transform (FFT)"
+    },
+    {
+      "timecode": "06:14",
+      "symptom": "Visual artifacts in an image.",
+      "cause": "Improper use of compression algorithms like JPEG (which uses similar mathematical principles).",
+      "fix": "null",
+      "related_concept": "JPEG compression"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "00:26",
+      "type": "warning",
+      "description": "The instructor gives a 'math warning,' signaling that the upcoming concepts involve mathematical theory."
+    },
+    {
+      "timecode": "03:10",
+      "type": "insight",
+      "description": "The concept of 'disentangling' a complex wave is introduced, framing the FFT as a tool for deconstructing chaos into order."
+    },
+    {
+      "timecode": "05:45",
+      "type": "demonstration",
+      "description": "The instructor explains that FFT isn't just for audio, but also applies to images (like JPEG compression), showing the universality of signal processing."
+    }
+  ],
+  "prerequisites": [
+    "Basic understanding of trigonometry (sine waves)",
+    "Familiarity with coordinate planes (x/y axes)"
+  ],
+  "leads_to": [
+    "Implementing real-time audio analysis in p5.js",
+    "Creating spectrograms for generative art",
+    "Mapping sound data to visual parameters"
+  ],
+  "student_questions": [
+    "What is the difference between amplitude and frequency?",
+    "Why does my sound wave look like a messy jagged line instead of a smooth wave?",
+    "How do I turn sound into data for my art?",
+    "What does an FFT actually do to a sound wave?",
+    "How can I see the different pitches in a song?",
+    "Is FFT only for sound, or can it be used for images too?",
+    "What is a spectrogram?",
+    "How does Shazam recognize a song?",
+    "Why do I need to know math for this?",
+    "How do I break a complex sound into simple parts?"
+  ],
+  "video_id": "1-signals-and-ffts",
+  "video_title": "1. Signals and FFTs",
+  "video_file": "1. Signals and FFTs.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 9/1. Signals and FFTs.mp4",
+  "week": "week 9"
+}

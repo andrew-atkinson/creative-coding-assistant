@@ -1,0 +1,120 @@
+{
+  "topic": "Using Object-Oriented Programming to create emergent networks of interacting nodes",
+  "concepts": [
+    {
+      "name": "Node Class (Autonomous Agents)",
+      "timecode": "01:34",
+      "explanation": "Instead of just drawing points, the instructor creates a 'Node' class where each instance manages its own properties like position (x, y), speed (xSpeed, ySpeed), and color.",
+      "why_it_matters": "It allows you to treat individual elements as independent entities that have their own behavior and state."
+    },
+    {
+      "name": "Constructor",
+      "timecode": "01:37",
+      "explanation": "A special function within a class used to initialize new objects with specific properties like random starting positions and speeds.",
+      "why_it_matters": "It's the blueprint that defines what every new object created from a class will look like and how it starts."
+    },
+    {
+      "name": "Boundary Collision Logic",
+      "timecode": "03:39",
+      "explanation": "Using conditional statements to check if a node's position has hit the edge of the canvas, and then multiplying its speed by -1 to reverse direction.",
+      "why_it_matters": "This keeps the objects contained within the visible area and creates a 'bouncing' effect."
+    },
+    {
+      "name": "Passing Arrays to Methods",
+      "timecode": "10:48",
+      "explanation": "A method inside a class (like drawLines) can take an entire array of other objects as a parameter so the individual object can 'look' at its neighbors.",
+      "why_it_matters": "This is how you move from individual, isolated objects to a system where objects interact and form relationships."
+    },
+    {
+      "name": "Emergent Geometry",
+      "timecode": "09:31",
+      "explanation": "Using the distance between nodes to decide whether to draw a line or a shape, creating complex patterns (like constellations) from simple rules.",
+      "why_it_matters": "It demonstrates how complex, organic-looking structures can emerge from very simple mathematical rules applied to many individual agents."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "03:00",
+      "language": "javascript",
+      "code": "class Node {\n  constructor(c){\n    this.x = random(width);\n    this.y = random(height);\n    this.xSpeed = random(-1.5, 1.5);\n    this.ySpeed = random(-1.5, 1.5);\n    this.color = c;\n  }\n\n  move() {\n    if (this.x < 0 || this.x > width) {\n      this.xSpeed *= -1;\n    }\n    this.x += this.xSpeed;\n    if (this.y < 0 || this.y > height) {\n      this.ySpeed *= -1;\n    }\n    this.y += this.ySpeed;\n  }\n}",
+      "demonstrates": "The basic structure of a Node class including properties and movement logic.",
+      "common_issue": "Forgetting to use 'this.' when accessing class properties inside methods."
+    },
+    {
+      "timecode": "13:09",
+      "language": "javascript",
+      "code": "drawLines(nodes) {\n  for (let n of nodes) {\n    let d = dist(this.x, this.y, n.x, n.y);\n    if (d < 70 && d > 2) {\n      stroke(this.color);\n      line(this.x, this.y, n.x, n.y);\n    }\n  }\n}",
+      "demonstrates": "How a node can iterate through an array of other nodes to draw lines between itself and nearby neighbors.",
+      "common_issue": "Forgetting to pass the 'nodes' array into the method call."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "13:35",
+      "symptom": "'nodes is not iterable'",
+      "cause": "Trying to iterate over a variable that hasn't been passed into the function correctly.",
+      "fix": "Ensure you pass the array as an argument when calling the method: `n.drawLines(nodes)`.",
+      "related_concept": "Passing Arrays to Methods"
+    },
+    {
+      "timecode": "20:03",
+      "symptom": "'this.color.setAlpha is not a function'",
+      "cause": "The `color` property was assigned a simple number (like from `random()`) instead of a p5.js color object.",
+      "fix": "Initialize the property using `color(r, g, b)` in the constructor so it is a proper color object.",
+      "related_concept": "Constructor/Data Types"
+    },
+    {
+      "timecode": "22:23",
+      "symptom": "The color/stroke isn't updating correctly.",
+      "cause": "Changing the object's property (like `this.color`) immediately before using it in a drawing function, which affects subsequent calls.",
+      "fix": "Be careful with the order of operations when modifying object properties like alpha.",
+      "related_concept": "State Management"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "09:24",
+      "type": "warning",
+      "description": "The instructor notes that nodes are initially 'unaware' of each other, creating the tension needed to justify passing an array into a method."
+    },
+    {
+      "timecode": "10:01",
+      "type": "insight",
+      "description": "Explaining $O(n^2)$ complexity: as you add more nodes, the number of calculations increases exponentially because every node checks every other node."
+    },
+    {
+      "timecode": "28:30",
+      "type": "insight",
+      "description": "The instructor highlights the 'neat trick' of passing an array to a method, allowing objects to interact without needing global variables."
+    }
+  ],
+  "prerequisites": [
+    "p5.js basics (random, dist, circle)",
+    "Basic JavaScript syntax",
+    "For loops and arrays",
+    "Conditional statements (if/else)"
+  ],
+  "leads_to": [
+    "Flocking algorithms",
+    "Physics engines",
+    "Complex emergent systems"
+  ],
+  "student_questions": [
+    "How do I make my shapes interact with each other?",
+    "Why are all my circles just moving randomly and not connecting?",
+    "How do I make a line appear only when two points are close together?",
+    "Why is my code saying 'is not a function' when I try to change the color alpha?",
+    "How do I make objects bounce off the edges of the screen?",
+    "Why is my program getting slow when I add more objects?",
+    "How do I pass a list of things into a class method?",
+    "My shapes are all in one spot, how do I make them spread out?",
+    "How can I use the mouse to trigger something in my class?",
+    "What is a constructor used for in a class?"
+  ],
+  "video_id": "4-nodes-with-classes",
+  "video_title": "4 nodes with classes",
+  "video_file": "4 nodes with classes.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 8/4 nodes with classes.mp4",
+  "week": "week 8",
+  "module": "Module 3 - Generation and Life"
+}

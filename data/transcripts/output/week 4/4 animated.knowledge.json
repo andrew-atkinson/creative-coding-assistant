@@ -1,0 +1,125 @@
+{
+  "topic": "Visualizing and animating 1D Perlin noise in p5.js to create organic, flowing waveforms.",
+  "concepts": [
+    {
+      "name": "Perlin noise (noise() function)",
+      "timecode": "01:02",
+      "explanation": "A way to get values that aren't just random jumps, but smooth transitions between numbers (0.0 to 1.0) that look like a continuous line graph.",
+      "why_it_matters": "It allows for 'organic' or natural-looking movement rather than the chaotic jitter of pure randomness."
+    },
+    {
+      "name": "Scaling noise inputs",
+      "timecode": "02:38",
+      "explanation": "Dividing the input (like x) by a number (like 100) before passing it to noise().",
+      "why_it_matters": "It controls the 'frequency' or smoothness of the noise; smaller increments in the input result in a smoother, less jagged wave."
+    },
+    {
+      "name": "Mapping noise outputs",
+      "timecode": "02:45",
+      "explanation": "Multiplying the noise result (which is 0 to 1) by a dimension like 'height' or a color value like '255'.",
+      "why_it_matters": "Noise values are normalized (0-1), so you must scale them to match your canvas pixels or color ranges."
+    },
+    {
+      "name": "Temporal offset (Animation)",
+      "timecode": "05:34",
+      "explanation": "Using a global variable (xOff) that increments every frame and adding it to the noise input.",
+      "why_it_matters": "This 'scrolls' through the noise field, creating the illusion of a wave moving across the screen."
+    },
+    {
+      "name": "noiseSeed()",
+      "timecode": "04:44",
+      "explanation": "A function that sets a starting point for the noise, making it deterministic.",
+      "why_it_matters": "It ensures that the 'random' pattern is exactly the same every time you run the code, which is vital for debugging or controlled animation."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "02:30",
+      "language": "javascript",
+      "code": "for (let x = 0; x <= width; x += 10) {\n  line(x, noise(x/100) * height, x, height);\n}",
+      "demonstrates": "Drawing vertical lines where the top point's Y-coordinate is determined by a smooth noise function.",
+      "common_issue": "If you forget to divide x/100, the lines will look extremely jagged and chaotic."
+    },
+    {
+      "timecode": "06:00",
+      "language": "javascript",
+      "code": "let xOff = 0;\n\nfunction draw() {\n  background(155, 0, 55);\n  xOff += 0.01;\n  for (let x = 0; x < width; x += 10) {\n    line(x, noise(x / 100 + xOff) * height, x, height);\n  }\n}",
+      "demonstrates": "Animating a noise wave by incrementing an offset variable over time.",
+      "common_issue": "If xOff is not declared outside of draw(), the animation won't persist/accumulate."
+    },
+    {
+      "timecode": "07:00",
+      "language": "javascript",
+      "code": "stroke(noise(x/100 + xOff) * 255);\nline(x, noise(x/100 + xOff) * height, x, height);",
+      "demonstrates": "Using noise to control both the position and the color (grayscale) of a line.",
+      "common_issue": null
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "03:00",
+      "symptom": "The lines don't look like the graph I see in my head",
+      "cause": "Not scaling the input or output correctly (e.g., not dividing by 100 to smooth it out, or not multiplying by height).",
+      "fix": "Ensure the input to noise() is scaled down for smoothness and the output is scaled up to canvas dimensions.",
+      "related_concept": "Scaling/Mapping"
+    },
+    {
+      "timecode": "05:16",
+      "symptom": "The pattern changes every time I refresh the page",
+      "cause": "Using default noise behavior where a new seed is generated every time.",
+      "fix": "Use `noiseSeed(0)` in setup to lock the pattern.",
+      "related_concept": "noiseSeed()"
+    },
+    {
+      "timecode": "05:51",
+      "symptom": "The animation isn't working/the wave is static",
+      "cause": "Adding the offset to the wrong variable or resetting it inside draw().",
+      "fix": "Declare the offset variable globally and increment it in `draw()`.",
+      "related_concept": "Temporal offset"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "03:00",
+      "type": "insight",
+      "description": "The instructor explains the relationship between input (x) and output (0-1), clarifying why we divide/multiply."
+    },
+    {
+      "timecode": "04:37",
+      "type": "warning",
+      "description": "The instructor notes that without `noiseSeed()`, the pattern will be different every time you run it."
+    },
+    {
+      "timecode": "06:34",
+      "type": "demonstration",
+      "description": "Increasing the offset increment shows how to control the speed of the animation."
+    }
+  ],
+  "prerequisites": [
+    "Basic p5.js setup (setup/draw)",
+    "For loops",
+    "Coordinate system (x, y)",
+    "Basic understanding of variables"
+  ],
+  "leads_to": [
+    "2D Noise fields",
+    "Flow fields",
+    "Procedural textures"
+  ],
+  "student_questions": [
+    "Why are my lines all over the place and not a smooth wave?",
+    "How do I make the noise move like an animation?",
+    "Why is my line only 1 pixel tall instead of filling the screen?",
+    "How do I make the wave move faster or slower?",
+    "What is the difference between random() and noise()?",
+    "Why does my pattern change every time I hit play?",
+    "How do I use noise to change the color of my lines?",
+    "Why am I dividing by 100 inside the noise function?",
+    "My lines are just vertical sticks, how do I make them wavy?"
+  ],
+  "video_id": "4-animated",
+  "video_title": "4 animated",
+  "video_file": "4 animated.mp4",
+  "video_url": null,
+  "week": "week 4"
+}

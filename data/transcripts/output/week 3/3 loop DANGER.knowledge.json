@@ -1,0 +1,119 @@
+{
+  "topic": "Identifying and preventing common errors in for loops, specifically infinite loops that crash browsers and off-by-one iteration errors.",
+  "concepts": [
+    {
+      "name": "convergence",
+      "timecode": "01:28",
+      "explanation": "The idea that your loop variable must move from its starting value toward the exit condition so they eventually 'meet'.",
+      "why_it_matters": "If the variable moves away from the condition or stays the same, the loop will never end."
+    },
+    {
+      "name": "infinite loop",
+      "timecode": "02:22",
+      "explanation": "A loop where the condition remains true forever because the variable never reaches the exit threshold.",
+      "why_it_matters": "It consumes all available memory (stack overflow) and causes the browser to freeze or crash."
+    },
+    {
+      "name": "off-by-one error",
+      "timecode": "08:10",
+      "explanation": "A mistake where a loop runs one time too many or one time too few, often caused by confusion between starting at 0 and using `<` vs `<=`.",
+      "why_it_matters": "It leads to incorrect counts or unexpected behavior in patterns and data processing."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "02:31",
+      "language": "javascript",
+      "code": "for (let x = 0; x < 10; x--)",
+      "demonstrates": "An infinite loop caused by decrementing a variable that is already below the exit condition.",
+      "common_issue": "The browser will freeze and become unresponsive because x will always be less than 10."
+    },
+    {
+      "timecode": "05:01",
+      "language": "javascript",
+      "code": "for (let x = 0; x < 10; y++)",
+      "demonstrates": "An infinite loop caused by a variable mismatch (updating 'y' instead of the loop control variable 'x').",
+      "common_issue": "The loop condition (x < 10) never changes because x is never updated."
+    },
+    {
+      "timecode": "08:19",
+      "language": "javascript",
+      "code": "for (let x = 0; x < 10; x++)",
+      "demonstrates": "A standard loop starting at 0 and running exactly 10 times.",
+      "common_issue": "Students often miscalculate the total iterations when starting at 0."
+    },
+    {
+      "timecode": "09:14",
+      "language": "javascript",
+      "code": "for (let x = 0; x <= 10; x++)",
+      "demonstrates": "A loop that runs 11 times because it includes the value 10.",
+      "common_issue": "Using `<=` when you only wanted to reach the value, not include it."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "02:31",
+      "symptom": "The browser freezes and becomes unresponsive/crashes.",
+      "cause": "Infinite loop: the variable is moving away from the exit condition (e.g., decrementing when it should increment).",
+      "fix": "Ensure the variable 'converges' with the condition.",
+      "related_concept": "convergence"
+    },
+    {
+      "timecode": "05:32",
+      "symptom": "The loop never ends.",
+      "cause": "Variable mismatch: updating the wrong variable in the increment/decrement step.",
+      "fix": "Check that the variable being updated is the same one used in the condition.",
+      "related_concept": "variable convergence"
+    },
+    {
+      "timecode": "08:15",
+      "symptom": "The loop runs 11 times instead of 10 (or vice versa).",
+      "cause": "Off-by-one error: confusion between starting at 0 and using `<` vs `<=`.",
+      "fix": "Carefully count the iterations: if starting at 0 and using `<`, it runs exactly 'n' times.",
+      "related_concept": "off-by-one error"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "00:12",
+      "type": "warning",
+      "description": "Instructor warns that they are about to break the browser, emphasizing the danger of loops."
+    },
+    {
+      "timecode": "04:18",
+      "type": "demonstration",
+      "description": "The browser actually becomes unresponsive, demonstrating the real-world consequence of an infinite loop."
+    },
+    {
+      "timecode": "07:34",
+      "type": "insight",
+      "description": "Summary of preventative measures: save work, check convergence, and turn off autoplay."
+    }
+  ],
+  "prerequisites": [
+    "basic for loop syntax",
+    "variable declaration (let)",
+    "comparison operators (<, <=)"
+  ],
+  "leads_to": [
+    "nested loops",
+    "maps"
+  ],
+  "student_questions": [
+    "Why did my browser just freeze?",
+    "My code isn't doing anything and I can't click anything in the browser.",
+    "How do I stop a loop that won't end?",
+    "Why is my loop running 11 times when I only wanted it to run 10?",
+    "What is an infinite loop?",
+    "How do I make sure my loop actually stops?",
+    "Why is it important to save my work before writing a loop?",
+    "What happens if I use x-- instead of x++ in a loop starting at 0?",
+    "What is an off-by-one error?",
+    "Does starting at 0 change how many times a loop runs?"
+  ],
+  "video_id": "3-loop-danger",
+  "video_title": "3 loop DANGER",
+  "video_file": "3 loop DANGER.mp4",
+  "video_url": null,
+  "week": "week 3"
+}

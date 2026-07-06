@@ -1,0 +1,138 @@
+{
+  "topic": "Introduction to JavaScript arrays, including declaration, zero-based indexing, the .length property, and iterating through elements using for loops and for...in loops.",
+  "concepts": [
+    {
+      "name": "array",
+      "timecode": "00:23",
+      "explanation": "A list of elements or 'a list of stuff,' like a shopping list or a recipe.",
+      "why_it_matters": "It allows you to store multiple values in a single variable instead of creating separate variables for every item."
+    },
+    {
+      "name": "zero-based indexing",
+      "timecode": "02:30",
+      "explanation": "The principle that counting starts at 0 rather than 1; the first item in an array is at index 0.",
+      "why_it_matters": "If you try to access the first item using index 1, you'll actually get the second item, leading to logic errors."
+    },
+    {
+      "name": ".length property",
+      "timecode": "05:31",
+      "explanation": "A property of the array object that tells you how many elements are inside it.",
+      "why_it_matters": "It allows you to write loops that automatically adjust to the size of your list, making code more flexible."
+    },
+    {
+      "name": "for loop (iteration)",
+      "timecode": "05:59",
+      "explanation": "A way to repeat an action for every item in the array by using a counter (like 'y') that goes from 0 up to the length of the array.",
+      "why_it_matters": "It automates repetitive tasks, like drawing every item in a list onto the canvas."
+    },
+    {
+      "name": "for...in loop",
+      "timecode": "09:29",
+      "explanation": "A more concise, shorthand way to loop specifically over the elements of an array.",
+      "why_it_matters": "It provides a cleaner, more readable syntax when you only care about the elements themselves."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:00",
+      "language": "javascript",
+      "code": "let arr = [\"first\", 100, \"banana\", \"yoghurt\"];",
+      "demonstrates": "How to declare an array with mixed data types (strings and numbers) using square brackets.",
+      "common_issue": "Using curly braces {} instead of square brackets [] which would create an object instead."
+    },
+    {
+      "timecode": "03:27",
+      "language": "javascript",
+      "code": "text(arr[0], 50, height/2);",
+      "demonstrates": "How to access a specific element in an array using its index inside square brackets.",
+      "common_issue": "Using the wrong index (e.g., using 1 to get the first item) or forgetting the brackets."
+    },
+    {
+      "timecode": "05:59",
+      "language": "javascript",
+      "code": "for(let y = 0; y < arr.length; y++) { \n  text(arr[y], 50, 70 + y * 100); \n}",
+      "demonstrates": "Using a standard for loop to iterate through an array and draw each element vertically.",
+      "common_issue": "Using `y <= arr.length` instead of `y < arr.length`, which causes an error because the index goes one step too far."
+    },
+    {
+      "timecode": "10:49",
+      "language": "javascript",
+      "code": "for (let el in arr) { \n  text(arr[el], 55, 70 + el * 100); \n}",
+      "demonstrates": "Using a for...in loop to iterate through an array.",
+      "common_issue": "Forgetting that the variable in a for...in loop represents the index/key, not the value itself."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "07:04",
+      "symptom": "The loop tries to access an index that doesn't exist (e.g., trying to find the 4th item in a 4-item list).",
+      "cause": "Using `i <= arr.length` instead of `i < arr.length`.",
+      "fix": "Use the 'less than' operator (`<`) so the loop stops before it hits the length value.",
+      "related_concept": "zero-based indexing"
+    },
+    {
+      "timecode": "08:05",
+      "symptom": "Items in the list are overlapping or starting at the very top of the screen.",
+      "cause": "The loop variable is being used directly as a coordinate without an offset (e.g., using `y` instead of `50 + y * 100`).",
+      "fix": "Add a starting offset to the coordinate calculation.",
+      "related_concept": "iteration"
+    },
+    {
+      "timecode": "10:34",
+      "symptom": "The loop is printing the index number (0, 1, 2...) instead of the actual words in the list.",
+      "cause": "Referencing the loop variable directly (e.g., `text(el, ...)` instead of `text(arr[el], ...)`).",
+      "fix": "Use the index to look up the value in the array: `arr[el]`.",
+      "related_concept": "for...in loop"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "00:55",
+      "type": "insight",
+      "description": "The instructor provides a mnemonic: 'braces create an object, square brackets create an array'."
+    },
+    {
+      "timecode": "02:30",
+      "type": "warning",
+      "description": "Introduction of zero-based indexing; warns that the first element is actually index 0."
+    },
+    {
+      "timecode": "05:31",
+      "type": "demonstration",
+      "description": "Showing how to use `.length` to make loops dynamic."
+    },
+    {
+      "timecode": "09:25",
+      "type": "transition",
+      "description": "Moving from the standard for loop to the more concise 'for...in' syntax."
+    }
+  ],
+  "prerequisites": [
+    "Variables",
+    "Data types (strings, numbers)",
+    "Basic p5.js setup() and draw() functions",
+    "Standard for loops"
+  ],
+  "leads_to": [
+    "Arrays of objects",
+    "Sorting arrays",
+    "Object-Oriented Programming (OOP)"
+  ],
+  "student_questions": [
+    "How do I make a list of things?",
+    "Why is my first item index 0 and not 1?",
+    "How do I get the number of items in my list automatically?",
+    "Why is my loop going past the end of my array and breaking?",
+    "How do I draw everything in a list one after another?",
+    "What is the difference between {} and [] when making variables?",
+    "How do I use a loop to print all my array items on the screen?",
+    "Why does my for...in loop only show numbers instead of my text?",
+    "How do I make a list that can grow or change size?"
+  ],
+  "video_id": "3-arrays",
+  "video_title": "3 arrays",
+  "video_file": "3 arrays.mp4",
+  "video_url": null,
+  "week": "week 7",
+  "module": "Module 3 - Generation and Life"
+}

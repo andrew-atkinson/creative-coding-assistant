@@ -1,0 +1,118 @@
+{
+  "topic": "Using trigonometric functions like sine and cosine to create cyclical, oscillating animations in movement and color.",
+  "concepts": [
+    {
+      "name": "cyclical functions",
+      "timecode": "01:12",
+      "explanation": "Functions that repeat their output values in a regular pattern, like an up-and-down wave.",
+      "why_it_matters": "Essential for creating smooth, repeating animations like oscillating movement or pulsing colors."
+    },
+    {
+      "name": "sine function (sin)",
+      "timecode": "01:25",
+      "explanation": "A function that takes an input and always outputs a value between -1 and 1.",
+      "why_it_matters": "It provides a predictable, smooth oscillation that can be mapped to any range."
+    },
+    {
+      "name": "cosine function (cos)",
+      "timecode": "04:21",
+      "explanation": "The 'sister function' to sine; it follows the same pattern but is slightly offset, which is useful for circular movement.",
+      "why_it_matters": "When used alongside sine, it allows for drawing perfect circles and complex orbital paths."
+    },
+    {
+      "name": "range mapping (offset and scaling)",
+      "timecode": "07:24",
+      "explanation": "Transforming the default sine output (-1 to 1) into a useful range (like 0 to 2 or 0 to 255) by adding an offset and multiplying by a scalar.",
+      "why_it_matters": "Standard trig outputs are too small for color values (0-255) or pixel coordinates; you must transform them to be useful."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "02:30",
+      "language": "javascript",
+      "code": "for (let x = 0; x <= width; x += 10) {\n  let y = height / 2 + sin(x * 0.1) * 100;\n  vertex(x, y);\n}",
+      "demonstrates": "Using sine to create a wavy line by offsetting the y-coordinate based on the x-position.",
+      "common_issue": "The wave might look too 'jittery' if the multiplier inside sin() is too high."
+    },
+    {
+      "timecode": "06:30",
+      "language": "javascript",
+      "code": "color1 = sin(frameCount) * 255;",
+      "demonstrates": "Scaling a sine wave to map directly to color intensity.",
+      "common_issue": "The color will go into negative values, which p5.js interprets as black, causing 'dead zones' in the animation."
+    },
+    {
+      "timecode": "08:30",
+      "language": "javascript",
+      "code": "color1 = (1 + sin(frameCount)) * 128;",
+      "demonstrates": "Using an offset (+1) to shift the sine range from [-1, 1] to [0, 2], then scaling by 128 to reach a max of 256.",
+      "common_issue": "Forgetting the offset results in a large portion of the animation being stuck at zero/black."
+    },
+    {
+      "timecode": "10:30",
+      "language": "javascript",
+      "code": "sineValue = (1 + sin(frameCount)) * 128;\ncolor1 = color(sineValue, 0, 0);",
+      "demonstrates": "Passing a calculated sine value into the color function to oscillate the red channel.",
+      "common_issue": "Passing a value that is out of range (e.g., negative) into color functions."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "07:00",
+      "symptom": "The animation stays black for a long time/half the cycle.",
+      "cause": "Sine outputs negative numbers, and p5.js interprets negative color values as black.",
+      "fix": "Add an offset (e.g., `1 + sin(x)`) to shift the range so it never goes below zero.",
+      "related_concept": "Range Mapping"
+    },
+    {
+      "timecode": "08:17",
+      "symptom": "The color values are too small to see the change.",
+      "cause": "Sine outputs between -1 and 1, but color needs values up to 255.",
+      "fix": "Multiply the sine result by a scalar (like 128 or 255) to scale it up.",
+      "related_concept": "Scaling"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:14",
+      "type": "warning",
+      "description": "Instructor warns that this topic involves math, preparing the student for a shift in complexity."
+    },
+    {
+      "timecode": "05:37",
+      "type": "demonstration",
+      "description": "Transition from theoretical math (Miro) to actual implementation in code."
+    },
+    {
+      "timecode": "07:24",
+      "type": "insight",
+      "description": "The 'Aha!' moment where the instructor shows how to fix the 'black dead zone' using an offset."
+    }
+  ],
+  "prerequisites": [
+    "Basic understanding of variables and functions",
+    "Familiarity with p5.js setup/draw loop",
+    "Basic concept of what a function is (input $\rightarrow$ output)"
+  ],
+  "leads_to": [
+    "Perlin Noise and procedural movement",
+    "Complex mathematical modeling in generative art"
+  ],
+  "student_questions": [
+    "How do I make something pulse or oscillate?",
+    "Why is my color stuck on black for half the animation?",
+    "How do I use sine to make things move in a circle?",
+    "What is the difference between sin and cos in code?",
+    "How do I change the range of a math function?",
+    "My shapes are just flickering between black and white, how do I make it smooth?",
+    "How do I use math to control color?",
+    "Why does adding 1 to my sine wave fix the problem?",
+    "How do I make a smooth loop of movement?"
+  ],
+  "video_id": "5-cyclical-functions",
+  "video_title": "5 cyclical functions",
+  "video_file": "5 cyclical functions.mp4",
+  "video_url": null,
+  "week": "week 6",
+  "module": "Module 3 - Generation and Life"
+}

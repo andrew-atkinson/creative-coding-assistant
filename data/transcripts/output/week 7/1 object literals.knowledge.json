@@ -1,0 +1,111 @@
+{
+  "topic": "Introduction to Object Literals and data encapsulation for managing multiple entities",
+  "concepts": [
+    {
+      "name": "function abstraction",
+      "timecode": "00:07",
+      "explanation": "Wrapping a sequence of drawing commands (like the 15 lines used to draw a UFO) into a single function call so you can reuse it easily.",
+      "why_it_matters": "It allows you to create complex shapes once and then use them multiple times without rewriting all the code."
+    },
+    {
+      "name": "object literal",
+      "timecode": "03:24",
+      "explanation": "A way of bundling related variables (like x and y coordinates) together under a single name, like `let ufo1 = {x: 0, y: 100};`.",
+      "why_it_matters": "It prevents 'variable proliferation' where you end up with a messy list of `x1, y1, x2, y2, x3, y3...` as you add more objects."
+    },
+    {
+      "name": "key-value pairs",
+      "timecode": "04:36",
+      "explanation": "The internal structure of an object where a 'key' (the label, like `x`) is assigned to a 'value' (the data, like `0`) using a colon.",
+      "why_it_matters": "It is the fundamental way data is organized inside an object."
+    },
+    {
+      "name": "dot notation",
+      "timecode": "05:45",
+      "explanation": "The syntax used to access or change a specific property inside an object, written as `objectName.propertyName` (e.g., `ufo1.x`).",
+      "why_it_matters": "Once you put variables inside an object, you can no longer access them by their old names; you must use the dot syntax to reach them."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:27",
+      "language": "javascript",
+      "code": "let x = 0, y = 100;\nlet x2 = -40, y2 = 200;\nlet x3 = -40, y3 = 250;",
+      "demonstrates": "Managing multiple entities using individual, separate variables (the 'untenable' way).",
+      "common_issue": "As you add more objects, the number of variables becomes impossible to manage manually."
+    },
+    {
+      "timecode": "03:37",
+      "language": "javascript",
+      "code": "let ufo1 = { x: 0, y: 100 };",
+      "demonstrates": "Creating an object literal to group x and y into one entity.",
+      "common_issue": "Using an equal sign instead of a colon inside the curly braces."
+    },
+    {
+      "timecode": "05:52",
+      "language": "javascript",
+      "code": "ufo1.x = ufo1.x + 3;",
+      "demonstrates": "Using dot notation to update a property within an object.",
+      "common_issue": "Trying to update `x` directly instead of `ufo1.x` after moving it into an object."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "05:18",
+      "symptom": "ReferenceError: x is not defined",
+      "cause": "The student moved `x` and `y` into an object but is still trying to access them as global variables.",
+      "fix": "Use dot notation (e.g., `ufo1.x`) to access the properties inside the object.",
+      "related_concept": "Scope / Dot Notation"
+    },
+    {
+      "timecode": "06:13",
+      "symptom": "ReferenceError when updating values",
+      "cause": "Trying to increment a variable that has been encapsulated inside an object using its old name.",
+      "fix": "Change `x = x + 3` to `ufo1.x = ufo1.x + 3`.",
+      "related_concept": "Dot Notation"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:59",
+      "type": "demonstration",
+      "description": "The instructor shows how adding just a few more objects leads to a messy explosion of variables (x1, x2, x3...), creating the 'need' for objects."
+    },
+    {
+      "timecode": "05:18",
+      "type": "warning",
+      "description": "The instructor intentionally breaks the code to show how moving variables into an object changes their scope and access requirements."
+    },
+    {
+      "timecode": "06:54",
+      "type": "insight",
+      "description": "The instructor acknowledges that objects might feel like they add complexity initially, but explains they are actually for managing future complexity."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript variables (let, const)",
+    "Function definitions and parameters",
+    "p5.js coordinate system (translate/push/pop)"
+  ],
+  "leads_to": [
+    "Arrays of objects",
+    "Object-Oriented Programming (OOP)",
+    "Classes and Constructors"
+  ],
+  "student_questions": [
+    "How do I group variables together so my code isn't a mess?",
+    "Why is my variable 'not defined' even though I can see it in my code?",
+    "How do I change a variable that is inside an object?",
+    "What is the difference between x and ufo1.x?",
+    "How do I make multiple copies of a shape without writing new variables for every single one?",
+    "What are key-value pairs in JavaScript?",
+    "Why do I need to use a dot before my variable name now?",
+    "How do I organize my code better as it gets bigger?"
+  ],
+  "video_id": "1-object-literals",
+  "video_title": "1 object literals",
+  "video_file": "1 object literals.mp4",
+  "video_url": null,
+  "week": "week 7",
+  "module": "Module 3 - Generation and Life"
+}

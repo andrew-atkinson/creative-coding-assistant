@@ -1,0 +1,93 @@
+{
+  "topic": "Implementing asynchronous data loading in p5.js using callback functions to handle successful data retrieval and error states.",
+  "concepts": [
+    {
+      "name": "callback function",
+      "timecode": "00:14",
+      "explanation": "A function that exists to be executed when something specific happens; it is 'prompted' or triggered by another function (like a data load) rather than being called manually.",
+      "why_it_matters": "Since loading data takes time, you need a way to tell the program 'once this is finished, then run this specific piece of code'."
+    },
+    {
+      "name": "loadJSON with callbacks",
+      "timecode": "01:00",
+      "explanation": "Passing function names as parameters to `loadJSON` so the program knows what to do when the file is successfully loaded (`onLoad`) or if it fails (`onError`).",
+      "why_it_matters": "It provides a robust way to manage data, ensuring your variables are assigned only when the data actually arrives and providing debugging info if it doesn't."
+    },
+    {
+      "name": "error object",
+      "timecode": "02:35",
+      "explanation": "An object returned by the error callback that contains details about why a file failed to load (e.g., incorrect file path).",
+      "why_it_matters": "It is essential for debugging when your data isn't showing up on the canvas."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:30",
+      "language": "javascript",
+      "code": "let cities;\n\nfunction preload() {\n  loadJSON('assets/cities.json', onLoad);\n}\n\nfunction onLoad(res) {\n  cities = res;\n  console.log(\"onLoad success!\", cities[0]);\n}",
+      "demonstrates": "Using a single callback to assign the loaded JSON response (`res`) to a global variable.",
+      "common_issue": "Forgetting to assign the response (`res`) to your global variable inside the callback."
+    },
+    {
+      "timecode": "03:30",
+      "language": "javascript",
+      "code": "function preload() {\n  loadJSON('assets/cities.json', onLoad, onError);\n}\n\nfunction onError(res) {\n  console.log(\"onError:\", res);\n}",
+      "demonstrates": "The complete pattern of providing both a success callback and an error callback.",
+      "common_issue": "Passing the function with parentheses (e.g., `onLoad()`) instead of just the name, which causes it to execute immediately rather than waiting for the load."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "02:30",
+      "symptom": "The data doesn't load and the console shows an error object.",
+      "cause": "Incorrect file path or a missing local server (the file cannot be found).",
+      "fix": "Check the file path in `loadJSON` and ensure you are using a local server to host the files.",
+      "related_concept": "error object"
+    },
+    {
+      "timecode": "03:22",
+      "symptom": "The function executes immediately and doesn't wait for the data.",
+      "cause": "Adding parentheses `()` to the callback function name when passing it as an argument.",
+      "fix": "Pass only the function name (e.g., `onLoad`) without parentheses.",
+      "related_concept": "callback function"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "02:28",
+      "type": "warning",
+      "description": "The instructor intentionally breaks the file path to demonstrate how to use the error callback for debugging."
+    },
+    {
+      "timecode": "03:15",
+      "type": "insight",
+      "description": "Explaining that callbacks only run when the operation is finished, which is why they are used for asynchronous tasks."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript syntax",
+    "Understanding of the p5.js lifecycle (preload, setup, draw)",
+    "Basic knowledge of JSON structure"
+  ],
+  "leads_to": [
+    "Data visualization",
+    "Mapping geographic coordinates (Long/Lat)",
+    "Handling complex external datasets"
+  ],
+  "student_questions": [
+    "What is a callback function?",
+    "How do I load a JSON file in p5.js?",
+    "Why is my data undefined even though I loaded it?",
+    "How do I know if my file path is wrong?",
+    "What's the difference between preload and using a callback?",
+    "How do I see what is inside my loaded JSON file?",
+    "Why does my code run immediately instead of waiting for the data?",
+    "How do I handle errors when loading external files?"
+  ],
+  "video_id": "4-callbacks",
+  "video_title": "4. callbacks",
+  "video_file": "4. callbacks.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 10/4. callbacks.mp4",
+  "week": "week 10",
+  "module": "Module 4 – Poetry of The World, Oceans of Data"
+}

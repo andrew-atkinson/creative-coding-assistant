@@ -1,0 +1,71 @@
+{
+  "video": "4 animated.mp4",
+  "vision_model": "gemma-3-27b-it-qat",
+  "frame_interval": 30,
+  "descriptions": [
+    {
+      "timestamp": 0.0,
+      "description": "The screen shows the p5.js Web Editor, specifically `editor.p5js.org`. A file named \"sketch.js\" is open in the editor, and its contents are displayed on the left side of the screen. The right side shows a preview canvas that is currently black. \n\nHere's the code in \"sketch.js\":\n\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n}\n```\n\nThe UI indicates \"Auto-refresh\" is enabled, and there's a tab for \"linear noise\". The top bar shows file options (File, Edit, Sketch, Help) and language selection (English). The console at the bottom is empty."
+    },
+    {
+      "timestamp": 30.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen displays an instructional coding video interface, likely for a tool like p5.js or Processing due to the code editor and canvas setup. The title \"Randomness and Noise\" is prominently displayed at the top. A green line graph is shown on a black canvas, fluctuating with varying amplitude and frequency; a red horizontal line sits at the bottom of the graph. \n\nThe code editor on the left shows:\n\n```\nA\nA\nA\nA\nA\nS\n```\n\nThe UI includes controls for play/pause, step forward, and a \"Stop\" button.  There are also icons representing variables or parameters (e.g., a circle with a number \"5\", a small square). The bottom right corner shows zoom controls (+/-)."
+    },
+    {
+      "timestamp": 60.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows an instructional coding environment, likely a platform like Replit or similar. A green line graph is prominently displayed on a black background, fluctuating above a horizontal red line labeled \"height * noise(x)\".  A vertical blue line marks a specific point on the x-axis. \n\nOn the left side is a code editor with the following code:\n\n```\nA\nA\nA\nA\nA\n```\n\nThe UI includes icons for running, debugging, and stopping the code.  There are also small icons at the bottom representing various parameters (sliders or controls), including one labeled \"noise()\". The title of the video is \"Randomness and Noise.\""
+    },
+    {
+      "timestamp": 90.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows an instructional coding environment, likely Processing or p5.js due to the tool icons visible on the left sidebar (A+, A-, etc.). The title \"Randomness and Noise for loop\" is prominently displayed at the top. A white line graph with jagged peaks and valleys is drawn on a black background, overlaid with a horizontal red line at y=0. Below the graph is handwritten text: \"height * noise(x)\". \n\nThe left sidebar contains icons for saving, running, and other common coding functions. A small circular green indicator is present near the bottom left of the screen, and a set of control buttons (play, step, stop) are visible at the bottom right.\n\n```\nA\nA\nA\nA\n```"
+    },
+    {
+      "timestamp": 120.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js online editor (editor.p5js.org). A file named `sketch.js` is open, and the \"Sketch\" tab is active. The code editor displays a basic p5.js setup with an empty `draw()` function. \n\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(155, 0, 55);\n}\n```\n\nThe preview area to the right displays a solid dark purple/magenta background. The console at the bottom is empty, indicating no recent output or errors.  The editor UI includes buttons for \"File\", \"Edit\", \"Sketch\", \"Help\" and language selection (English)."
+    },
+    {
+      "timestamp": 150.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, specifically a sketch named \"noise\". The editor has tabs for \"File\", \"Edit\", \"Sketch\", and \"Help\". A code editor panel is open, displaying JavaScript code. The canvas preview area shows a dark purple background with ten vertical white lines evenly spaced across it. \n\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(155, 0, 55);\n  for (let x = 0; x <= width; x += 10) {\n    line(x, 0, x, height);\n  }\n}\n```\n\nThe console at the bottom is clear. The top bar indicates the user \"andrew-atkinson\" and has a settings icon.  The editor is in auto-refresh mode, and the \"linear noise\" example is selected."
+    },
+    {
+      "timestamp": 180.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, specifically a file named `sketch.js`. The editor is open with the code visible in the left pane and a preview canvas on the right. The canvas displays a dark gray background with numerous thin, slightly wavy vertical lines of varying brightness, creating a noise-like texture. \n\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(155, 0, 55);\n  for (let x = 0; x <= width; x += 10) {\n    line(x, noise(x/100) * height, x, height);\n  }\n}\n```\n\nThe UI indicates the sketch is running with \"Auto-refresh\" enabled. The top bar shows tabs for \"File\", \"Edit\", \"Sketch\", \"Help\", and \"English\".  A small play button is visible, suggesting the sketch can be started/stopped."
+    },
+    {
+      "timestamp": 210.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js online editor (editor.p5js.org). The active file is named `sketch.js`. A canvas preview area displays a dark gray background with thin, slightly wavy white lines arranged vertically. The code editor contains JavaScript code for a p5.js sketch:\n\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(155, 0, 55);\n  for (let x = 0; x <= width; x += 10) {\n    line(x, noise() * height, x, height);\n  }\n}\n```\n\nThe UI shows tabs for \"File\", \"Edit\", \"Sketch\", \"Help\" and language selection set to \"English\".  A play button is visible, indicating the sketch can be run. The console area at the bottom is empty."
+    },
+    {
+      "timestamp": 240.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, specifically `editor.p5js.org`. The open file is named `sketch.js`. A canvas occupies the right side of the screen, displaying a grid of vertical red lines against a dark background. \n\nThe code editor contains the following p5.js code:\n\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(155, 0, 55);\n  for (let x = 0; x < width; x += 10) {\n    line(x, noise() * height, x, height);\n  }\n}\n```\n\nThe UI indicates the sketch is running with \"Auto-refresh\" enabled. The console at the bottom is clear, and a tab labeled \"linear noise\" is open above the code editor. The top bar shows the user's name, \"Hello, andrew-atkinson1\"."
+    },
+    {
+      "timestamp": 270.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, with a file named `sketch.js` open. The editor displays JavaScript code within it. A preview canvas is visible on the right, showing a dark reddish-purple background with numerous thin white lines arranged in a somewhat chaotic pattern. The UI indicates the sketch is running and auto-refreshing, with options for \"linear noise\" enabled.\n\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n  strokeWeight(1)\n}\n\nfunction draw() {\n  background(155, 0, 55);\n  for (let x = 0; x <= width; x += 10) {\n    line(x, noise(x/100) * height, x, height);\n  }\n}\n```"
+    },
+    {
+      "timestamp": 300.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, likely within a web browser (Chrome). The filename is \"sketch.js\".  The editor displays code in JavaScript, and a preview canvas shows vertical lines of varying heights against a dark background. The UI indicates \"Auto-refresh\" is enabled and the sketch is running.\n\n```javascript\nfunction setup() {\n  createCanvas(400, 400);\n  strokeWeight(5);\n  noiseSeed(0)\n}\n\nfunction draw() {\n  background(155, 0, 55);\n  for (let x = 0; x <= width; x += 10) {\n    line(x, noise(x/100) * height, x, height);\n  }\n}\n```\n\nThe canvas preview displays a series of red vertical lines, seemingly generated by the `noise()` function and drawn using the `line()` function. The lines are spaced evenly across the canvas width, with their heights determined by the noise value multiplied by the canvas height. A small \"x\" icon is visible in the top right of the preview area, likely for closing or minimizing it."
+    },
+    {
+      "timestamp": 330.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, specifically a sketch named \"sketch.js\". The editor has three tabs open: \"editor.p5js.org\", \"noise\", and \"perlin noise - Google Search\". The code editor displays JavaScript code. A preview canvas shows a vertical series of red lines, appearing as a histogram or bar chart with varying heights.\n\n```javascript\n1 let xOff = 0\n2\n3 function setup() {\n4  createCanvas(400, 400);\n5  strokeWeight(5)\n6  noiseSeed(5)\n7 }\n8\n9 function draw() {\n10 background(155, 0, 55);\n11\n12 for (let x = 0; x <= width; x += 10) {\n13  line(x, noise(x/(100)) * height, x, height)\n14 }\n15\n16 }\n```\n\nThe console at the bottom is empty. The top bar indicates auto-refresh is enabled and the language is English. A \"Relaunch to update\" button is visible, suggesting recent code changes may not be reflected in the preview."
+    },
+    {
+      "timestamp": 360.0,
+      "description": "The screen shows a p5.js editor, specifically `editor.p5js.org`. The open file is named `sketch.js`. A canvas preview displays a series of red vertical lines, appearing somewhat random but with consistent spacing. The UI shows controls for auto-refresh and a dropdown menu labeled \"linear noise\".\n\n```javascript\n1 let xOff = 0\n2\n3 function setup() {\n4  createCanvas(400, 400);\n5  strokeWeight(5)\n6  noiseSeed(0)\n7 }\n8\n9 function draw() {\n10 background(155, 0, 55);\n11 xOff += 0.01\n12 for (let x = 0; x < width; x += 10) {\n13  line(x, noise(x / 100 + xOff) * height, x, height)\n14 }\n15 }\n16\n```\n\nThe console is empty. The top bar indicates the sketch is running in English. A \"Relaunch to update\" button is visible, suggesting recent code changes may not be reflected in the preview."
+    },
+    {
+      "timestamp": 390.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, with a file named `sketch.js` open. The editor displays JavaScript code within it. A preview canvas shows a vertical series of red bars, varying in height and seemingly randomly distributed; the background is dark purple. The UI indicates auto-refresh is enabled, and a \"linear noise\" option is selected.\n\n```javascript\n1 let xOff = 0\n2\n3 function setup() {\n4  createCanvas(400, 460);\n5  strokeWeight(5)\n6  noiseSeed(5)\n7 }\n8\n9 function draw() {\n10 background(155, 0, 55);\n11 xOff += 0.01\n12 for (let x = 0; x < width; x += 10) {\n13  line(x, noise(x / 100 + xOff) * height, x, height)\n14 }\n15 }\n16\n```\n\nThe console at the bottom is empty. The top bar shows options for File, Edit, Sketch, Help and language selection (English). A user named \"Hello, andrew-atkinson\" is logged in."
+    },
+    {
+      "timestamp": 420.0,
+      "description": "The screen shows a p5.js editor, specifically `editor.p5js.org`, with the file name `sketch.js` open. The editor displays JavaScript code for generating a linear noise pattern. A preview canvas shows vertical lines of varying lengths and shades of red against a dark background (RGB 155, 0, 55). The UI indicates auto-refresh is enabled and the code is currently running.\n\n```javascript\n1 let xOff = 0\n2\n3 function setup() {\n4  createCanvas(400, 460);\n5  strokeWeight(5)\n6  noiseSeed(0)\n7 }\n8\n9 function draw() {\n10 background(155, 0, 55);\n11 xOff += 0.01\n12 for (let x = 0; x < width; x += 10) {\n13  stroke(noise(x/100 + xOff) * 255)\n14  line(x, noise(x/100 + xOff) * height, x, height)\n15 }\n16 }\n```"
+    },
+    {
+      "timestamp": 450.0,
+      "description": "The screen shows a p5.js Web Editor environment, specifically `editor.p5js.org`. The open file is named `sketch.js`. A canvas preview displays a vertical series of red lines, varying in length and seemingly randomly positioned. The UI shows controls for auto-refresh and a \"linear noise\" option, which is currently enabled.\n\n```javascript\n1 let xOff = 0\n2\n3 function setup() {\n4  createCanvas(400, 460);\n5  strokeWeight(5)\n6  noiseSeed(0)\n7 }\n8\n9 function draw() {\n10 background(155, 0, 55);\n11 // xOff += 0.01\n12 for (let x = 0; x <= width; x += 10) {\n13  stroke(noise(x/100 + xOff) * 255)\n14  line(x, noise(x/100 + xOff) * height, x, height)\n15 }\n16 }\n17\n```\n\nThe console area is visible at the bottom, currently empty. The top bar indicates the file name and a search bar. A \"Relauch to update\" button is also visible in the top right corner."
+    }
+  ]
+}

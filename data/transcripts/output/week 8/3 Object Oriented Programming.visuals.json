@@ -1,0 +1,31 @@
+{
+  "video": "3 Object Oriented Programming.mp4",
+  "vision_model": "unsloth-gemma-4-26b-a4b-it-qat-oq4",
+  "frame_interval": 30,
+  "descriptions": [
+    {
+      "timestamp": 0.0,
+      "description": "The image shows a presentation slide with the title \"Programming Paradigms\" in teal text. Below the title, there is a bulleted list containing three items: \"Imperative\", \"event-driven\", and \"Object Oriented Programming\". The background is solid black."
+    },
+    {
+      "timestamp": 30.0,
+      "description": "The image shows a presentation slide titled \"Programming Paradigms\" in teal text on a black background. Below the title, there is a bulleted list containing three items: \"Imperative\", \"event-driven\", and \"Object Oriented Programming\". A small white mouse cursor is visible near the bottom center of the text area."
+    },
+    {
+      "timestamp": 60.0,
+      "description": "The image shows a presentation slide titled \"Programming Paradigms\" on a black background. The text lists three paradigms in teal and gold: \"Imperative,\" \"event-driven,\" and \"Object Oriented Programming.\" The word \"Imperative\" is underlined in gold with a small hand-drawn arrow pointing down toward it. A toolbar for a digital whiteboard or annotation tool is visible on the left side of the screen, and control buttons are at the bottom."
+    },
+    {
+      "timestamp": 90.0,
+      "description": "The image shows a digital whiteboard with handwritten text and annotations on a black background.\n\n1. **Code**: No code editor is visible; only handwritten text describing programming concepts:\n   - \"Imperative\" (with a downward arrow)\n   - \"event-driven\" (underlined, with several arrows pointing down from it)\n   - \"Object Oriented Programming\"\n\n2. **Visual output**: The screen displays a list of three programming paradigms in different colors (green and yellow). There is a vertical toolbar on the left with various drawing tools and a small control bar at the bottom center.\n\n3. **UI state**: The interface appears to be a digital whiteboard or presentation software used for teaching, featuring tools like pens, erasers, and shape selectors."
+    },
+    {
+      "timestamp": 120.0,
+      "description": "The image shows a slide titled \"Programming Paradigms\" in teal text on a black background. The following bullet points are listed:\n* Imperative (with an arrow pointing down to a small icon of horizontal lines)\n* event-driven (with a jagged line and arrows pointing down to various points)\n* Object Oriented Programming\n\nBelow the list, there is handwritten text in yellow that appears to say \"Classes\"."
+    },
+    {
+      "timestamp": 150.0,
+      "description": "The image shows a slide titled \"Programming Paradigms\" in teal text against a black background. The following bullet points are listed:\n* Imperative (with an arrow pointing down and a small icon)\n* event-driven (underlined, with several arrows pointing downwards)\n* Object Oriented Programming (underlined)\n\nBelow the list, there is handwritten text in yellow that appears to say \"Classes\" with a wavy line underneath it. No code editor or software UI is visible."
+    }
+  ]
+}

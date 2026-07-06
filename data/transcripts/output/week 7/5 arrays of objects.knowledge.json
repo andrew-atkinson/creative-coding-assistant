@@ -1,0 +1,112 @@
+{
+  "topic": "Using arrays to programmatically manage and animate multiple objects, and implementing visual depth using parallax principles.",
+  "concepts": [
+    {
+      "name": "arrays of objects",
+      "timecode": "01:07",
+      "explanation": "Instead of creating individual variables like ufo1, ufo2, etc., you create an empty array `[]` and use `.push()` inside a loop to add objects with randomized properties into it.",
+      "why_it_matters": "It allows for scalability; you can change one number to go from 3 objects to 100 objects without writing more lines of code."
+    },
+    {
+      "name": "for...in loop for arrays",
+      "timecode": "06:24",
+      "explanation": "A loop used to iterate through an array where the variable (e.g., `el`) represents the index of the current element being processed.",
+      "why_it_matters": "It provides a concise way to perform the same action (like drawing or moving) on every single item in a collection."
+    },
+    {
+      "name": "parallax scrolling",
+      "timecode": "08:56",
+      "explanation": "A technique where objects move at different speeds and have different scales to create an illusion of depth/distance.",
+      "why_it_matters": "It adds a sense of 3D space to a 2D environment by linking an object's speed property to its visual scale."
+    },
+    {
+      "name": "mapping speed to scale",
+      "timecode": "10:36",
+      "explanation": "Using the object's speed property (`obj.s`) divided by a constant to determine its `scale()` in the draw function.",
+      "why_it_matters": "It automates the visual depth effect so that faster-moving objects automatically appear larger (closer) and slower ones appear smaller (further away)."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "02:38",
+      "language": "javascript",
+      "code": "for (let i = 0; i < 20; i++) {\n  let x = random(-100, 50);\n  let y = random(0, 300);\n  let s = random(1, 8);\n  let obj = {x: x, y: y, s: s};\n  ufoArr.push(obj);\n}",
+      "demonstrates": "Populating an array with 20 unique objects containing randomized position and speed data.",
+      "common_issue": "Forgetting to define the properties inside an object literal before pushing it, or using a loop that doesn't match the desired count."
+    },
+    {
+      "timecode": "07:24",
+      "language": "javascript",
+      "code": "for (let el in ufoArr) {\n  ufo(ufoArr[el]);\n  moveUfo(ufoArr[el]);\n}",
+      "demonstrates": "Iterating through an array of objects to call functions on each specific object using its index.",
+      "common_issue": "Passing the index `el` directly to a function that expects an object, rather than passing `ufoArr[el]`."
+    },
+    {
+      "timecode": "10:36",
+      "language": "javascript",
+      "code": "scale(obj.s / 10);",
+      "demonstrates": "Using a property of the object to dynamically change its visual size.",
+      "common_issue": "Dividing by a number that is too small, making the objects explode in size and cover the whole screen."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "01:55",
+      "symptom": "The loop isn't working or the array is empty.",
+      "cause": "Trying to use a `for...in` loop on an array that hasn't been populated yet (the length is still zero).",
+      "fix": "Use a standard `for` loop to populate the array first, then use loops to iterate over it.",
+      "related_concept": "for loop vs for...in loop"
+    },
+    {
+      "timecode": "12:02",
+      "symptom": "The depth looks wrong; small objects are appearing on top of large ones.",
+      "cause": "The array is being drawn in the order it was created, rather than by size/speed.",
+      "fix": "Sort the array so that objects intended to be in the background are drawn first.",
+      "related_concept": "sorting arrays"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:07",
+      "type": "demonstration",
+      "description": "The instructor shows the difference between manual object creation and using an array with `.push()`."
+    },
+    {
+      "timecode": "05:14",
+      "type": "demonstration",
+      "description": "Using `console.log(ufoArr)` to inspect the data structure and confirm that 20 objects were successfully created."
+    },
+    {
+      "timecode": "09:00",
+      "type": "insight",
+      "description": "The instructor uses a Wikipedia article to explain the real-world concept of Parallax Scrolling, providing context for why we link speed and scale."
+    }
+  ],
+  "prerequisites": [
+    "Object literals (key-value pairs)",
+    "Basic arrays and the .push() method",
+    "Standard for loops",
+    "p5.js basic functions (translate, scale, push/pop)"
+  ],
+  "leads_to": [
+    "Sorting arrays",
+    "Object-Oriented Programming (Classes)"
+  ],
+  "student_questions": [
+    "How do I make 100 things happen instead of just 3?",
+    "Why are all my shapes in one spot? (referring to not using random values)",
+    "How do I loop through a list of objects?",
+    "My circles are all on top of each other in the wrong order",
+    "How do I make things look like they have depth?",
+    "What is the difference between ufo1 and ufoArr[i]?",
+    "How do I make objects move at different speeds automatically?",
+    "Why is my console showing 'Object' instead of the actual numbers?",
+    "How do I use a loop to draw many things at once?"
+  ],
+  "video_id": "5-arrays-of-objects",
+  "video_title": "5 arrays of objects",
+  "video_file": "5 arrays of objects.mp4",
+  "video_url": null,
+  "week": "week 7",
+  "module": "Module 3 - Generation and Life"
+}

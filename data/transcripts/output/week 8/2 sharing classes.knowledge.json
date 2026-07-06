@@ -1,0 +1,112 @@
+{
+  "topic": "Introduction to JavaScript classes, object instantiation using constructors and methods, and modularizing code by moving class definitions into separate files.",
+  "concepts": [
+    {
+      "name": "class",
+      "timecode": "00:05",
+      "explanation": "A class is described as a 'design plan' or a 'template' rather than the object itself. It provides the blueprint for what an object will look like and what it can do.",
+      "why_it_matters": "It allows you to create many unique objects that all follow the same rules, making your code organized and reusable."
+    },
+    {
+      "name": "constructor",
+      "timecode": "00:27",
+      "explanation": "A special function that runs automatically when a new object is created. It takes in data (like x, y coordinates) and assigns it to the specific object.",
+      "why_it_matters": "It allows each individual instance of a class to have its own unique properties (like position or size) even though they come from the same template."
+    },
+    {
+      "name": "this keyword",
+      "timecode": "00:42",
+      "explanation": "The instructor explains 'this' as a way of saying 'the X that you give me this time is used only for this particular object.' It refers back to the specific instance being worked on.",
+      "why_it_matters": "Without 'this', you would be changing global variables instead of the specific properties of an individual object."
+    },
+    {
+      "name": "methods",
+      "timecode": "01:06",
+      "explanation": "Functions defined inside a class that allow an object to perform actions, such as moving or displaying itself.",
+      "why_it_matters": "Methods allow objects to have 'behaviors' that are tied directly to their own data."
+    },
+    {
+      "name": "file modularization",
+      "timecode": "02:53",
+      "explanation": "The process of moving a class definition out of the main sketch file and into its own dedicated .js file to keep code clean.",
+      "why_it_matters": "It makes your code modular and allows you to easily share classes across different projects."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "00:30",
+      "language": "javascript",
+      "code": "class UFO {\n  constructor(x, y) {\n    this.x = x;\n    this.y = y;\n    this.s = 10;\n  }\n\n  display() {\n    push();\n    translate(this.x, this.y);\n    // drawing logic...\n    pop();\n  }\n\n  move() {\n    this.x = this.x + this.s;\n    if (this.x > width + 100) {\n      this.x = -50;\n    }\n  }\n}",
+      "demonstrates": "A complete class definition including a constructor for properties and methods for behavior.",
+      "common_issue": "Forgetting to use 'this.' before property names inside the class, which would cause errors or incorrect behavior."
+    },
+    {
+      "timecode": "04:58",
+      "language": "html",
+      "code": "<script src=\"UFO.js\"></script>\n<script src=\"sketch.js\"></script>",
+      "demonstrates": "How to link multiple JavaScript files in an HTML document so the main sketch can access external classes.",
+      "common_issue": "Linking files in the wrong order (the class file must be loaded before the sketch that uses it) or misspelling the filename."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "04:26",
+      "symptom": "UFO is not defined (ReferenceError)",
+      "cause": "The class was moved to a separate file, but the HTML file wasn't updated to include a <script> tag for that new file.",
+      "fix": "Add a `<script src=\"UFO.js\"></script>` tag in the index.html file.",
+      "related_concept": "File Encapsulation and Linking"
+    },
+    {
+      "timecode": "01:46",
+      "symptom": "The loop variable is being treated as an object property incorrectly.",
+      "cause": "Using `this.x` inside a loop that is iterating over an array of objects, rather than using the local iterator variable.",
+      "fix": "Use the loop variable directly when you aren't referring to a specific object property.",
+      "related_concept": "Scope and 'this' keyword"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "00:09",
+      "type": "insight",
+      "description": "The instructor uses the 'design plan' analogy to explain classes, which helps bridge the gap between abstract code and tangible objects."
+    },
+    {
+      "timecode": "04:21",
+      "type": "warning",
+      "description": "The instructor intentionally breaks the code to demonstrate how a ReferenceError occurs when files aren't linked correctly in HTML."
+    },
+    {
+      "timecode": "05:48",
+      "type": "demonstration",
+      "description": "Explaining the structure of HTML (head vs body) to show where scripts and styles should live."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript variables and functions",
+    "p5.js basics (push/pop, translate, scale)",
+    "Basic understanding of the p5.js Web Editor interface"
+  ],
+  "leads_to": [
+    "Sharing classes between projects",
+    "Object-Oriented Programming (OOP) principles",
+    "Complex generative systems using nodes and walkers"
+  ],
+  "student_questions": [
+    "What is a class?",
+    "How do I make many of the same thing without writing the code 80 times?",
+    "Why is my code saying 'is not defined' after I moved it to a new file?",
+    "What does the 'this' keyword actually do?",
+    "How do I use a class to make objects move?",
+    "What is the difference between a class and an object?",
+    "How do I connect my JS file to my HTML file?",
+    "Why are all my objects appearing in the same spot?",
+    "How do I make a template for a shape?",
+    "What is a constructor function?"
+  ],
+  "video_id": "2-sharing-classes",
+  "video_title": "2 sharing classes",
+  "video_file": "2 sharing classes.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 8/2 sharing classes.mp4",
+  "week": "week 8",
+  "module": "Module 3 - Generation and Life"
+}

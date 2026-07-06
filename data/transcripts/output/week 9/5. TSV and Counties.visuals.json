@@ -1,0 +1,19 @@
+{
+  "video": "5. TSV and Counties.mp4",
+  "vision_model": "unsloth-gemma-4-26b-a4b-it-qat-oq4",
+  "frame_interval": 30,
+  "descriptions": [
+    {
+      "timestamp": 0.0,
+      "description": "This screen shows a web browser displaying the p5.js Web Editor with JavaScript code on the left and a black canvas output area on the right. The UI shows several open tabs in Chrome, including \"editor.p5js.org\" and various other web pages.\n\n**Code (JavaScript):**\n```javascript\n// Cities JSON\n// https://gist.github.com/Miserlou/c5cd8364bf9b2420bb29\n\nlet cities;\nlet minLat = 90;\nlet maxLat = -90;\nlet minLong = 180;\nlet maxLong = -180;\n\nfunction preload() {\n  loadJSON(\"assets/cities.json\", onLoad, onError);\n}\n\nfunction setup() {\n  createCanvas(500, 400);\n  console.log({cities});\n\nfor (let city of cities) {\n  if (city.latitude < minLat) {\n    minLat = city.latitude;\n  }\n  if (city.latitude > maxLat) {\n    maxLat = city.latitude;\n  }\n  if (city.longitude < minLong) {\n    minLong = city.longitude;\n  }\n  if (city.longitude > maxLong) {\n    maxLong = city.longitude;\n  }\n```\n\n**Visual output:**\nThe canvas is a black rectangle containing numerous small, scattered red dots that appear to form the shape of a geographic landmass (resembling North America)."
+    },
+    {
+      "timestamp": 30.0,
+      "description": "The screen shows a web browser window running the p5.js Web Editor, displaying a code editor on the left and a black canvas preview on the right. The code is written in JavaScript using the p5.js library.\n\n**Code:**\n```javascript\n// Cities JSON\n// https://gist.github.com/Miserlou/c5cd8364bf9b2420bb29\n\nlet cities;\nlet minLat = 90;\nlet maxLat = -90;\nlet minLong = -180;\nlet maxLong = 180;\n\nfunction preload() {\n  loadJSON(\"assets/cities.json\", onLoad, onError);\n}\n\nfunction setup() {\n  createCanvas(600, 400);\n  console.log(cities);\n}\n\nfor (let city of cities) {\n  if (city.latitude < minLat) {\n    minLat = city.latitude;\n  }\n  if (city.latitude > maxLat) {\n    maxLat = city.latitude;\n  }\n  if (city.longitude < minLong) {\n    minLong = city.longitude;\n  }\n  if (city.longitude > maxLong) {\n    maxLong = city.longitude;\n  }\n```\n\n**Visual output:**\nThe canvas area is black and contains a scattered pattern of small red dots that appear to form the shape of a landmass, likely North America.\n\n**UI state:**\nThe application is the p5.js Web Editor, with a file named `sketch.js` open. The browser has multiple tabs open at the top, including \"Chrome\", \"p5.js Web Ed...\", and others with various names like \"Data - Miro\" and \"GeoNames\". A console area is visible at the bottom."
+    },
+    {
+      "timestamp": 60.0,
+      "description": "The screen shows a Miro online whiteboard application with a dark grid background.\n\n**Visual output:**\nLarge green text is centered on the canvas, reading:\n\"Data\"\n\"CSV/TSV – Comma/Tab Separated Values\"\n\"JSON - JavaScript Object Notation\"\n\n**UI state:**\nThe application is Miro, as indicated by the logo in the top left and the toolbar on the left side. The browser shows several open tabs, including \"p5.js Web Editor\" and \"Data - Miro.\" The browser interface shows a system time of 5:30 PM in the top right corner."
+    }
+  ]
+}

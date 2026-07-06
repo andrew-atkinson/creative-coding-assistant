@@ -1,0 +1,140 @@
+{
+  "topic": "Loading and visualizing geographic datasets using JSON and TSV formats in p5.js, including data parsing, type coercion issues, and non-linear scaling for better visual representation.",
+  "concepts": [
+    {
+      "name": "JSON vs TSV/CSV",
+      "timecode": "00:47",
+      "explanation": "The instructor explains that JSON is a structured object with keys and values, while TSV/CSV is tabular data organized in rows and columns, similar to a spreadsheet like Google Sheets or Excel.",
+      "why_it_matters": "Understanding the structure of your data determines how you access its properties and which loading function to use."
+    },
+    {
+      "name": "loadTable()",
+      "timecode": "07:12",
+      "explanation": "A p5.js function used to load tabular data. It requires the filename, the file extension (like 'tsv'), and a parameter to indicate if there is a header row.",
+      "why_it_matters": "It's the primary way to bring spreadsheet-style data into a creative coding sketch."
+    },
+    {
+      "name": "Type Coercion (String vs Number)",
+      "timecode": "23:50",
+      "explanation": "The instructor demonstrates how JavaScript can treat numbers as strings when they are loaded from text files, causing logical errors during comparisons (e.g., '9' being greater than '100').",
+      "why_it_matters": "If you don't explicitly convert data to numbers, your mathematical operations and comparisons will fail or produce nonsensical results."
+    },
+    {
+      "name": "Non-linear Scaling (Math.sqrt)",
+      "timecode": "34:27",
+      "explanation": "Using `Math.sqrt()` on data like population to 'flatten the curve.' This prevents extreme outliers from making all other data points look identical.",
+      "why_it_matters": "In datasets with huge discrepancies (like population), linear mapping makes most points look the same; non-linear scaling reveals more detail in the 'long tail'."
+    },
+    {
+      "name": "Array.sort() with custom compare function",
+      "timecode": "32:10",
+      "explanation": "Using `.sort()` with an arrow function to order data. The instructor uses this to draw smaller points first so that larger points are drawn on top and remain visible.",
+      "why_it_matters": "The order in which you draw shapes determines what is layered on top of what; sorting helps manage visual occlusion."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "07:12",
+      "language": "javascript",
+      "code": "counties = loadTable('assets/counties.txt', 'tsv', 'header');",
+      "demonstrates": "Loading a tab-separated text file with a header row.",
+      "common_issue": "Forgetting to specify 'header' or using the wrong extension."
+    },
+    {
+      "timecode": "10:34",
+      "language": "javascript",
+      "code": "countiesArr = counties.getArray();",
+      "demonstrates": "Converting a p5.Table object into a standard 2D JavaScript array for easier manipulation.",
+      "common_issue": "Trying to use index notation (like `counties[0][1]`) directly on a Table object instead of an Array."
+    },
+    {
+      "timecode": "24:09",
+      "language": "javascript",
+      "code": "let pop = Number(city.population);",
+      "demonstrates": "Explicitly converting a string value from a data object into a number.",
+      "common_issue": "Comparing strings in loops, which leads to incorrect min/max calculations."
+    },
+    {
+      "timecode": "36:30",
+      "language": "javascript",
+      "code": "let col = map(Math.sqrt(Number(city.population)), 200, 2500, 100, 255);",
+      "demonstrates": "Mapping a square-rooted population value to a color range.",
+      "common_issue": "Using raw population values in `map()` which causes most points to have the same color due to outliers."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "09:50",
+      "symptom": "Maximum call stack size exceeded error.",
+      "cause": "Likely an infinite loop or recursive function caused by improper data handling/loading.",
+      "fix": "Check the logic of loops and ensure callbacks are used correctly.",
+      "related_concept": "Recursion/Loops"
+    },
+    {
+      "timecode": "23:08",
+      "symptom": "The min/max values are completely wrong (e.g., max is 99,000 but the actual data has millions).",
+      "cause": "Type coercion: JavaScript is comparing strings alphabetically rather than numerically.",
+      "fix": "Wrap the data access in `Number()` or `parseFloat()`.",
+      "related_concept": "Type Coercion"
+    },
+    {
+      "timecode": "28:00",
+      "symptom": "p5.js error: 'you have used a p5.js reserved function \"pop\"'.",
+      "cause": "Using `pop` as a variable name when it is a reserved function in p5.js.",
+      "fix": "Rename the variable to something else (e.g., `population`).",
+      "related_concept": "Reserved Keywords"
+    },
+    {
+      "timecode": "31:35",
+      "symptom": "Large data points are covering up all the smaller ones.",
+      "cause": "Drawing order: larger elements are being drawn after smaller ones.",
+      "fix": "Sort the array so that smaller values are processed first in the loop.",
+      "related_concept": "Array.sort()"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:30",
+      "type": "demonstration",
+      "description": "The instructor shows how to find real-world census data, emphasizing that data is a 'model of the world' and can change over time."
+    },
+    {
+      "timecode": "05:17",
+      "type": "warning",
+      "description": "The instructor warns that if columns in a TSV file are not consistent, the data will get 'knocked out of sequence'."
+    },
+    {
+      "timecode": "34:27",
+      "type": "insight",
+      "description": "The instructor explains why `Math.sqrt()` is useful for 'flattening the curve' of exponential data to make visualizations more legible."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript syntax (loops, variables)",
+    "p5.js basics",
+    "Coordinate geometry"
+  ],
+  "leads_to": [
+    "Advanced Information Visualization",
+    "Complex Data Art",
+    "Statistical Mapping"
+  ],
+  "student_questions": [
+    "Why are my numbers not working in a comparison?",
+    "How do I load a text file or CSV into p5.js?",
+    "Why are all my dots the same color even though I used map()?",
+    "How do I make sure big shapes don't hide small ones?",
+    "What is the difference between JSON and a TSV file?",
+    "Why am I getting a 'Maximum call stack size exceeded' error?",
+    "How do I convert a string from my data into a number?",
+    "Why is '9' being treated as larger than '100'?",
+    "How do I sort my data before drawing it?",
+    "My dots are all in one spot, how do I map them to a map?"
+  ],
+  "video_id": "5-tsv-and-counties",
+  "video_title": "5. TSV and Counties",
+  "video_file": "5. TSV and Counties.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 10/5. TSV and Counties.mp4",
+  "week": "week 10",
+  "module": "Module 4 – Poetry of The World, Oceans of Data"
+}

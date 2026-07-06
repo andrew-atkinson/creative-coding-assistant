@@ -1,0 +1,120 @@
+{
+  "topic": "Transforming raw geographic JSON data into visual representations by calculating bounding boxes and mapping coordinates to a 2D canvas.",
+  "concepts": [
+    {
+      "name": "Data Wrangling",
+      "timecode": "00:45",
+      "explanation": "The process of taking raw, unstructured data and transforming it into a useful form for visualization.",
+      "why_it_matters": "Raw data is rarely ready to be drawn immediately; it often needs cleaning or restructuring first."
+    },
+    {
+      "name": "Bounding Box Calculation",
+      "timecode": "03:28",
+      "explanation": "Iterating through a dataset to find the minimum and maximum values (minLat, maxLat, minLong, maxLong) to define the spatial limits of the data.",
+      "why_it_matters": "You need to know the extreme boundaries of your data to know how to scale it onto a screen."
+    },
+    {
+      "name": "Coordinate Mapping",
+      "timecode": "13:30",
+      "explanation": "Using the `map()` function to translate geographic coordinates (longitude/latitude) into screen pixel coordinates (x/y).",
+      "why_it_matters": "Geographic degrees and screen pixels use different scales; mapping bridges the two."
+    },
+    {
+      "name": "Data Buffering",
+      "timecode": "20:41",
+      "explanation": "Adding a small amount of extra space (e.g., +10 degrees) to the calculated min/max boundaries.",
+      "why_it_matters": "Prevents data points from being clipped or touching the very edge of the canvas."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "03:56",
+      "language": "javascript",
+      "code": "let minLat = 90, maxLat = -90, minLong = 180, maxLong = -180;",
+      "demonstrates": "Initializing boundary variables with inverted values to ensure the first comparison in a loop triggers an update.",
+      "common_issue": "If initialized with the 'correct' values (e.g., minLat = -90), the `if` statement might never trigger because no data point is smaller than the starting value."
+    },
+    {
+      "timecode": "06:33",
+      "language": "javascript",
+      "code": "for (let city of cities) {\n  if (city.latitude < minLat) {\n    minLat = city.latitude;\n  }\n}",
+      "demonstrates": "Iterating through an array of objects to find the minimum latitude.",
+      "common_issue": "Forgetting to update both min and max, or using the wrong property name (e.g., `city.lat` instead of `city.latitude`)."
+    },
+    {
+      "timecode": "13:45",
+      "language": "javascript",
+      "code": "let x = map(city.longitude, minLong, maxLong, 0, width);\nlet y = map(city.latitude, maxLat, minLat, 0, height);",
+      "demonstrates": "Mapping longitude to X and latitude to Y. Note the inversion of maxLat/minLat for the Y axis.",
+      "common_issue": "Mapping latitude with `min, max` instead of `max, min`, which results in the map being upside down because screen Y increases downwards."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "04:58",
+      "symptom": "The min/max values never update when looping through data.",
+      "cause": "Initializing the minimum variable to a value that is already smaller than any data point in the set.",
+      "fix": "Initialize min variables to a very high value and max variables to a very low value (or vice versa) so the first data point always triggers an update.",
+      "related_concept": "Bounding Box Calculation"
+    },
+    {
+      "timecode": "18:30",
+      "symptom": "The visualization looks 'wrong' or doesn't match the expected shape of a country.",
+      "cause": "The mapping is based on arbitrary numbers rather than the actual min/max of the dataset, or the aspect ratio of the canvas doesn't match the data.",
+      "fix": "Programmatically calculate min/max from the dataset and adjust canvas dimensions to match proportions.",
+      "related_concept": "Coordinate Mapping"
+    },
+    {
+      "timecode": "10:42",
+      "symptom": "Data points are missing or cut off at the edges.",
+      "cause": "The bounding box is too tight, and outliers (like Hawaii or Alaska) fall outside the calculated range.",
+      "fix": "Add a 'buffer' by adding/subtracting a constant value from the min and max boundaries.",
+      "related_concept": "Data Buffering"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "04:58",
+      "type": "warning",
+      "description": "The instructor intentionally uses 'wrong' initial values for min/max to demonstrate how the logic must allow for the first data point to overwrite them."
+    },
+    {
+      "timecode": "08:30",
+      "type": "demonstration",
+      "description": "Comparing the code's calculated coordinates to Google Maps to validate that the algorithm is working correctly."
+    },
+    {
+      "timecode": "19:43",
+      "type": "insight",
+      "description": "The 'reveal' where the dots form a recognizable shape of the US, confirming the mapping logic is successful."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript (arrays, objects, for...of loops)",
+    "p5.js basics (setup, draw, map function)",
+    "Understanding of coordinate systems (X/Y)"
+  ],
+  "leads_to": [
+    "Map projections",
+    "Advanced spatial algorithms",
+    "Integrating qualitative data (population) into quantitative visualizations"
+  ],
+  "student_questions": [
+    "Why are all my dots in one spot?",
+    "How do I make a map out of JSON data?",
+    "My dots are upside down, how do I fix it?",
+    "How do I find the edges of my data automatically?",
+    "Why is my map cut off at the edges?",
+    "How do I turn latitude and longitude into pixels?",
+    "What is a bounding box in coding?",
+    "How do I loop through an array of objects to find the highest value?",
+    "My data is loading but nothing shows up on the canvas.",
+    "How do I add extra space around my shapes so they aren't touching the edge?"
+  ],
+  "video_id": "4-5-displaying-data",
+  "video_title": "4.5 Displaying Data",
+  "video_file": "4.5 Displaying Data.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 10/4.5 Displaying Data.mp4",
+  "week": "week 10",
+  "module": "Module 4 – Poetry of The World, Oceans of Data"
+}

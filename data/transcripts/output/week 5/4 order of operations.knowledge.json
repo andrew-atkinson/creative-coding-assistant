@@ -1,0 +1,93 @@
+{
+  "topic": "The impact of transformation order on coordinate systems, specifically how the sequence of translate() and rotate() affects whether an object rotates around its own center or orbits the origin.",
+  "concepts": [
+    {
+      "name": "order of operations",
+      "timecode": "00:00",
+      "explanation": "The sequence in which you write transformation functions (translate, rotate, scale) determines the final visual outcome because each function transforms the entire coordinate system for subsequent commands.",
+      "why_it_matters": "Changing the order changes whether an object spins in place or swings around the corner of the screen."
+    },
+    {
+      "name": "transforming the canvas",
+      "timecode": "01:39",
+      "explanation": "When you rotate before translating, you aren't just moving the shape; you are rotating the entire canvas/coordinate system itself.",
+      "why_it_matters": "It helps students understand that transformations are applied to the coordinate space, not just the object."
+    },
+    {
+      "name": "local vs. global rotation",
+      "timecode": "01:57",
+      "explanation": "By translating to a specific point first, you move the origin (0,0) to that location. Subsequent rotations then happen around this new 'local' origin.",
+      "why_it_matters": "This is the standard way to make an object spin around its own center rather than orbiting the top-left corner."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:08",
+      "language": "javascript",
+      "code": "rotate(angle);\ntranslate(width/2, height/2);\nrectMode(CENTER);\nrect(0, 0, 100, 100);",
+      "demonstrates": "Rotating before translating: The object orbits the top-left corner (0,0) because the rotation is applied to the global coordinate system first.",
+      "common_issue": "The object 'swings' around the screen instead of spinning in place."
+    },
+    {
+      "timecode": "01:57",
+      "language": "javascript",
+      "code": "translate(width/2, height/2);\nrotate(angle);\nrectMode(CENTER);\nrect(0, 0, 100, 100);",
+      "demonstrates": "Translating before rotating: The object rotates around its own center because the origin was moved to the center before the rotation was applied.",
+      "common_issue": null
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "01:29",
+      "symptom": "my shape is spinning around the corner of the screen instead of its center",
+      "cause": "The rotate() function was called before the translate() function.",
+      "fix": "Call translate() first to move the origin to the object's center, then call rotate().",
+      "related_concept": "order of operations"
+    },
+    {
+      "timecode": "02:12",
+      "symptom": "the position of my object keeps changing wildly when it rotates",
+      "cause": "The rotation is affecting the translation (the 'middle of the screen' is moving).",
+      "fix": "Ensure translate() happens before rotate().",
+      "related_concept": "coordinate space manipulation"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:29",
+      "type": "warning",
+      "description": "The instructor points out that the rectangle is not rotating about its own axis because of the order of operations."
+    },
+    {
+      "timecode": "02:12",
+      "type": "insight",
+      "description": "The realization that 'the middle of the screen is moving always' when rotation comes first, illustrating that we are transforming the space, not just the object."
+    }
+  ],
+  "prerequisites": [
+    "basic 2D coordinates (x, y)",
+    "understanding of translate()",
+    "understanding of rotate()"
+  ],
+  "leads_to": [
+    "scaling",
+    "shearing",
+    "hierarchical modeling"
+  ],
+  "student_questions": [
+    "Why is my square flying all over the screen when I try to rotate it?",
+    "How do I make a shape spin in place?",
+    "Does the order of translate and rotate matter?",
+    "Why does my object move to a weird place when I rotate it?",
+    "How do I make something rotate around its own center?",
+    "Why is my rotation affecting the position of my shape?",
+    "I used translate and rotate but it's not working right, what did I do wrong?",
+    "What is the correct order for transformations?"
+  ],
+  "video_id": "4-order-of-operations",
+  "video_title": "4 order of operations",
+  "video_file": "4 order of operations.mp4",
+  "video_url": null,
+  "week": "week 5",
+  "module": "Module 2 – Chaos and Control"
+}

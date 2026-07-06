@@ -1,0 +1,111 @@
+{
+  "topic": "Conceptual foundations of geographic coordinate systems (latitude and longitude) and the mathematical necessity of mapping spherical coordinates to a 2D digital screen grid.",
+  "concepts": [
+    {
+      "name": "Data vs. Fact",
+      "timecode": "00:17",
+      "explanation": "The instructor warns that data is just a representation and not necessarily an accurate claim about the state of the world or 'the truth'.",
+      "why_it_matters": "Students need to validate their datasets against reality to ensure their visualizations are accurate and not misleading."
+    },
+    {
+      "name": "Latitude",
+      "timecode": "03:25",
+      "explanation": "Horizontal lines that run around the planet, with 0° at the Equator. They range from +90 (North Pole) to -90 (South Pole).",
+      "why_it_matters": "It defines the vertical position on a sphere, but students often confuse its direction of movement."
+    },
+    {
+      "name": "Longitude",
+      "timecode": "04:25",
+      "explanation": "Vertical lines that run from pole to pole, passing through the Prime Meridian (0°) in London. They range from -180 to +180.",
+      "why_it_matters": "It defines the horizontal position on a sphere and is essential for locating points globally."
+    },
+    {
+      "name": "Map Projection",
+      "timecode": "09:11",
+      "explanation": "The mathematical transformation used to project a 3D spherical surface onto a 2D rectilinear (flat) plane.",
+      "why_it_matters": "Understanding this explains why maps are inherently distorted (e.g., Greenland appearing larger than it is)."
+    },
+    {
+      "name": "Coordinate Mapping",
+      "timecode": "08:12",
+      "explanation": "The process of converting geographic values (like -180 to 180) into digital screen coordinates (like 0 to width/height).",
+      "why_it_matters": "Computers don't understand 'latitude'; they only understand pixel grids. This transformation is required to actually draw the data."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "08:20",
+      "language": "conceptual/mathematical",
+      "code": "// Mapping logic concept:\n// Input: Longitude [-180, 180] -> Output: [0, width]\n// Input: Latitude [-90, 90] -> Output: [0, height]",
+      "demonstrates": "The conceptual relationship between geographic ranges and screen pixel dimensions.",
+      "common_issue": null
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "03:04",
+      "symptom": "Thinking latitude moves left/right (laterally)",
+      "cause": "Misunderstanding the orientation of latitudinal lines.",
+      "fix": "Recognize that latitude lines run horizontally around the planet, while longitude lines move vertically.",
+      "related_concept": "Latitude"
+    },
+    {
+      "timecode": "08:47",
+      "symptom": "Shapes looking stretched or incorrectly sized (e.g., Greenland looks too big)",
+      "cause": "Geometric distortion caused by projecting a sphere onto a flat plane.",
+      "fix": "Acknowledge that projections inherently cause distortion, especially near the poles.",
+      "related_concept": "Map Projection"
+    },
+    {
+      "timecode": "08:12",
+      "symptom": "Nothing shows up on the canvas or shapes are in the wrong place",
+      "cause": "Trying to use raw Long/Lat values directly as pixel coordinates.",
+      "fix": "Implement a mapping function to convert the geographic range to the screen's width and height.",
+      "related_concept": "Coordinate Mapping"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "00:07",
+      "type": "warning",
+      "description": "The instructor warns that data is not necessarily 'fact' or 'truth', emphasizing the need for validation."
+    },
+    {
+      "timecode": "03:04",
+      "type": "insight",
+      "description": "Clarifying the common misconception that latitude moves laterally."
+    },
+    {
+      "timecode": "08:03",
+      "type": "transition",
+      "description": "The instructor identifies the 'problem': computers use grid systems (x, y), not spherical coordinates, setting up the need for mapping."
+    }
+  ],
+  "prerequisites": [
+    "Basic understanding of geometry (spheres vs. planes)",
+    "Familiarity with basic coordinate systems (x, y)"
+  ],
+  "leads_to": [
+    "Implementing coordinate transformation algorithms",
+    "Visualizing geographic datasets on a digital canvas",
+    "Working with JSON/TSV data containing spatial coordinates"
+  ],
+  "student_questions": [
+    "Why are my shapes all in one spot?",
+    "How do I turn longitude into pixels on the screen?",
+    "Why does Greenland look so huge on my map?",
+    "What is the difference between a sphere and a map?",
+    "How do I use latitude and longitude to draw things?",
+    "Why can't I just use the raw numbers from my data file?",
+    "What is a map projection?",
+    "How do I represent the world on a flat screen?",
+    "What is the range for latitude and longitude?",
+    "Why do I need to map my coordinates?"
+  ],
+  "video_id": "2-long-lat",
+  "video_title": "2. Long:Lat",
+  "video_file": "2. Long:Lat.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 10/2. Long:Lat.mp4",
+  "week": "week 10",
+  "module": "Module 4 – Poetry of The World, Oceans of Data"
+}

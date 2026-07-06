@@ -1,0 +1,139 @@
+{
+  "topic": "Implementing a real-time spectrogram visualization using the p5.js library and FFT (Fast Fourier Transform) to map audio frequencies to visual elements.",
+  "concepts": [
+    {
+      "name": "Spectrogram",
+      "timecode": "00:05",
+      "explanation": "A visualization that shows all the different frequencies of a sound over time.",
+      "why_it_matters": "It allows artists to see the 'spectral profile' of a sound, helping them understand how different pitches and volumes translate into visual data."
+    },
+    {
+      "name": "preload() function",
+      "timecode": "02:33",
+      "explanation": "A special p5.js function that runs synchronously, meaning it waits for assets (like MP3s) to finish loading before moving on to setup or draw.",
+      "why_it_matters": "If you try to play a sound in setup() before it has finished downloading, the code will break."
+    },
+    {
+      "name": "Fast Fourier Transform (FFT)",
+      "timecode": "04:26",
+      "explanation": "A mathematical algorithm that breaks down an audio signal into 'bins'—discrete segments representing different frequency ranges.",
+      "why_it_matters": "It is the bridge between sound (time-domain) and frequency data, allowing us to map specific pitches to visual properties."
+    },
+    {
+      "name": "FFT Bins",
+      "timecode": "08:13",
+      "explanation": "An array of values where each index represents a specific frequency range. The size (e.g., 512) determines how many 'buckets' of frequency data you are analyzing.",
+      "why_it_matters": "The number of bins determines the resolution and detail of your visualization."
+    },
+    {
+      "name": "AudioIn (Microphone Input)",
+      "timecode": "17:30",
+      "explanation": "Using the `p5.AudioIn` class to capture live sound from a microphone instead of a static file.",
+      "why_it_matters": "It enables interactive, real-time responses to the user's environment or voice."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "03:52",
+      "language": "javascript",
+      "code": "sound.play();",
+      "demonstrates": "Playing a loaded sound object.",
+      "common_issue": null
+    },
+    {
+      "timecode": "05:00",
+      "language": "javascript",
+      "code": "fft = new p5.FFT(0.8, 512);",
+      "demonstrates": "Initializing an FFT object with a smoothing factor (0.8) and bin count (512).",
+      "common_issue": "Forgetting the smoothing parameter or using a bin count that isn't a power of two."
+    },
+    {
+      "timecode": "07:11",
+      "language": "javascript",
+      "code": "fft.setInput(sound);",
+      "demonstrates": "Telling the FFT object which audio source (file or mic) to analyze.",
+      "common_issue": "Forgetting to set the input, resulting in an FFT that analyzes nothing."
+    },
+    {
+      "timecode": "13:30",
+      "language": "javascript",
+      "code": "for (let y = 0; y < bins.length; y++) {\n  fill(bins[y]);\n  rect(x, y, 10);\n}",
+      "demonstrates": "Iterating through the frequency bins to draw rectangles representing each frequency.",
+      "common_issue": "Using `bin` instead of the array index `bins[y]` inside the loop."
+    },
+    {
+      "timecode": "16:00",
+      "language": "javascript",
+      "code": "x++;\nif (x > width) {\n  x = 0;\n}",
+      "demonstrates": "Creating a scrolling effect by incrementing an x-coordinate and resetting it when it hits the edge.",
+      "common_issue": "Forgetting to reset x, causing the drawing to only happen once on one side of the screen."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "02:14",
+      "symptom": "The code breaks or errors out when trying to play sound.",
+      "cause": "Loading assets in `setup()` instead of `preload()`, which causes the code to try and play sound before it has finished downloading.",
+      "fix": "Move all `loadSound` calls into the `preload()` function.",
+      "related_concept": "asynchronous loading"
+    },
+    {
+      "timecode": "14:02",
+      "symptom": "The shapes (rectangles) are invisible or look like tiny dots.",
+      "cause": "The default `stroke` (outline) is being drawn around a 1-pixel wide rectangle, which obscures the actual shape.",
+      "fix": "Use `noStroke()` to remove the outline.",
+      "related_concept": "rect() function"
+    },
+    {
+      "timecode": "13:40",
+      "symptom": "Nothing shows up on the canvas even though code is running.",
+      "cause": "The `background()` call in `draw()` might be clearing the previous frame's drawings before they can be seen, or a loop is not iterating correctly.",
+      "fix": "Comment out `background()` to see if shapes are being drawn, or check the loop logic.",
+      "related_concept": "draw() function"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "02:38",
+      "type": "insight",
+      "description": "The instructor explains the difference between synchronous (preload) and asynchronous (setup/draw) execution."
+    },
+    {
+      "timecode": "08:21",
+      "type": "demonstration",
+      "description": "Using `console.log(bins)` to inspect the raw data array, which is crucial for understanding what the FFT actually produces."
+    },
+    {
+      "timecode": "19:07",
+      "type": "transition",
+      "description": "Shifting from technical implementation to the historical context of electronic music (Daphne Oram) and how it relates to modern visualization."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript (variables, loops)",
+    "p5.js basics (setup and draw functions)",
+    "Understanding of frequency vs amplitude"
+  ],
+  "leads_to": [
+    "Sound Granulation",
+    "Advanced Audio-Visual Synchronization",
+    "Generative Art based on spectral profiles"
+  ],
+  "student_questions": [
+    "How do I make a visualizer that reacts to music?",
+    "Why is my sound not playing even though I used loadSound?",
+    "What are 'bins' in an FFT?",
+    "How do I make the visualization scroll from left to right?",
+    "Why are my rectangles not showing up on the screen?",
+    "How do I use a microphone instead of an MP3 file for my art?",
+    "What is the difference between setup and preload?",
+    "How do I map sound frequencies to colors or heights?",
+    "Why is my screen just a solid color and nothing is moving?",
+    "How do I get the data from a sound file into my code?"
+  ],
+  "video_id": "2-sound-inputs",
+  "video_title": "2. Sound Inputs",
+  "video_file": "2. Sound Inputs.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 9/2. Sound Inputs.mp4",
+  "week": "week 9"
+}

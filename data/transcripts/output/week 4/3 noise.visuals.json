@@ -1,0 +1,119 @@
+{
+  "video": "3 noise.mp4",
+  "vision_model": "gemma-3-27b-it-qat",
+  "frame_interval": 30,
+  "descriptions": [
+    {
+      "timestamp": 0.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows an instructional coding video interface, likely using a platform like Replit or similar. The title \"Randomness and Noise\" is prominently displayed in green text at the top, with a \"1\" written beside it. A simple graph is shown on the black background; it consists of a horizontal red line at y=0 and a vertical red line extending upwards from the x-axis. \n\nThe UI includes icons for running, debugging, and other coding tools on the left side (arrow, square, \"A\", chat bubble, downward arrow). The bottom toolbar has icons for fullscreen, grid view, settings, and a \"Stop\" button. No code editor is visible in this screenshot."
+    },
+    {
+      "timestamp": 30.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen displays an instructional coding video interface, likely for a tool like p5.js or Processing due to the presence of drawing elements and control buttons. The title \"Randomness and Noise\" is prominently displayed in green text at the top of the screen. A simple line graph, drawn in light green, is visible on a black background; it starts at 0 and fluctuates with peaks and valleys. The UI includes buttons for running the code (play/stop), stepping through it, showing data, and zooming.  A small \"1\" is handwritten near the top of the graph.\n\n```\n// Code not visible in screenshot\n```"
+    },
+    {
+      "timestamp": 60.0,
+      "description": "The screen displays a presentation slide titled \"Randomness and Noise\". A red horizontal line is drawn on a black background, starting at y=0 and extending to the right. A green number \"1\" is written above the line, near its left end. The slide appears to be part of a coding instructional video, likely introducing concepts related to random number generation or noise functions. No code editor or other UI elements are visible in the image."
+    },
+    {
+      "timestamp": 90.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows an instructional coding environment, likely a web-based tool like p5.js or Processing editor. The title \"Randomness and Noise\" is prominently displayed in green text at the top. A graph is visible on a black background, with a red horizontal line at y=0 and a green wavy line fluctuating above it. The green line appears to represent some kind of random or noisy signal, with peaks and valleys. \n\nThe left sidebar contains icons for various tools: select, rectangle, ellipse, line, text, color picker, and zoom. A small \"1\" is written near the top of the graph in red. The bottom toolbar has buttons for grid, statistics, and a \"Stop\" button.\n\n```\nA\nA\nA\nA\nA\n```"
+    },
+    {
+      "timestamp": 120.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows an instructional coding environment, likely p5.js or a similar JavaScript graphics library based on the UI elements. The title \"Randomness and Noise(xOff)\" is prominently displayed at the top in green text. Below this, a green line graph is plotted on a black background; it resembles a fluctuating curve with the y-axis starting at 0.\n\nThe UI includes icons for saving, running code, showing information, and stopping the program. A red vertical line is visible on the left side of the graph. The bottom right corner has zoom controls (+/-).\n\n```\nRandomness and Noise(xOff)\n```"
+    },
+    {
+      "timestamp": 150.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows an instructional coding video interface, likely for a tool like Excalidraw or similar. A green line graph is prominently displayed on a black background, resembling a random walk or noisy signal. The x-axis represents time (indicated by an arrow), and the y-axis is labeled \"0\" at the bottom. Above the graph, text reads \"Randomness and Noise (xOff 1 nowe(0))\". A vertical red line is drawn at the beginning of the graph, with a \"1\" next to it.\n\nThere are UI elements on the left side including icons for selection, text, and shapes. The bottom of the screen has buttons for grid view, undo/redo, and a \"Stop\" button. No code editor is visible in this screenshot."
+    },
+    {
+      "timestamp": 180.0,
+      "description": "Here's a description of what's visible in the image:\n\nThe screen shows an instructional coding video interface, likely for a tool like Excalidraw or similar digital whiteboard. The main focus is on a green, hand-drawn line graph fluctuating above a red horizontal axis labeled with an arrow indicating direction.  Text at the top reads \"Randomness and Noise (xOff nowe(0.00) = 0.4\". A yellow circle highlights a point on the graph, and a '1' is written to its left. \n\nThe UI includes drawing tools on the left side (arrow, rectangle, circle, etc.) and buttons for grid display, undo/redo, and stop.  The bottom of the screen has icons for zoom control.\n\n```\nnowe(0.00) = 0.4\n```"
+    },
+    {
+      "timestamp": 210.0,
+      "description": "Here's a description of what's visible in the image:\n\nThe screen shows an instructional coding environment, likely a digital whiteboard application (possibly Explain Everything or similar).  A green line graph is prominently displayed, resembling a random walk or stochastic process. The x-axis appears to be labeled with an arrow indicating increasing values, and the y-axis is marked from 0.00 to 0.55.  Handwritten text at the top reads \"Randomness and Noise (xOff) nowe(0.00)= 6.5J\".  A small yellow circle is plotted at the beginning of the graph, and a \"1\" appears near the left edge.  The UI includes basic drawing tools (arrow, circle, line) and buttons for screen control (\"Stop\").\n\n```\nA\nG\nA\nA\n```"
+    },
+    {
+      "timestamp": 240.0,
+      "description": "The screen displays a portion of an instructional coding video focusing on \"Randomness and Noise\" (with the note `noff` in parentheses). A green line graph is prominently featured, plotted against an x-axis labeled with values 0.00 and 0.09, and a y-axis labeled with 0 and 0.3.  Points are plotted on the graph, connected by a jagged line representing noise; dashed lines indicate some sort of threshold or reference.  Above the graph, handwritten in green text is \"1. `nowe(b.00) = 0.5j`\". The application or tool is not clearly identifiable, but it appears to be a presentation or drawing environment."
+    },
+    {
+      "timestamp": 270.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor ([https://editor.p5js.org](https://editor.p5js.org)). The open file is named \"sketch.p5.js\".  The editor displays a code area and a preview canvas. The canvas is currently filled with a solid dark gray background (color value 220).\n\n```javascript\nlet xOff = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n\n  constrain(n, low, high)\n}\n```\n\nA palette of color swatches is visible on the right side with labels \"fun\", \"concat\", \"cone\", \"const\", and \"keyword\". The bottom of the screen has a clear button. A console is also visible, but appears empty."
+    },
+    {
+      "timestamp": 300.0,
+      "description": "Here's a description of what's visible in the image:\n\nThe screen shows an instructional coding video interface, likely related to data visualization or signal processing. A green-colored graph is prominently displayed on a black background, resembling a time series plot with significant fluctuations.  Annotations indicate values like \"0.3\" and \"0.01\" along the y-axis, with a note \"nowe(0.09) = 0.53\" at the top left.  A small yellow circle with a crosshair is positioned near the beginning of the x-axis at y=0.  The UI includes tools for drawing (pen, shapes), selection, and a toolbar at the bottom with icons like \"Stop\".  The application appears to be some kind of digital whiteboard or interactive plotting environment.\n\n```\nRandomness and Noise(xOff)\nnowe(0.09)=0.53\n```"
+    },
+    {
+      "timestamp": 330.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows p5.js Web Editor, with a file named \"editor.p5js.org\" open. The code editor displays JavaScript code related to creating a canvas and generating noise. A preview area on the right side shows a solid dark red background (color code #220). The console output at the bottom displays several long decimal numbers.\n\n```javascript\nlet xOff = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n\n  console.log(noise(xOff));\n\n  xOff += 0.001\n}\n```\n\nThe UI includes buttons for \"Edit\", \"Sketch\", \"Help\", and a language selector set to \"English\". A \"Clear\" button is visible below the preview area. The editor appears to be in a running state, as indicated by the \"Relaunch to...\" message at the top."
+    },
+    {
+      "timestamp": 360.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows an open p5.js Web Editor, specifically `editor.p5js.org`. The active file is named \"sketch.js\". A code editor occupies the left side of the screen, and a preview canvas is on the right. The canvas displays a light blue background with a single white circle centered within it.\n\n```javascript\n// p5.js sketch.js\n\nlet xOff = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n\n  console.log(noise(xOff));\n\n  xOff += 0.01\n\n  circle(xOff * width, height/2);\n}\n```\n\nThe bottom of the screen displays a stream of numerical output, likely from `console.log(noise(xOff))`. The UI shows buttons for \"Auto-refresh\", \"Week 4 - noise\", and a relaunch button. A clear button is also visible near the bottom of the code editor."
+    },
+    {
+      "timestamp": 390.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows p5.js Web Editor, with a file named `editor.p5js.org` open. The code editor displays JavaScript code related to creating a canvas and drawing on it. A preview area shows a black background with a single, slightly blurred white circle near the center of the canvas. The console output at the bottom displays a series of numerical values, likely generated by `noise()` function calls.\n\n```javascript\nlet xOff = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(228);\n\n  console.log(noise(xOff));\n\n  xOff += 0.01;\n\n  circle(xOff * width, 200, 20);\n}\n```\n\nThe UI indicates the project is in \"Week 4 - noise\" and has an auto-refresh enabled. A \"Clear\" button is visible below the code editor, likely to reset the console output."
+    },
+    {
+      "timestamp": 420.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows p5.js Web Editor, specifically `editor.p5js.org`. The currently open file is named \"sketch.js\". A code editor occupies the left side of the screen, and a preview canvas is on the right. The canvas displays a black background with a single white circle near the center.\n\n```javascript\nlet xOff = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(228);\n\n  console.log(noise(xOff));\n\n  xOff += 0.01\n\n  circle(noise(xOff) * width, 200, 20);\n}\n```\n\nThe bottom of the screen displays a stream of numerical values, likely output from `console.log(noise(xOff))`. The UI shows buttons for \"Auto-refresh\" and a dropdown menu labeled \"Week 4 - noise\". A small clear button is visible."
+    },
+    {
+      "timestamp": 450.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows an instructional coding video interface, likely using a digital whiteboard application (possibly Explain Everything). A green line graph is prominently displayed over a black background, resembling a random walk or time series data.  Annotations in green text indicate values like \"Randomness and Noise (xOff)\", \"nowe(0.09) = 6.5J\", \"0.3\" and \"0.0\".  A red horizontal line is at y=0, with a blue circle marking a point near x=0 and another yellow circle further along the x-axis. \n\nThere is a sidebar on the left with tools for drawing, selecting colors, and adding shapes. The bottom of the screen has a toolbar with options like \"Stop\".\n\n```\nA\nG1\nG2\nA\n```"
+    },
+    {
+      "timestamp": 480.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows an instructional coding environment, likely p5.js Web Editor (editor.p5js.org). The active file is named \"sketch.js\" and appears to be in Week 4 - noise. A code editor occupies the left side of the screen, and a preview canvas is on the right. The canvas displays a dark gray background with a single white circle near the center.\n\n```javascript\nlet xOff = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(228);\n\n  console.log(noise(xOff));\n\n  xOff += 0.005;\n\n  circle(noise(xOff) * width, 200, 20);\n}\n```\n\nThe console at the bottom of the screen displays a stream of numerical values, likely output from `console.log(noise(xOff))`.  The UI indicates the code is running, as evidenced by the \"Relaunch to reload\" button. There's also a small input field with text that is too blurry to read confidently, and a \"Clear\" button."
+    },
+    {
+      "timestamp": 510.0,
+      "description": "The screen displays a chalkboard-style background with handwritten green text and diagrams related to \"Randomness and Noise.\" A graph is prominently featured, showing a fluctuating line with values labeled as 0.3 and 0.5.  The x-axis is marked with an arrow indicating direction, and the y-axis is labeled 0.  A small circle at the origin (0,0) has \"0.01\" written near it and a red arrow points to it with the label \"1.\"  Above the graph, handwritten text includes \"nowe(b.coo) = 0.5\" and a partially obscured expression with \"xOff\".\n\n```\n1. nowe(b.coo) = 0.5\n```\n\nThe application or tool is not clearly identifiable, but it appears to be a presentation or instructional setting. No code editor or file names are visible."
+    },
+    {
+      "timestamp": 540.0,
+      "description": "Here's a description of what's visible in the image:\n\nThe screen shows an instructional coding environment, likely a digital whiteboard application like Excalidraw or similar. A green line graph is prominently displayed, fluctuating with a somewhat erratic pattern. Below the graph are labels \"0.01\" and \"0.04\", with an arrow indicating direction.  A text annotation at the top reads \"Randomness and Noise (xOff nowe(0.09) = 6.5)\". A small code editor window is visible on the left side with a slider labeled \"Thickness\".\n\n```\nA\nA\nA\n```\n\nThe UI includes tools for drawing (pen, eraser), color selection, and basic operations. The application appears to be in a stopped state (indicated by the \"Stop\" button)."
+    },
+    {
+      "timestamp": 570.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor (editor.p5js.org) open with a file named \"sketch.js\". The editor displays JavaScript code, and the canvas preview area shows a dark gray background with two white circles. The UI indicates it's \"Week 4 - noise\" and has auto-refresh enabled.\n\n```javascript\nlet xOff = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n\n  console.log(noise(xOff));\n\n  xOff += 0.005;\n\n  circle(noise(xOff) * width, noise(x, [y], [z]), 10);\n}\n```\n\nThe right side of the screen displays p5.js function documentation for `noise()`, including options like `x`, `y`, and `z` with \"fun\" labels.  A small play button is visible at the top left of the editor window, indicating a running sketch."
+    },
+    {
+      "timestamp": 600.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor (editor.p5js.org) open with a file named \"sketch.js\". The UI indicates it's in Week 4 - noise mode, and the editor is set to Auto-refresh.  A preview canvas displays a dark gray background with several white, elliptical shapes scattered across it; one shape is prominently highlighted. \n\nThe code editor contains the following JavaScript:\n\n```javascript\nlet xOff = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220, 1D);\n  console.log(noise(xOff))\n\n  xOff += 0.005;\n  circle(noise(xOff) * width, noise(xOff + 1) * height, 20)\n}\n```\n\nThe top toolbar shows buttons for \"Run\", \"Stop\", and other p5.js functions. A small error message, represented by an 'X' icon, is visible in the bottom right corner of the editor."
+    },
+    {
+      "timestamp": 630.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, specifically `editor.p5js.org`. The open file is named \"Sketch.js\". A canvas preview area displays a dark gray background with swirling, abstract lines and dots in white. The code editor shows JavaScript code related to drawing using the p5.js library, including `createCanvas`, `background`, and `circle`.\n\n```javascript\nlet xOff = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220, 11, 1);\n  console.log(noise(xOff));\n\n  xOff += 0.005;\n  circle(noise(xOff) * width, noise(xOff + 1) * height, 20)\n}\n```\n\nThe UI indicates the project is in \"Week 4 - noise\" and has an \"Auto-refresh\" feature enabled. A play button is visible at the top left of the editor, suggesting the sketch can be run interactively."
+    },
+    {
+      "timestamp": 660.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the online p5.js editor, specifically `editor.p5js.org`. The currently open file is named `p5.js Web Editor`.  The editor displays code in a dark theme, and the canvas preview area shows a black background with a white stick figure-like drawing in the center. The UI indicates it's Week 4 - noise, and there is a \"Clear\" button visible below the preview.\n\n```javascript\nlet xOff = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220, 1);\n  xOff += 0.005;\n\n  circle(noise(xOff) * width, noise(xOff + 1) *\n  height, 20);\n\n  console.logNoise()\n```\n\nThe bottom of the editor has a console area, and there's an \"Auto-refresh\" toggle in the top left. The editor also has tabs for Sketch, Help, and English."
+    },
+    {
+      "timestamp": 690.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows p5.js Web Editor, with a file named \"editor.p5js.org\" open. The code editor displays JavaScript code for a sketch involving noise and circles. A preview canvas on the right shows a dark gray background with a winding, snake-like line composed of white circles. The console at the bottom displays numerical output related to `xOff`, specifically values like \"0.8850000000000001\" and \"0.556197251815148\".\n\n```javascript\nlet xOff = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220, 1);\n  xOff += 0.005;\n\n  circle(noise(xOff) * width, noise(xOff + 1) *\n  height, 20);\n\n  console.log(xOff, noise(xOff));\n}\n```\n\nThe UI indicates the sketch is in \"Week 4 - noise\" and has an auto-refresh enabled. A \"Launch to...\" button is visible at the top right, and a clear button is present below the console output."
+    },
+    {
+      "timestamp": 720.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows p5.js Web Editor, with a file named `editor.p5js.org`. The code editor displays JavaScript code for creating a visual sketch. A preview canvas is visible on the right, showing numerous small circles scattered across a dark background. The bottom of the screen displays long strings of numbers, likely generated by `noise()` function calls within the code.\n\n```javascript\n// let xOff = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220, 1);\n  // xOff += 0.005;\n\n  circle(noise(xOff) * width, noise(xOff + 1) * height, 20);\n  circle(noise(xOff + 0.1) * width, noise(xOff + 1.1) * height, 20);\n}\n```\n\nThe UI includes buttons for \"Auto-refresh\", \"Week 4 - noise\", and a clear button. The editor is open, and the sketch appears to be running based on the preview output."
+    },
+    {
+      "timestamp": 750.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor (editor.p5js.org). The active file is named \"sketch.js\".  The editor displays JavaScript code, and a preview canvas occupies the right side of the screen. The canvas shows a dark background with numerous small, white circles scattered across it, appearing somewhat noisy and randomly distributed. \n\n```javascript\nlet xOff = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220, 1);\n  xOff += 0.005;\n\n  circle(noise(xOff) * width, noise(xOff + 1) * height, 20);\n  circle(noise(xOff + 0.1) * width, noise(xOff + 1.1) * height, 20);\n}\n```\n\nThe UI includes buttons for \"Auto-refresh\", a week selection dropdown (\"Week 4 - noise\"), and a clear button. A \"Launch\" button is also visible in the top right corner, along with some UI elements for editing and viewing."
+    },
+    {
+      "timestamp": 780.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, specifically `editor.p5js.org`. A code editor occupies the left side of the screen, and a preview canvas is on the right. The canvas displays a field of small, spiky shapes resembling plants or coral in white against a dark background. \n\nThe code editor contains JavaScript code:\n\n```javascript\nlet xOff = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220, 1);\n  xOff += 0.005;\n\n  circle(noise(xOff) * width, noise(xOff + 1) * height, 20);\n  circle(noise(xOff + 0.1) * width, noise(xOff + 1.1) * height, 20);\n}\n```\n\nThe UI indicates the file is named \"Sketch.js\" and it's in \"Week 4 - noise\". A \"Clear\" button is visible below the preview canvas. The editor's top bar shows options for Edit, Sketch, Help, and English."
+    },
+    {
+      "timestamp": 810.0,
+      "description": "Here's a description of what's visible in the screenshot:\n\nThe screen shows the p5.js Web Editor, specifically `editor.p5js.org`. The active file is named \"sketch.js\" and appears to be in Week 4 - noise. The code editor displays JavaScript code for a p5.js sketch, which creates a canvas and draws circles with noise-based positioning. The preview area shows a dark gray background (color value 220) with numerous small, white circles scattered across it. The UI includes buttons for \"Play\", \"Stop\", and a dropdown menu labeled \"Auto-refresh\".\n\n```javascript\nlet xOff = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n  noiseSeed(0);\n}\n\nfunction draw() {\n  background(220, 1);\n  xOff += 0.005;\n\n  circle(noise(xOff) * width, noise(xOff + 1) * height, 20);\n  circle(noise(xOff + 0.1) * width, noise(xOff + 1.1) * height, 20);\n}\n```"
+    }
+  ]
+}

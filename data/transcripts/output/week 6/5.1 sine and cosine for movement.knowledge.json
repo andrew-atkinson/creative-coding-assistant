@@ -1,0 +1,113 @@
+{
+  "topic": "Using trigonometric functions (sine and cosine) to create cyclical motion and circular paths in p5.js.",
+  "concepts": [
+    {
+      "name": "cyclical functions",
+      "timecode": "00:10",
+      "explanation": "Functions that oscillate or repeat between two values, specifically mentioned as oscillating between -1 and 1.",
+      "why_it_matters": "Understanding this is the foundation for creating any repetitive or oscillating animation."
+    },
+    {
+      "name": "angleMode(DEGREES)",
+      "timecode": "01:26",
+      "explanation": "Setting the angle mode to degrees rather than radians to make incrementing angles more intuitive for beginners.",
+      "why_it_matters": "It makes the math easier to visualize when you are manually incrementing a counter."
+    },
+    {
+      "name": "translate() for rotation",
+      "timecode": "01:36",
+      "explanation": "Moving the origin (0,0) to the center of the screen so that shapes rotate or oscillate around the middle rather than the top-left corner.",
+      "why_it_matters": "Without this, circular motion would be centered at the top-left corner of the canvas."
+    },
+    {
+      "name": "scaling trigonometric output",
+      "timecode": "02:37",
+      "explanation": "Multiplying the result of sin() or cos() by a number (like 100) to increase the range of movement.",
+      "why_it_matters": "Since sin/cos only output between -1 and 1, the movement is too small to see without scaling."
+    },
+    {
+      "name": "sine and cosine for circular motion",
+      "timecode": "04:54",
+      "explanation": "Using the sine function for the Y coordinate and the cosine function for the X coordinate to map an angular input into a circular path.",
+      "why_it_matters": "This is the standard way to make an object move in a perfect circle."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "03:23",
+      "language": "javascript",
+      "code": "y = sin(angle) * 100;",
+      "demonstrates": "Scaling a sine wave so the vertical movement is 100 units up and down.",
+      "common_issue": "If you forget to multiply by a number, the movement will only be 1 pixel (from -1 to 1)."
+    },
+    {
+      "timecode": "04:54",
+      "language": "javascript",
+      "code": "x = cos(angle) * 100;\ny = sin(angle) * 100;\ncircle(x, y, 50);",
+      "demonstrates": "Combining sine and cosine to draw a circle that follows a circular path.",
+      "common_issue": "Using the same function for both X and Y will result in a line, not a circle."
+    },
+    {
+      "timecode": "06:43",
+      "language": "javascript",
+      "code": "line(0, 0, x, y);",
+      "demonstrates": "Drawing a hypotenuse from the center (0,0) to the current X and Y coordinates.",
+      "common_issue": null
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "02:29",
+      "symptom": "The shape barely moves or looks stationary.",
+      "cause": "Trigonometric functions output values between -1 and 1, which is a very small range on a large canvas.",
+      "fix": "Multiply the function output by a larger number (e.g., `sin(angle) * 100`).",
+      "related_concept": "scaling and amplitude"
+    },
+    {
+      "timecode": "04:30",
+      "symptom": "The shapes move back and forth in a straight line instead of a circle.",
+      "cause": "Using only sine or only cosine for both X and Y coordinates.",
+      "fix": "Use `cos()` for the X coordinate and `sin()` for the Y coordinate.",
+      "related_concept": "sine and cosine for circular motion"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "02:29",
+      "type": "warning",
+      "description": "The instructor warns that the default output of sine is too small to see clearly on a canvas."
+    },
+    {
+      "timecode": "05:44",
+      "type": "demonstration",
+      "description": "Visualizing the relationship between X, Y, and the center using lines to show how coordinates are plotted."
+    }
+  ],
+  "prerequisites": [
+    "Basic p5.js setup (setup and draw functions)",
+    "Variables and incrementing counters",
+    "Basic understanding of the Cartesian coordinate system (X and Y)"
+  ],
+  "leads_to": [
+    "Perlin noise for organic movement",
+    "Complex orbital mechanics/simulations",
+    "Generative art patterns"
+  ],
+  "student_questions": [
+    "Why is my circle barely moving?",
+    "How do I make something move in a circle?",
+    "What is the difference between sine and cosine in coding?",
+    "How do I make a shape oscillate up and down?",
+    "Why are my shapes stuck in the top-left corner?",
+    "How do I use math to make smooth movement?",
+    "My circle is just moving left and right, how do I make it go in a loop?",
+    "How do I use sine to change the position of an object?",
+    "What does angleMode(DEGREES) do?"
+  ],
+  "video_id": "5-1-sine-and-cosine-for-movement",
+  "video_title": "5.1 sine and cosine for movement",
+  "video_file": "5.1 sine and cosine for movement.mp4",
+  "video_url": null,
+  "week": "week 6",
+  "module": "Module 3 - Generation and Life"
+}

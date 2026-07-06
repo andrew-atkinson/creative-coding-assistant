@@ -1,0 +1,111 @@
+{
+  "topic": "Handling keyboard input in p5.js using literal character values versus physical key codes to manage complex user interactions and modifier keys.",
+  "concepts": [
+    {
+      "name": "key",
+      "timecode": "00:52",
+      "explanation": "A variable that returns the literal character of the key pressed (e.g., 'r', 'R', or 'shift'). It is sensitive to case and modifier keys.",
+      "why_it_matters": "It allows for simple character-based logic, but can be unreliable when users use Shift or Caps Lock."
+    },
+    {
+      "name": "keyCode",
+      "timecode": "00:52",
+      "explanation": "A numerical value representing the specific physical key on the keyboard (e.g., 82 for 'R'). It is agnostic to case or modifiers.",
+      "why_it_matters": "It provides a more robust way to detect specific keys regardless of whether the user is holding Shift or typing in uppercase."
+    },
+    {
+      "name": "The 'Catch-All' Pattern",
+      "timecode": "03:59",
+      "explanation": "Using an 'else' statement at the end of a conditional chain to set a default state (like white stroke) when no specific key is being pressed.",
+      "why_it_matters": "Prevents the sketch from getting stuck in a specific state (like having no stroke color) when the user stops pressing keys."
+    },
+    {
+      "name": "Canvas Focus / Active Element",
+      "timecode": "04:34",
+      "explanation": "The requirement that the user must click on the canvas for it to become the 'active element' and start receiving keyboard events.",
+      "why_it_matters": "If the canvas isn't focused, keyboard inputs won't be registered by the program even if keys are being pressed."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:59",
+      "language": "javascript",
+      "code": "if (key === 'r') {\n  stroke(255, 0, 0);\n} else if (key === 'g') {\n  stroke(0, 255, 0);\n} else if (key === 'b') {\n  stroke(0, 0, 255);\n} else {\n  stroke(255);\n}",
+      "demonstrates": "Using the 'key' variable for case-sensitive character matching with a default fallback.",
+      "common_issue": "If the user presses 'Shift + R', the logic might fail because it's looking for lowercase 'r'."
+    },
+    {
+      "timecode": "06:34",
+      "language": "javascript",
+      "code": "if (keyCode === 82) {\n  stroke(255, 0, 0);\n} else if (keyCode === 71) {\n  stroke(0, 255, 0);\n} else if (keyCode === 66) {\n  stroke(0, 0, 255);\n}",
+      "demonstrates": "Using 'keyCode' to detect physical keys (R, G, B) regardless of case or modifier keys.",
+      "common_issue": null
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "03:26",
+      "symptom": "My stroke disappeared / nothing shows up when I'm not pressing a key",
+      "cause": "The code sets a specific stroke color inside an 'if' block but doesn't provide a default state in an 'else' block for when no key is pressed.",
+      "fix": "Add a final 'else { stroke(...); }' to reset the state.",
+      "related_concept": "conditional branching / state management"
+    },
+    {
+      "timecode": "04:34",
+      "symptom": "I'm pressing keys but nothing is happening in my sketch",
+      "cause": "The canvas is not the active element; the browser hasn't registered focus on the sketch.",
+      "fix": "Click on the canvas first to make it the active element.",
+      "related_concept": "event bubbling / browser focus"
+    },
+    {
+      "timecode": "05:20",
+      "symptom": "My code works for lowercase 'r' but not uppercase 'R'",
+      "cause": "The `key` variable is literal and case-sensitive.",
+      "fix": "Use `keyCode` instead of `key` to detect the physical key regardless of case.",
+      "related_concept": "keyCode vs key"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:29",
+      "type": "demonstration",
+      "description": "The instructor shows how pressing 'Shift + R' registers two separate events (shift then R), highlighting the complexity of input timing."
+    },
+    {
+      "timecode": "03:26",
+      "type": "warning",
+      "description": "The instructor encounters a bug where the stroke disappears, using it to demonstrate why 'else' catch-all statements are necessary."
+    },
+    {
+      "timecode": "05:34",
+      "type": "insight",
+      "description": "Explaining the 'human delay'—the fact that we don't release keys at the exact same millisecond—which causes issues with literal string matching."
+    }
+  ],
+  "prerequisites": [
+    "basic p5.js setup",
+    "if/else conditional statements",
+    "stroke() function"
+  ],
+  "leads_to": [
+    "complex input handling",
+    "game controls",
+    "event bubbling and browser interaction"
+  ],
+  "student_questions": [
+    "Why is my color not changing when I press a key?",
+    "How do I make it work for both capital and lowercase letters?",
+    "Why does my sketch stop working when I let go of the key?",
+    "What is the difference between 'key' and 'keyCode'?",
+    "Why do I have to click on the canvas before my keyboard works?",
+    "How can I detect a specific key regardless of whether Shift is held down?",
+    "Why are my colors getting stuck on one color even when I'm not pressing anything?",
+    "How do I see what the current value of a key is?"
+  ],
+  "video_id": "2-interactivity-key-and-keycode",
+  "video_title": "2 interactivity key and keyCode",
+  "video_file": "2 interactivity key and keyCode.mp4",
+  "video_url": null,
+  "week": "week 5",
+  "module": "Module 2 – Chaos and Control"
+}

@@ -1,0 +1,113 @@
+{
+  "topic": "Implementing 2D and 3D Perlin noise to create organic textures and procedural animations",
+  "concepts": [
+    {
+      "name": "Perlin Noise",
+      "timecode": "01:23",
+      "explanation": "A type of noise that produces organic, non-random patterns where each value is mathematically related to its neighbors, unlike pure random functions.",
+      "why_it_matters": "It is essential for creating natural-looking textures like clouds, mountains, or terrain instead of chaotic white noise."
+    },
+    {
+      "name": "2D Noise",
+      "timecode": "01:58",
+      "explanation": "Expanding noise from a single dimension to two dimensions by passing both x and y coordinates into the noise function.",
+      "why_it_matters": "Allows for creating spatial textures (like a map) rather than just linear gradients."
+    },
+    {
+      "name": "Temporal Animation (3D Noise)",
+      "timecode": "06:15",
+      "explanation": "Adding a third dimension (z) to the noise function and incrementing it over time to create movement.",
+      "why_it_matters": "Enables procedural animation, making textures like clouds or water appear to flow or change over time."
+    },
+    {
+      "name": "Noise Scaling",
+      "timecode": "03:54",
+      "explanation": "Dividing the input coordinates (e.g., x/100) to control the rate of change; smaller divisors make it more chaotic, larger divisors make it smoother.",
+      "why_it_matters": "It determines the 'granularity' or frequency of the pattern."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "03:22",
+      "language": "javascript",
+      "code": "for (let x = 0; x < width; x += size) {\n  for (let y = 0; y < height; y += size) {\n    fill(noise(x/100, y/100) * 255);\n    rect(x, y, size);\n  }\n}",
+      "demonstrates": "Creating a 2D grid of rectangles where the color is determined by spatial noise.",
+      "common_issue": "If you forget to divide the input (e.g., just using noise(x, y)), the transitions will be too fast and look like pure random static."
+    },
+    {
+      "timecode": "06:21",
+      "language": "javascript",
+      "code": "let z = 0;\n// inside draw()...\nfill(noise(x/100, y/100, z) * 255);\n// at the end of draw()...\nz += 0.005;",
+      "demonstrates": "Using a third parameter (z) to animate the noise pattern over time.",
+      "common_issue": "If you don't increment z, the image will remain static even though it is using 3D noise."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "04:31",
+      "symptom": "The noise only changes horizontally (vertically striped pattern)",
+      "cause": "Only passing the x coordinate to the noise function: `noise(x/100)`",
+      "fix": "Add the y coordinate as a second parameter: `noise(x/100, y/100)`",
+      "related_concept": "2D Noise"
+    },
+    {
+      "timecode": "05:46",
+      "symptom": "The computer is very slow or the animation lags",
+      "cause": "Setting the `size` variable too small (e.g., 1), which forces the computer to calculate noise for every single pixel.",
+      "fix": "Increase the `size` variable to create a coarser grid and reduce computational load.",
+      "related_concept": "Computational Expense / Scaling"
+    },
+    {
+      "timecode": "06:32",
+      "symptom": "The animation isn't moving even though I added z to the noise function",
+      "cause": "Forgetting to increment the z variable (e.g., `z += 0.01`) at the end of the draw loop.",
+      "fix": "Add an increment to the z variable every frame.",
+      "related_concept": "Temporal Animation"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:52",
+      "type": "insight",
+      "description": "Introduction of 'fractal thinking'—mapping noise values to height (Z) to create landscapes."
+    },
+    {
+      "timecode": "02:21",
+      "type": "warning",
+      "description": "Warning about computational expense when using very small grid sizes."
+    },
+    {
+      "timecode": "05:31",
+      "type": "demonstration",
+      "description": "Live troubleshooting/observation of how changing the grid size affects visual complexity."
+    }
+  ],
+  "prerequisites": [
+    "Basic JavaScript syntax",
+    "p5.js coordinate system (x, y)",
+    "For loops and nested loops",
+    "Basic understanding of 1D noise"
+  ],
+  "leads_to": [
+    "Procedural Content Generation (PCG)",
+    "Advanced Fractal Art",
+    "Vector Fields"
+  ],
+  "student_questions": [
+    "Why is my noise just a bunch of vertical stripes?",
+    "How do I make the pattern move like clouds?",
+    "Why is my computer lagging when I use noise?",
+    "How do I make the noise look smoother or more 'blobby'?",
+    "What is the difference between random() and noise()?",
+    "How do I use noise to make a 3D landscape?",
+    "Why are all my colors just grayscale?",
+    "How do I make the noise change faster or slower?",
+    "Can I use noise for more than just color?",
+    "How do I make a texture that isn't just static?"
+  ],
+  "video_id": "5-2d-noise-time",
+  "video_title": "5 2D noise (+ time)",
+  "video_file": "5 2D noise (+ time).mp4",
+  "video_url": null,
+  "week": "week 4"
+}

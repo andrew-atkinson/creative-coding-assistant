@@ -1,0 +1,94 @@
+{
+  "topic": "Introduction to common data formats (CSV, TSV, and JSON) used for importing external datasets into creative coding projects.",
+  "concepts": [
+    {
+      "name": "Tabular Data (CSV/TSV)",
+      "timecode": "01:33",
+      "explanation": "Data organized into rows and columns, similar to an Excel or Google Sheets spreadsheet. It uses delimiters like commas (CSV) or tabs (TSV) to separate values.",
+      "why_it_matters": "It is a simple, human-readable way to store structured information that can be easily mapped to 2D arrays in code."
+    },
+    {
+      "name": "JSON (JavaScript Object Notation)",
+      "timecode": "00:39",
+      "explanation": "A hierarchical data format that is a subset of JavaScript objects. It uses key-value pairs (e.g., \"Name\": \"London\") and can be nested with arrays and other objects.",
+      "why_it_matters": "It is the standard for web communication and allows for much more complex, nested data structures than simple tables."
+    },
+    {
+      "name": "Delimiters",
+      "timecode": "02:39",
+      "explanation": "The characters (like commas or tabs) used to separate individual pieces of data within a single line of text.",
+      "why_it_matters": "Understanding these is crucial for correctly parsing raw text files into usable programming structures."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "02:39",
+      "language": "text/csv",
+      "code": "1,London,-50,0,8000000\n2,New York,-70,-40,8000000",
+      "demonstrates": "The raw text representation of a CSV file where values are separated by commas.",
+      "common_issue": "Forgetting the comma or using a different character will prevent the data from being parsed correctly."
+    },
+    {
+      "timecode": "05:30",
+      "language": "json",
+      "code": "[{\n  \"ID\": 0,\n  \"Name\": \"London\",\n  \"Long\": 0,\n  \"Lat\": -50\n}, {\n  \"ID\": 1,\n  \"Name\": \"New York\",\n  \"Long\": -70,\n  \"Lat\": -40\n}]",
+      "demonstrates": "A JSON array containing multiple objects, each with key-value pairs.",
+      "common_issue": "Forgetting to put keys in double quotes or using a function instead of a string/number."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "06:09",
+      "symptom": "Trying to include a function inside a JSON file and having it fail.",
+      "cause": "JSON is data-only; it cannot store executable code/functions.",
+      "fix": "Store the function as a string and handle the logic within your JavaScript code.",
+      "related_concept": "JSON syntax limitations"
+    },
+    {
+      "timecode": "06:02",
+      "symptom": "Data not loading or showing as 'undefined'.",
+      "cause": "Missing quotes around keys in a JSON file.",
+      "fix": "Ensure all keys are enclosed in double quotes (e.g., \"Name\" instead of Name).",
+      "related_concept": "JSON syntax"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "01:06",
+      "type": "insight",
+      "description": "The instructor explains that social media sites don't send entire graphics; they send structured data (objects) and reference the assets."
+    },
+    {
+      "timecode": "05:36",
+      "type": "warning",
+      "description": "The instructor notes that JSON doesn't have to be 'pretty-printed' with indentation; it can be minified on one line."
+    }
+  ],
+  "prerequisites": [
+    "JavaScript Objects",
+    "JavaScript Arrays",
+    "Key-Value pairs"
+  ],
+  "leads_to": [
+    "Importing data using p5.js functions",
+    "Handling geographic coordinates (Long/Lat)",
+    "Asynchronous programming with callbacks"
+  ],
+  "student_questions": [
+    "What is the difference between CSV and JSON?",
+    "Why are my data files just text?",
+    "How do I use a spreadsheet in my code?",
+    "Can I put functions inside a JSON file?",
+    "Why do the keys in my JSON need quotes?",
+    "How does a CSV file look when it's not in Excel?",
+    "What is the difference between a comma and a tab in data files?",
+    "How do I access specific info from a big list of data?",
+    "Is JSON just a JavaScript object?"
+  ],
+  "video_id": "1-data",
+  "video_title": "1. Data",
+  "video_file": "1. Data.mp4",
+  "video_url": "https://aacontent.b-cdn.net/classes/creativeCode/week 10/1. Data.mp4",
+  "week": "week 10",
+  "module": "Module 4 – Poetry of The World, Oceans of Data"
+}

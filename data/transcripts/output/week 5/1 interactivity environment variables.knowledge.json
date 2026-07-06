@@ -1,0 +1,126 @@
+{
+  "topic": "Introduction to interactivity using environmental variables like mouse position, previous mouse position, and boolean states for mouse and keyboard input.",
+  "concepts": [
+    {
+      "name": "mouseX and mouseY",
+      "timecode": "00:20",
+      "explanation": "System-defined variables that track the current X and Y coordinates of the cursor on the canvas.",
+      "why_it_matters": "They allow you to link visual elements directly to the user's movement."
+    },
+    {
+      "name": "pmouseX and pmouseY",
+      "timecode": "01:45",
+      "explanation": "Variables that store the mouse coordinates from the previous frame. The instructor explains it as a 'copy' of the information that happens at the end of a frame, meaning they are always one frame behind.",
+      "why_it_matters": "Essential for drawing continuous lines or paths because you can connect the current position to where the mouse just was."
+    },
+    {
+      "name": "mouseIsPressed",
+      "timecode": "03:39",
+      "explanation": "A boolean variable that is 'true' when the mouse button is held down and 'false' otherwise.",
+      "why_it_matters": "Allows for conditional drawing, such as only drawing when the user is actively clicking."
+    },
+    {
+      "name": "keyPressed",
+      "timecode": "06:39",
+      "explanation": "A boolean variable that is 'true' when any key on the keyboard is being held down.",
+      "why_it_matters": "Enables multi-modal interactivity where the user can change visual properties (like color) using the keyboard while drawing with the mouse."
+    },
+    {
+      "name": "Visual Persistence",
+      "timecode": "04:26",
+      "explanation": "By moving the background() function from the draw loop to the setup function, the canvas is no longer cleared every frame, allowing previous drawings to stay on screen.",
+      "why_it_matters": "Crucial for creating drawing programs or 'trails' rather than just moving single objects."
+    }
+  ],
+  "code_examples": [
+    {
+      "timecode": "01:55",
+      "language": "javascript",
+      "code": "line(pmouseX, pmouseY, mouseX, mouseY);",
+      "demonstrates": "Drawing a continuous line that follows the cursor by connecting the previous position to the current one.",
+      "common_issue": "If you don't use pmouseX/Y, the line will only draw from the origin (0,0) to the mouse, resulting in a 'starburst' effect rather than a continuous path."
+    },
+    {
+      "timecode": "05:00",
+      "language": "javascript",
+      "code": "let size = (mouseX - mouseY) / 10;",
+      "demonstrates": "Using mathematical logic to map mouse position to a visual property (circle size).",
+      "common_issue": "Forgetting parentheses around the subtraction will cause the division to happen before the subtraction due to order of operations."
+    },
+    {
+      "timecode": "07:02",
+      "language": "javascript",
+      "code": "if (mouseIsPressed) {\n  circle(mouseX, mouseY, 20);\n} else {\n  line(pmouseX, pmouseY, mouseX, mouseY);\n}",
+      "demonstrates": "Using an if/else statement to switch between drawing dots (when clicking) and lines (when not clicking).",
+      "common_issue": "Placing the stroke/fill commands in the wrong order relative to the drawing command."
+    }
+  ],
+  "mistakes_and_fixes": [
+    {
+      "timecode": "04:31",
+      "symptom": "My drawing disappears or doesn't leave a trail.",
+      "cause": "The background() function is inside the draw() loop, clearing the canvas every frame.",
+      "fix": "Move background() to the setup() function so it only clears once at the start.",
+      "related_concept": "Visual Persistence"
+    },
+    {
+      "timecode": "05:00",
+      "symptom": "The math for my circle size is wrong.",
+      "cause": "Order of operations (PEMDAS/BODMAS) - the division is happening before the subtraction.",
+      "fix": "Wrap the subtraction in parentheses: `(mouseX - mouseY) / 10`.",
+      "related_concept": "Mathematical Mapping"
+    },
+    {
+      "timecode": "05:51",
+      "symptom": "The line is being drawn but the circle isn't appearing or looks weird.",
+      "cause": "The order of drawing commands is incorrect (e.g., calling noStroke() after the shape).",
+      "fix": "Ensure style commands (stroke, fill) are called before the shape they are meant to affect.",
+      "related_concept": "Order of Operations"
+    }
+  ],
+  "key_moments": [
+    {
+      "timecode": "03:21",
+      "type": "demonstration",
+      "description": "Lowering the frame rate to 10 FPS to make the movement of pmouseX/Y visible and easier to understand."
+    },
+    {
+      "timecode": "04:31",
+      "type": "insight",
+      "description": "The instructor demonstrates how moving background() to setup creates persistence, turning a 'moving object' into a 'drawing tool'."
+    },
+    {
+      "timecode": "08:25",
+      "type": "demonstration",
+      "description": "Using console.log to debug the boolean states of mouseIsPressed and keyPressed simultaneously."
+    }
+  ],
+  "prerequisites": [
+    "Basic understanding of setup() and draw() loops",
+    "Fundamental knowledge of if/else conditional statements",
+    "Basic understanding of coordinate systems (X and Y)"
+  ],
+  "leads_to": [
+    "Handling specific key codes",
+    "Sophisticated mouse event listeners",
+    "Complex interactive systems"
+  ],
+  "student_questions": [
+    "How do I make a line that follows my mouse?",
+    "Why is my drawing disappearing every time the mouse moves?",
+    "How can I make a shape change color when I press a key?",
+    "What is the difference between mouseX and pmouseX?",
+    "How do I make a drawing program where you only draw when clicking?",
+    "Why is my math for the circle size not working correctly?",
+    "How do I check if a key is being held down?",
+    "Why are my shapes all overlapping or leaving trails?",
+    "How can I see if my code actually knows the mouse is pressed?",
+    "How do I make a circle that gets bigger or smaller based on where my mouse is?"
+  ],
+  "video_id": "1-interactivity-environment-variables",
+  "video_title": "1 interactivity environment variables",
+  "video_file": "1 interactivity environment variables.mp4",
+  "video_url": null,
+  "week": "week 5",
+  "module": "Module 2 – Chaos and Control"
+}
