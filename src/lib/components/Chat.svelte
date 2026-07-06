@@ -3,8 +3,21 @@
   import { REFUSAL } from '$lib/refusal';
 
   const SOURCE_SENTINEL = '\n\n[[SOURCES]]';
-  const CITATION_RE = /\[(\d{1,3}):(\d{2})\s+([a-z0-9-]+)\]/g;
+  // Matches [MM:SS <slug>] and tolerates an optional label like "video_id:" that
+  // some models emit by copying the corpus header.
+  const CITATION_RE = /\[(\d{1,3}):(\d{2})\s+(?:(?:video[_-]?id|id|lesson[_-]?id|lesson)[\s:=]+)?([a-z0-9][a-z0-9-]{2,})\]/gi;
   const UNKNOWN_RE = /\[\[UNKNOWN\]\][^\n]*\n?/g;
+
+  // Resolve the citation's slug to a known video_id from the message's lesson
+  // list. Exact match first; then suffix match (e.g. "3-loop-danger" ->
+  // "week-3-3-loop-danger") so partial ids still work.
+  function resolveVideoId(raw: string, lessons: LessonRef[] | undefined): string | null {
+    if (!lessons) return null;
+    const lower = raw.toLowerCase();
+    const ids = lessons.map((l) => l.video_id);
+    if (ids.includes(lower)) return lower;
+    return ids.find((id) => id.endsWith('-' + lower) || id.endsWith(lower)) ?? null;
+  }
 
   // Preserve newlines as breaks — matches chat expectations more than a strict
   // markdown reader. Everything else is standard: bold, italic, code, lists,
@@ -60,12 +73,19 @@
   // marked passes inline HTML through untouched (unlike an underscored
   // placeholder token, which would collide with markdown's __bold__ rule).
   // Click handling is via event delegation on the parent container.
-  function renderMarkdown(raw: string): string {
-    const withChips = raw.replace(CITATION_RE, (_full, mm, ss, video_id) => {
+  //
+  // If a citation's slug can't be resolved against the loaded lessons (e.g.
+  // during streaming, before the sources footer has arrived), the citation is
+  // rendered as literal text so the reader can still see it — a placeholder
+  // button that fails silently on click would be worse.
+  function renderMarkdown(raw: string, lessons: LessonRef[] | undefined): string {
+    const withChips = raw.replace(CITATION_RE, (full, mm, ss, video_id) => {
+      const resolved = resolveVideoId(video_id, lessons);
+      if (!resolved) return full;
       const t = parseInt(mm, 10) * 60 + parseInt(ss, 10);
       return (
         `<button type="button" class="chip inline-flex items-center rounded-full bg-neutral-700 hover:bg-neutral-600 px-2 py-0.5 text-xs text-neutral-100 border border-neutral-600 tabular-nums align-middle" ` +
-        `data-t="${t}" data-vid="${escapeAttr(video_id)}">${chipLabel(t)}</button>`
+        `data-t="${t}" data-vid="${escapeAttr(resolved)}">${chipLabel(t)}</button>`
       );
     });
     return marked.parse(withChips, { async: false }) as string;
@@ -182,7 +202,7 @@
               }}
               role="presentation"
             >
-              {@html renderMarkdown(cleanForDisplay(m.content))}
+              {@html renderMarkdown(cleanForDisplay(m.content), m.lessons)}
             </div>
           {:else}
             {m.content}

@@ -24,7 +24,8 @@ export const load: PageServerLoad = async ({ params }) => {
     ordinal: i + 1,
     title: e.title,
     url: e.video_url,
-    duration_seconds: e.duration_seconds
+    duration_seconds: e.duration_seconds,
+    week: e.week
   }));
 
   return {

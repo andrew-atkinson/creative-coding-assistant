@@ -15,7 +15,22 @@ import { stream as llmStream, type ChatMessage } from '$lib/server/llm';
 
 const SOURCE_SENTINEL = '\n\n[[SOURCES]]';
 const UNKNOWN_RE = /\[\[UNKNOWN\]\]\s*"([^"\n]{1,500})"/;
-const CITATION_RE = /\[(\d{1,3}):(\d{2})\s+([a-z0-9-]+)\]/g;
+// Matches [MM:SS <slug>] with lenient middle:
+//   optional prefix like "video_id:" or "id:" or "lesson:"
+//   optional "=" or ":" delimiter between prefix and slug
+//   slug allows a-z, digits, and hyphens; may be a partial id (server resolves it)
+const CITATION_RE = /\[(\d{1,3}):(\d{2})\s+(?:(?:video[_-]?id|id|lesson[_-]?id|lesson)[\s:=]+)?([a-z0-9][a-z0-9-]{2,})\]/gi;
+
+// Resolve a raw slug from a citation to a known video_id.
+// Prefers exact match; falls back to a suffix match (e.g. "3-loop-danger" -> "week-3-3-loop-danger").
+function resolveVideoId(raw: string, known: Set<string>): string | null {
+  const lower = raw.toLowerCase();
+  if (known.has(lower)) return lower;
+  for (const id of known) {
+    if (id.endsWith('-' + lower) || id.endsWith(lower)) return id;
+  }
+  return null;
+}
 
 type ChatRequest = {
   course_slug: string;
@@ -126,13 +141,13 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
       for (const m of full.matchAll(CITATION_RE)) {
         const mm = parseInt(m[1], 10);
         const ss = parseInt(m[2], 10);
-        const video_id = m[3];
-        if (!knownVideoIds.has(video_id)) continue;
+        const resolved = resolveVideoId(m[3], knownVideoIds);
+        if (!resolved) continue;
         const t = mm * 60 + ss;
-        const key = `${video_id}@${t}`;
+        const key = `${resolved}@${t}`;
         if (seen.has(key)) continue;
         seen.add(key);
-        sources.push({ video_id, t });
+        sources.push({ video_id: resolved, t });
       }
 
       const lessonMeta = lessons.map((l) => ({
