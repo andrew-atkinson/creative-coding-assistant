@@ -4,7 +4,22 @@
 
 import type { LoadedLesson } from './lessons';
 
-export function buildSystemPrompt(courseTitle: string, lessons: LoadedLesson[]): string {
+// Per-lesson soft cap on transcript characters. Keeps requests under free-tier
+// LLM per-request token limits (e.g. Groq's 12k tokens/req on llama-3.3-70b).
+// 8000 chars is roughly 2000 tokens — with 2 lessons and a ~1k persona,
+// total request stays around 5k tokens. Override via env for local LM Studio.
+const MAX_LESSON_CHARS_DEFAULT = 8000;
+
+export type PersonaOptions = {
+  maxCharsPerLesson?: number;
+};
+
+export function buildSystemPrompt(
+  courseTitle: string,
+  lessons: LoadedLesson[],
+  options: PersonaOptions = {}
+): string {
+  const maxChars = options.maxCharsPerLesson ?? MAX_LESSON_CHARS_DEFAULT;
   const persona =
     `You are acting as a GA to an undergraduate creative coding class, focused on p5.js. ` +
     `You are answering questions about "${courseTitle}", drawing on the recorded class transcripts below. ` +
@@ -32,14 +47,19 @@ export function buildSystemPrompt(courseTitle: string, lessons: LoadedLesson[]):
     `Then apologize briefly and suggest the student email the instructor for topics not yet covered.`;
 
   const corpus = lessons
-    .map(
-      (l) =>
+    .map((l) => {
+      const truncated =
+        l.md_content.length > maxChars
+          ? l.md_content.slice(0, maxChars) + '\n\n[... transcript truncated for length ...]'
+          : l.md_content;
+      return (
         `### ${l.title}\n` +
         `Lesson ID for citations: \`${l.video_id}\`\n` +
         `Video URL: ${l.video_url}\n` +
         `Week: ${l.week}\n\n` +
-        `${l.md_content}`
-    )
+        truncated
+      );
+    })
     .join('\n\n---\n\n');
 
   return `${persona}\n\n## Class transcripts\n\n${corpus}`;

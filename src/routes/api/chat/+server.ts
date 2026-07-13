@@ -114,7 +114,8 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
   const lessons = await loadLessons(slugs);
   const knownVideoIds = new Set(lessons.map((l) => l.video_id));
 
-  const systemPrompt = buildSystemPrompt(course.title, lessons);
+  const maxCharsPerLesson = env.MAX_LESSON_CHARS ? Number(env.MAX_LESSON_CHARS) : undefined;
+  const systemPrompt = buildSystemPrompt(course.title, lessons, { maxCharsPerLesson });
   const messages: ChatMessage[] = [
     { role: 'system', content: systemPrompt },
     ...history.map((m) => ({ role: m.role, content: m.content } as ChatMessage)),

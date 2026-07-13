@@ -10,10 +10,15 @@ Format: one bullet per item. Prefix with `[YYYY-MM-DD]` when added. Group under 
 
 - **[2026-07-04] Tool-calling for unknown-question capture.** Currently uses a `[[UNKNOWN]] "..."` sentinel in the model output; server regex-catches it and writes a `feedback` row. Local quantized models don't tool-call reliably; when we deploy to a bigger hosted model, switch to proper OpenAI function-calling for cleaner semantics.
 - **[2026-07-04] Router quality on ambiguous questions.** The router picks lessons based on a summary index. If a student asks something that only vaguely matches, it may pick nothing useful and the answer will refuse. Consider expanding lesson summaries or falling back to loading a broader set when confidence is low.
+- **pseudocode** still rendering something that in pretty much js. find a standard for psuedocode to use. maybe there's something already set up.
+- **possible transcript issue** transcript references the last few seconds of a video, where I mention what we're going to be looking at next.
 
 ## Design / layout
 
 - **[2026-07-04] Overall layout and design are in poor shape.** Runtime UI needs a proper pass: typography, spacing, color, chat pane sizing, source-chip readability. Split-screen breakpoints need work. Cinema mode overlay position and sizing should be revisited.
+- **menu/sidebar** create something to manually search through videos? the strip of videos isn't a good idea. Also the titling is weird.
+- **send message visibility** getting dropped off the bottom of the screen?
+- **no favicon** nope.
 
 ## Feedback + backlog
 

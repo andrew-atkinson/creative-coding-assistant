@@ -9,7 +9,11 @@
 import { complete } from './llm';
 import { loadIndex, type LessonIndexEntry } from './lessons';
 
-const MAX_LESSONS = 4;
+// Free-tier LLMs (Groq, etc.) impose per-request token caps. The default of 2
+// keeps a typical multi-lesson answer well under Groq free tier's 12k tokens/req
+// on llama-3.3-70b-versatile. Local LM Studio has no such cap — bump this via
+// env if you want richer cross-lesson answers.
+const MAX_LESSONS_DEFAULT = 2;
 
 function tokens(s: string): Set<string> {
   return new Set(
@@ -54,6 +58,8 @@ export async function selectLessons(
   const index = await loadIndex();
   if (index.length === 0) return [];
 
+  const maxLessons = Number(env.MAX_LESSONS_PER_TURN ?? MAX_LESSONS_DEFAULT);
+
   const validSlugs = new Set(index.map((e) => e.slug));
   const lessonList = index.map((e) => `- ${e.slug}: ${e.summary}`).join('\n');
 
@@ -63,7 +69,7 @@ export async function selectLessons(
     `Return ONLY the array — no other text, no explanation, no code fences.\n\n` +
     `If multiple lessons are relevant (e.g. the student is working on a later topic ` +
     `but needs a refresher on an earlier one), include all of them. ` +
-    `Return at most ${MAX_LESSONS} slugs, most relevant first.\n\n` +
+    `Return at most ${maxLessons} slugs, most relevant first.\n\n` +
     `Lessons:\n${lessonList}\n\n` +
     `Question: ${question}\n\n` +
     `Response:`;
@@ -75,13 +81,13 @@ export async function selectLessons(
       [{ role: 'user', content: prompt }],
       { model: env.LLM_ROUTER_MODEL || env.LLM_MODEL, temperature: 0, max_tokens: 200 }
     );
-    slugs = tryParseSlugs(raw, validSlugs).slice(0, MAX_LESSONS);
+    slugs = tryParseSlugs(raw, validSlugs).slice(0, maxLessons);
   } catch {
     slugs = [];
   }
 
   if (slugs.length === 0) {
-    slugs = keywordFallback(question, index, 3);
+    slugs = keywordFallback(question, index, Math.min(maxLessons, 3));
   }
 
   return slugs;
