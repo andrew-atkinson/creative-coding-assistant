@@ -8,7 +8,7 @@ Currently at **M1 — proof-of-concept**, deployed to Netlify. Single-course, si
 
 - **Frontend + backend:** SvelteKit 2 (Svelte 5) with the Netlify adapter, styled with Tailwind v4.
 - **Database:** Supabase (Postgres) for course metadata, usage metering, and unknown-question feedback. Local via Docker for dev; hosted Supabase for deploy.
-- **LLM:** any OpenAI-compatible endpoint. Local dev: [LM Studio](https://lmstudio.ai/) at `http://localhost:1234/v1` with a quantized Gemma 3 26B model. Deploy: Groq's free tier (Llama 3.3 70B). Swap providers by changing env vars — same code, different config.
+- **LLM:** any OpenAI-compatible endpoint. Local dev: [LM Studio](https://lmstudio.ai/) at `http://localhost:1234/v1` with a quantized Gemma 4 26B model. Deploy: Groq's free tier (Llama 3.3 70B). Swap providers by changing env vars — same code, different config.
 - **Retrieval:** no vector search. A small router LLM call selects the relevant lesson(s) from `data/index.json`; the answering call gets the _full_ transcript `.md` for each selected lesson in its system prompt. Cross-lesson questions naturally load multiple `.md`s at once.
 - **Transcripts:** consumed as `.rich.json` metadata (routing summaries) + `.md` content (LLM context) from `data/transcripts/{rich,output}/**/`. Produced by the sibling [video_transcription](https://github.com/andrew-atkinson/video_transcription) project. Bundled into the SvelteKit build via `import.meta.glob`, so the deployed function has them without a separate upload step.
 - **Video hosting:** provider-agnostic. `video_url` is any HTTPS URL. My videos live on Bunny CDN; the code doesn't care.
@@ -93,28 +93,28 @@ Same URL (localhost:5173), hosted DB + hosted LLM behind it. Useful for catching
 
 ## CLI reference
 
-| Command | What it does |
-| --- | --- |
-| `pnpm dev`             | Start the SvelteKit dev server on `:5173`. |
-| `pnpm run build`       | Production build via the Netlify adapter. Output in `build/`. Bundles all `.md` transcripts into the server chunks. |
-| `pnpm run preview`     | Preview the production build locally. |
-| `pnpm run check`       | `svelte-check` — TypeScript + Svelte type checks. |
-| `pnpm run seed`        | Insert/upsert the user + course row from `data/course.json` into whichever Supabase your env vars point at. |
-| `pnpm run build-index` | Walk transcripts, write `data/index.json` (the router's index). Idempotent. |
+| Command                | What it does                                                                                                                                                                                                                                                                                        |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pnpm dev`             | Start the SvelteKit dev server on `:5173`.                                                                                                                                                                                                                                                          |
+| `pnpm run build`       | Production build via the Netlify adapter. Output in `build/`. Bundles all `.md` transcripts into the server chunks.                                                                                                                                                                                 |
+| `pnpm run preview`     | Preview the production build locally.                                                                                                                                                                                                                                                               |
+| `pnpm run check`       | `svelte-check` — TypeScript + Svelte type checks.                                                                                                                                                                                                                                                   |
+| `pnpm run seed`        | Insert/upsert the user + course row from `data/course.json` into whichever Supabase your env vars point at.                                                                                                                                                                                         |
+| `pnpm run build-index` | Walk transcripts, write `data/index.json` (the router's index). Idempotent.                                                                                                                                                                                                                         |
 | `pnpm run smoketest`   | Verifies: LLM endpoint reachable, models listed, short generation, `data/index.json` present, router picks a week-3 lesson for a for-loop question. Requires LM Studio (or equivalent) running. Per-second elapsed counter during LLM calls; 3-min timeout per call (`LLM_TIMEOUT_MS` to override). |
-| `supabase start`       | Bring up local Postgres + PostgREST + Studio. |
-| `supabase stop`        | Stop the local stack. |
-| `supabase status`      | Print URLs and keys for the running stack. |
-| `supabase db reset`    | Drop and re-create the local DB, re-applying every migration. Re-run `pnpm run seed && pnpm run build-index` after. |
+| `supabase start`       | Bring up local Postgres + PostgREST + Studio.                                                                                                                                                                                                                                                       |
+| `supabase stop`        | Stop the local stack.                                                                                                                                                                                                                                                                               |
+| `supabase status`      | Print URLs and keys for the running stack.                                                                                                                                                                                                                                                          |
+| `supabase db reset`    | Drop and re-create the local DB, re-applying every migration. Re-run `pnpm run seed && pnpm run build-index` after.                                                                                                                                                                                 |
 
 ## Context budget
 
 Two env knobs cap per-request context size to stay under free-tier LLM per-request token caps:
 
-| Var | Default | Purpose |
-| --- | --- | --- |
-| `MAX_LESSONS_PER_TURN` | `2` | Max lessons the router will select for one turn. |
-| `MAX_LESSON_CHARS` | `8000` | Per-lesson truncation of `.md` content (`[... transcript truncated for length ...]` appended when hit). |
+| Var                    | Default | Purpose                                                                                                 |
+| ---------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
+| `MAX_LESSONS_PER_TURN` | `2`     | Max lessons the router will select for one turn.                                                        |
+| `MAX_LESSON_CHARS`     | `8000`  | Per-lesson truncation of `.md` content (`[... transcript truncated for length ...]` appended when hit). |
 
 With defaults: 2 × 8000 = 16k chars ≈ 4k tokens for the corpus, + persona overhead ~800 tokens = ~5k tokens per request. Well under Groq's free-tier 12k-tokens-per-request cap on `llama-3.3-70b-versatile`.
 
