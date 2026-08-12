@@ -1,23 +1,19 @@
 import { error } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
-import { getServerSupabase } from '$lib/server/supabase';
+import { getStorage } from '$lib/server/storage';
 import { loadIndex } from '$lib/server/lessons';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
-  const supabase = getServerSupabase(env);
+  const store = getStorage(env);
 
-  const { data: course, error: cErr } = await supabase
-    .from('courses')
-    .select('id, slug, title, theme_color, status')
-    .eq('slug', params.slug)
-    .single();
-  if (cErr || !course || course.status !== 'published') {
+  const course = await store.loadCourse(params.slug);
+  if (!course || course.status !== 'published') {
     throw error(404, 'Course not found');
   }
 
-  // Videos come from the transcripts index, not Supabase — no separate videos
-  // upsert step required. Post-pivot the videos table exists but is unused.
+  // Videos come from the transcripts index, not the storage backend — the
+  // storage layer only owns course metadata + feedback + usage.
   const index = await loadIndex().catch(() => []);
   const videos = index.map((e, i) => ({
     id: e.video_id,
@@ -32,7 +28,7 @@ export const load: PageServerLoad = async ({ params }) => {
     course: {
       slug: course.slug,
       title: course.title,
-      theme_color: course.theme_color as string | null
+      theme_color: course.theme_color
     },
     videos
   };
