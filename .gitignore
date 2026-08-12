@@ -8,7 +8,7 @@ node_modules/
 .svelte-kit/
 build/
 dist/
-docs/
+agent/
 .netlify/
 .vercel/
 .turbo/
