@@ -207,10 +207,14 @@
           {:else}
             {m.content}
           {/if}
-          {#if m.lessons && m.lessons.length > 0 && m.role === 'assistant'}
-            <div class="mt-2 pt-2 border-t border-neutral-700/50 text-xs text-neutral-400">
-              Referenced: {m.lessons.map((l) => l.title).join(' · ')}
-            </div>
+          {#if m.role === 'assistant' && m.sources && m.sources.length > 0 && m.lessons}
+            {@const citedIds = new Set(m.sources.map((s) => s.video_id))}
+            {@const citedLessons = m.lessons.filter((l) => citedIds.has(l.video_id))}
+            {#if citedLessons.length > 0}
+              <div class="mt-2 pt-2 border-t border-neutral-700/50 text-xs text-neutral-400">
+                Referenced: {citedLessons.map((l) => l.title).join(' · ')}
+              </div>
+            {/if}
           {/if}
         </div>
       </div>
