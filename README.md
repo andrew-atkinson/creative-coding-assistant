@@ -131,7 +131,7 @@ Groq's free tier is generous and fast:
 - `LLM_BASE_URL=https://api.groq.com/openai/v1`
 - `LLM_API_KEY=gsk_...` (from [console.groq.com](https://console.groq.com))
 - `LLM_MODEL=llama-3.3-70b-versatile`
-- `LLM_ROUTER_MODEL=llama-3.1-8b-instant` (smaller, faster, plenty smart enough for routing)
+- `LLM_ROUTER_MODEL=openai/gpt-oss-20b` (smaller than the main model, plenty smart for routing; replaced `llama-3.1-8b-instant` after Groq's decommission)
 
 Alternatives that also work with the same `openai` client: OpenRouter, Cerebras, hosted Gemini via a proxy.
 

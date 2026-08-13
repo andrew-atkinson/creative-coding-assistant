@@ -58,7 +58,11 @@ export async function selectLessons(
   const index = await loadIndex();
   if (index.length === 0) return [];
 
-  const maxLessons = Number(env.MAX_LESSONS_PER_TURN ?? MAX_LESSONS_DEFAULT);
+  // Use || (not ??) so empty-string env values fall back to the default —
+  // ?? only catches null/undefined, and `Number('')` is 0 (which would slice
+  // everything to nothing). Setting MAX_LESSONS_PER_TURN=0 explicitly is
+  // nonsensical, so treating that as "unset" is fine.
+  const maxLessons = Number(env.MAX_LESSONS_PER_TURN) || MAX_LESSONS_DEFAULT;
 
   const validSlugs = new Set(index.map((e) => e.slug));
   const lessonList = index.map((e) => `- ${e.slug}: ${e.summary}`).join('\n');
