@@ -11,7 +11,11 @@ Format: one bullet per item. Prefix with `[YYYY-MM-DD]` when added. Group under 
 - **[2026-07-04] Tool-calling for unknown-question capture.** Currently uses a `[[UNKNOWN]] "..."` sentinel in the model output; server regex-catches it and writes a `feedback` row. Local quantized models don't tool-call reliably; when we deploy to a bigger hosted model, switch to proper OpenAI function-calling for cleaner semantics.
 - **[2026-07-04] Router quality on ambiguous questions.** The router picks lessons based on a summary index. If a student asks something that only vaguely matches, it may pick nothing useful and the answer will refuse. Consider expanding lesson summaries or falling back to loading a broader set when confidence is low.
 - **pseudocode** still rendering something that in pretty much js. find a standard for psuedocode to use. maybe there's something already set up.
-- **possible transcript issue** transcript references the last few seconds of a video, where I mention what we're going to be looking at next.
+- **Transcript "next episode" bleed.** Some lessons end with a preview of the next lesson; the answering LLM picks that up as if the "next" content is available in the current lesson. Fix isn't obvious:
+  - "Trim the last N seconds" is arbitrary — not every lecture has a next-episode tail, and the tail's length varies.
+  - Better: an LLM judgment pass at ingest time. Ask the model "does this transcript end with a preview of a future lesson? If so, where does the preview start?" and store a `next_lesson_preview_start` timestamp in `data/index.json`. `persona.ts` then truncates each lesson's `.md` at that point when composing the system prompt.
+  - Opportunity beyond just hiding it: **when a preview IS present, surface it in the UI** — a small "Coming next in this course" panel below the video, or a subtle hint at the end of a chat answer. Leverages the professor's own signaling instead of throwing it away. Adds a `next_lesson_preview: { start, text }` field to the index; the Runtime UI opts to render it.
+  - Order of work: (1) LLM-at-ingest detection first (biggest fix, unblocks the rest). (2) Truncation in persona.ts. (3) Optional UI surfacing later.
 
 ## Design / layout
 
