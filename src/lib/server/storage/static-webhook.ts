@@ -20,6 +20,8 @@ type CourseJsonShape = {
     slug: string;
     title: string;
     theme_color?: string | null;
+    theme?: string;
+    field?: string;
     status: 'draft' | 'published';
     monthly_request_budget?: number;
   };
@@ -35,6 +37,8 @@ const courses: Record<string, Course> = {
     slug: config.course.slug,
     title: config.course.title,
     theme_color: config.course.theme_color ?? null,
+    theme: config.course.theme ?? null,
+    field: config.course.field ?? null,
     status: config.course.status,
     monthly_request_budget: config.course.monthly_request_budget ?? 10_000
   }

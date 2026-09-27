@@ -7,6 +7,8 @@ export type Course = {
   slug: string;
   title: string;
   theme_color: string | null;
+  theme?: string | null;
+  field?: string | null;
   status: 'draft' | 'published';
   monthly_request_budget: number;
 };

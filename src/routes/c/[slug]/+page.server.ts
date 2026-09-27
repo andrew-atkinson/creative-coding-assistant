@@ -2,9 +2,10 @@ import { error } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
 import { getStorage } from '$lib/server/storage';
 import { loadIndex } from '$lib/server/lessons';
+import { THEMES, DEFAULT_THEME } from '$lib/themes';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, url }) => {
   const store = getStorage(env);
 
   const course = await store.loadCourse(params.slug);
@@ -19,10 +20,14 @@ export const load: PageServerLoad = async ({ params }) => {
     id: e.video_id,
     ordinal: i + 1,
     title: e.title,
+    summary: e.summary,
     url: e.video_url,
     duration_seconds: e.duration_seconds,
     week: e.week
   }));
+
+  // ?theme= / ?field= override the course's choice, for previewing combinations.
+  const theme = url.searchParams.get('theme') ?? course.theme;
 
   return {
     course: {
@@ -30,6 +35,8 @@ export const load: PageServerLoad = async ({ params }) => {
       title: course.title,
       theme_color: course.theme_color
     },
-    videos
+    videos,
+    theme: theme && THEMES.includes(theme) ? theme : DEFAULT_THEME,
+    field: url.searchParams.get('field') ?? course.field ?? null
   };
 };

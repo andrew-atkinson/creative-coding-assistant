@@ -1,0 +1,21 @@
+/* Night Field — dark glass panels over a generative dot field. */
+[data-theme='night-field'] {
+  color-scheme: dark;
+  --canvas: #0a0d14;
+  --surface: rgb(17 22 33 / 0.8);
+  --raised: rgb(255 255 255 / 0.06);
+  --line: rgb(255 255 255 / 0.1);
+  --ink: #e8ecf4;
+  --muted: #a3adc2;
+  --accent: #c5f36b;
+  --on-accent: #0a0d14;
+  --warn: #ffb86b;
+  --code-bg: rgb(0 0 0 / 0.35);
+  --radius-panel: 22px;
+  --shadow-panel: 0 40px 80px -40px rgb(0 0 0 / 0.9);
+  --panel-blur: 18px;
+
+  /* Backdrop inputs. Colours here must be hex — p5 parses them. */
+  --field: dot-wave;
+  --field-ink: #8ea7e0;
+}
