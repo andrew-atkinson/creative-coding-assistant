@@ -1,4 +1,4 @@
-# TutorGen (chatbotGA)
+# Preceptor
 
 A TA/GA style AI tutor for my Creative Coding course. Students see the lesson video and a chat side-by-side. The tutor is grounded in the transcripts of the class recordings: it identifies which lesson(s) are relevant to a question, loads their full transcripts as context, answers in a TA voice (guides students toward solutions rather than handing them over), and cites specific video moments that seek the player when clicked. When it genuinely doesn't know, it logs the question for the instructor to review.
 
@@ -17,22 +17,26 @@ Currently at **M1 — proof-of-concept**, deployed to Netlify. Single-course, si
 
 Per-turn flow: `question → router → slugs → load .md files → persona system prompt → stream answer with inline [MM:SS video_id] citations → post-process into source chips and, if the response contains [[UNKNOWN]], a feedback event`.
 
+### The Transcriber
+
+The [video transcriber](https://github.com/andrew-atkinson/vt) is a separate toolkit for transcribing instructional videos into rich Markdown learning resources, running entirely locally on Apple Silicon. The video transcriber creates the transcripts from your instructional videos that the chatbot uses.
+
 ---
 
 ## Two paths
 
 The storage backend is selected by the `STORAGE_BACKEND` env var. Two options:
 
-| | **Path A: no-DB (recommended)** | **Path B: Supabase** |
-| --- | --- | --- |
-| `STORAGE_BACKEND` | `static-webhook` | `supabase` |
-| Course metadata | `data/course.json` (committed) | `courses` table (seeded) |
-| Feedback destination | Email (Resend) or webhook (Discord/Slack) | `feedback` table |
-| Usage metering | None (IP rate limit only) | `usage_events` table |
-| Local prereqs | LM Studio + `.env` | LM Studio + Docker Desktop + Supabase CLI + `.env` |
-| Hosted prereqs | Netlify + LLM provider + Resend (or webhook) | Netlify + LLM provider + hosted Supabase |
-| Auto-pause risk | None | Supabase free tier pauses after ~7 days idle |
-| SQL analytics | No | Yes |
+|                      | **Path A: no-DB (recommended)**              | **Path B: Supabase**                               |
+|----------------------|----------------------------------------------|----------------------------------------------------|
+| `STORAGE_BACKEND`    | `static-webhook`                             | `supabase`                                         |
+| Course metadata      | `data/course.json` (committed)               | `courses` table (seeded)                           |
+| Feedback destination | Email (Resend) or webhook (Discord/Slack)    | `feedback` table                                   |
+| Usage metering       | None (IP rate limit only)                    | `usage_events` table                               |
+| Local prereqs        | LM Studio + `.env`                           | LM Studio + Docker Desktop + Supabase CLI + `.env` |
+| Hosted prereqs       | Netlify + LLM provider + Resend (or webhook) | Netlify + LLM provider + hosted Supabase           |
+| Auto-pause risk      | None                                         | Supabase free tier pauses after ~7 days idle       |
+| SQL analytics        | No                                           | Yes                                                |
 
 **If in doubt, pick Path A.** It's simpler to set up, has no auto-pause failure mode, and covers everything M1 needs. Move to Path B only when you actually want SQL queries over usage/feedback (e.g. a real admin dashboard).
 
@@ -175,19 +179,19 @@ Same URL (`localhost:5173`), hosted DB + hosted LLM behind it. Useful for catchi
 
 ## CLI reference
 
-| Command | Path | What it does |
-| --- | --- | --- |
-| `pnpm dev` | Both | Start the SvelteKit dev server on `:5173`. |
-| `pnpm run build` | Both | Production build. Bundles all `.md` transcripts. |
-| `pnpm run preview` | Both | Preview the production build locally. |
-| `pnpm run check` | Both | `svelte-check` — type + Svelte checks. |
-| `pnpm run build-index` | Both | Walk transcripts → write `data/index.json`. Idempotent. |
-| `pnpm run smoketest` | Both | Checks LLM reachable, index present, router picks a plausible lesson. `LLM_TIMEOUT_MS` overrides the 3-min per-call cap. |
-| `pnpm run seed` | Path B | Insert/upsert user + course row into Supabase from `data/course.json`. |
-| `supabase start` | Path B | Bring up local Postgres + PostgREST + Studio. |
-| `supabase stop` | Path B | Stop the local stack. |
-| `supabase status` | Path B | Print URLs and keys for the running stack. |
-| `supabase db reset` | Path B | Drop + re-create local DB; re-apply migrations. Re-run seed after. |
+| Command                | Path   | What it does                                                                                                             |
+|------------------------|--------|--------------------------------------------------------------------------------------------------------------------------|
+| `pnpm dev`             | Both   | Start the SvelteKit dev server on `:5173`.                                                                               |
+| `pnpm run build`       | Both   | Production build. Bundles all `.md` transcripts.                                                                         |
+| `pnpm run preview`     | Both   | Preview the production build locally.                                                                                    |
+| `pnpm run check`       | Both   | `svelte-check` — type + Svelte checks.                                                                                   |
+| `pnpm run build-index` | Both   | Walk transcripts → write `data/index.json`. Idempotent.                                                                  |
+| `pnpm run smoketest`   | Both   | Checks LLM reachable, index present, router picks a plausible lesson. `LLM_TIMEOUT_MS` overrides the 3-min per-call cap. |
+| `pnpm run seed`        | Path B | Insert/upsert user + course row into Supabase from `data/course.json`.                                                   |
+| `supabase start`       | Path B | Bring up local Postgres + PostgREST + Studio.                                                                            |
+| `supabase stop`        | Path B | Stop the local stack.                                                                                                    |
+| `supabase status`      | Path B | Print URLs and keys for the running stack.                                                                               |
+| `supabase db reset`    | Path B | Drop + re-create local DB; re-apply migrations. Re-run seed after.                                                       |
 
 ---
 
@@ -195,10 +199,10 @@ Same URL (`localhost:5173`), hosted DB + hosted LLM behind it. Useful for catchi
 
 Two env knobs cap per-request context size to stay under free-tier LLM per-request token caps:
 
-| Var | Default | Purpose |
-| --- | --- | --- |
-| `MAX_LESSONS_PER_TURN` | `2` | Max lessons the router will select for one turn. |
-| `MAX_LESSON_CHARS` | `8000` | Per-lesson truncation of `.md` content (`[... transcript truncated for length ...]` appended when hit). |
+| Var                    | Default | Purpose                                                                                                 |
+|------------------------|---------|---------------------------------------------------------------------------------------------------------|
+| `MAX_LESSONS_PER_TURN` | `2`     | Max lessons the router will select for one turn.                                                        |
+| `MAX_LESSON_CHARS`     | `8000`  | Per-lesson truncation of `.md` content (`[... transcript truncated for length ...]` appended when hit). |
 
 With defaults: 2 × 8000 = 16k chars ≈ 4k tokens for the corpus, + persona overhead ~800 tokens = ~5k tokens per request. Well under Groq's free-tier 12k-tokens-per-request cap on `llama-3.3-70b-versatile`.
 
