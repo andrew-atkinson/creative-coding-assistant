@@ -83,7 +83,7 @@ export class StaticWebhookAdapter implements StorageAdapter {
     const to = this.env.FEEDBACK_EMAIL_TO;
     const from = this.env.FEEDBACK_EMAIL_FROM;
     if (!apiKey || !to || !from) return;
-    const subject = `[TutorGen] ${row.category} — ${row.course_id}`;
+    const subject = `[Preceptor] ${row.category} — ${row.course_id}`;
     const bodyLines = [
       `Category: ${row.category}`,
       `Course: ${row.course_id}`,

@@ -31,7 +31,7 @@ Once signed in, you land on the **Overview** page.
 
 Dashboard → **API Keys** (left sidebar) → **Create API Key**.
 
-- **Name**: `tutorgen-hosted` (or whatever helps you remember which project uses it).
+- **Name**: `preceptor-hosted` (or whatever helps you remember which project uses it).
 - **Permission**: **Sending access** (write-only) — the app never needs to read past sends.
 - **Domain**: `All domains` is fine; scoping only matters if you have multiple.
 
@@ -52,7 +52,7 @@ Two approaches:
 - **Subdomain (recommended)**: `send.andrewatkinson.net`, `mail.andrewatkinson.net`, or similar. Keeps app mail isolated from your personal email, and DNS changes don't affect the root domain.
 - **Root domain**: `andrewatkinson.net`. Simpler naming. But if you already have an SPF record on the root for your personal email, you'll need to merge them (only one SPF record per domain is valid).
 
-For TutorGen, use a subdomain. Enter `send.andrewatkinson.net` (or your equivalent) and pick a region (US is default; pick the one closer to your users).
+For Preceptor, use a subdomain. Enter `send.andrewatkinson.net` (or your equivalent) and pick a region (US is default; pick the one closer to your users).
 
 ### Add the DNS records
 
@@ -142,7 +142,7 @@ If that works, **through the app**:
 
 1. `pnpm dev` (or visit the hosted URL).
 2. Ask an out-of-scope question — the classic is `What's the capital of France?`.
-3. The chat should show the refusal answer *and* your inbox should get an email within a few seconds with subject `[TutorGen] unknown — creative-coding-101`.
+3. The chat should show the refusal answer *and* your inbox should get an email within a few seconds with subject `[Preceptor] unknown — creative-coding-101`.
 
 If the chat works but no email arrives, see the troubleshooting section.
 
