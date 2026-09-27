@@ -83,12 +83,27 @@
       const resolved = resolveVideoId(video_id, lessons);
       if (!resolved) return full;
       const t = parseInt(mm, 10) * 60 + parseInt(ss, 10);
+      const label = chipLabel(t);
+      const title = escapeAttr(lessons?.find((l) => l.video_id === resolved)?.title ?? '');
       return (
-        `<button type="button" class="chip inline-flex items-center rounded-full bg-neutral-700 hover:bg-neutral-600 px-2 py-0.5 text-xs text-neutral-100 border border-neutral-600 tabular-nums align-middle" ` +
-        `data-t="${t}" data-vid="${escapeAttr(resolved)}">${chipLabel(t)}</button>`
+        `<button type="button" class="chip inline-flex h-6 max-w-full items-center gap-1.5 rounded-full border border-accent/45 bg-accent/10 pl-2 pr-2.5 align-middle text-xs text-ink hover:bg-accent/20" ` +
+        `data-t="${t}" data-vid="${escapeAttr(resolved)}" aria-label="Play ${title} at ${label}">` +
+        `<svg width="8" height="8" viewBox="0 0 8 8" class="shrink-0 text-accent" aria-hidden="true"><path d="M1 .5v7l6.5-3.5z" fill="currentColor"/></svg>` +
+        `<span class="font-mono tabular-nums text-accent">${label}</span>` +
+        (title ? `<span class="max-w-56 truncate">${title}</span>` : '') +
+        `</button>`
       );
     });
     return marked.parse(withChips, { async: false }) as string;
+  }
+
+  // Lessons actually cited in an answer, each with its first cited moment.
+  function citedLessons(m: Message): (LessonRef & { t: number })[] {
+    if (!m.sources?.length || !m.lessons) return [];
+    return m.lessons.flatMap((l) => {
+      const s = m.sources!.find((s) => s.video_id === l.video_id);
+      return s ? [{ ...l, t: s.t }] : [];
+    });
   }
 
   function handleContentClick(msg: Message, e: MouseEvent) {
@@ -166,82 +181,120 @@
   }
 </script>
 
-<div class="flex flex-col h-full bg-neutral-900">
-  <div bind:this={scroller} class="flex-1 overflow-y-auto p-3 space-y-3">
+<div class="flex h-full min-h-0 flex-col">
+  <div class="hidden h-16 shrink-0 items-center gap-3 border-b border-line px-5 md:flex">
+    <div class="min-w-0 flex-1">
+      <div class="text-[15px] font-semibold">Ask about this course</div>
+      <div class="text-xs text-muted">Answers link to moments in the lessons</div>
+    </div>
+    {#if messages.length > 0}
+      <button
+        type="button"
+        class="h-10 rounded-xl border border-line px-3.5 text-sm hover:bg-raised disabled:opacity-40"
+        disabled={busy}
+        onclick={() => (messages = [])}
+      >
+        New chat
+      </button>
+    {/if}
+  </div>
+
+  <div bind:this={scroller} class="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto px-4 py-5 md:px-5">
     {#if messages.length === 0}
-      <div class="text-neutral-500 text-sm">
+      <p class="text-sm text-muted">
         Ask a question about the course. Answers cite the specific video moments to watch.
-      </div>
+      </p>
     {/if}
     {#each messages as m, mi (mi)}
-      <div class="flex {m.role === 'user' ? 'justify-end' : 'justify-start'}">
-        <div
-          class="max-w-[85%] rounded-lg px-3 py-2 text-sm {m.role === 'user'
-            ? 'bg-neutral-100 text-neutral-900 whitespace-pre-wrap'
-            : m.unknown || m.isRefusal
-              ? 'bg-amber-950/40 text-amber-200 border border-amber-900'
-              : 'bg-neutral-800 text-neutral-100'}"
-        >
-          {#if m.content === '' && m.role === 'assistant'}
-            <span class="inline-flex gap-1 opacity-70">
-              <span class="animate-pulse">Thinking</span>
-              <span class="animate-pulse [animation-delay:150ms]">.</span>
-              <span class="animate-pulse [animation-delay:300ms]">.</span>
-              <span class="animate-pulse [animation-delay:450ms]">.</span>
-            </span>
-          {:else if m.role === 'assistant'}
-            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-            <div
-              class="prose prose-sm prose-invert max-w-none prose-p:my-2 prose-pre:my-2 prose-headings:my-2 prose-ul:my-2 prose-ol:my-2 prose-li:my-0.5 prose-code:before:content-none prose-code:after:content-none prose-code:bg-neutral-700/60 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-pre:bg-neutral-950 prose-pre:text-neutral-100 prose-pre:text-xs prose-a:text-sky-300 hover:prose-a:text-sky-200"
-              onclick={(e) => handleContentClick(m, e)}
-              onkeydown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  const t = e.target as HTMLElement;
-                  if (t.closest('button.chip')) handleContentClick(m, e as unknown as MouseEvent);
-                }
-              }}
-              role="presentation"
-            >
-              {@html renderMarkdown(cleanForDisplay(m.content), m.lessons)}
-            </div>
-          {:else}
-            {m.content}
-          {/if}
-          {#if m.role === 'assistant' && m.sources && m.sources.length > 0 && m.lessons}
-            {@const citedIds = new Set(m.sources.map((s) => s.video_id))}
-            {@const citedLessons = m.lessons.filter((l) => citedIds.has(l.video_id))}
-            {#if citedLessons.length > 0}
-              <div class="mt-2 pt-2 border-t border-neutral-700/50 text-xs text-neutral-400">
-                Referenced: {citedLessons.map((l) => l.title).join(' · ')}
+      {#if m.role === 'user'}
+        <div class="max-w-[85%] self-end whitespace-pre-wrap rounded-2xl rounded-br-md border border-line bg-raised px-3.5 py-2.5 text-[15px] leading-normal">
+          {m.content}
+        </div>
+      {:else}
+        {@const warn = m.unknown || m.isRefusal}
+        {@const cited = citedLessons(m)}
+        <div class="flex gap-3">
+          <span
+            class="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full border-2 {warn ? 'border-warn' : 'border-accent'}"
+            aria-hidden="true"
+          >
+            <span class="size-1.5 rounded-full {warn ? 'bg-warn' : 'bg-accent'}"></span>
+          </span>
+          <div class="min-w-0 flex-1 {warn ? 'rounded-xl border border-warn/40 bg-warn/10 px-3 py-2' : ''}">
+            {#if m.content === ''}
+              <span class="inline-flex gap-1 text-sm text-muted">
+                <span class="animate-pulse">Thinking</span>
+                <span class="animate-pulse [animation-delay:150ms]">.</span>
+                <span class="animate-pulse [animation-delay:300ms]">.</span>
+                <span class="animate-pulse [animation-delay:450ms]">.</span>
+              </span>
+            {:else}
+              <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+              <div
+                class="prose prose-sm prose-themed max-w-none text-[15px] prose-p:my-2 prose-pre:my-2 prose-pre:border prose-pre:border-line prose-pre:text-xs prose-headings:my-2 prose-ul:my-2 prose-ol:my-2 prose-li:my-0.5 prose-code:rounded prose-code:bg-raised prose-code:px-1 prose-code:py-0.5 prose-code:text-xs prose-code:before:content-none prose-code:after:content-none"
+                onclick={(e) => handleContentClick(m, e)}
+                onkeydown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    const t = e.target as HTMLElement;
+                    if (t.closest('button.chip')) handleContentClick(m, e as unknown as MouseEvent);
+                  }
+                }}
+                role="presentation"
+              >
+                {@html renderMarkdown(cleanForDisplay(m.content), m.lessons)}
               </div>
             {/if}
-          {/if}
+            {#if cited.length > 0}
+              <div class="mt-3 border-t border-line pt-3">
+                <div class="mb-2 text-[11px] font-semibold uppercase tracking-widest text-muted">
+                  From {cited.length} {cited.length === 1 ? 'lesson' : 'lessons'}
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  {#each cited as l (l.video_id)}
+                    <button
+                      type="button"
+                      class="h-9 max-w-full truncate rounded-xl border border-line bg-raised px-3 text-[13px] font-medium hover:border-accent/45"
+                      onclick={() => onJump(l.video_url, l.t)}
+                    >
+                      {l.title}
+                    </button>
+                  {/each}
+                </div>
+              </div>
+            {/if}
+          </div>
         </div>
-      </div>
+      {/if}
     {/each}
   </div>
 
   <form
-    class="border-t border-neutral-800 p-2 flex gap-2"
+    class="shrink-0 p-3 md:px-4 md:pb-4"
     onsubmit={(e) => {
       e.preventDefault();
       send();
     }}
   >
-    <textarea
-      bind:value={input}
-      onkeydown={onKey}
-      rows="1"
-      placeholder="Ask about the course…"
-      class="flex-1 resize-none rounded bg-neutral-800 text-neutral-100 text-sm px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-neutral-500"
-      disabled={busy}
-    ></textarea>
-    <button
-      type="submit"
-      disabled={busy || !input.trim()}
-      class="px-3 py-1.5 text-sm rounded bg-neutral-100 text-neutral-900 disabled:opacity-40"
-    >
-      Send
-    </button>
+    <div class="flex items-end gap-2 rounded-2xl border border-line bg-raised p-1.5 pl-4 focus-within:border-accent/45">
+      <textarea
+        bind:value={input}
+        onkeydown={onKey}
+        rows="1"
+        aria-label="Ask a question"
+        placeholder="Ask about the course…"
+        class="flex-1 resize-none bg-transparent py-2.5 text-base leading-snug text-ink placeholder:text-muted focus:outline-none md:text-[15px]"
+        disabled={busy}
+      ></textarea>
+      <button
+        type="submit"
+        aria-label="Send"
+        disabled={busy || !input.trim()}
+        class="grid size-11 shrink-0 place-items-center rounded-xl bg-accent text-on-accent disabled:opacity-40"
+      >
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+      </button>
+    </div>
   </form>
 </div>

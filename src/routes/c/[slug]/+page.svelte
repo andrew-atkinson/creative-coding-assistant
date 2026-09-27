@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount, tick } from 'svelte';
+  import Backdrop from '$lib/backdrop/Backdrop.svelte';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
@@ -61,110 +62,123 @@
 </script>
 
 <svelte:head>
-  <title>{data.course.title}</title>
+  <title>{data.course.title} · Preceptor</title>
 </svelte:head>
 
-<div class="h-[100dvh] w-screen bg-neutral-950 text-neutral-100 flex flex-col overflow-hidden">
-  <!-- Header: hamburger + course/lesson title on every width; cinema on md+, fullscreen ⛶ on narrow. -->
-  <header class="flex items-center gap-2 px-3 py-2 border-b border-neutral-800 shrink-0">
+<div
+  data-theme={data.theme}
+  class="isolate flex h-[100dvh] w-screen flex-col overflow-hidden bg-canvas text-ink"
+>
+  {#key `${data.theme}:${data.field}`}
+    <Backdrop field={data.field} />
+  {/key}
+
+  <header class="flex h-14 shrink-0 items-center gap-2 px-2 md:h-16 md:gap-3 md:px-6">
     <button
-      class="-ml-1 p-2 rounded hover:bg-neutral-800"
+      class="grid size-11 place-items-center rounded-xl hover:bg-raised"
       aria-label="Open lesson menu"
       aria-expanded={menuOpen}
       onclick={() => (menuOpen = true)}
     >
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M4 6h16M4 12h16M4 18h16" />
+        <path d="M4 6h16M4 12h16M4 18h10" />
       </svg>
     </button>
-    <div class="flex-1 min-w-0 flex items-baseline gap-2">
-      <h1 class="text-sm font-medium truncate">{data.course.title}</h1>
+    <span class="hidden size-7 place-items-center rounded-full border-2 border-accent sm:grid" aria-hidden="true">
+      <span class="size-1.5 rounded-full bg-accent"></span>
+    </span>
+    <span class="hidden font-semibold tracking-tight sm:inline">Preceptor</span>
+    <span class="hidden h-5 w-px bg-line sm:block" aria-hidden="true"></span>
+    <div class="flex min-w-0 flex-1 flex-col sm:flex-row sm:items-baseline sm:gap-2">
+      <h1 class="truncate text-sm font-medium">{data.course.title}</h1>
       {#if active}
-        <span class="hidden sm:inline text-xs text-neutral-400 truncate" title={active.title}>
-          · {active.title}
-        </span>
+        <span class="truncate text-xs text-muted" title={active.title}>{active.title}</span>
       {/if}
     </div>
     <button
-      class="hidden md:inline-flex text-xs px-2 py-1 rounded border border-neutral-700 hover:bg-neutral-800"
+      class="hidden h-11 items-center gap-2 rounded-xl border border-line bg-surface px-4 text-sm backdrop-blur hover:bg-raised md:inline-flex"
       onclick={() => (cinemaMode = !cinemaMode)}
     >
-      {cinemaMode ? 'Exit cinema' : 'Cinema mode'}
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+      </svg>
+      {cinemaMode ? 'Exit cinema' : 'Cinema'}
     </button>
     <button
-      class="md:hidden text-xs px-2 py-1 rounded border border-neutral-700 hover:bg-neutral-800"
+      class="grid size-11 place-items-center rounded-xl hover:bg-raised md:hidden"
       aria-label="Fullscreen video"
       onclick={enterNativeFullscreen}
     >
-      ⛶
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />
+      </svg>
     </button>
   </header>
 
   <!-- Body. Stacked at < md, side-by-side ≥ md. -->
-  <main class="flex-1 flex flex-col md:flex-row overflow-hidden">
-    <!-- Video pane -->
+  <main class="flex min-h-0 flex-1 flex-col gap-3 px-3 pb-3 md:flex-row md:gap-6 md:px-6 md:pb-6">
     <section
       class={cinemaMode
-        ? 'w-full flex flex-col'
-        : 'md:w-3/5 md:border-r md:border-neutral-800 flex flex-col shrink-0'}
+        ? 'flex min-w-0 flex-1 flex-col'
+        : 'flex min-w-0 shrink-0 flex-col gap-5 md:flex-1 md:shrink md:overflow-y-auto'}
     >
       {#if data.videos.length > 0 && active}
-        <div
-          class="w-full bg-black flex items-center justify-center
-                 md:flex-1 h-[42vh] md:h-auto"
-        >
+        <div class="panel p-1.5 md:p-2.5 {cinemaMode ? 'flex min-h-0 flex-1' : ''}">
           <video
             bind:this={videoEl}
             src={active.url}
             controls
             playsinline
-            class="max-h-full max-w-full"
+            class="w-full rounded-[calc(var(--radius-panel)-8px)] bg-black {cinemaMode
+              ? 'h-full'
+              : 'aspect-video max-h-[65dvh]'}"
           >
             <track kind="captions" />
           </video>
         </div>
+        {#if !cinemaMode}
+          <div class="hidden px-1.5 md:block">
+            {#if active.week}
+              <div class="text-xs font-semibold uppercase tracking-widest text-accent">{active.week}</div>
+            {/if}
+            <h2 class="mt-1.5 text-2xl font-semibold tracking-tight">{active.title}</h2>
+            {#if active.summary}
+              <p class="mt-2 line-clamp-3 max-w-prose text-[15px] leading-relaxed text-muted">{active.summary}</p>
+            {/if}
+          </div>
+        {/if}
       {:else}
-        <div class="flex-1 flex items-center justify-center text-neutral-500">
-          No videos yet.
-        </div>
+        <div class="panel grid flex-1 place-items-center text-muted">No videos yet.</div>
       {/if}
     </section>
 
-    <!-- Chat pane -->
     <aside
       class={cinemaMode
-        ? 'hidden md:flex md:fixed md:bottom-4 md:right-4 md:w-96 md:h-[60vh] md:rounded-lg md:border md:border-neutral-700 md:bg-neutral-900 md:shadow-2xl md:flex-col md:overflow-hidden'
-        : 'flex-1 md:w-2/5 flex flex-col min-h-0'}
+        ? 'panel hidden flex-col overflow-hidden md:fixed md:bottom-6 md:right-6 md:flex md:h-[60vh] md:w-96'
+        : 'panel flex min-h-0 flex-1 flex-col overflow-hidden md:w-[340px] md:flex-none lg:w-[380px] xl:w-[460px]'}
     >
       {#if ChatComponent}
         <ChatComponent courseSlug={data.course.slug} onJump={jumpTo} />
       {:else}
-        <div class="flex-1 flex items-center justify-center text-neutral-500 text-sm">
-          Loading chat…
-        </div>
+        <div class="grid flex-1 place-items-center text-sm text-muted">Loading chat…</div>
       {/if}
     </aside>
   </main>
 
   <!-- Lesson menu (hamburger drawer). Slides from the left, at any width. -->
   {#if menuOpen}
-    <div
-      class="fixed inset-0 z-50 flex"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Lessons"
-    >
+    <div class="fixed inset-0 z-50 flex" role="dialog" aria-modal="true" aria-label="Lessons">
       <div
         class="absolute inset-0 bg-black/60"
         aria-hidden="true"
         onclick={() => (menuOpen = false)}
         role="presentation"
       ></div>
-      <div class="relative w-[85%] max-w-sm h-full bg-neutral-950 border-r border-neutral-800 flex flex-col shadow-2xl">
-        <div class="flex items-center justify-between px-3 py-2 border-b border-neutral-800 shrink-0">
-          <h2 class="text-sm font-medium">Lessons</h2>
+      <div class="relative flex h-full w-[85%] max-w-sm flex-col border-r border-line bg-canvas/95 shadow-2xl backdrop-blur-xl">
+        <div class="flex h-14 shrink-0 items-center justify-between border-b border-line px-4">
+          <h2 class="text-sm font-semibold">Lessons</h2>
           <button
-            class="p-2 -mr-1 rounded hover:bg-neutral-800"
+            class="-mr-2 grid size-11 place-items-center rounded-xl hover:bg-raised"
             aria-label="Close menu"
             onclick={() => (menuOpen = false)}
           >
@@ -175,7 +189,7 @@
         </div>
         <div class="flex-1 overflow-y-auto py-2">
           {#each groupedByWeek() as [weekName, vids]}
-            <div class="px-3 pt-3 pb-1 text-[10px] uppercase tracking-wider text-neutral-500">
+            <div class="px-4 pb-1 pt-4 text-[11px] font-semibold uppercase tracking-widest text-muted">
               {weekName}
             </div>
             <ul>
@@ -183,15 +197,13 @@
                 {@const isActive = v.id === active?.id}
                 <li>
                   <button
-                    class="w-full text-left px-3 py-2 text-sm flex items-center gap-2 {isActive
-                      ? 'bg-neutral-800 text-neutral-100'
-                      : 'text-neutral-300 hover:bg-neutral-900'}"
+                    class="flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm {isActive
+                      ? 'bg-raised text-ink'
+                      : 'text-muted hover:bg-raised hover:text-ink'}"
                     onclick={() => selectVideo(data.videos.indexOf(v))}
                   >
                     <span
-                      class="w-1.5 h-1.5 rounded-full shrink-0 {isActive
-                        ? 'bg-emerald-400'
-                        : 'bg-neutral-700'}"
+                      class="size-1.5 shrink-0 rounded-full {isActive ? 'bg-accent' : 'bg-line'}"
                       aria-hidden="true"
                     ></span>
                     <span class="truncate">{v.title}</span>
